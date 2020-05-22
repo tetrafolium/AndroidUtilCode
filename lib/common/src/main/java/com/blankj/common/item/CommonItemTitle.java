@@ -26,31 +26,31 @@ public class CommonItemTitle extends CommonItem {
     private boolean                      mIsTitleCenter;
     private CharSequence                 mContent;
 
-    public CommonItemTitle(@NonNull Utils.Supplier<CharSequence> getTitleSupplier, boolean isTitleCenter) {
+    public CommonItemTitle(final @NonNull Utils.Supplier<CharSequence> getTitleSupplier, final boolean isTitleCenter) {
         super(R.layout.common_item_title_content);
         mTitle = mGetTitleSupplier.get();
         mGetTitleSupplier = getTitleSupplier;
         mIsTitleCenter = isTitleCenter;
     }
 
-    public CommonItemTitle(@StringRes int title, boolean isTitleCenter) {
+    public CommonItemTitle(final @StringRes int title, final boolean isTitleCenter) {
         this(StringUtils.getString(title), isTitleCenter);
     }
 
-    public CommonItemTitle(@NonNull CharSequence title, boolean isTitleCenter) {
+    public CommonItemTitle(final @NonNull CharSequence title, final boolean isTitleCenter) {
         super(R.layout.common_item_title_content);
         mTitle = title;
         mIsTitleCenter = isTitleCenter;
     }
 
-    public CommonItemTitle(@NonNull CharSequence title, CharSequence content) {
+    public CommonItemTitle(final @NonNull CharSequence title, final CharSequence content) {
         super(R.layout.common_item_title_content);
         mTitle = title;
         mContent = content;
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         super.bind(holder, position);
         if (mGetTitleSupplier != null) {
             mTitle = mGetTitleSupplier.get();
@@ -73,22 +73,22 @@ public class CommonItemTitle extends CommonItem {
         }
     }
 
-    public void setTitle(CharSequence title) {
+    public void setTitle(final CharSequence title) {
         setTitle(title, true);
     }
 
-    public void setContent(CharSequence content) {
+    public void setContent(final CharSequence content) {
         setContent(content, true);
     }
 
-    public void setTitle(CharSequence title, boolean isUpdate) {
+    public void setTitle(final CharSequence title, final boolean isUpdate) {
         mTitle = title;
         if (isUpdate) {
             update();
         }
     }
 
-    public void setContent(CharSequence content, boolean isUpdate) {
+    public void setContent(final CharSequence content, final boolean isUpdate) {
         mContent = content;
         if (isUpdate) {
             update();

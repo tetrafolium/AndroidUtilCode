@@ -90,7 +90,7 @@ public abstract class CommonActivity extends BaseActivity {
 
     @CallSuper
     @Override
-    public void initData(@Nullable Bundle bundle) {
+    public void initData(final @Nullable Bundle bundle) {
         mTitleView = bindTitleView();
         if (mTitleView == null) {
             int titleRes = bindTitleRes();
@@ -171,7 +171,7 @@ public abstract class CommonActivity extends BaseActivity {
             swipeLayout.wrapView(findViewById(android.R.id.content));
             swipeLayout.setOnFullSwipeListener(new SwipePanel.OnFullSwipeListener() {
                 @Override
-                public void onFullSwipe(int direction) {
+                public void onFullSwipe(final int direction) {
                     swipeLayout.close(direction);
                     finish();
                 }
@@ -181,7 +181,7 @@ public abstract class CommonActivity extends BaseActivity {
 
     @CallSuper
     @Override
-    public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
+    public void initView(final @Nullable Bundle savedInstanceState, final @Nullable View contentView) {
         if (mItemsView != null) {
             mItemsView.initView();
         }
@@ -192,11 +192,11 @@ public abstract class CommonActivity extends BaseActivity {
     }
 
     @Override
-    public void onDebouncingClick(@NonNull View view) {
+    public void onDebouncingClick(final @NonNull View view) {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         if (mTitleView != null) {
             return mTitleView.onOptionsItemSelected(item);
         }
@@ -207,7 +207,7 @@ public abstract class CommonActivity extends BaseActivity {
         showLoading(null);
     }
 
-    public void showLoading(Runnable listener) {
+    public void showLoading(final Runnable listener) {
         if (mDialogLoading != null) {
             return;
         }
@@ -236,7 +236,7 @@ public abstract class CommonActivity extends BaseActivity {
 
     private BaseItemAdapter<CommonItem> mCommonItemAdapter;
 
-    public void setCommonItems(RecyclerView rv, List<CommonItem> items) {
+    public void setCommonItems(final RecyclerView rv, final List<CommonItem> items) {
         mCommonItemAdapter = new BaseItemAdapter<>();
         mCommonItemAdapter.setItems(items);
         rv.setAdapter(mCommonItemAdapter);
@@ -244,12 +244,12 @@ public abstract class CommonActivity extends BaseActivity {
         rv.addItemDecoration(new RecycleViewDivider(this, RecycleViewDivider.VERTICAL, R.drawable.common_item_divider));
     }
 
-    public void updateCommonItems(List<CommonItem> data) {
+    public void updateCommonItems(final List<CommonItem> data) {
         mCommonItemAdapter.setItems(data);
         mCommonItemAdapter.notifyDataSetChanged();
     }
 
-    public void updateCommonItem(int position) {
+    public void updateCommonItem(final int position) {
         mCommonItemAdapter.notifyItemChanged(position);
     }
 

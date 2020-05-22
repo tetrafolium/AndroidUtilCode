@@ -26,14 +26,14 @@ public class FileUtilsTest extends BaseTest {
 
     private FileFilter mFilter = new FileFilter() {
         @Override
-        public boolean accept(File pathname) {
+        public boolean accept(final File pathname) {
             return pathname.getName().endsWith("8.txt");
         }
     };
 
     private FileUtils.OnReplaceListener mListener = new FileUtils.OnReplaceListener() {
         @Override
-        public boolean onReplace(File srcFile, File destFile) {
+        public boolean onReplace(final File srcFile, final File destFile) {
             return true;
         }
     };

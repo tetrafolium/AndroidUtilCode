@@ -36,7 +36,7 @@ public class BusUtilsTest extends BaseTest {
     }
 
     @BusUtils.Bus(tag = TAG_ONE_PARAM)
-    public void oneParamFun(String param) {
+    public void oneParamFun(final String param) {
         System.out.println(param);
     }
 
@@ -46,32 +46,32 @@ public class BusUtilsTest extends BaseTest {
     }
 
     @BusUtils.Bus(tag = TAG_ONE_PARAM_STICKY, sticky = true)
-    public void oneParamStickyFun(Callback callback) {
+    public void oneParamStickyFun(final Callback callback) {
         if (callback != null) {
             System.out.println(callback.call());
         }
     }
 
     @BusUtils.Bus(tag = TAG_IO, threadMode = BusUtils.ThreadMode.IO)
-    public void ioFun(CountDownLatch latch) {
+    public void ioFun(final CountDownLatch latch) {
         System.out.println("Thread.currentThread() = " + Thread.currentThread());
         latch.countDown();
     }
 
     @BusUtils.Bus(tag = TAG_CPU, threadMode = BusUtils.ThreadMode.CPU)
-    public void cpuFun(CountDownLatch latch) {
+    public void cpuFun(final CountDownLatch latch) {
         System.out.println("Thread.currentThread() = " + Thread.currentThread());
         latch.countDown();
     }
 
     @BusUtils.Bus(tag = TAG_CACHED, threadMode = BusUtils.ThreadMode.CACHED)
-    public void cachedFun(CountDownLatch latch) {
+    public void cachedFun(final CountDownLatch latch) {
         System.out.println("Thread.currentThread() = " + Thread.currentThread());
         latch.countDown();
     }
 
     @BusUtils.Bus(tag = TAG_SINGLE, threadMode = BusUtils.ThreadMode.SINGLE)
-    public void singleFun(CountDownLatch latch) {
+    public void singleFun(final CountDownLatch latch) {
         System.out.println("Thread.currentThread() = " + Thread.currentThread());
         latch.countDown();
     }

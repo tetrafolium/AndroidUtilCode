@@ -757,7 +757,7 @@ public final class NetworkUtils {
 
         @SuppressLint("MissingPermission")
         @Override
-        public void onReceive(Context context, Intent intent) {
+        public void onReceive(final Context context, final Intent intent) {
             if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
                 // debouncing
                 UtilsBridge.runOnUiThreadDelayed(new Runnable() {

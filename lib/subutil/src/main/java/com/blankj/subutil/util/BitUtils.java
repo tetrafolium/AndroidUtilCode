@@ -24,7 +24,7 @@ public final class BitUtils {
      * @param pos    指定位置 (0...7)
      * @return 指定位置的值(0 or 1)
      */
-    public static byte getBitValue(byte source, int pos) {
+    public static byte getBitValue(final byte source, final int pos) {
         return (byte) ((source >> pos) & 1);
 
     }
@@ -39,7 +39,7 @@ public final class BitUtils {
      * @param value  只能取值为 0, 或 1, 所有大于0的值作为1处理, 所有小于0的值作为0处理
      * @return 运算后的结果数
      */
-    public static byte setBitValue(byte source, int pos, byte value) {
+    public static byte setBitValue(final byte source, final int pos, final byte value) {
 
         byte mask = (byte) (1 << pos);
         if (value > 0) {
@@ -61,7 +61,7 @@ public final class BitUtils {
      * @param pos    指定位置 (0<=pos<=7)
      * @return 运算后的结果数
      */
-    public static byte reverseBitValue(byte source, int pos) {
+    public static byte reverseBitValue(final byte source, final int pos) {
         byte mask = (byte) (1 << pos);
         return (byte) (source ^ mask);
 
@@ -75,7 +75,7 @@ public final class BitUtils {
      * @param pos    指定位置 (0<=pos<=7)
      * @return true 表示指定位置值为1, false 表示指定位置值为 0
      */
-    public static boolean checkBitValue(byte source, int pos) {
+    public static boolean checkBitValue(final byte source, final int pos) {
 
         source = (byte) (source >>> pos);
 
@@ -88,7 +88,7 @@ public final class BitUtils {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // 取十进制 11 (二级制 0000 1011) 为例子
         byte source = 11;
         // 取第2位值并输出, 结果应为 0000 1011

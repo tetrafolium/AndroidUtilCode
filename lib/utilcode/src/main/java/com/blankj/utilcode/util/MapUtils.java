@@ -100,7 +100,7 @@ public class MapUtils {
      * @param map the map to check, may be null
      * @return true if empty or null
      */
-    public static boolean isEmpty(Map map) {
+    public static boolean isEmpty(final Map map) {
         return map == null || map.size() == 0;
     }
 
@@ -112,7 +112,7 @@ public class MapUtils {
      * @param map the map to check, may be null
      * @return true if non-null and non-empty
      */
-    public static boolean isNotEmpty(Map map) {
+    public static boolean isNotEmpty(final Map map) {
         return !isEmpty(map);
     }
 
@@ -122,7 +122,7 @@ public class MapUtils {
      * @param map The map.
      * @return the size of the map specified
      */
-    public static int size(Map map) {
+    public static int size(final Map map) {
         if (map == null) return 0;
         return map.size();
     }
@@ -135,7 +135,7 @@ public class MapUtils {
      * @param map     the map to get the input from, may be null
      * @param closure the closure to perform, may be null
      */
-    public static <K, V> void forAllDo(Map<K, V> map, Closure<K, V> closure) {
+    public static <K, V> void forAllDo(final Map<K, V> map, final Closure<K, V> closure) {
         if (map == null || closure == null) return;
         for (Map.Entry<K, V> kvEntry : map.entrySet()) {
             closure.execute(kvEntry.getKey(), kvEntry.getValue());
@@ -150,13 +150,13 @@ public class MapUtils {
      * @param map         the map to get the input from, may be null
      * @param transformer the transformer to perform, may be null
      */
-    public static <K1, V1, K2, V2> Map<K2, V2> transform(Map<K1, V1> map, final Transformer<K1, V1, K2, V2> transformer) {
+    public static <K1, V1, K2, V2> Map<K2, V2> transform(final Map<K1, V1> map, final Transformer<K1, V1, K2, V2> transformer) {
         if (map == null || transformer == null) return null;
         try {
             final Map<K2, V2> transMap = map.getClass().newInstance();
             forAllDo(map, new Closure<K1, V1>() {
                 @Override
-                public void execute(K1 key, V1 value) {
+                public void execute(final K1 key, final V1 value) {
                     Pair<K2, V2> pair = transformer.transform(key, value);
                     transMap.put(pair.first, pair.second);
                 }
@@ -176,7 +176,7 @@ public class MapUtils {
      * @param map The map.
      * @return the string of map
      */
-    public static String toString(Map map) {
+    public static String toString(final Map map) {
         if (map == null) return "null";
         return map.toString();
     }

@@ -14,7 +14,7 @@ import java.util.Map;
 public class Test6 {
     public Map<String, String> map = new HashMap<String, String>();
 
-    public void put(String name, String value) {
+    public void put(final String name, final String value) {
         map.put(name, value);
     }
 }

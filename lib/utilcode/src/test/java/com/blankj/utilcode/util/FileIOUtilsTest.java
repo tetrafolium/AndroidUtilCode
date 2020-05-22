@@ -28,7 +28,7 @@ public class FileIOUtilsTest extends BaseTest {
 
         FileIOUtils.writeFileFromIS(PATH_TEMP + "writeFileFromIS.txt", is, new FileIOUtils.OnProgressUpdateListener() {
             @Override
-            public void onProgressUpdate(double progress) {
+            public void onProgressUpdate(final double progress) {
                 System.out.println(String.format("%.2f", progress));
             }
         });
@@ -44,7 +44,7 @@ public class FileIOUtilsTest extends BaseTest {
 
         FileIOUtils.writeFileFromBytesByStream(PATH_TEMP + "writeFileFromBytesByStream.txt", bytes, new FileIOUtils.OnProgressUpdateListener() {
             @Override
-            public void onProgressUpdate(double progress) {
+            public void onProgressUpdate(final double progress) {
                 System.out.println(String.format("%.2f", progress));
             }
         });
@@ -78,7 +78,7 @@ public class FileIOUtilsTest extends BaseTest {
         writeFileFromBytesByStream();
         FileIOUtils.readFile2BytesByStream(PATH_TEMP + "writeFileFromIS.txt", new FileIOUtils.OnProgressUpdateListener() {
             @Override
-            public void onProgressUpdate(double progress) {
+            public void onProgressUpdate(final double progress) {
                 System.out.println(String.format("%.2f", progress));
             }
         });

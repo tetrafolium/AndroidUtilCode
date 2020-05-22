@@ -58,41 +58,41 @@ public class DebugUtils {
         );
 
         @Override
-        public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+        public void onActivityCreated(final Activity activity, final Bundle savedInstanceState) {
 
         }
 
         @Override
-        public void onActivityStarted(Activity activity) {
+        public void onActivityStarted(final Activity activity) {
             if (mConfigCount < 0) {
                 ++mConfigCount;
             }
         }
 
         @Override
-        public void onActivityResumed(Activity activity) {
+        public void onActivityResumed(final Activity activity) {
             ((ViewGroup) activity.findViewById(android.R.id.content)).addView(DebugIcon.getInstance(), mParams);
         }
 
         @Override
-        public void onActivityPaused(Activity activity) {
+        public void onActivityPaused(final Activity activity) {
             ((ViewGroup) activity.findViewById(android.R.id.content)).removeView(DebugIcon.getInstance());
         }
 
         @Override
-        public void onActivityStopped(Activity activity) {
+        public void onActivityStopped(final Activity activity) {
             if (activity.isChangingConfigurations()) {
                 --mConfigCount;
             }
         }
 
         @Override
-        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+        public void onActivitySaveInstanceState(final Activity activity, final Bundle outState) {
 
         }
 
         @Override
-        public void onActivityDestroyed(Activity activity) {
+        public void onActivityDestroyed(final Activity activity) {
 
         }
     }

@@ -40,7 +40,7 @@ public final class CacheMemoryStaticUtils {
      * @param value    The value of cache.
      * @param saveTime The save time of cache, in seconds.
      */
-    public static void put(@NonNull final String key, final Object value, int saveTime) {
+    public static void put(@NonNull final String key, final Object value, final int saveTime) {
         put(key, value, saveTime, getDefaultCacheMemoryUtils());
     }
 
@@ -120,7 +120,7 @@ public final class CacheMemoryStaticUtils {
      */
     public static void put(@NonNull final String key,
                            final Object value,
-                           int saveTime,
+                           final int saveTime,
                            @NonNull final CacheMemoryUtils cacheMemoryUtils) {
         cacheMemoryUtils.put(key, value, saveTime);
     }

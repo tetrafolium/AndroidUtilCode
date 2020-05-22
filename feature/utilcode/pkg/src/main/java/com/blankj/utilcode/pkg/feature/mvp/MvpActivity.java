@@ -19,7 +19,7 @@ import com.blankj.utilcode.pkg.R;
  */
 public class MvpActivity extends CommonActivity {
 
-    public static void start(Context context) {
+    public static void start(final Context context) {
         Intent starter = new Intent(context, MvpActivity.class);
         context.startActivity(starter);
     }
@@ -35,7 +35,7 @@ public class MvpActivity extends CommonActivity {
     }
 
     @Override
-    public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
+    public void initView(final @Nullable Bundle savedInstanceState, final @Nullable View contentView) {
         super.initView(savedInstanceState, contentView);
         new MvpView(this).addPresenter(new MvpPresenter());
     }

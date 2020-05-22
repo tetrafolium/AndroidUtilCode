@@ -74,7 +74,7 @@ public final class ProcessUtils {
                         "getForegroundProcessName: noun of access to usage information.");
                 return "";
             }
-            try {// Access to usage information.
+            try { // Access to usage information.
                 ApplicationInfo info =
                         pm.getApplicationInfo(Utils.getApp().getPackageName(), 0);
                 AppOpsManager aom =

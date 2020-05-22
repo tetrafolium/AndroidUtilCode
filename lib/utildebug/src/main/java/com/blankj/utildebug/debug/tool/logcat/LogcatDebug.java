@@ -17,7 +17,7 @@ import com.blankj.utildebug.debug.tool.AbsToolDebug;
  */
 public class LogcatDebug extends AbsToolDebug {
     @Override
-    public void onAppCreate(Context context) {
+    public void onAppCreate(final Context context) {
 
     }
 
@@ -32,7 +32,7 @@ public class LogcatDebug extends AbsToolDebug {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         FloatToast.showShort(FloatToast.WARNING, "Developing...");
     }
 }

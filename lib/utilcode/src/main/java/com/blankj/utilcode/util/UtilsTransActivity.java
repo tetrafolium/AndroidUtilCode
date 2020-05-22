@@ -65,7 +65,7 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(final @Nullable Bundle savedInstanceState) {
         overridePendingTransition(0, 0);
         Serializable extra = getIntent().getSerializableExtra(EXTRA_DELEGATE);
         if (!(extra instanceof TransActivityDelegate)) {
@@ -114,7 +114,7 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
         TransActivityDelegate callback = CALLBACK_MAP.get(this);
         if (callback == null) return;
@@ -131,7 +131,7 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(final int requestCode, final String[] permissions, final int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         TransActivityDelegate callback = CALLBACK_MAP.get(this);
         if (callback == null) return;
@@ -139,7 +139,7 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         TransActivityDelegate callback = CALLBACK_MAP.get(this);
         if (callback == null) return;
@@ -147,7 +147,7 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
+    public boolean dispatchTouchEvent(final MotionEvent ev) {
         TransActivityDelegate callback = CALLBACK_MAP.get(this);
         if (callback == null) return super.dispatchTouchEvent(ev);
         if (callback.dispatchTouchEvent(this, ev)) {
@@ -157,27 +157,27 @@ public class UtilsTransActivity extends AppCompatActivity {
     }
 
     public abstract static class TransActivityDelegate implements Serializable {
-        public void onCreateBefore(@NonNull UtilsTransActivity activity, @Nullable Bundle savedInstanceState) {/**/}
+        public void onCreateBefore(final @NonNull UtilsTransActivity activity, final @Nullable Bundle savedInstanceState) { /**/ }
 
-        public void onCreated(@NonNull UtilsTransActivity activity, @Nullable Bundle savedInstanceState) {/**/}
+        public void onCreated(final @NonNull UtilsTransActivity activity, final @Nullable Bundle savedInstanceState) { /**/ }
 
-        public void onStarted(@NonNull UtilsTransActivity activity) {/**/}
+        public void onStarted(final @NonNull UtilsTransActivity activity) { /**/ }
 
-        public void onDestroy(@NonNull UtilsTransActivity activity) {/**/}
+        public void onDestroy(final @NonNull UtilsTransActivity activity) { /**/ }
 
-        public void onResumed(@NonNull UtilsTransActivity activity) {/**/}
+        public void onResumed(final @NonNull UtilsTransActivity activity) { /**/ }
 
-        public void onPaused(@NonNull UtilsTransActivity activity) {/**/}
+        public void onPaused(final @NonNull UtilsTransActivity activity) { /**/ }
 
-        public void onStopped(@NonNull UtilsTransActivity activity) {/**/}
+        public void onStopped(final @NonNull UtilsTransActivity activity) { /**/ }
 
-        public void onSaveInstanceState(@NonNull UtilsTransActivity activity, Bundle outState) {/**/}
+        public void onSaveInstanceState(final @NonNull UtilsTransActivity activity, final Bundle outState) { /**/ }
 
-        public void onRequestPermissionsResult(@NonNull UtilsTransActivity activity, int requestCode, String[] permissions, int[] grantResults) {/**/}
+        public void onRequestPermissionsResult(final @NonNull UtilsTransActivity activity, final int requestCode, final String[] permissions, final int[] grantResults) { /**/ }
 
-        public void onActivityResult(@NonNull UtilsTransActivity activity, int requestCode, int resultCode, Intent data) {/**/}
+        public void onActivityResult(final @NonNull UtilsTransActivity activity, final int requestCode, final int resultCode, final Intent data) { /**/ }
 
-        public boolean dispatchTouchEvent(@NonNull UtilsTransActivity activity, MotionEvent ev) {
+        public boolean dispatchTouchEvent(final @NonNull UtilsTransActivity activity, final MotionEvent ev) {
             return false;
         }
     }

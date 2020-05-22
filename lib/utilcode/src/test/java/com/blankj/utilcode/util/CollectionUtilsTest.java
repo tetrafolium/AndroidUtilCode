@@ -165,13 +165,13 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertNull(CollectionUtils.find(list, null));
         Assert.assertNull(CollectionUtils.find(null, new CollectionUtils.Predicate<String>() {
             @Override
-            public boolean evaluate(String item) {
+            public boolean evaluate(final String item) {
                 return true;
             }
         }));
         Assert.assertEquals("1", CollectionUtils.find(list, new CollectionUtils.Predicate<String>() {
             @Override
-            public boolean evaluate(String item) {
+            public boolean evaluate(final String item) {
                 return "1".equals(item);
             }
         }));
@@ -185,14 +185,14 @@ public class CollectionUtilsTest extends BaseTest {
         CollectionUtils.forAllDo(list, null);
         CollectionUtils.forAllDo(null, new CollectionUtils.Closure<Object>() {
             @Override
-            public void execute(int index, Object item) {
+            public void execute(final int index, final Object item) {
                 System.out.println(index + ": " + index);
             }
         });
 
         CollectionUtils.forAllDo(list, new CollectionUtils.Closure<String>() {
             @Override
-            public void execute(int index, String item) {
+            public void execute(final int index, final String item) {
                 System.out.println(index + ": " + index);
             }
         });
@@ -208,7 +208,7 @@ public class CollectionUtilsTest extends BaseTest {
 
         CollectionUtils.filter(l0, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return item > 1;
             }
         });
@@ -219,7 +219,7 @@ public class CollectionUtilsTest extends BaseTest {
 
         CollectionUtils.filter(l1, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return item > 1;
             }
         });
@@ -234,7 +234,7 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertEquals(0, CollectionUtils.select(list, null).size());
         Assert.assertEquals(0, CollectionUtils.select(null, new CollectionUtils.Predicate<Object>() {
             @Override
-            public boolean evaluate(Object item) {
+            public boolean evaluate(final Object item) {
                 return true;
             }
         }).size());
@@ -243,14 +243,14 @@ public class CollectionUtilsTest extends BaseTest {
                 CollectionUtils.newArrayList(2, 3),
                 CollectionUtils.select(list, new CollectionUtils.Predicate<Integer>() {
                     @Override
-                    public boolean evaluate(Integer item) {
+                    public boolean evaluate(final Integer item) {
                         return item > 1;
                     }
                 })));
 
         Collection<Integer> list1 = CollectionUtils.select(list, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return true;
             }
         });
@@ -268,7 +268,7 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertEquals(0, CollectionUtils.selectRejected(list, null).size());
         Assert.assertEquals(0, CollectionUtils.selectRejected(null, new CollectionUtils.Predicate<Object>() {
             @Override
-            public boolean evaluate(Object item) {
+            public boolean evaluate(final Object item) {
                 return true;
             }
         }).size());
@@ -277,7 +277,7 @@ public class CollectionUtilsTest extends BaseTest {
                 CollectionUtils.newArrayList(0, 1),
                 CollectionUtils.selectRejected(list, new CollectionUtils.Predicate<Integer>() {
                     @Override
-                    public boolean evaluate(Integer item) {
+                    public boolean evaluate(final Integer item) {
                         return item > 1;
                     }
                 })));
@@ -285,7 +285,7 @@ public class CollectionUtilsTest extends BaseTest {
 
         Collection<Integer> list1 = CollectionUtils.selectRejected(list, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return false;
             }
         });
@@ -304,7 +304,7 @@ public class CollectionUtilsTest extends BaseTest {
 
         CollectionUtils.transform(l0, new CollectionUtils.Transformer<Integer, Object>() {
             @Override
-            public Object transform(Integer input) {
+            public Object transform(final Integer input) {
                 return "int: " + input;
             }
         });
@@ -315,7 +315,7 @@ public class CollectionUtilsTest extends BaseTest {
 
         CollectionUtils.transform(l1, new CollectionUtils.Transformer<Integer, String>() {
             @Override
-            public String transform(Integer input) {
+            public String transform(final Integer input) {
                 return String.valueOf(input);
             }
         });
@@ -330,7 +330,7 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertTrue(CollectionUtils.isEmpty(CollectionUtils.collect(list, null)));
         Assert.assertTrue(CollectionUtils.isEmpty(CollectionUtils.collect(null, new CollectionUtils.Transformer() {
             @Override
-            public Object transform(Object input) {
+            public Object transform(final Object input) {
                 return null;
             }
         })));
@@ -339,7 +339,7 @@ public class CollectionUtilsTest extends BaseTest {
                 CollectionUtils.newArrayList("0", "1", "2", "3"),
                 CollectionUtils.collect(list, new CollectionUtils.Transformer<Integer, String>() {
                     @Override
-                    public String transform(Integer input) {
+                    public String transform(final Integer input) {
                         return String.valueOf(input);
                     }
                 })));
@@ -353,13 +353,13 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertEquals(0, CollectionUtils.countMatches(list, null));
         Assert.assertEquals(0, CollectionUtils.countMatches(null, new CollectionUtils.Predicate<Object>() {
             @Override
-            public boolean evaluate(Object item) {
+            public boolean evaluate(final Object item) {
                 return false;
             }
         }));
         Assert.assertEquals(2, CollectionUtils.countMatches(list, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return item > 1;
             }
         }));
@@ -373,13 +373,13 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertFalse(CollectionUtils.exists(list, null));
         Assert.assertFalse(CollectionUtils.exists(null, new CollectionUtils.Predicate<Object>() {
             @Override
-            public boolean evaluate(Object item) {
+            public boolean evaluate(final Object item) {
                 return false;
             }
         }));
         Assert.assertTrue(CollectionUtils.exists(list, new CollectionUtils.Predicate<Integer>() {
             @Override
-            public boolean evaluate(Integer item) {
+            public boolean evaluate(final Integer item) {
                 return item > 1;
             }
         }));

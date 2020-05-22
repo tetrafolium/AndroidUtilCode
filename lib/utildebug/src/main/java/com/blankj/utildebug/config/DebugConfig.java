@@ -19,7 +19,7 @@ public class DebugConfig {
     private static final String DEBUG_ICON_Y     = "DEBUG_ICON_Y";
     private static final String NO_MORE_REMINDER = "NO_MORE_REMINDER";
 
-    public static void saveDebugIconX(float x) {
+    public static void saveDebugIconX(final float x) {
         getSp().put(DEBUG_ICON_X, x);
     }
 
@@ -27,7 +27,7 @@ public class DebugConfig {
         return getSp().getFloat(DEBUG_ICON_X);
     }
 
-    public static void saveDebugIconY(float y) {
+    public static void saveDebugIconY(final float y) {
         getSp().put(DEBUG_ICON_Y, y);
     }
 
@@ -43,7 +43,7 @@ public class DebugConfig {
         return getSp().getBoolean(NO_MORE_REMINDER, false);
     }
 
-    public static void saveViewY(View view, int y) {
+    public static void saveViewY(final View view, final int y) {
         if (ScreenUtils.isPortrait()) {
             getSp().put(view.getClass().getSimpleName() + ".yP", y);
         } else {
@@ -51,11 +51,11 @@ public class DebugConfig {
         }
     }
 
-    public static int getViewY(View view) {
+    public static int getViewY(final View view) {
         return getViewY(view, 0);
     }
 
-    public static int getViewY(View view, int defaultVal) {
+    public static int getViewY(final View view, final int defaultVal) {
         if (ScreenUtils.isPortrait()) {
             return getSp().getInt(view.getClass().getSimpleName() + ".yP", defaultVal);
         } else {
@@ -63,7 +63,7 @@ public class DebugConfig {
         }
     }
 
-    public static void saveViewX(View view, int x) {
+    public static void saveViewX(final View view, final int x) {
         if (ScreenUtils.isPortrait()) {
             getSp().put(view.getClass().getSimpleName() + ".xP", x);
         } else {
@@ -71,7 +71,7 @@ public class DebugConfig {
         }
     }
 
-    public static int getViewX(View view) {
+    public static int getViewX(final View view) {
         if (ScreenUtils.isPortrait()) {
             return getSp().getInt(view.getClass().getSimpleName() + ".xP");
         } else {
@@ -79,7 +79,7 @@ public class DebugConfig {
         }
     }
 
-    public static void saveViewHeight(View view, int height) {
+    public static void saveViewHeight(final View view, final int height) {
         if (ScreenUtils.isPortrait()) {
             getSp().put(view.getClass().getSimpleName() + ".heightP", height);
         } else {
@@ -87,7 +87,7 @@ public class DebugConfig {
         }
     }
 
-    public static int getViewHeight(View view, int height) {
+    public static int getViewHeight(final View view, final int height) {
         if (ScreenUtils.isPortrait()) {
             return getSp().getInt(view.getClass().getSimpleName() + ".heightP", height);
         } else {
@@ -95,11 +95,11 @@ public class DebugConfig {
         }
     }
 
-    public static void saveViewAlpha(View view, float alpha) {
+    public static void saveViewAlpha(final View view, final float alpha) {
         getSp().put(view.getClass().getSimpleName() + ".alpha", alpha);
     }
 
-    public static float getViewAlpha(View view) {
+    public static float getViewAlpha(final View view) {
         return getSp().getFloat(view.getClass().getSimpleName() + ".alpha", 1f);
     }
 

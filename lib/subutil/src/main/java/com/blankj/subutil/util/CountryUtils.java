@@ -26,7 +26,7 @@ public class CountryUtils {
      * @param defaultValue The default value.
      * @return the country code
      */
-    public static String getCountryCodeBySim(String defaultValue) {
+    public static String getCountryCodeBySim(final String defaultValue) {
         String code = getCountryCodeFromMap().get(getCountryBySim());
         if (code == null) {
             return defaultValue;
@@ -40,7 +40,7 @@ public class CountryUtils {
      * @param defaultValue The default value.
      * @return the country code
      */
-    public static String getCountryCodeByLanguage(String defaultValue) {
+    public static String getCountryCodeByLanguage(final String defaultValue) {
         String code = getCountryCodeFromMap().get(getCountryByLanguage());
         if (code == null) {
             return defaultValue;

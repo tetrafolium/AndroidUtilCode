@@ -23,18 +23,18 @@ public class CommonItemImage extends CommonItem {
     private CharSequence              mTitle;
     private Utils.Consumer<ImageView> mSetImageConsumer;
 
-    public CommonItemImage(@StringRes int title, @NonNull Utils.Consumer<ImageView> setImageConsumer) {
+    public CommonItemImage(final @StringRes int title, final @NonNull Utils.Consumer<ImageView> setImageConsumer) {
         this(StringUtils.getString(title), setImageConsumer);
     }
 
-    public CommonItemImage(@NonNull CharSequence title, @NonNull Utils.Consumer<ImageView> setImageConsumer) {
+    public CommonItemImage(final @NonNull CharSequence title, final @NonNull Utils.Consumer<ImageView> setImageConsumer) {
         super(R.layout.common_item_title_image);
         mTitle = title;
         mSetImageConsumer = setImageConsumer;
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         super.bind(holder, position);
         final TextView titleTv = holder.findViewById(R.id.commonItemTitleTv);
 

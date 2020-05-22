@@ -22,20 +22,20 @@ public class MvpView extends BaseView<MvpView>
 
     private TextView mvpTv;
 
-    public MvpView(FragmentActivity activity) {
+    public MvpView(final FragmentActivity activity) {
         super(activity);
         mvpTv = activity.findViewById(R.id.mvpUpdateTv);
         ClickUtils.applyPressedBgDark(mvpTv);
         mvpTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 getPresenter(MvpPresenter.class).updateMsg();
             }
         });
     }
 
     @Override
-    public void setLoadingVisible(boolean visible) {
+    public void setLoadingVisible(final boolean visible) {
         final MvpActivity activity = getActivity();
         if (visible) {
             activity.showLoading(new Runnable() {
@@ -50,7 +50,7 @@ public class MvpView extends BaseView<MvpView>
     }
 
     @Override
-    public void showMsg(CharSequence msg) {
+    public void showMsg(final CharSequence msg) {
         ToastUtils.showLong(msg);
     }
 

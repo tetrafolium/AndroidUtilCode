@@ -32,7 +32,7 @@ public class ApiUtilsTest extends BaseTest {
     public static class TestApiImpl extends TestApi {
 
         @Override
-        public String test(String param) {
+        public String test(final String param) {
             System.out.println("param = " + param);
             return "haha";
         }

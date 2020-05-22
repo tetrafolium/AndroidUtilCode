@@ -23,7 +23,7 @@ public class WindowHelper {
     private WindowHelper() {
     }
 
-    public static void updateViewLayout(final View view, ViewGroup.LayoutParams params) {
+    public static void updateViewLayout(final View view, final ViewGroup.LayoutParams params) {
         getWindowManager().updateViewLayout(view, params);
     }
 

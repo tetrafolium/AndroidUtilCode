@@ -27,11 +27,11 @@ public class CommonItemSeekBar extends CommonItem {
     private int                             mCurProgress;
     private SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener;
 
-    public CommonItemSeekBar(@StringRes int title, int maxProgress, int curProgress, @NonNull SeekBar.OnSeekBarChangeListener itemClickListener) {
+    public CommonItemSeekBar(final @StringRes int title, final int maxProgress, final int curProgress, final @NonNull SeekBar.OnSeekBarChangeListener itemClickListener) {
         this(StringUtils.getString(title), maxProgress, curProgress, itemClickListener);
     }
 
-    public CommonItemSeekBar(@NonNull CharSequence title, int maxProgress, int curProgress, @NonNull SeekBar.OnSeekBarChangeListener itemClickListener) {
+    public CommonItemSeekBar(final @NonNull CharSequence title, final int maxProgress, final int curProgress, final @NonNull SeekBar.OnSeekBarChangeListener itemClickListener) {
         super(R.layout.common_item_title_seekbar);
         mTitle = title;
         mMaxProgress = maxProgress;
@@ -42,7 +42,7 @@ public class CommonItemSeekBar extends CommonItem {
 
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         super.bind(holder, position);
         final TextView titleTv = holder.findViewById(R.id.commonItemTitleTv);
         final TextView contentTv = holder.findViewById(R.id.commonItemContentTv);
@@ -55,31 +55,31 @@ public class CommonItemSeekBar extends CommonItem {
         seekBar.setProgress(mCurProgress);
         holder.itemView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(final View v, final MotionEvent event) {
                 return seekBar.dispatchTouchEvent(event);
             }
         });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
                 mOnSeekBarChangeListener.onProgressChanged(seekBar, progress, fromUser);
                 mCurProgress = progress;
                 contentTv.setText(String.valueOf(progress));
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(final SeekBar seekBar) {
                 mOnSeekBarChangeListener.onStartTrackingTouch(seekBar);
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(final SeekBar seekBar) {
                 mOnSeekBarChangeListener.onStartTrackingTouch(seekBar);
             }
         });
     }
 
-    public void setTitle(CharSequence title) {
+    public void setTitle(final CharSequence title) {
         mTitle = title;
         update();
     }

@@ -19,17 +19,17 @@ import com.blankj.utilcode.util.StringUtils;
 @SuppressLint("AppCompatCustomView")
 public class EmptyGoneTextView extends TextView {
 
-    public EmptyGoneTextView(Context context) {
+    public EmptyGoneTextView(final Context context) {
         this(context, null);
     }
 
-    public EmptyGoneTextView(Context context, @Nullable AttributeSet attrs) {
+    public EmptyGoneTextView(final Context context, final @Nullable AttributeSet attrs) {
         super(context, attrs);
         setVisibility(GONE);
     }
 
     @Override
-    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+    protected void onTextChanged(final CharSequence text, final int start, final int lengthBefore, final int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
         if (StringUtils.isEmpty(text)) {
             setVisibility(GONE);

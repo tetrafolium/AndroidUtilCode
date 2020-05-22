@@ -33,7 +33,7 @@ public final class ResourceUtils {
      * @param id The identifier.
      * @return the drawable by identifier
      */
-    public static Drawable getDrawable(@DrawableRes int id) {
+    public static Drawable getDrawable(final @DrawableRes int id) {
         return ContextCompat.getDrawable(Utils.getApp(), id);
     }
 
@@ -43,7 +43,7 @@ public final class ResourceUtils {
      * @param name The name of id.
      * @return the id identifier by name
      */
-    public static int getIdByName(String name) {
+    public static int getIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "id", Utils.getApp().getPackageName());
     }
 
@@ -53,7 +53,7 @@ public final class ResourceUtils {
      * @param name The name of string.
      * @return the string identifier by name
      */
-    public static int getStringIdByName(String name) {
+    public static int getStringIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "string", Utils.getApp().getPackageName());
     }
 
@@ -63,7 +63,7 @@ public final class ResourceUtils {
      * @param name The name of color.
      * @return the color identifier by name
      */
-    public static int getColorIdByName(String name) {
+    public static int getColorIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "color", Utils.getApp().getPackageName());
     }
 
@@ -73,7 +73,7 @@ public final class ResourceUtils {
      * @param name The name of dimen.
      * @return the dimen identifier by name
      */
-    public static int getDimenIdByName(String name) {
+    public static int getDimenIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "dimen", Utils.getApp().getPackageName());
     }
 
@@ -83,7 +83,7 @@ public final class ResourceUtils {
      * @param name The name of drawable.
      * @return the drawable identifier by name
      */
-    public static int getDrawableIdByName(String name) {
+    public static int getDrawableIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "drawable", Utils.getApp().getPackageName());
     }
 
@@ -93,7 +93,7 @@ public final class ResourceUtils {
      * @param name The name of mipmap.
      * @return the mipmap identifier by name
      */
-    public static int getMipmapIdByName(String name) {
+    public static int getMipmapIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "mipmap", Utils.getApp().getPackageName());
     }
 
@@ -103,7 +103,7 @@ public final class ResourceUtils {
      * @param name The name of layout.
      * @return the layout identifier by name
      */
-    public static int getLayoutIdByName(String name) {
+    public static int getLayoutIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "layout", Utils.getApp().getPackageName());
     }
 
@@ -113,7 +113,7 @@ public final class ResourceUtils {
      * @param name The name of style.
      * @return the style identifier by name
      */
-    public static int getStyleIdByName(String name) {
+    public static int getStyleIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "style", Utils.getApp().getPackageName());
     }
 
@@ -123,7 +123,7 @@ public final class ResourceUtils {
      * @param name The name of anim.
      * @return the anim identifier by name
      */
-    public static int getAnimIdByName(String name) {
+    public static int getAnimIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "anim", Utils.getApp().getPackageName());
     }
 
@@ -133,7 +133,7 @@ public final class ResourceUtils {
      * @param name The name of menu.
      * @return the menu identifier by name
      */
-    public static int getMenuIdByName(String name) {
+    public static int getMenuIdByName(final String name) {
         return Utils.getApp().getResources().getIdentifier(name, "menu", Utils.getApp().getPackageName());
     }
 

@@ -22,7 +22,7 @@ public abstract class BaseModel {
 
     public abstract void onDestroyModel();
 
-    public <T> ThreadUtils.Task<T> addAutoDestroyTask(ThreadUtils.Task<T> task) {
+    public <T> ThreadUtils.Task<T> addAutoDestroyTask(final ThreadUtils.Task<T> task) {
         if (task == null) return null;
         mTasks.add(task);
         return task;

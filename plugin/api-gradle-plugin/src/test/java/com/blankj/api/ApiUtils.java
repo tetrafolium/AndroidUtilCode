@@ -33,9 +33,9 @@ public class ApiUtils {
      * It'll be injected the implClasses who have {@link ApiUtils.Api} annotation
      * by function of {@link ApiUtils#registerImpl} when execute transform task.
      */
-    private void init() {/*inject*/}
+    private void init() { /*inject*/ }
 
-    private void registerImpl(Class implClass) {
+    private void registerImpl(final Class implClass) {
         mInjectApiImplMap.put(implClass.getSuperclass(), implClass);
     }
 
@@ -63,7 +63,7 @@ public class ApiUtils {
         return LazyHolder.INSTANCE;
     }
 
-    private <Result> Result getApiInner(Class apiClass) {
+    private <Result> Result getApiInner(final Class apiClass) {
         BaseApi api = mApiMap.get(apiClass);
         if (api == null) {
             synchronized (this) {

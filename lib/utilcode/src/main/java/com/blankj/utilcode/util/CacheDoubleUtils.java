@@ -61,7 +61,7 @@ public final class CacheDoubleUtils implements CacheConstants {
         return cache;
     }
 
-    private CacheDoubleUtils(CacheMemoryUtils cacheMemoryUtils, CacheDiskUtils cacheUtils) {
+    private CacheDoubleUtils(final CacheMemoryUtils cacheMemoryUtils, final CacheDiskUtils cacheUtils) {
         mCacheMemoryUtils = cacheMemoryUtils;
         mCacheDiskUtils = cacheUtils;
     }
@@ -88,7 +88,7 @@ public final class CacheDoubleUtils implements CacheConstants {
      * @param value    The value of cache.
      * @param saveTime The save time of cache, in seconds.
      */
-    public void put(@NonNull final String key, byte[] value, final int saveTime) {
+    public void put(@NonNull final String key, final byte[] value, final int saveTime) {
         mCacheMemoryUtils.put(key, value, saveTime);
         mCacheDiskUtils.put(key, value, saveTime);
     }
@@ -501,7 +501,7 @@ public final class CacheDoubleUtils implements CacheConstants {
      *
      * @param key The key of cache.
      */
-    public void remove(@NonNull String key) {
+    public void remove(final @NonNull String key) {
         mCacheMemoryUtils.remove(key);
         mCacheDiskUtils.remove(key);
     }

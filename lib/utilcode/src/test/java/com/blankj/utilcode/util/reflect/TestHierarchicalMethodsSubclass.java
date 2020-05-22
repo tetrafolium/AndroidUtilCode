@@ -20,11 +20,11 @@ public class TestHierarchicalMethodsSubclass extends TestHierarchicalMethodsBase
     private int invisibleField3;
     public  int visibleField3;
 
-    private String priv_method(int number) {
+    private String priv_method(final int number) {
         return PRIVATE_RESULT;
     }
 
-    private String pub_method(Integer number) {
+    private String pub_method(final Integer number) {
         return PRIVATE_RESULT;
     }
 }

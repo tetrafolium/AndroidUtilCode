@@ -16,7 +16,7 @@ public class PrivateConstructors {
         this(null);
     }
 
-    private PrivateConstructors(String string) {
+    private PrivateConstructors(final String string) {
         this.string = string;
     }
 }

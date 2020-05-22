@@ -23,7 +23,7 @@ public class PolygonDrawable extends Drawable {
     private Paint mPaint;
     private int   mNum;
 
-    public PolygonDrawable(int num, int color) {
+    public PolygonDrawable(final int num, final int color) {
         mNum = num;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
@@ -31,7 +31,7 @@ public class PolygonDrawable extends Drawable {
     }
 
     @Override
-    public void draw(@NonNull Canvas canvas) {
+    public void draw(final @NonNull Canvas canvas) {
         if (mNum < 3) return;
         final Rect rect = getBounds();
         float r = rect.right / 2;
@@ -52,12 +52,12 @@ public class PolygonDrawable extends Drawable {
     }
 
     @Override
-    public void setAlpha(int alpha) {
+    public void setAlpha(final int alpha) {
 
     }
 
     @Override
-    public void setColorFilter(@Nullable ColorFilter colorFilter) {
+    public void setColorFilter(final @Nullable ColorFilter colorFilter) {
 
     }
 

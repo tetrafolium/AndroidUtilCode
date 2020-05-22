@@ -33,7 +33,7 @@ public abstract class BaseContentView<T extends BaseContentFloatView<T>> extends
         inflate(getContext(), bindLayout(), this);
     }
 
-    public void attach(T floatView, boolean isAddStack) {
+    public void attach(final T floatView, final boolean isAddStack) {
         this.mFloatView = floatView;
         this.isAddStack = isAddStack;
         floatView.replace(this, isAddStack);
@@ -52,7 +52,7 @@ public abstract class BaseContentView<T extends BaseContentFloatView<T>> extends
         return isAddStack;
     }
 
-    public void setOnRefreshListener(RecyclerView rv, OnRefreshListener listener) {
+    public void setOnRefreshListener(final RecyclerView rv, final OnRefreshListener listener) {
         mRefreshRunnable = listener;
         mFloatView.setOnRefreshListener(listener);
         attachRefresh(rv);
@@ -70,10 +70,10 @@ public abstract class BaseContentView<T extends BaseContentFloatView<T>> extends
         return mRefreshEnabled;
     }
 
-    private void attachRefresh(RecyclerView rv) {
+    private void attachRefresh(final RecyclerView rv) {
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(final @NonNull RecyclerView recyclerView, final int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 mRefreshEnabled = newState == RecyclerView.SCROLL_STATE_IDLE && !recyclerView.canScrollVertically(-1);
                 mFloatView.setRefreshEnabled(mRefreshEnabled);

@@ -53,7 +53,7 @@ public class MapUtilsTest extends BaseTest {
         System.out.println(MapUtils.newTreeMap(
                 new Comparator<Integer>() {
                     @Override
-                    public int compare(Integer o1, Integer o2) {
+                    public int compare(final Integer o1, final Integer o2) {
                         return o2 - o1;
                     }
                 },
@@ -105,7 +105,7 @@ public class MapUtilsTest extends BaseTest {
                         Pair.create(3, "3")
                 ), new MapUtils.Closure<Integer, String>() {
                     @Override
-                    public void execute(Integer key, String value) {
+                    public void execute(final Integer key, final String value) {
                         System.out.println(key + "=" + value);
                     }
                 });
@@ -122,7 +122,7 @@ public class MapUtilsTest extends BaseTest {
                 ),
                 new MapUtils.Transformer<Integer, String, String, String>() {
                     @Override
-                    public Pair<String, String> transform(Integer integer, String s) {
+                    public Pair<String, String> transform(final Integer integer, final String s) {
                         return Pair.create("StringKey" + integer, s);
                     }
                 }

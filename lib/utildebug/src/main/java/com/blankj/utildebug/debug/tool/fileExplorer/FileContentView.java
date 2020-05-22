@@ -31,15 +31,15 @@ public class FileContentView extends BaseContentView<FileExplorerFloatView> {
     private SearchEditText fileExplorerSearchEt;
     private RecyclerView   fileExplorerRv;
 
-    public static void show(FileExplorerFloatView floatView) {
+    public static void show(final FileExplorerFloatView floatView) {
         new FileContentView(null).attach(floatView, true);
     }
 
-    public static void show(FileExplorerFloatView floatView, FileItem fileItem) {
+    public static void show(final FileExplorerFloatView floatView, final FileItem fileItem) {
         new FileContentView(fileItem).attach(floatView, true);
     }
 
-    public FileContentView(FileItem parent) {
+    public FileContentView(final FileItem parent) {
         mParent = parent;
         mSrcItems = FileItem.getFileItems(mParent);
     }
@@ -66,7 +66,7 @@ public class FileContentView extends BaseContentView<FileExplorerFloatView> {
 
         fileExplorerSearchEt.setOnTextChangedListener(new SearchEditText.OnTextChangedListener() {
             @Override
-            public void onTextChanged(String text) {
+            public void onTextChanged(final String text) {
                 mAdapter.setItems(FileItem.filterItems(mSrcItems, text));
                 mAdapter.notifyDataSetChanged();
             }
@@ -74,7 +74,7 @@ public class FileContentView extends BaseContentView<FileExplorerFloatView> {
 
         setOnRefreshListener(fileExplorerRv, new OnRefreshListener() {
             @Override
-            public void onRefresh(BaseContentFloatView floatView) {
+            public void onRefresh(final BaseContentFloatView floatView) {
                 mSrcItems = FileItem.getFileItems(mParent);
                 mAdapter.setItems(mSrcItems);
                 mAdapter.notifyDataSetChanged();

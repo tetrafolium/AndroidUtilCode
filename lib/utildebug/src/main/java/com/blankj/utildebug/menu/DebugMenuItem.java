@@ -32,14 +32,14 @@ public class DebugMenuItem extends BaseItem<DebugMenuItem> {
     private String       mTitle;
     private List<IDebug> mDebugs;
 
-    private DebugMenuItem(String title, List<IDebug> debugs) {
+    private DebugMenuItem(final String title, final List<IDebug> debugs) {
         super(R.layout.du_item_menu);
         mTitle = title;
         mDebugs = debugs;
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         TextView menuTitle = holder.findViewById(R.id.menuCategory);
         RecyclerView menuRv = holder.findViewById(R.id.menuRv);
 
@@ -53,7 +53,7 @@ public class DebugMenuItem extends BaseItem<DebugMenuItem> {
         menuRv.setLayoutManager(new GridLayoutManager(menuRv.getContext(), 4));
     }
 
-    public static List<DebugMenuItem> getDebugMenuItems(List<IDebug> debugs) {
+    public static List<DebugMenuItem> getDebugMenuItems(final List<IDebug> debugs) {
         Map<Integer, List<IDebug>> debugMap = new LinkedHashMap<>();
         for (IDebug debug : debugs) {
             List<IDebug> debugList = debugMap.get(debug.getCategory());
@@ -70,7 +70,7 @@ public class DebugMenuItem extends BaseItem<DebugMenuItem> {
         return itemList;
     }
 
-    private static String getCategoryString(int category) {
+    private static String getCategoryString(final int category) {
         switch (category) {
             case IDebug.TOOLS:
                 return StringUtils.getString(R.string.du_tools);

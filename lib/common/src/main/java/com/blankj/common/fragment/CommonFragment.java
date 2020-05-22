@@ -42,7 +42,7 @@ public class CommonFragment extends BaseFragment {
 
     @CallSuper
     @Override
-    public void initData(@Nullable Bundle bundle) {
+    public void initData(final @Nullable Bundle bundle) {
         mItemsView = bindItemsView();
         if (mItemsView == null) {
             List<CommonItem> items = bindItems();
@@ -68,7 +68,7 @@ public class CommonFragment extends BaseFragment {
 
     @CallSuper
     @Override
-    public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
+    public void initView(final @Nullable Bundle savedInstanceState, final @Nullable View contentView) {
         if (mItemsView != null) {
             mItemsView.initView();
         }
@@ -80,7 +80,7 @@ public class CommonFragment extends BaseFragment {
     }
 
     @Override
-    public void onDebouncingClick(@NonNull View view) {
+    public void onDebouncingClick(final @NonNull View view) {
     }
 
 
@@ -90,7 +90,7 @@ public class CommonFragment extends BaseFragment {
 
     private BaseItemAdapter<CommonItem> mCommonItemAdapter;
 
-    public void setCommonItems(RecyclerView rv, List<CommonItem> items) {
+    public void setCommonItems(final RecyclerView rv, final List<CommonItem> items) {
         mCommonItemAdapter = new BaseItemAdapter<>();
         mCommonItemAdapter.setItems(items);
         rv.setAdapter(mCommonItemAdapter);
@@ -98,12 +98,12 @@ public class CommonFragment extends BaseFragment {
         rv.addItemDecoration(new RecycleViewDivider(mActivity, RecycleViewDivider.VERTICAL, R.drawable.common_item_divider));
     }
 
-    public void updateCommonItems(List<CommonItem> data) {
+    public void updateCommonItems(final List<CommonItem> data) {
         mCommonItemAdapter.setItems(data);
         mCommonItemAdapter.notifyDataSetChanged();
     }
 
-    public void updateCommonItem(int position) {
+    public void updateCommonItem(final int position) {
         mCommonItemAdapter.notifyItemChanged(position);
     }
 

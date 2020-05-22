@@ -80,7 +80,7 @@ public final class Request {
             length = -1;
         }
 
-        private static String getCharsetFromMediaType(String mediaType) {
+        private static String getCharsetFromMediaType(final String mediaType) {
             mediaType = mediaType.toLowerCase().replace(" ", "");
             int index = mediaType.indexOf("charset=");
             if (index == -1) return "utf-8";
@@ -106,7 +106,7 @@ public final class Request {
             return checkCharset(charset);
         }
 
-        public static Body create(@NonNull String mediaType, @NonNull byte[] content) {
+        public static Body create(final @NonNull String mediaType, final @NonNull byte[] content) {
             return new Body(mediaType, content);
         }
 
@@ -114,7 +114,7 @@ public final class Request {
             return form(form, "utf-8");
         }
 
-        public static Body form(@NonNull final Map<String, String> form, String charset) {
+        public static Body form(@NonNull final Map<String, String> form, final String charset) {
             String mediaType = "application/x-www-form-urlencoded;charset=" + checkCharset(charset);
             final StringBuilder sb = new StringBuilder();
             for (String key : form.keySet()) {
@@ -133,7 +133,7 @@ public final class Request {
             return json(json, "utf-8");
         }
 
-        public static Body json(@NonNull final String json, String charset) {
+        public static Body json(@NonNull final String json, final String charset) {
             String mediaType = "application/json;charset=" + checkCharset(charset);
             try {
                 return new Body(mediaType, json.getBytes(charset));

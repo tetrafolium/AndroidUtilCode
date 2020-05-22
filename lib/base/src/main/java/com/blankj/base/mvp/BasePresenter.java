@@ -26,7 +26,7 @@ public abstract class BasePresenter<V extends BaseView> extends Utils.ActivityLi
 
     public abstract void onAttachView();
 
-    void bindView(V view) {
+    void bindView(final V view) {
         this.mView = view;
         onAttachView();
         ActivityUtils.addActivityLifecycleCallbacks(mView.getActivity(), this);
@@ -36,7 +36,7 @@ public abstract class BasePresenter<V extends BaseView> extends Utils.ActivityLi
         return mView;
     }
 
-    public <M extends BaseModel> M getModel(Class<M> modelClass) {
+    public <M extends BaseModel> M getModel(final Class<M> modelClass) {
         BaseModel baseModel = mModelMap.get(modelClass);
         if (baseModel != null) {
             //noinspection unchecked
@@ -56,7 +56,7 @@ public abstract class BasePresenter<V extends BaseView> extends Utils.ActivityLi
     }
 
     @Override
-    public void onLifecycleChanged(@NonNull Activity activity, Lifecycle.Event event) {
+    public void onLifecycleChanged(final @NonNull Activity activity, final Lifecycle.Event event) {
         super.onLifecycleChanged(activity, event);
         if (event == Lifecycle.Event.ON_DESTROY) {
             destroyPresenter();

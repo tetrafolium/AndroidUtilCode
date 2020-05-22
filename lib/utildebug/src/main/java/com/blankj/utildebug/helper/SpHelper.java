@@ -14,7 +14,7 @@ import java.util.HashSet;
  */
 public class SpHelper {
 
-    public static String getSpClassName(Class cls) {
+    public static String getSpClassName(final Class cls) {
         if (cls == null) return "null";
         if (Boolean.class.equals(cls)) {
             return "boolean";
@@ -37,7 +37,7 @@ public class SpHelper {
         return "unknown";
     }
 
-    public static boolean putValue(SPUtils spUtils, String key, String value, Class cls) {
+    public static boolean putValue(final SPUtils spUtils, final String key, final String value, final Class cls) {
         if (cls == null) return false;
         if (String.class.equals(cls)) {
             spUtils.put(key, value);

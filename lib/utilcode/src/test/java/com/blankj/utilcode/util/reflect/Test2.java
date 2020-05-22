@@ -18,17 +18,17 @@ public class Test2 {
         this.constructorType = ConstructorType.NO_ARGS;
     }
 
-    public Test2(Integer n) {
+    public Test2(final Integer n) {
         this.n = n;
         this.constructorType = ConstructorType.INTEGER;
     }
 
-    public Test2(Number n) {
+    public Test2(final Number n) {
         this.n = n;
         this.constructorType = ConstructorType.NUMBER;
     }
 
-    public Test2(Object n) {
+    public Test2(final Object n) {
         this.n = n;
         this.constructorType = ConstructorType.OBJECT;
     }

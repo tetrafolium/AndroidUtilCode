@@ -111,7 +111,7 @@ public final class BatteryUtils {
 
         @SuppressLint("MissingPermission")
         @Override
-        public void onReceive(Context context, final Intent intent) {
+        public void onReceive(final Context context, final Intent intent) {
             if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
                 ThreadUtils.runOnUiThread(new Runnable() {
                     @Override
@@ -140,7 +140,7 @@ public final class BatteryUtils {
         @BatteryStatus
         private int status;
 
-        Status(int level, int status) {
+        Status(final int level, final int status) {
             this.level = level;
             this.status = status;
         }
@@ -149,7 +149,7 @@ public final class BatteryUtils {
             return level;
         }
 
-        public void setLevel(int level) {
+        public void setLevel(final int level) {
             this.level = level;
         }
 
@@ -158,7 +158,7 @@ public final class BatteryUtils {
             return status;
         }
 
-        public void setStatus(int status) {
+        public void setStatus(final int status) {
             this.status = status;
         }
 
@@ -167,7 +167,7 @@ public final class BatteryUtils {
             return batteryStatus2String(status) + ": " + level + "%";
         }
 
-        public static String batteryStatus2String(@BatteryStatus int status) {
+        public static String batteryStatus2String(final @BatteryStatus int status) {
             if (status == BatteryStatus.DISCHARGING) {
                 return "discharging";
             }

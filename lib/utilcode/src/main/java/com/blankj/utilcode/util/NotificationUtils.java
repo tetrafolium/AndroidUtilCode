@@ -56,7 +56,7 @@ public class NotificationUtils {
      * @param id       An identifier for this notification.
      * @param consumer The consumer of create the builder of notification.
      */
-    public static void notify(int id, Utils.Consumer<NotificationCompat.Builder> consumer) {
+    public static void notify(final int id, final Utils.Consumer<NotificationCompat.Builder> consumer) {
         notify(null, id, ChannelConfig.DEFAULT_CHANNEL_CONFIG, consumer);
     }
 
@@ -67,7 +67,7 @@ public class NotificationUtils {
      * @param id       An identifier for this notification.
      * @param consumer The consumer of create the builder of notification.
      */
-    public static void notify(String tag, int id, Utils.Consumer<NotificationCompat.Builder> consumer) {
+    public static void notify(final String tag, final int id, final Utils.Consumer<NotificationCompat.Builder> consumer) {
         notify(tag, id, ChannelConfig.DEFAULT_CHANNEL_CONFIG, consumer);
     }
 
@@ -78,7 +78,7 @@ public class NotificationUtils {
      * @param channelConfig The notification channel of config.
      * @param consumer      The consumer of create the builder of notification.
      */
-    public static void notify(int id, ChannelConfig channelConfig, Utils.Consumer<NotificationCompat.Builder> consumer) {
+    public static void notify(final int id, final ChannelConfig channelConfig, final Utils.Consumer<NotificationCompat.Builder> consumer) {
         notify(null, id, channelConfig, consumer);
     }
 
@@ -90,7 +90,7 @@ public class NotificationUtils {
      * @param channelConfig The notification channel of config.
      * @param consumer      The consumer of create the builder of notification.
      */
-    public static void notify(String tag, int id, ChannelConfig channelConfig, Utils.Consumer<NotificationCompat.Builder> consumer) {
+    public static void notify(final String tag, final int id, final ChannelConfig channelConfig, final Utils.Consumer<NotificationCompat.Builder> consumer) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager nm = (NotificationManager) Utils.getApp().getSystemService(Context.NOTIFICATION_SERVICE);
             //noinspection ConstantConditions
@@ -114,7 +114,7 @@ public class NotificationUtils {
      * @param tag The tag for the notification will be cancelled.
      * @param id  The identifier for the notification will be cancelled.
      */
-    public static void cancel(String tag, final int id) {
+    public static void cancel(final String tag, final int id) {
         NotificationManagerCompat.from(Utils.getApp()).cancel(tag, id);
     }
 
@@ -172,7 +172,7 @@ public class NotificationUtils {
 
         private NotificationChannel mNotificationChannel;
 
-        public ChannelConfig(String id, CharSequence name, @Importance int importance) {
+        public ChannelConfig(final String id, final CharSequence name, final @Importance int importance) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel = new NotificationChannel(id, name, importance);
             }
@@ -188,7 +188,7 @@ public class NotificationUtils {
          * <p>
          * Only modifiable by the system and notification ranker.
          */
-        public ChannelConfig setBypassDnd(boolean bypassDnd) {
+        public ChannelConfig setBypassDnd(final boolean bypassDnd) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setBypassDnd(bypassDnd);
             }
@@ -201,7 +201,7 @@ public class NotificationUtils {
          * <p>The recommended maximum length is 300 characters; the value may be truncated if it is too
          * long.
          */
-        public ChannelConfig setDescription(String description) {
+        public ChannelConfig setDescription(final String description) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setDescription(description);
             }
@@ -220,7 +220,7 @@ public class NotificationUtils {
          * @param groupId the id of a group created by
          *                {@link NotificationManager#createNotificationChannelGroup)}.
          */
-        public ChannelConfig setGroup(String groupId) {
+        public ChannelConfig setGroup(final String groupId) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setGroup(groupId);
             }
@@ -236,7 +236,7 @@ public class NotificationUtils {
          * @param importance the amount the user should be interrupted by
          *                   notifications from this channel.
          */
-        public ChannelConfig setImportance(@Importance int importance) {
+        public ChannelConfig setImportance(final @Importance int importance) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setImportance(importance);
             }
@@ -250,7 +250,7 @@ public class NotificationUtils {
          * Only modifiable before the channel is submitted to
          * {@link NotificationManager#createNotificationChannel(NotificationChannel)}.
          */
-        public ChannelConfig setLightColor(int argb) {
+        public ChannelConfig setLightColor(final int argb) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setLightColor(argb);
             }
@@ -263,7 +263,7 @@ public class NotificationUtils {
          * <p>
          * Only modifiable by the system and notification ranker.
          */
-        public ChannelConfig setLockscreenVisibility(int lockscreenVisibility) {
+        public ChannelConfig setLockscreenVisibility(final int lockscreenVisibility) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setLockscreenVisibility(lockscreenVisibility);
             }
@@ -276,7 +276,7 @@ public class NotificationUtils {
          * <p>The recommended maximum length is 40 characters; the value may be truncated if it is too
          * long.
          */
-        public ChannelConfig setName(CharSequence name) {
+        public ChannelConfig setName(final CharSequence name) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setName(name);
             }
@@ -292,7 +292,7 @@ public class NotificationUtils {
          *
          * @param showBadge true if badges should be allowed to be shown.
          */
-        public ChannelConfig setShowBadge(boolean showBadge) {
+        public ChannelConfig setShowBadge(final boolean showBadge) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setShowBadge(showBadge);
             }
@@ -307,7 +307,7 @@ public class NotificationUtils {
          * Only modifiable before the channel is submitted to
          * {@link NotificationManager#createNotificationChannel(NotificationChannel)}.
          */
-        public ChannelConfig setSound(Uri sound, AudioAttributes audioAttributes) {
+        public ChannelConfig setSound(final Uri sound, final AudioAttributes audioAttributes) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setSound(sound, audioAttributes);
             }
@@ -322,7 +322,7 @@ public class NotificationUtils {
          * Only modifiable before the channel is submitted to
          * {@link NotificationManager#createNotificationChannel(NotificationChannel)}.
          */
-        public ChannelConfig setVibrationPattern(long[] vibrationPattern) {
+        public ChannelConfig setVibrationPattern(final long[] vibrationPattern) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mNotificationChannel.setVibrationPattern(vibrationPattern);
             }

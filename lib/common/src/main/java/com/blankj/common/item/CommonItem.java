@@ -20,17 +20,17 @@ public class CommonItem<T extends BaseItem> extends BaseItem<T> {
 
     private int backgroundColor = ColorUtils.getColor(R.color.lightGray);
 
-    public CommonItem(int layoutId) {
+    public CommonItem(final int layoutId) {
         super(layoutId);
     }
 
     @CallSuper
     @Override
-    public void bind(@NonNull final ItemViewHolder holder, int position) {
+    public void bind(@NonNull final ItemViewHolder holder, final int position) {
         holder.itemView.setBackgroundColor(backgroundColor);
     }
 
-    public CommonItem<T> setBackgroundColor(int backgroundColor) {
+    public CommonItem<T> setBackgroundColor(final int backgroundColor) {
         this.backgroundColor = backgroundColor;
         return this;
     }

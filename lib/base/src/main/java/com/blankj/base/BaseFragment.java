@@ -34,7 +34,7 @@ public abstract class BaseFragment extends Fragment
 
     private View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             onDebouncingClick(v);
         }
     };
@@ -55,7 +55,7 @@ public abstract class BaseFragment extends Fragment
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
+    public void setUserVisibleHint(final boolean isVisibleToUser) {
         log("setUserVisibleHint: " + isVisibleToUser);
         super.setUserVisibleHint(isVisibleToUser);
         mIsInPager = true;
@@ -69,14 +69,14 @@ public abstract class BaseFragment extends Fragment
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(final Context context) {
         log("onAttach");
         super.onAttach(context);
         mActivity = (AppCompatActivity) context;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(final @Nullable Bundle savedInstanceState) {
         log("onCreate");
         super.onCreate(savedInstanceState);
         FragmentManager fm = getFragmentManager();
@@ -97,7 +97,7 @@ public abstract class BaseFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final @NonNull LayoutInflater inflater, final @Nullable ViewGroup container, final @Nullable Bundle savedInstanceState) {
         log("onCreateView");
         super.onCreateView(inflater, container, savedInstanceState);
         mInflater = inflater;
@@ -112,13 +112,13 @@ public abstract class BaseFragment extends Fragment
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final @NonNull View view, final @Nullable Bundle savedInstanceState) {
         log("onViewCreated");
         super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(final @Nullable Bundle savedInstanceState) {
         log("onActivityCreated");
         super.onActivityCreated(savedInstanceState);
         initView(savedInstanceState, mContentView);
@@ -129,7 +129,7 @@ public abstract class BaseFragment extends Fragment
     }
 
     @Override
-    public void onHiddenChanged(boolean hidden) {
+    public void onHiddenChanged(final boolean hidden) {
         log("onHiddenChanged: " + hidden);
         super.onHiddenChanged(hidden);
     }
@@ -143,7 +143,7 @@ public abstract class BaseFragment extends Fragment
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(final @NonNull Bundle outState) {
         log("onSaveInstanceState");
         super.onSaveInstanceState(outState);
         outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
@@ -155,16 +155,16 @@ public abstract class BaseFragment extends Fragment
         super.onDestroy();
     }
 
-    public void applyDebouncingClickListener(View... views) {
+    public void applyDebouncingClickListener(final View... views) {
         ClickUtils.applyGlobalDebouncing(views, mClickListener);
     }
 
-    public <T extends View> T findViewById(@IdRes int id) {
+    public <T extends View> T findViewById(final @IdRes int id) {
         if (mContentView == null) throw new NullPointerException("ContentView is null.");
         return mContentView.findViewById(id);
     }
 
-    protected void log(String msg) {
+    protected void log(final String msg) {
         if (isDebug == null) {
             isDebug = AppUtils.isAppDebug();
         }

@@ -31,7 +31,7 @@ public class CommonActivityDrawerView {
 
     private NavigationView.OnNavigationItemSelectedListener mListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
             int id = item.getItemId();
             if (id == R.id.baseDrawerActionGitHub) {
                 return goWeb(R.string.github);
@@ -42,7 +42,7 @@ public class CommonActivityDrawerView {
         }
     };
 
-    public CommonActivityDrawerView(@NonNull AppCompatActivity activity) {
+    public CommonActivityDrawerView(final @NonNull AppCompatActivity activity) {
         mBaseActivity = activity;
     }
 
@@ -58,7 +58,7 @@ public class CommonActivityDrawerView {
         return mBaseDrawerContainerView;
     }
 
-    private boolean goWeb(@StringRes int id) {
+    private boolean goWeb(final @StringRes int id) {
         return ActivityUtils.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(StringUtils.getString(id))));
     }
 }

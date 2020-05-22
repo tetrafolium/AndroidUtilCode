@@ -201,7 +201,7 @@ public final class StringUtils {
      * @param id The desired resource identifier.
      * @return the string value associated with a particular resource ID.
      */
-    public static String getString(@StringRes int id) {
+    public static String getString(final @StringRes int id) {
         try {
             return Utils.getApp().getResources().getString(id);
         } catch (Resources.NotFoundException ignore) {
@@ -216,7 +216,7 @@ public final class StringUtils {
      * @param formatArgs The format arguments that will be used for substitution.
      * @return the string value associated with a particular resource ID.
      */
-    public static String getString(@StringRes int id, Object... formatArgs) {
+    public static String getString(final @StringRes int id, final Object... formatArgs) {
         try {
             return Utils.getApp().getString(id, formatArgs);
         } catch (Resources.NotFoundException ignore) {
@@ -230,7 +230,7 @@ public final class StringUtils {
      * @param id The desired resource identifier.
      * @return The string array associated with the resource.
      */
-    public static String[] getStringArray(@ArrayRes int id) {
+    public static String[] getStringArray(final @ArrayRes int id) {
         try {
             return Utils.getApp().getResources().getStringArray(id);
         } catch (Resources.NotFoundException ignore) {

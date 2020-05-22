@@ -18,7 +18,7 @@ import com.blankj.utilcode.util.ApiUtils;
 public class SubUtilApiImpl extends SubUtilApi {
 
     @Override
-    public void startSubUtilActivity(Context context) {
+    public void startSubUtilActivity(final Context context) {
         SubUtilActivity.Companion.start(context);
     }
 

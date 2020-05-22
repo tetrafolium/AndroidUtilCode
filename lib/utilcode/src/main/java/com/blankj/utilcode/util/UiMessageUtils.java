@@ -64,7 +64,7 @@ public final class UiMessageUtils implements Handler.Callback {
      * @param id       The ID of message that will be only notified to listener.
      * @param listener The listener.
      */
-    public void addListener(int id, @NonNull final UiMessageCallback listener) {
+    public void addListener(final int id, @NonNull final UiMessageCallback listener) {
         synchronized (mListenersSpecific) {
             List<UiMessageCallback> idListeners = mListenersSpecific.get(id);
             if (idListeners == null) {
@@ -151,7 +151,7 @@ public final class UiMessageUtils implements Handler.Callback {
     }
 
     @Override
-    public boolean handleMessage(Message msg) {
+    public boolean handleMessage(final Message msg) {
         mMessage.setMessage(msg);
         if (DEBUG) {
             logMessageHandling(mMessage);
@@ -257,10 +257,10 @@ public final class UiMessageUtils implements Handler.Callback {
 
         @Override
         public String toString() {
-            return "{ " +
-                    "id=" + getId() +
-                    ", obj=" + getObject() +
-                    " }";
+            return "{ "
+                    + "id=" + getId()
+                    + ", obj=" + getObject()
+                    + " }";
         }
     }
 

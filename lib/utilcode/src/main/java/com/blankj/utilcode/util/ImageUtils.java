@@ -85,7 +85,7 @@ public final class ImageUtils {
      * @param quality The quality.
      * @return bytes
      */
-    public static byte[] bitmap2Bytes(final Bitmap bitmap, final CompressFormat format, int quality) {
+    public static byte[] bitmap2Bytes(final Bitmap bitmap, final CompressFormat format, final int quality) {
         if (bitmap == null) return null;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(format, quality, baos);
@@ -163,7 +163,7 @@ public final class ImageUtils {
      * @param format   The format of bitmap.
      * @return bytes
      */
-    public static byte[] drawable2Bytes(final Drawable drawable, final CompressFormat format, int quality) {
+    public static byte[] drawable2Bytes(final Drawable drawable, final CompressFormat format, final int quality) {
         return drawable == null ? null : bitmap2Bytes(drawable2Bitmap(drawable), format, quality);
     }
 
@@ -707,8 +707,8 @@ public final class ImageUtils {
      * @return the round bitmap
      */
     public static Bitmap toRound(final Bitmap src,
-                                 @IntRange(from = 0) int borderSize,
-                                 @ColorInt int borderColor) {
+                                 final @IntRange(from = 0) int borderSize,
+                                 final @ColorInt int borderColor) {
         return toRound(src, borderSize, borderColor, false);
     }
 
@@ -722,8 +722,8 @@ public final class ImageUtils {
      * @return the round bitmap
      */
     public static Bitmap toRound(final Bitmap src,
-                                 @IntRange(from = 0) int borderSize,
-                                 @ColorInt int borderColor,
+                                 final @IntRange(from = 0) int borderSize,
+                                 final @ColorInt int borderColor,
                                  final boolean recycle) {
         if (isEmptyBitmap(src)) return null;
         int width = src.getWidth();
@@ -792,8 +792,8 @@ public final class ImageUtils {
      */
     public static Bitmap toRoundCorner(final Bitmap src,
                                        final float radius,
-                                       @IntRange(from = 0) int borderSize,
-                                       @ColorInt int borderColor) {
+                                       final @IntRange(from = 0) int borderSize,
+                                       final @ColorInt int borderColor) {
         return toRoundCorner(src, radius, borderSize, borderColor, false);
     }
 
@@ -809,8 +809,8 @@ public final class ImageUtils {
      */
     public static Bitmap toRoundCorner(final Bitmap src,
                                        final float radius,
-                                       @IntRange(from = 0) int borderSize,
-                                       @ColorInt int borderColor,
+                                       final @IntRange(from = 0) int borderSize,
+                                       final @ColorInt int borderColor,
                                        final boolean recycle) {
         if (isEmptyBitmap(src)) return null;
         int width = src.getWidth();
@@ -1299,7 +1299,7 @@ public final class ImageUtils {
      * @param recycle True to recycle the source of bitmap, false otherwise.
      * @return the blur bitmap
      */
-    public static Bitmap stackBlur(final Bitmap src, int radius, final boolean recycle) {
+    public static Bitmap stackBlur(final Bitmap src, final int radius, final boolean recycle) {
         Bitmap ret = recycle ? src : src.copy(src.getConfig(), true);
         if (radius < 1) {
             radius = 1;
@@ -1825,7 +1825,7 @@ public final class ImageUtils {
             return ImageType.TYPE_TIFF;
         } else if (type.contains("424D")) {
             return ImageType.TYPE_BMP;
-        } else if (type.startsWith("52494646") && type.endsWith("57454250")) {//524946461c57000057454250-12个字节
+        } else if (type.startsWith("52494646") && type.endsWith("57454250")) { //524946461c57000057454250-12个字节
             return ImageType.TYPE_WEBP;
         } else if (type.contains("00000100") || type.contains("00000200")) {
             return ImageType.TYPE_ICO;
@@ -2099,7 +2099,7 @@ public final class ImageUtils {
      * @param filePath The path of file.
      * @return the size of bitmap
      */
-    public static int[] getSize(String filePath) {
+    public static int[] getSize(final String filePath) {
         return getSize(UtilsBridge.getFileByPath(filePath));
     }
 
@@ -2109,7 +2109,7 @@ public final class ImageUtils {
      * @param file The file.
      * @return the size of bitmap
      */
-    public static int[] getSize(File file) {
+    public static int[] getSize(final File file) {
         if (file == null) return new int[]{0, 0};
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inJustDecodeBounds = true;
@@ -2158,7 +2158,7 @@ public final class ImageUtils {
 
         String value;
 
-        ImageType(String value) {
+        ImageType(final String value) {
             this.value = value;
         }
 

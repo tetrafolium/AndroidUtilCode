@@ -51,7 +51,7 @@ public class SpItem extends BaseItem<SpItem> {
         super(R.layout.du_item_empty);
     }
 
-    public SpItem(SPUtils spUtils, String key, Object value) {
+    public SpItem(final SPUtils spUtils, final String key, final Object value) {
         super(R.layout.du_item_sp);
         mSPUtils = spUtils;
         mKey = key;
@@ -60,7 +60,7 @@ public class SpItem extends BaseItem<SpItem> {
     }
 
     @Override
-    public void bind(@NonNull final ItemViewHolder holder, int position) {
+    public void bind(@NonNull final ItemViewHolder holder, final int position) {
         if (isViewType(R.layout.du_item_empty)) return;
         contentRl = holder.findViewById(R.id.itemSpContentRl);
         titleTv = holder.findViewById(R.id.itemSpTitleTv);
@@ -77,7 +77,7 @@ public class SpItem extends BaseItem<SpItem> {
 
         deleteTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 FloatToast.showShort("haha");
             }
         });
@@ -89,7 +89,7 @@ public class SpItem extends BaseItem<SpItem> {
             aSwitch.setChecked((Boolean) mValue);
             View.OnClickListener toggle = new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(final View v) {
                     final boolean state = !(Boolean) mValue;
                     mValue = state;
                     mSPUtils.put(mKey, state);
@@ -110,7 +110,7 @@ public class SpItem extends BaseItem<SpItem> {
             goIv.setVisibility(View.VISIBLE);
             contentRl.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(final View v) {
                     FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
                     SpModifyContentView.show(floatView, mSPUtils, mKey, mValue);
                 }
@@ -118,7 +118,7 @@ public class SpItem extends BaseItem<SpItem> {
         }
     }
 
-    public static List<SpItem> getSpItems(SPUtils spUtils) {
+    public static List<SpItem> getSpItems(final SPUtils spUtils) {
         Map<String, ?> spMap = spUtils.getAll();
         if (MapUtils.isEmpty(spMap)) {
             return CollectionUtils.newArrayList(new SpItem());
@@ -130,10 +130,10 @@ public class SpItem extends BaseItem<SpItem> {
         return items;
     }
 
-    public static List<SpItem> filterItems(List<SpItem> items, final String key) {
+    public static List<SpItem> filterItems(final List<SpItem> items, final String key) {
         return (List<SpItem>) CollectionUtils.select(items, new CollectionUtils.Predicate<SpItem>() {
             @Override
-            public boolean evaluate(SpItem item) {
+            public boolean evaluate(final SpItem item) {
                 return item.mKey.toLowerCase().contains(key.toLowerCase());
             }
         });

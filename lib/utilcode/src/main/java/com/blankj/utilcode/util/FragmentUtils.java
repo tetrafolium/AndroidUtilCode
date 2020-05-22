@@ -1417,7 +1417,7 @@ public final class FragmentUtils {
     private static void operateNoAnim(@Nullable final FragmentManager fm,
                                       final int type,
                                       final Fragment src,
-                                      Fragment... dest) {
+                                      final Fragment... dest) {
         if (fm == null) return;
         FragmentTransaction ft = fm.beginTransaction();
         operate(type, fm, ft, src, dest);
@@ -1533,7 +1533,7 @@ public final class FragmentUtils {
     }
 
     private static Fragment getTopIsInStack(@NonNull final FragmentManager fm,
-                                            Fragment parentFragment,
+                                            final Fragment parentFragment,
                                             final boolean isInStack) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
@@ -1573,7 +1573,7 @@ public final class FragmentUtils {
     }
 
     private static Fragment getTopShowIsInStack(@NonNull final FragmentManager fm,
-                                                Fragment parentFragment,
+                                                final Fragment parentFragment,
                                                 final boolean isInStack) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {

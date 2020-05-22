@@ -27,7 +27,7 @@ public class CloneUtilsTest extends BaseTest {
         String message;
         T      data;
 
-        Result(T data) {
+        Result(final T data) {
             this.code = 200;
             this.message = "success";
             this.data = data;
@@ -35,9 +35,9 @@ public class CloneUtilsTest extends BaseTest {
 
         @Override
         public String toString() {
-            return "{\"code\":" + primitive2String(code) +
-                    ",\"message\":" + primitive2String(message) +
-                    ",\"data\":" + primitive2String(data) + "}";
+            return "{\"code\":" + primitive2String(code)
+                    + ",\"message\":" + primitive2String(message)
+                    + ",\"data\":" + primitive2String(data) + "}";
         }
     }
 
@@ -47,15 +47,15 @@ public class CloneUtilsTest extends BaseTest {
         int    gender;
         String address;
 
-        Person(String name) {
+        Person(final String name) {
             this.name = name;
         }
 
         @Override
         public String toString() {
-            return "{\"name\":" + primitive2String(name) +
-                    ",\"gender\":" + primitive2String(gender) +
-                    ",\"address\":" + primitive2String(address) + "}";
+            return "{\"name\":" + primitive2String(name)
+                    + ",\"gender\":" + primitive2String(gender)
+                    + ",\"address\":" + primitive2String(address) + "}";
         }
     }
 

@@ -19,7 +19,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> viewArray = new SparseArray<>();
 
-    public ItemViewHolder(View itemView) {
+    public ItemViewHolder(final View itemView) {
         super(itemView);
     }
 
@@ -33,11 +33,11 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         return (T) view;
     }
 
-    public void setOnClickListener(@IdRes final int viewId, View.OnClickListener listener) {
+    public void setOnClickListener(@IdRes final int viewId, final View.OnClickListener listener) {
         findViewById(viewId).setOnClickListener(listener);
     }
 
-    public void setOnLongClickListener(@IdRes final int viewId, View.OnLongClickListener listener) {
+    public void setOnLongClickListener(@IdRes final int viewId, final View.OnLongClickListener listener) {
         findViewById(viewId).setOnLongClickListener(listener);
     }
 }

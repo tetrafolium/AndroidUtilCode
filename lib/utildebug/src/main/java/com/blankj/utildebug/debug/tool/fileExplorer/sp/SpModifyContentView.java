@@ -34,11 +34,11 @@ public class SpModifyContentView extends BaseContentView<FileExplorerFloatView> 
     private TextView spModifyCancelTv;
     private TextView spModifyYesTv;
 
-    public static void show(FileExplorerFloatView floatView, SPUtils spUtils, String key, Object value) {
+    public static void show(final FileExplorerFloatView floatView, final SPUtils spUtils, final String key, final Object value) {
         new SpModifyContentView(spUtils, key, value).attach(floatView, true);
     }
 
-    public SpModifyContentView(SPUtils spUtils, String key, Object value) {
+    public SpModifyContentView(final SPUtils spUtils, final String key, final Object value) {
         mSPUtils = spUtils;
         mKey = key;
         mValue = value;
@@ -67,14 +67,14 @@ public class SpModifyContentView extends BaseContentView<FileExplorerFloatView> 
 
         spModifyCancelTv.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 getFloatView().back();
             }
         });
 
         spModifyYesTv.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 String val = spModifyEt.getText().toString();
                 boolean isSuccess = SpHelper.putValue(mSPUtils, mKey, val, mClass);
                 if (isSuccess) {

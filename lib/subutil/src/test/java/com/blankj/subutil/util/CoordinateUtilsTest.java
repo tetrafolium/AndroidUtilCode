@@ -79,7 +79,7 @@ public class CoordinateUtilsTest {
         Assert.assertTrue(distance < 10);
     }
 
-    public static double distance(double lngA, double latA, double lngB, double latB) {
+    public static double distance(final double lngA, final double latA, final double lngB, final double latB) {
         int earthR = 6371000;
         double x = Math.cos(latA * PI / 180) * Math.cos(latB * PI / 180) * Math.cos((lngA - lngB) * PI / 180);
         double y = Math.sin(latA * PI / 180) * Math.sin(latB * PI / 180);

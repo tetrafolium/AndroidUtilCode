@@ -39,11 +39,11 @@ public class DeviceInfoItem extends BaseItem<DeviceInfoItem> {
     private TextView titleTv;
     private TextView contentTv;
 
-    public DeviceInfoItem(@StringRes int name, String info) {
+    public DeviceInfoItem(final @StringRes int name, final String info) {
         this(name, info, null);
     }
 
-    public DeviceInfoItem(@StringRes int name, String info, OnClickListener listener) {
+    public DeviceInfoItem(final @StringRes int name, final String info, final OnClickListener listener) {
         super(R.layout.du_item_base_info);
         mTitle = StringUtils.getString(name);
         mContent = info;
@@ -51,7 +51,7 @@ public class DeviceInfoItem extends BaseItem<DeviceInfoItem> {
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         titleTv = holder.findViewById(R.id.baseInfoTitleTv);
         contentTv = holder.findViewById(R.id.baseInfoContentTv);
 
@@ -79,7 +79,7 @@ public class DeviceInfoItem extends BaseItem<DeviceInfoItem> {
         appInfoItems.add(new DeviceInfoItem(R.string.du_device_info_screen_info, getScreenInfo()));
         appInfoItems.add(new DeviceInfoItem(R.string.du_device_info_open_development_settings_page, "", new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 ActivityUtils.startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
             }
         }));
@@ -87,8 +87,8 @@ public class DeviceInfoItem extends BaseItem<DeviceInfoItem> {
     }
 
     private static String getScreenInfo() {
-        return "width=" + ScreenUtils.getScreenWidth() +
-                ", height=" + ScreenUtils.getScreenHeight() +
-                ", density=" + ScreenUtils.getScreenDensity();
+        return "width=" + ScreenUtils.getScreenWidth()
+                + ", height=" + ScreenUtils.getScreenHeight()
+                + ", density=" + ScreenUtils.getScreenDensity();
     }
 }

@@ -143,7 +143,7 @@ public class ClickUtils {
      *
      * @param view The views.
      */
-    public static void applyPressedBgAlpha(View view) {
+    public static void applyPressedBgAlpha(final View view) {
         applyPressedBgAlpha(view, PRESSED_BG_ALPHA_DEFAULT_VALUE);
     }
 
@@ -153,7 +153,7 @@ public class ClickUtils {
      * @param view  The views.
      * @param alpha The alpha.
      */
-    public static void applyPressedBgAlpha(View view, float alpha) {
+    public static void applyPressedBgAlpha(final View view, final float alpha) {
         applyPressedBgStyle(view, PRESSED_BG_ALPHA_STYLE, alpha);
     }
 
@@ -162,7 +162,7 @@ public class ClickUtils {
      *
      * @param view The views.
      */
-    public static void applyPressedBgDark(View view) {
+    public static void applyPressedBgDark(final View view) {
         applyPressedBgDark(view, PRESSED_BG_DARK_DEFAULT_VALUE);
     }
 
@@ -172,11 +172,11 @@ public class ClickUtils {
      * @param view      The views.
      * @param darkAlpha The alpha of dark.
      */
-    public static void applyPressedBgDark(View view, float darkAlpha) {
+    public static void applyPressedBgDark(final View view, final float darkAlpha) {
         applyPressedBgStyle(view, PRESSED_BG_DARK_STYLE, darkAlpha);
     }
 
-    private static void applyPressedBgStyle(View view, int style, float value) {
+    private static void applyPressedBgStyle(final View view, final int style, final float value) {
         if (view == null) return;
         Drawable background = view.getBackground();
         Object tag = view.getTag(-style);
@@ -189,7 +189,7 @@ public class ClickUtils {
         }
     }
 
-    private static Drawable createStyleDrawable(Drawable src, int style, float value) {
+    private static Drawable createStyleDrawable(final Drawable src, final int style, final float value) {
         if (src == null) {
             src = new ColorDrawable(0);
         }
@@ -212,7 +212,7 @@ public class ClickUtils {
         return drawable;
     }
 
-    private static Drawable createAlphaDrawable(Drawable drawable, float alpha) {
+    private static Drawable createAlphaDrawable(final Drawable drawable, final float alpha) {
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
             drawableWrapper.setAlphaFix((int) (alpha * 255));
@@ -222,7 +222,7 @@ public class ClickUtils {
 //        return drawable;
     }
 
-    private static Drawable createDarkDrawable(Drawable drawable, float alpha) {
+    private static Drawable createDarkDrawable(final Drawable drawable, final float alpha) {
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
             drawableWrapper.setColorFilterFix(getDarkColorFilter(alpha));
@@ -232,7 +232,7 @@ public class ClickUtils {
 //        return drawable;
     }
 
-    private static ColorMatrixColorFilter getDarkColorFilter(float darkAlpha) {
+    private static ColorMatrixColorFilter getDarkColorFilter(final float darkAlpha) {
         return new ColorMatrixColorFilter(new ColorMatrix(new float[]{
                 darkAlpha, 0, 0, 0, 0,
                 0, darkAlpha, 0, 0, 0,
@@ -258,7 +258,7 @@ public class ClickUtils {
      * @param duration The duration of debouncing.
      * @param listener The listener.
      */
-    public static void applySingleDebouncing(final View view, @IntRange(from = 0) long duration,
+    public static void applySingleDebouncing(final View view, final @IntRange(from = 0) long duration,
                                              final View.OnClickListener listener) {
         applySingleDebouncing(new View[]{view}, duration, listener);
     }
@@ -281,7 +281,7 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applySingleDebouncing(final View[] views,
-                                             @IntRange(from = 0) long duration,
+                                             final @IntRange(from = 0) long duration,
                                              final View.OnClickListener listener) {
         applyDebouncing(views, false, duration, listener);
     }
@@ -303,7 +303,7 @@ public class ClickUtils {
      * @param duration The duration of debouncing.
      * @param listener The listener.
      */
-    public static void applyGlobalDebouncing(final View view, @IntRange(from = 0) long duration,
+    public static void applyGlobalDebouncing(final View view, final @IntRange(from = 0) long duration,
                                              final View.OnClickListener listener) {
         applyGlobalDebouncing(new View[]{view}, duration, listener);
     }
@@ -327,21 +327,21 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applyGlobalDebouncing(final View[] views,
-                                             @IntRange(from = 0) long duration,
+                                             final @IntRange(from = 0) long duration,
                                              final View.OnClickListener listener) {
         applyDebouncing(views, true, duration, listener);
     }
 
     private static void applyDebouncing(final View[] views,
                                         final boolean isGlobal,
-                                        @IntRange(from = 0) long duration,
+                                        final @IntRange(from = 0) long duration,
                                         final View.OnClickListener listener) {
         if (views == null || views.length == 0 || listener == null) return;
         for (View view : views) {
             if (view == null) continue;
             view.setOnClickListener(new OnDebouncingClickListener(isGlobal, duration) {
                 @Override
-                public void onDebouncingClick(View v) {
+                public void onDebouncingClick(final View v) {
                     listener.onClick(v);
                 }
             });
@@ -392,7 +392,7 @@ public class ClickUtils {
 
     public static void back2HomeFriendly(@NonNull final CharSequence tip,
                                          final long duration,
-                                         @NonNull Back2HomeFriendlyListener listener) {
+                                         final @NonNull Back2HomeFriendlyListener listener) {
         long nowMillis = System.currentTimeMillis();
         if (nowMillis - sLastClickMillis < duration) {
             sClickCount++;
@@ -411,7 +411,7 @@ public class ClickUtils {
     public interface Back2HomeFriendlyListener {
         Back2HomeFriendlyListener DEFAULT = new Back2HomeFriendlyListener() {
             @Override
-            public void show(CharSequence text, long duration) {
+            public void show(final CharSequence text, final long duration) {
                 UtilsBridge.toastShowShort(text);
             }
 
@@ -478,7 +478,7 @@ public class ClickUtils {
         public abstract void onDebouncingClick(View v);
 
         @Override
-        public final void onClick(View v) {
+        public final void onClick(final View v) {
             if (mIsGlobal) {
                 if (mEnabled) {
                     mEnabled = false;
@@ -503,11 +503,11 @@ public class ClickUtils {
         private long mLastClickTime;
         private int  mClickCount;
 
-        public OnMultiClickListener(int triggerClickCount) {
+        public OnMultiClickListener(final int triggerClickCount) {
             this(triggerClickCount, INTERVAL_DEFAULT_VALUE);
         }
 
-        public OnMultiClickListener(int triggerClickCount, long clickInterval) {
+        public OnMultiClickListener(final int triggerClickCount, final long clickInterval) {
             this.mTriggerClickCount = triggerClickCount;
             this.mClickInterval = clickInterval;
         }
@@ -517,7 +517,7 @@ public class ClickUtils {
         public abstract void onBeforeTriggerClick(View v, int count);
 
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             if (mTriggerClickCount <= 1) {
                 onTriggerClick(v);
                 return;
@@ -548,10 +548,10 @@ public class ClickUtils {
             return LazyHolder.INSTANCE;
         }
 
-        private OnUtilsTouchListener() {/**/}
+        private OnUtilsTouchListener() { /**/ }
 
         @Override
-        public boolean onTouch(final View v, MotionEvent event) {
+        public boolean onTouch(final View v, final MotionEvent event) {
             int action = event.getAction();
             if (action == MotionEvent.ACTION_DOWN) {
                 processScale(v, true);
@@ -564,7 +564,7 @@ public class ClickUtils {
             return false;
         }
 
-        private void processScale(final View view, boolean isDown) {
+        private void processScale(final View view, final boolean isDown) {
             Object tag = view.getTag(PRESSED_VIEW_SCALE_TAG);
             if (!(tag instanceof Float)) return;
             float value = isDown ? 1 + (Float) tag : 1;
@@ -575,7 +575,7 @@ public class ClickUtils {
                     .start();
         }
 
-        private void processAlpha(final View view, boolean isDown) {
+        private void processAlpha(final View view, final boolean isDown) {
             Object tag = view.getTag(isDown ? PRESSED_VIEW_ALPHA_TAG : PRESSED_VIEW_ALPHA_SRC_TAG);
             if (!(tag instanceof Float)) return;
             view.setAlpha((Float) tag);
@@ -593,7 +593,7 @@ public class ClickUtils {
         //低版本ColorDrawable.setColorFilter无效，这里直接用画笔画上
         private Paint mColorPaint = null;
 
-        public DrawableWrapperBefore21(Drawable drawable) {
+        public DrawableWrapperBefore21(final Drawable drawable) {
             super(drawable);
             if (drawable instanceof ColorDrawable) {
                 mColorPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
@@ -602,11 +602,11 @@ public class ClickUtils {
         }
 
         @Override
-        public void setColorFilter(ColorFilter cf) {
+        public void setColorFilter(final ColorFilter cf) {
             //低版本StateListDrawable.selectDrawable会重置ColorFilter
         }
 
-        public void setColorFilterFix(ColorFilter cf) {
+        public void setColorFilterFix(final ColorFilter cf) {
             super.setColorFilter(cf);
             if (mColorPaint != null) {
                 mColorPaint.setColorFilter(cf);
@@ -614,11 +614,11 @@ public class ClickUtils {
         }
 
         @Override
-        public void setAlpha(int alpha) {
+        public void setAlpha(final int alpha) {
             //低版本StateListDrawable.selectDrawable会重置Alpha
         }
 
-        public void setAlphaFix(int alpha) {
+        public void setAlphaFix(final int alpha) {
             super.setAlpha(alpha);
             if (mColorPaint != null) {
                 mColorPaint.setColor(((ColorDrawable) getWrappedDrawable()).getColor());
@@ -626,7 +626,7 @@ public class ClickUtils {
         }
 
         @Override
-        public void draw(Canvas canvas) {
+        public void draw(final Canvas canvas) {
             if (mBitmapDrawable == null) {
                 Bitmap bitmap = Bitmap.createBitmap(getBounds().width(), getBounds().height(), Bitmap.Config.ARGB_8888);
                 Canvas myCanvas = new Canvas(bitmap);

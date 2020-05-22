@@ -27,7 +27,7 @@ public class CommonActivityItemsView {
     public  BaseItemAdapter<CommonItem> mCommonItemAdapter;
     public  RecyclerView                mCommonItemRv;
 
-    public CommonActivityItemsView(@NonNull AppCompatActivity activity, @NonNull List<CommonItem> items) {
+    public CommonActivityItemsView(final @NonNull AppCompatActivity activity, final @NonNull List<CommonItem> items) {
         mBaseActivity = activity;
         mItems = items;
     }
@@ -45,12 +45,12 @@ public class CommonActivityItemsView {
         mCommonItemRv.addItemDecoration(new RecycleViewDivider(mBaseActivity, RecycleViewDivider.VERTICAL, R.drawable.common_item_divider));
     }
 
-    public void updateItems(List<CommonItem> data) {
+    public void updateItems(final List<CommonItem> data) {
         mCommonItemAdapter.setItems(data);
         mCommonItemAdapter.notifyDataSetChanged();
     }
 
-    public void updateItem(int position) {
+    public void updateItem(final int position) {
         mCommonItemAdapter.notifyItemChanged(position);
     }
 }

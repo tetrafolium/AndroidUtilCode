@@ -26,35 +26,35 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         this(false);
     }
 
-    public BaseItemAdapter(boolean hasStableIds) {
+    public BaseItemAdapter(final boolean hasStableIds) {
         setHasStableIds(hasStableIds);
     }
 
     @Override
-    public final int getItemViewType(int position) {
+    public final int getItemViewType(final int position) {
         Item item = mItems.get(position);
         item.mAdapter = this;
         return item.getViewType();
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return mItems.get(position).getItemId();
     }
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ItemViewHolder onCreateViewHolder(final @NonNull ViewGroup parent, final int viewType) {
         return Item.onCreateViewHolder(parent, viewType);
     }
 
     @Override
-    public final void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+    public final void onBindViewHolder(final @NonNull ItemViewHolder holder, final int position) {
         mItems.get(position).bindViewHolder(holder, position);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull List<Object> payloads) {
+    public void onBindViewHolder(final @NonNull ItemViewHolder holder, final int position, final @NonNull List<Object> payloads) {
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads);
             return;
@@ -68,7 +68,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
     }
 
     @Override
-    public void onViewRecycled(@NonNull ItemViewHolder holder) {
+    public void onViewRecycled(final @NonNull ItemViewHolder holder) {
         super.onViewRecycled(holder);
         int position = holder.getAdapterPosition();
         if (position < 0 || position >= mItems.size()) {
@@ -78,7 +78,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
     }
 
     @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(final @NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         mRecyclerView = recyclerView;
     }
@@ -133,7 +133,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return replaceItemById(id, item, false);
     }
 
-    public int replaceItemById(final long id, @NonNull final Item item, boolean notifyChanged) {
+    public int replaceItemById(final long id, @NonNull final Item item, final boolean notifyChanged) {
         int itemIndex = getItemIndexById(id);
         if (itemIndex != -1) {
             replaceItem(itemIndex, item, notifyChanged);
@@ -145,7 +145,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return removeItemById(id, false);
     }
 
-    public int removeItemById(final long id, boolean notifyRemoved) {
+    public int removeItemById(final long id, final boolean notifyRemoved) {
         for (int i = 0; i < mItems.size(); i++) {
             if (getItemId(i) == id) {
                 removeItem(i, notifyRemoved);
@@ -167,33 +167,33 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         updateItems(index, 1, null);
     }
 
-    public void updateItem(@NonNull final Item item, Object payload) {
+    public void updateItem(@NonNull final Item item, final Object payload) {
         updateItems(item, 1, payload);
     }
 
-    public void updateItem(@IntRange(from = 0) final int index, Object payload) {
+    public void updateItem(@IntRange(from = 0) final int index, final Object payload) {
         updateItems(index, 1, payload);
     }
 
-    public void updateItems(@NonNull final Item item, int itemCount) {
+    public void updateItems(@NonNull final Item item, final int itemCount) {
         int itemIndex = mItems.indexOf(item);
         if (itemIndex != -1) {
             updateItems(itemIndex, itemCount);
         }
     }
 
-    public void updateItems(@IntRange(from = 0) final int index, int itemCount) {
+    public void updateItems(@IntRange(from = 0) final int index, final int itemCount) {
         updateItems(index, itemCount, null);
     }
 
-    public void updateItems(@NonNull final Item item, int itemCount, Object payload) {
+    public void updateItems(@NonNull final Item item, final int itemCount, final Object payload) {
         int itemIndex = mItems.indexOf(item);
         if (itemIndex != -1) {
             updateItems(itemIndex, itemCount, payload);
         }
     }
 
-    public void updateItems(@IntRange(from = 0) final int index, int itemCount, Object payload) {
+    public void updateItems(@IntRange(from = 0) final int index, final int itemCount, final Object payload) {
         notifyItemRangeChanged(index, itemCount, payload);
     }
 
@@ -201,7 +201,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         addItem(item, false);
     }
 
-    public void addItem(@NonNull final Item item, boolean notifyInserted) {
+    public void addItem(@NonNull final Item item, final boolean notifyInserted) {
         mItems.add(item);
         if (notifyInserted) notifyItemInserted(mItems.size() - 1);
     }
@@ -210,7 +210,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         addItem(index, item, false);
     }
 
-    public void addItem(@IntRange(from = 0) final int index, @NonNull final Item item, boolean notifyInserted) {
+    public void addItem(@IntRange(from = 0) final int index, @NonNull final Item item, final boolean notifyInserted) {
         mItems.add(index, item);
         if (notifyInserted) notifyItemInserted(index);
     }
@@ -219,7 +219,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         addItems(items, false);
     }
 
-    public void addItems(@NonNull final List<Item> items, boolean notifyInserted) {
+    public void addItems(@NonNull final List<Item> items, final boolean notifyInserted) {
         mItems.addAll(items);
         if (notifyInserted) notifyItemRangeInserted(mItems.size() - items.size() - 1, items.size());
     }
@@ -228,7 +228,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         addItems(index, items, false);
     }
 
-    public void addItems(@IntRange(from = 0) final int index, @NonNull final List<Item> items, boolean notifyInserted) {
+    public void addItems(@IntRange(from = 0) final int index, @NonNull final List<Item> items, final boolean notifyInserted) {
         mItems.addAll(index, items);
         if (notifyInserted) notifyItemRangeInserted(index, items.size());
     }
@@ -238,7 +238,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
     }
 
     public void swapItem(@IntRange(from = 0) final int firstIndex,
-                         @IntRange(from = 0) final int secondIndex, boolean notifyMoved) {
+                         @IntRange(from = 0) final int secondIndex, final boolean notifyMoved) {
         Collections.swap(mItems, firstIndex, secondIndex);
         if (notifyMoved) notifyItemMoved(firstIndex, secondIndex);
     }
@@ -247,7 +247,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return replaceItem(index, item, false);
     }
 
-    public Item replaceItem(@IntRange(from = 0) final int index, @NonNull final Item item, boolean notifyChanged) {
+    public Item replaceItem(@IntRange(from = 0) final int index, @NonNull final Item item, final boolean notifyChanged) {
         Item prevItem = mItems.set(index, item);
         if (notifyChanged) notifyItemChanged(index);
         return prevItem;
@@ -257,7 +257,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return replaceItems(items, false);
     }
 
-    public boolean replaceItems(@NonNull final List<Item> items, boolean notifyChanged) {
+    public boolean replaceItems(@NonNull final List<Item> items, final boolean notifyChanged) {
         mItems.clear();
         boolean added = mItems.addAll(items);
         if (notifyChanged) notifyDataSetChanged();
@@ -268,7 +268,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return removeItem(index, false);
     }
 
-    public Item removeItem(@IntRange(from = 0) final int index, boolean notifyRemoved) {
+    public Item removeItem(@IntRange(from = 0) final int index, final boolean notifyRemoved) {
         Item removedItem = mItems.remove(index);
         if (notifyRemoved) notifyItemRemoved(index);
         return removedItem;
@@ -278,7 +278,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         return removeItem(item, false);
     }
 
-    public int removeItem(@NonNull final Item item, boolean notifyRemoved) {
+    public int removeItem(@NonNull final Item item, final boolean notifyRemoved) {
         int itemIndex = mItems.indexOf(item);
         if (itemIndex != -1) {
             mItems.remove(itemIndex);
@@ -291,7 +291,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         clear(false);
     }
 
-    public void clear(boolean notifyDataSetChanged) {
+    public void clear(final boolean notifyDataSetChanged) {
         mItems.clear();
         if (notifyDataSetChanged) notifyDataSetChanged();
     }
@@ -300,7 +300,7 @@ public class BaseItemAdapter<Item extends BaseItem> extends RecyclerView.Adapter
         sortItems(comparator, false);
     }
 
-    public void sortItems(@NonNull final Comparator<Item> comparator, boolean notifyDataSetChanged) {
+    public void sortItems(@NonNull final Comparator<Item> comparator, final boolean notifyDataSetChanged) {
         Collections.sort(mItems, comparator);
         if (notifyDataSetChanged) notifyDataSetChanged();
     }

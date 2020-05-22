@@ -38,11 +38,11 @@ import static android.Manifest.permission.CALL_PHONE;
  */
 class UtilsBridge {
 
-    static void init(Application app) {
+    static void init(final Application app) {
         UtilsActivityLifecycleImpl.INSTANCE.init(app);
     }
 
-    static void unInit(Application app) {
+    static void unInit(final Application app) {
         UtilsActivityLifecycleImpl.INSTANCE.unInit(app);
     }
 
@@ -102,7 +102,7 @@ class UtilsBridge {
         return ActivityUtils.getLauncherActivity(pkg);
     }
 
-    static Activity getActivityByContext(Context context) {
+    static Activity getActivityByContext(final Context context) {
         return ActivityUtils.getActivityByContext(context);
     }
 
@@ -164,7 +164,7 @@ class UtilsBridge {
         return ConvertUtils.bytes2HexString(bytes);
     }
 
-    static byte[] hexString2Bytes(String hexString) {
+    static byte[] hexString2Bytes(final String hexString) {
         return ConvertUtils.hexString2Bytes(hexString);
     }
 
@@ -290,15 +290,15 @@ class UtilsBridge {
         return FileUtils.createFileByDeleteOldFile(file);
     }
 
-    static long getFsTotalSize(String path) {
+    static long getFsTotalSize(final String path) {
         return FileUtils.getFsTotalSize(path);
     }
 
-    static long getFsAvailableSize(String path) {
+    static long getFsAvailableSize(final String path) {
         return FileUtils.getFsAvailableSize(path);
     }
 
-    static void notifySystemToScan(File file) {
+    static void notifySystemToScan(final File file) {
         FileUtils.notifySystemToScan(file);
     }
 
@@ -324,7 +324,7 @@ class UtilsBridge {
         return ImageUtils.bitmap2Bytes(bitmap);
     }
 
-    static byte[] bitmap2Bytes(final Bitmap bitmap, final Bitmap.CompressFormat format, int quality) {
+    static byte[] bitmap2Bytes(final Bitmap bitmap, final Bitmap.CompressFormat format, final int quality) {
         return ImageUtils.bitmap2Bytes(bitmap, format, quality);
     }
 
@@ -336,7 +336,7 @@ class UtilsBridge {
         return ImageUtils.drawable2Bytes(drawable);
     }
 
-    static byte[] drawable2Bytes(final Drawable drawable, final Bitmap.CompressFormat format, int quality) {
+    static byte[] drawable2Bytes(final Drawable drawable, final Bitmap.CompressFormat format, final int quality) {
         return ImageUtils.drawable2Bytes(drawable, format, quality);
     }
 
@@ -396,7 +396,7 @@ class UtilsBridge {
     ///////////////////////////////////////////////////////////////////////////
     // JsonUtils
     ///////////////////////////////////////////////////////////////////////////
-    static String formatJson(String json) {
+    static String formatJson(final String json) {
         return JsonUtils.formatJson(json);
     }
 
@@ -516,21 +516,21 @@ class UtilsBridge {
         ThreadUtils.runOnUiThread(runnable);
     }
 
-    static void runOnUiThreadDelayed(final Runnable runnable, long delayMillis) {
+    static void runOnUiThreadDelayed(final Runnable runnable, final long delayMillis) {
         ThreadUtils.runOnUiThreadDelayed(runnable, delayMillis);
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // ThrowableUtils
     ///////////////////////////////////////////////////////////////////////////
-    static String getFullStackTrace(Throwable throwable) {
+    static String getFullStackTrace(final Throwable throwable) {
         return ThrowableUtils.getFullStackTrace(throwable);
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // TimeUtils
     ///////////////////////////////////////////////////////////////////////////
-    static String millis2FitTimeSpan(long millis, int precision) {
+    static String millis2FitTimeSpan(final long millis, final int precision) {
         return TimeUtils.millis2FitTimeSpan(millis, precision);
     }
 

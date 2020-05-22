@@ -174,12 +174,12 @@ public class LogUtilsTest extends BaseTest {
         int    gender;
         String address;
 
-        public Person(String name) {
+        public Person(final String name) {
             this.name = name;
         }
 
         @Override
-        public boolean equals(Object obj) {
+        public boolean equals(final Object obj) {
             if (obj == this) return true;
             if (!(obj instanceof Person)) return false;
             Person p = (Person) obj;
@@ -192,9 +192,9 @@ public class LogUtilsTest extends BaseTest {
 
         @Override
         public String toString() {
-            return "{\"name\":" + primitive2String(name) +
-                    ",\"gender\":" + primitive2String(gender) +
-                    ",\"address\":" + primitive2String(address) + "}";
+            return "{\"name\":" + primitive2String(name)
+                    + ",\"gender\":" + primitive2String(gender)
+                    + ",\"address\":" + primitive2String(address) + "}";
         }
     }
 

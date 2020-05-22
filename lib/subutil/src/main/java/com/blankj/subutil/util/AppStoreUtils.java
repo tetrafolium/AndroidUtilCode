@@ -42,7 +42,7 @@ public final class AppStoreUtils {
      * @param isIncludeGooglePlayStore 是否包括 Google Play 商店
      * @return 跳转到应用商店的 Intent
      */
-    public static Intent getAppStoreIntent(boolean isIncludeGooglePlayStore) {
+    public static Intent getAppStoreIntent(final boolean isIncludeGooglePlayStore) {
         return getAppStoreIntent(Utils.getApp().getPackageName(), isIncludeGooglePlayStore);
     }
 
@@ -64,12 +64,12 @@ public final class AppStoreUtils {
      * @param isIncludeGooglePlayStore 是否包括 Google Play 商店
      * @return 跳转到应用商店的 Intent
      */
-    public static Intent getAppStoreIntent(final String packageName, boolean isIncludeGooglePlayStore) {
-        if (RomUtils.isSamsung()) {// 三星单独处理跳转三星市场
+    public static Intent getAppStoreIntent(final String packageName, final boolean isIncludeGooglePlayStore) {
+        if (RomUtils.isSamsung()) { // 三星单独处理跳转三星市场
             Intent samsungAppStoreIntent = getSamsungAppStoreIntent(packageName);
             if (samsungAppStoreIntent != null) return samsungAppStoreIntent;
         }
-        if (RomUtils.isLeeco()) {// 乐视单独处理跳转乐视市场
+        if (RomUtils.isLeeco()) { // 乐视单独处理跳转乐视市场
             Intent leecoAppStoreIntent = getLeecoAppStoreIntent(packageName);
             if (leecoAppStoreIntent != null) return leecoAppStoreIntent;
         }
@@ -105,7 +105,7 @@ public final class AppStoreUtils {
         return intent;
     }
 
-    private static boolean go2NormalAppStore(String packageName) {
+    private static boolean go2NormalAppStore(final String packageName) {
         Intent intent = getNormalAppStoreIntent();
         if (intent == null) return false;
         intent.setData(Uri.parse("market://details?id=" + packageName));

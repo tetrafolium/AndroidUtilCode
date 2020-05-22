@@ -19,11 +19,11 @@ import java.util.List;
 public class BusUtilsVsEventBusTest extends BaseTest {
 
     @Subscribe
-    public void eventBusFun(String param) {
+    public void eventBusFun(final String param) {
     }
 
     @BusUtils.Bus(tag = "busUtilsFun")
-    public void busUtilsFun(String param) {
+    public void busUtilsFun(final String param) {
     }
 
     @Before
@@ -87,7 +87,7 @@ public class BusUtilsVsEventBusTest extends BaseTest {
         comparePostTemplate("Post to 100 subscribers 100000 times.", 100, 100000);
     }
 
-    private void comparePostTemplate(String name, int subscribeNum, int postTimes) {
+    private void comparePostTemplate(final String name, final int subscribeNum, final int postTimes) {
         final List<BusUtilsVsEventBusTest> tests = new ArrayList<>();
         for (int i = 0; i < subscribeNum; i++) {
             BusUtilsVsEventBusTest test = new BusUtilsVsEventBusTest();
@@ -167,7 +167,7 @@ public class BusUtilsVsEventBusTest extends BaseTest {
      * @param times      每次执行的次数
      * @param callback   比较的回调函数
      */
-    private void compareWithEventBus(String name, int sampleSize, int times, CompareCallback callback) {
+    private void compareWithEventBus(final String name, final int sampleSize, final int times, final CompareCallback callback) {
         long[][] dur = new long[2][sampleSize];
         for (int i = 0; i < sampleSize; i++) {
             long cur = System.currentTimeMillis();
@@ -190,9 +190,9 @@ public class BusUtilsVsEventBusTest extends BaseTest {
             busUtilsAverageTime += dur[1][i];
         }
         System.out.println(
-                name +
-                "\nEventBusCostTime: " + eventBusAverageTime / sampleSize +
-                "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize
+                name
+                + "\nEventBusCostTime: " + eventBusAverageTime / sampleSize
+                + "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize
         );
     }
 

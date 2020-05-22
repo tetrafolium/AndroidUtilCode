@@ -31,7 +31,7 @@ public class CommonDialogContent extends BaseDialogFragment {
     private TextView       cdcBottomPositiveTv;
     private TextView       cdcBottomNegativeTv;
 
-    public CommonDialogContent init(Context context, final CharSequence title, final CharSequence content,
+    public CommonDialogContent init(final Context context, final CharSequence title, final CharSequence content,
                                     final Pair<CharSequence, View.OnClickListener> positiveBtnAction,
                                     final Pair<CharSequence, View.OnClickListener> negativeBtnAction) {
         super.init(context, new DialogLayoutCallback() {
@@ -46,7 +46,7 @@ public class CommonDialogContent extends BaseDialogFragment {
             }
 
             @Override
-            public void initView(final BaseDialogFragment dialog, View contentView) {
+            public void initView(final BaseDialogFragment dialog, final View contentView) {
                 cdcTitleRl = contentView.findViewById(R.id.cdcTitleRl);
                 cdcTitleTv = contentView.findViewById(R.id.cdcTitleTv);
                 cdcContentRl = contentView.findViewById(R.id.cdcContentRl);
@@ -74,7 +74,7 @@ public class CommonDialogContent extends BaseDialogFragment {
                         cdcBottomPositiveTv.setText(positiveBtnAction.first);
                         cdcBottomPositiveTv.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onClick(final View v) {
                                 dismiss();
                                 positiveBtnAction.second.onClick(v);
                             }
@@ -85,7 +85,7 @@ public class CommonDialogContent extends BaseDialogFragment {
                         cdcBottomNegativeTv.setText(negativeBtnAction.first);
                         cdcBottomNegativeTv.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onClick(final View v) {
                                 dismiss();
                                 negativeBtnAction.second.onClick(v);
                             }
@@ -95,16 +95,16 @@ public class CommonDialogContent extends BaseDialogFragment {
             }
 
             @Override
-            public void setWindowStyle(Window window) {
+            public void setWindowStyle(final Window window) {
             }
 
             @Override
-            public void onCancel(BaseDialogFragment dialog) {
+            public void onCancel(final BaseDialogFragment dialog) {
 
             }
 
             @Override
-            public void onDismiss(BaseDialogFragment dialog) {
+            public void onDismiss(final BaseDialogFragment dialog) {
 
             }
         });

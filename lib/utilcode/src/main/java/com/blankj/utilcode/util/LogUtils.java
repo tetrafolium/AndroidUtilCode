@@ -90,7 +90,7 @@ public final class LogUtils {
     private static final String TOP_BORDER     = TOP_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
     private static final String MIDDLE_BORDER  = MIDDLE_CORNER + MIDDLE_DIVIDER + MIDDLE_DIVIDER;
     private static final String BOTTOM_BORDER  = BOTTOM_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
-    private static final int    MAX_LEN        = 1100;// fit for Chinese character
+    private static final int    MAX_LEN        = 1100; // fit for Chinese character
     private static final String NOTHING        = "log nothing";
     private static final String NULL           = "null";
     private static final String ARGS           = "args";
@@ -234,7 +234,7 @@ public final class LogUtils {
         if (!logDir.exists()) return new ArrayList<>();
         File[] files = logDir.listFiles(new FilenameFilter() {
             @Override
-            public boolean accept(File dir, String name) {
+            public boolean accept(final File dir, final String name) {
                 return isMatchLogFileName(name);
             }
         });
@@ -243,7 +243,7 @@ public final class LogUtils {
         return list;
     }
 
-    private static TagHead processTagAndHead(String tag) {
+    private static TagHead processTagAndHead(final String tag) {
         if (!CONFIG.mTagIsSpace && !CONFIG.isLogHeadSwitch()) {
             tag = CONFIG.getGlobalTag();
         } else {
@@ -253,7 +253,7 @@ public final class LogUtils {
                 StackTraceElement targetElement = stackTrace[3];
                 final String fileName = getFileName(targetElement);
                 if (CONFIG.mTagIsSpace && UtilsBridge.isSpace(tag)) {
-                    int index = fileName.indexOf('.');// Use proguard may not find '.'.
+                    int index = fileName.indexOf('.'); // Use proguard may not find '.'.
                     tag = index == -1 ? fileName : fileName.substring(0, index);
                 }
                 return new TagHead(tag, null, ": ");
@@ -261,7 +261,7 @@ public final class LogUtils {
             StackTraceElement targetElement = stackTrace[stackIndex];
             final String fileName = getFileName(targetElement);
             if (CONFIG.mTagIsSpace && UtilsBridge.isSpace(tag)) {
-                int index = fileName.indexOf('.');// Use proguard may not find '.'.
+                int index = fileName.indexOf('.'); // Use proguard may not find '.'.
                 tag = index == -1 ? fileName : fileName.substring(0, index);
             }
             if (CONFIG.isLogHeadSwitch()) {
@@ -344,14 +344,14 @@ public final class LogUtils {
         return body.length() == 0 ? NOTHING : body;
     }
 
-    private static String formatObject(int type, Object object) {
+    private static String formatObject(final int type, final Object object) {
         if (object == null) return NULL;
         if (type == JSON) return LogFormatter.object2String(object, JSON);
         if (type == XML) return LogFormatter.object2String(object, XML);
         return formatObject(object);
     }
 
-    private static String formatObject(Object object) {
+    private static String formatObject(final Object object) {
         if (object == null) return NULL;
         if (!I_FORMATTER_MAP.isEmpty()) {
             IFormatter iFormatter = I_FORMATTER_MAP.get(getClassFromObject(object));
@@ -377,7 +377,7 @@ public final class LogUtils {
         }
     }
 
-    private static void printBorder(final int type, final String tag, boolean isTop) {
+    private static void printBorder(final int type, final String tag, final boolean isTop) {
         if (CONFIG.isLogBorderSwitch()) {
             Log.println(type, tag, isTop ? TOP_BORDER : BOTTOM_BORDER);
         }
@@ -491,18 +491,18 @@ public final class LogUtils {
         String time = format.substring(11);
         final String fullPath =
                 CONFIG.getDir() + CONFIG.getFilePrefix() + "_"
-                        + date + "_" +
-                        CONFIG.getProcessName() + CONFIG.getFileExtension();
+                        + date + "_"
+                        + CONFIG.getProcessName() + CONFIG.getFileExtension();
         if (!createOrExistsFile(fullPath, date)) {
             Log.e("LogUtils", "create " + fullPath + " failed!");
             return;
         }
-        final String content = time +
-                T[type - V] +
-                "/" +
-                tag +
-                msg +
-                LINE_SEP;
+        final String content = time
+                + T[type - V]
+                + "/"
+                + tag
+                + msg
+                + LINE_SEP;
         input2File(fullPath, content);
     }
 
@@ -536,7 +536,7 @@ public final class LogUtils {
         File parentFile = file.getParentFile();
         File[] files = parentFile.listFiles(new FilenameFilter() {
             @Override
-            public boolean accept(File dir, String name) {
+            public boolean accept(final File dir, final String name) {
                 return isMatchLogFileName(name);
             }
         });
@@ -565,11 +565,11 @@ public final class LogUtils {
         }
     }
 
-    private static boolean isMatchLogFileName(String name) {
+    private static boolean isMatchLogFileName(final String name) {
         return name.matches("^" + CONFIG.getFilePrefix() + "_[0-9]{4}_[0-9]{2}_[0-9]{2}_.*$");
     }
 
-    private static String findDate(String str) {
+    private static String findDate(final String str) {
         Pattern pattern = Pattern.compile("[0-9]{4}_[0-9]{2}_[0-9]{2}");
         Matcher matcher = pattern.matcher(str);
         if (matcher.find()) {
@@ -579,15 +579,15 @@ public final class LogUtils {
     }
 
     private static void printDeviceInfo(final String filePath, final String date) {
-        final String head = "************* Log Head ****************" +
-                "\nDate of Log        : " + date +
-                "\nDevice Manufacturer: " + Build.MANUFACTURER +
-                "\nDevice Model       : " + Build.MODEL +
-                "\nAndroid Version    : " + Build.VERSION.RELEASE +
-                "\nAndroid SDK        : " + Build.VERSION.SDK_INT +
-                "\nApp VersionName    : " + UtilsBridge.getAppVersionName() +
-                "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode() +
-                "\n************* Log Head ****************\n\n";
+        final String head = "************* Log Head ****************"
+                + "\nDate of Log        : " + date
+                + "\nDevice Manufacturer: " + Build.MANUFACTURER
+                + "\nDevice Model       : " + Build.MODEL
+                + "\nAndroid Version    : " + Build.VERSION.RELEASE
+                + "\nAndroid SDK        : " + Build.VERSION.SDK_INT
+                + "\nApp VersionName    : " + UtilsBridge.getAppVersionName()
+                + "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode()
+                + "\n************* Log Head ****************\n\n";
         input2File(filePath, head);
     }
 
@@ -600,10 +600,10 @@ public final class LogUtils {
     }
 
     public static final class Config {
-        private String      mDefaultDir;// The default storage directory of log.
+        private String      mDefaultDir; // The default storage directory of log.
         private String      mDir;       // The storage directory of log.
-        private String      mFilePrefix        = "util";// The file prefix of log.
-        private String      mFileExtension     = ".txt";// The file extension of log.
+        private String      mFilePrefix        = "util"; // The file prefix of log.
+        private String      mFileExtension     = ".txt"; // The file extension of log.
         private boolean     mLogSwitch         = true;  // The switch of log.
         private boolean     mLog2ConsoleSwitch = true;  // The logcat's switch of log.
         private String      mGlobalTag         = "";    // The global tag of log.
@@ -847,7 +847,7 @@ public final class LogUtils {
         String[] consoleHead;
         String   fileHead;
 
-        TagHead(String tag, String[] consoleHead, String fileHead) {
+        TagHead(final String tag, final String[] consoleHead, final String fileHead) {
             this.tag = tag;
             this.consoleHead = consoleHead;
             this.fileHead = fileHead;
@@ -856,11 +856,11 @@ public final class LogUtils {
 
     private final static class LogFormatter {
 
-        static String object2String(Object object) {
+        static String object2String(final Object object) {
             return object2String(object, -1);
         }
 
-        static String object2String(Object object, int type) {
+        static String object2String(final Object object, final int type) {
             if (object.getClass().isArray()) return array2String(object);
             if (object instanceof Throwable)
                 return UtilsBridge.getFullStackTrace((Throwable) object);
@@ -874,7 +874,7 @@ public final class LogUtils {
             return object.toString();
         }
 
-        private static String bundle2String(Bundle bundle) {
+        private static String bundle2String(final Bundle bundle) {
             Iterator<String> iterator = bundle.keySet().iterator();
             if (!iterator.hasNext()) {
                 return "Bundle {}";
@@ -895,7 +895,7 @@ public final class LogUtils {
             }
         }
 
-        private static String intent2String(Intent intent) {
+        private static String intent2String(final Intent intent) {
             StringBuilder sb = new StringBuilder(128);
             sb.append("Intent { ");
             boolean first = true;
@@ -1006,7 +1006,7 @@ public final class LogUtils {
         }
 
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-        private static void clipData2String(ClipData clipData, StringBuilder sb) {
+        private static void clipData2String(final ClipData clipData, final StringBuilder sb) {
             ClipData.Item item = clipData.getItemAt(0);
             if (item == null) {
                 sb.append("ClipData.Item {}");
@@ -1044,7 +1044,7 @@ public final class LogUtils {
             sb.append("}");
         }
 
-        private static String object2Json(Object object) {
+        private static String object2Json(final Object object) {
             if (object instanceof CharSequence) {
                 return UtilsBridge.formatJson(object.toString());
             }
@@ -1055,7 +1055,7 @@ public final class LogUtils {
             }
         }
 
-        private static String formatJson(String json) {
+        private static String formatJson(final String json) {
             try {
                 for (int i = 0, len = json.length(); i < len; i++) {
                     char c = json.charAt(i);
@@ -1073,7 +1073,7 @@ public final class LogUtils {
             return json;
         }
 
-        private static String formatXml(String xml) {
+        private static String formatXml(final String xml) {
             try {
                 Source xmlInput = new StreamSource(new StringReader(xml));
                 StreamResult xmlOutput = new StreamResult(new StringWriter());
@@ -1088,7 +1088,7 @@ public final class LogUtils {
             return xml;
         }
 
-        private static String array2String(Object object) {
+        private static String array2String(final Object object) {
             if (object instanceof Object[]) {
                 return Arrays.deepToString((Object[]) object);
             } else if (object instanceof boolean[]) {
@@ -1143,13 +1143,13 @@ public final class LogUtils {
         if (objClass.isAnonymousClass() || objClass.isSynthetic()) {
             Type[] genericInterfaces = objClass.getGenericInterfaces();
             String className;
-            if (genericInterfaces.length == 1) {// interface
+            if (genericInterfaces.length == 1) { // interface
                 Type type = genericInterfaces[0];
                 while (type instanceof ParameterizedType) {
                     type = ((ParameterizedType) type).getRawType();
                 }
                 className = type.toString();
-            } else {// abstract class or lambda
+            } else { // abstract class or lambda
                 Type type = objClass.getGenericSuperclass();
                 while (type instanceof ParameterizedType) {
                     type = ((ParameterizedType) type).getRawType();

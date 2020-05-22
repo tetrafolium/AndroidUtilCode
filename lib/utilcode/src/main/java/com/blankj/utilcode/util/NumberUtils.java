@@ -37,7 +37,7 @@ public final class NumberUtils {
      * @param fractionDigits The number of digits allowed in the fraction portion of value.
      * @return the format value
      */
-    public static String format(float value, int fractionDigits) {
+    public static String format(final float value, final int fractionDigits) {
         return format(value, false, 1, fractionDigits, true);
     }
 
@@ -49,7 +49,7 @@ public final class NumberUtils {
      * @param isHalfUp       True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(float value, int fractionDigits, boolean isHalfUp) {
+    public static String format(final float value, final int fractionDigits, final boolean isHalfUp) {
         return format(value, false, 1, fractionDigits, isHalfUp);
     }
 
@@ -62,7 +62,7 @@ public final class NumberUtils {
      * @param isHalfUp         True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(float value, int minIntegerDigits, int fractionDigits, boolean isHalfUp) {
+    public static String format(final float value, final int minIntegerDigits, final int fractionDigits, final boolean isHalfUp) {
         return format(value, false, minIntegerDigits, fractionDigits, isHalfUp);
     }
 
@@ -74,7 +74,7 @@ public final class NumberUtils {
      * @param fractionDigits The number of digits allowed in the fraction portion of value.
      * @return the format value
      */
-    public static String format(float value, boolean isGrouping, int fractionDigits) {
+    public static String format(final float value, final boolean isGrouping, final int fractionDigits) {
         return format(value, isGrouping, 1, fractionDigits, true);
     }
 
@@ -87,7 +87,7 @@ public final class NumberUtils {
      * @param isHalfUp       True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(float value, boolean isGrouping, int fractionDigits, boolean isHalfUp) {
+    public static String format(final float value, final boolean isGrouping, final int fractionDigits, final boolean isHalfUp) {
         return format(value, isGrouping, 1, fractionDigits, isHalfUp);
     }
 
@@ -101,7 +101,7 @@ public final class NumberUtils {
      * @param isHalfUp         True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(float value, boolean isGrouping, int minIntegerDigits, int fractionDigits, boolean isHalfUp) {
+    public static String format(final float value, final boolean isGrouping, final int minIntegerDigits, final int fractionDigits, final boolean isHalfUp) {
         return format(float2Double(value), isGrouping, minIntegerDigits, fractionDigits, isHalfUp);
     }
 
@@ -112,7 +112,7 @@ public final class NumberUtils {
      * @param fractionDigits The number of digits allowed in the fraction portion of value.
      * @return the format value
      */
-    public static String format(double value, int fractionDigits) {
+    public static String format(final double value, final int fractionDigits) {
         return format(value, false, 1, fractionDigits, true);
     }
 
@@ -124,7 +124,7 @@ public final class NumberUtils {
      * @param isHalfUp       True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(double value, int fractionDigits, boolean isHalfUp) {
+    public static String format(final double value, final int fractionDigits, final boolean isHalfUp) {
         return format(value, false, 1, fractionDigits, isHalfUp);
     }
 
@@ -137,7 +137,7 @@ public final class NumberUtils {
      * @param isHalfUp         True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(double value, int minIntegerDigits, int fractionDigits, boolean isHalfUp) {
+    public static String format(final double value, final int minIntegerDigits, final int fractionDigits, final boolean isHalfUp) {
         return format(value, false, minIntegerDigits, fractionDigits, isHalfUp);
     }
 
@@ -149,7 +149,7 @@ public final class NumberUtils {
      * @param fractionDigits The number of digits allowed in the fraction portion of value.
      * @return the format value
      */
-    public static String format(double value, boolean isGrouping, int fractionDigits) {
+    public static String format(final double value, final boolean isGrouping, final int fractionDigits) {
         return format(value, isGrouping, 1, fractionDigits, true);
     }
 
@@ -162,7 +162,7 @@ public final class NumberUtils {
      * @param isHalfUp       True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(double value, boolean isGrouping, int fractionDigits, boolean isHalfUp) {
+    public static String format(final double value, final boolean isGrouping, final int fractionDigits, final boolean isHalfUp) {
         return format(value, isGrouping, 1, fractionDigits, isHalfUp);
     }
 
@@ -176,7 +176,7 @@ public final class NumberUtils {
      * @param isHalfUp         True to rounded towards the nearest neighbor.
      * @return the format value
      */
-    public static String format(double value, boolean isGrouping, int minIntegerDigits, int fractionDigits, boolean isHalfUp) {
+    public static String format(final double value, final boolean isGrouping, final int minIntegerDigits, final int fractionDigits, final boolean isHalfUp) {
         DecimalFormat nf = getSafeDecimalFormat();
         nf.setGroupingUsed(isGrouping);
         nf.setRoundingMode(isHalfUp ? RoundingMode.HALF_UP : RoundingMode.DOWN);
@@ -192,7 +192,7 @@ public final class NumberUtils {
      * @param value The value.
      * @return the number of double
      */
-    public static double float2Double(float value) {
+    public static double float2Double(final float value) {
         return new BigDecimal(String.valueOf(value)).doubleValue();
     }
 }

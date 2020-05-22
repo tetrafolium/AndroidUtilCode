@@ -415,7 +415,7 @@ public class EncryptUtilsTest extends BaseTest {
         System.out.println(new String(EncryptUtils.rc4(EncryptUtils.rc4(dataRc4.getBytes(), keyRc4.getBytes()), keyRc4.getBytes())));
     }
 
-    private Pair<String, String> genKeyPair(int size) throws NoSuchAlgorithmException {
+    private Pair<String, String> genKeyPair(final int size) throws NoSuchAlgorithmException {
 
         if (size == 1024) {
             return Pair.create(

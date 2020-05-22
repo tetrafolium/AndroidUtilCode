@@ -21,7 +21,7 @@ import com.blankj.utilcode.util.BarUtils;
  */
 public class CommonDialogLoading extends BaseDialogFragment {
 
-    public CommonDialogLoading init(Context context, final Runnable onCancelListener) {
+    public CommonDialogLoading init(final Context context, final Runnable onCancelListener) {
         super.init(context, new DialogLayoutCallback() {
             @Override
             public int bindTheme() {
@@ -34,7 +34,7 @@ public class CommonDialogLoading extends BaseDialogFragment {
             }
 
             @Override
-            public void initView(BaseDialogFragment dialog, View contentView) {
+            public void initView(final BaseDialogFragment dialog, final View contentView) {
                 if (onCancelListener == null) {
                     setCancelable(false);
                 } else {
@@ -49,14 +49,14 @@ public class CommonDialogLoading extends BaseDialogFragment {
             }
 
             @Override
-            public void onCancel(BaseDialogFragment dialog) {
+            public void onCancel(final BaseDialogFragment dialog) {
                 if (onCancelListener != null) {
                     onCancelListener.run();
                 }
             }
 
             @Override
-            public void onDismiss(BaseDialogFragment dialog) {
+            public void onDismiss(final BaseDialogFragment dialog) {
 
             }
         });

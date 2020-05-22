@@ -19,7 +19,7 @@ class UserBean {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -27,7 +27,7 @@ class UserBean {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -35,7 +35,7 @@ class UserBean {
         return profession;
     }
 
-    public void setProfession(String profession) {
+    public void setProfession(final String profession) {
         this.profession = profession;
     }
 
@@ -43,7 +43,7 @@ class UserBean {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 }

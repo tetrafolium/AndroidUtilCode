@@ -44,7 +44,7 @@ public final class UriUtils {
      * @param resPath The path of res.
      * @return uri
      */
-    public static Uri res2Uri(String resPath) {
+    public static Uri res2Uri(final String resPath) {
         return Uri.parse("android.resource://" + Utils.getApp().getPackageName() + "/" + resPath);
     }
 
@@ -122,7 +122,7 @@ public final class UriUtils {
             if (path != null) return new File(path);
             Log.d("UriUtils", uri.toString() + " parse failed. -> 0");
             return null;
-        }// end 0
+        } // end 0
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
                 && DocumentsContract.isDocumentUri(Utils.getApp(), uri)) {
             if ("com.android.externalstorage.documents".equals(authority)) {
@@ -175,7 +175,7 @@ public final class UriUtils {
                 }
                 Log.d("UriUtils", uri.toString() + " parse failed. -> 1_0");
                 return null;
-            }// end 1_0
+            } // end 1_0
             else if ("com.android.providers.downloads.documents".equals(authority)) {
                 final String id = DocumentsContract.getDocumentId(uri);
                 if (TextUtils.isEmpty(id)) {
@@ -205,7 +205,7 @@ public final class UriUtils {
 
                 Log.d("UriUtils", uri.toString() + " parse failed. -> 1_1");
                 return null;
-            }// end 1_1
+            } // end 1_1
             else if ("com.android.providers.media.documents".equals(authority)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
@@ -224,22 +224,22 @@ public final class UriUtils {
                 final String selection = "_id=?";
                 final String[] selectionArgs = new String[]{split[1]};
                 return getFileFromUri(contentUri, selection, selectionArgs, "1_2");
-            }// end 1_2
+            } // end 1_2
             else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
                 return getFileFromUri(uri, "1_3");
-            }// end 1_3
+            } // end 1_3
             else {
                 Log.d("UriUtils", uri.toString() + " parse failed. -> 1_4");
                 return null;
-            }// end 1_4
-        }// end 1
+            } // end 1_4
+        } // end 1
         else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
             return getFileFromUri(uri, "2");
-        }// end 2
+        } // end 2
         else {
             Log.d("UriUtils", uri.toString() + " parse failed. -> 3");
             return null;
-        }// end 3
+        } // end 3
     }
 
     private static File getFileFromUri(final Uri uri, final String code) {
@@ -294,7 +294,7 @@ public final class UriUtils {
         }
     }
 
-    private static File copyUri2Cache(Uri uri) {
+    private static File copyUri2Cache(final Uri uri) {
         Log.d("UriUtils", "copyUri2Cache() called");
         InputStream is = null;
         try {
@@ -322,7 +322,7 @@ public final class UriUtils {
      * @param uri The uri.
      * @return the input stream
      */
-    public static byte[] uri2Bytes(Uri uri) {
+    public static byte[] uri2Bytes(final Uri uri) {
         InputStream is = null;
         try {
             is = Utils.getApp().getContentResolver().openInputStream(uri);

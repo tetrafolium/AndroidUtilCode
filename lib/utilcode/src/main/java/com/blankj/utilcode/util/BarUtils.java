@@ -162,7 +162,7 @@ public final class BarUtils {
      *
      * @param view The view.
      */
-    public static void addMarginTopEqualStatusBarHeight(@NonNull View view) {
+    public static void addMarginTopEqualStatusBarHeight(final @NonNull View view) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         view.setTag(TAG_OFFSET);
         Object haveSetOffset = view.getTag(KEY_OFFSET);
@@ -180,7 +180,7 @@ public final class BarUtils {
      *
      * @param view The view.
      */
-    public static void subtractMarginTopEqualStatusBarHeight(@NonNull View view) {
+    public static void subtractMarginTopEqualStatusBarHeight(final @NonNull View view) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         Object haveSetOffset = view.getTag(KEY_OFFSET);
         if (haveSetOffset == null || !(Boolean) haveSetOffset) return;
@@ -349,16 +349,16 @@ public final class BarUtils {
 
     private static View applyStatusBarColor(final Activity activity,
                                             final int color,
-                                            boolean isDecor) {
+                                            final boolean isDecor) {
         return applyStatusBarColor(activity.getWindow(), color, isDecor);
     }
 
     private static View applyStatusBarColor(final Window window,
                                             final int color,
-                                            boolean isDecor) {
-        ViewGroup parent = isDecor ?
-                (ViewGroup) window.getDecorView() :
-                (ViewGroup) window.findViewById(android.R.id.content);
+                                            final boolean isDecor) {
+        ViewGroup parent = isDecor
+                ? (ViewGroup) window.getDecorView()
+                : (ViewGroup) window.findViewById(android.R.id.content);
         View fakeStatusBarView = parent.findViewWithTag(TAG_STATUS_BAR);
         if (fakeStatusBarView != null) {
             if (fakeStatusBarView.getVisibility() == View.GONE) {
@@ -496,7 +496,7 @@ public final class BarUtils {
      * @param activity  The activity.
      * @param isVisible True to set navigation bar visible, false otherwise.
      */
-    public static void setNavBarVisibility(@NonNull final Activity activity, boolean isVisible) {
+    public static void setNavBarVisibility(@NonNull final Activity activity, final boolean isVisible) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         setNavBarVisibility(activity.getWindow(), isVisible);
 
@@ -508,7 +508,7 @@ public final class BarUtils {
      * @param window    The window.
      * @param isVisible True to set navigation bar visible, false otherwise.
      */
-    public static void setNavBarVisibility(@NonNull final Window window, boolean isVisible) {
+    public static void setNavBarVisibility(@NonNull final Window window, final boolean isVisible) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         final ViewGroup decorView = (ViewGroup) window.getDecorView();
         for (int i = 0, count = decorView.getChildCount(); i < count; i++) {
@@ -571,7 +571,7 @@ public final class BarUtils {
         return isVisible;
     }
 
-    private static String getResNameById(int id) {
+    private static String getResNameById(final int id) {
         try {
             return Utils.getApp().getResources().getResourceEntryName(id);
         } catch (Exception ignore) {

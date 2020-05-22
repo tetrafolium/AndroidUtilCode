@@ -111,16 +111,16 @@ public class DangerousUtils {
                                            final boolean isRooted) {
         if (!isFileExists(file)) return false;
         String filePath = '"' + file.getAbsolutePath() + '"';
-        String command = "LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm install " +
-                (params == null ? "" : params + " ")
+        String command = "LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm install "
+                + (params == null ? "" : params + " ")
                 + filePath;
         ShellUtils.CommandResult commandResult = ShellUtils.execCmd(command, isRooted);
         if (commandResult.successMsg != null
                 && commandResult.successMsg.toLowerCase().contains("success")) {
             return true;
         } else {
-            Log.e("AppUtils", "installAppSilent successMsg: " + commandResult.successMsg +
-                    ", errorMsg: " + commandResult.errorMsg);
+            Log.e("AppUtils", "installAppSilent successMsg: " + commandResult.successMsg
+                    + ", errorMsg: " + commandResult.errorMsg);
             return false;
         }
     }
@@ -175,8 +175,8 @@ public class DangerousUtils {
                 && commandResult.successMsg.toLowerCase().contains("success")) {
             return true;
         } else {
-            Log.e("AppUtils", "uninstallAppSilent successMsg: " + commandResult.successMsg +
-                    ", errorMsg: " + commandResult.errorMsg);
+            Log.e("AppUtils", "uninstallAppSilent successMsg: " + commandResult.successMsg
+                    + ", errorMsg: " + commandResult.errorMsg);
             return false;
         }
     }

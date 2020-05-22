@@ -50,7 +50,7 @@ public final class SPUtils {
      * @param spName The name of sp.
      * @return the single {@link SPUtils} instance
      */
-    public static SPUtils getInstance(String spName) {
+    public static SPUtils getInstance(final String spName) {
         return getInstance(spName, Context.MODE_PRIVATE);
     }
 
@@ -61,7 +61,7 @@ public final class SPUtils {
      * @param mode   Operating mode.
      * @return the single {@link SPUtils} instance
      */
-    public static SPUtils getInstance(String spName, final int mode) {
+    public static SPUtils getInstance(final String spName, final int mode) {
         if (isSpace(spName)) spName = "spUtils";
         SPUtils spUtils = SP_UTILS_MAP.get(spName);
         if (spUtils == null) {

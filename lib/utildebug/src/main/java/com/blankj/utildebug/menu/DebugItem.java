@@ -31,13 +31,13 @@ public class DebugItem extends BaseItem<DebugItem> {
     private IDebug mDebug;
     private int    mColor = getRandomColor();
 
-    private DebugItem(IDebug debug) {
+    private DebugItem(final IDebug debug) {
         super(R.layout.du_item_menu_item);
         mDebug = debug;
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         ImageView menuItemIconIv = holder.findViewById(R.id.menuItemIconIv);
         TextView menuItemNameTv = holder.findViewById(R.id.menuItemNameTv);
 
@@ -49,16 +49,16 @@ public class DebugItem extends BaseItem<DebugItem> {
         menuItemNameTv.setText(StringUtils.getString(mDebug.getName()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mDebug.onClick(v);
             }
         });
     }
 
-    public static List<DebugItem> getDebugItems(List<IDebug> debugs) {
+    public static List<DebugItem> getDebugItems(final List<IDebug> debugs) {
         return (List<DebugItem>) CollectionUtils.collect(debugs, new CollectionUtils.Transformer<IDebug, DebugItem>() {
             @Override
-            public DebugItem transform(IDebug input) {
+            public DebugItem transform(final IDebug input) {
                 return new DebugItem(input);
             }
         });

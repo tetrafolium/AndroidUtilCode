@@ -22,7 +22,7 @@ public abstract class BaseItem<T extends BaseItem> {
     private static final SparseIntArray    LAYOUT_SPARSE_ARRAY = new SparseIntArray();
     private static final SparseArray<View> VIEW_SPARSE_ARRAY   = new SparseArray<>();
 
-    static ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    static ItemViewHolder onCreateViewHolder(final @NonNull ViewGroup parent, final int viewType) {
         int layoutByType = LAYOUT_SPARSE_ARRAY.get(viewType, -1);
         if (layoutByType != -1) {
             return new ItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(layoutByType, parent, false));
@@ -36,7 +36,7 @@ public abstract class BaseItem<T extends BaseItem> {
 
     public abstract void bind(@NonNull final ItemViewHolder holder, final int position);
 
-    public void onViewRecycled(@NonNull final ItemViewHolder holder, final int position) {/**/}
+    public void onViewRecycled(@NonNull final ItemViewHolder holder, final int position) { /**/ }
 
     public long getItemId() {
         return RecyclerView.NO_ID;
@@ -45,12 +45,12 @@ public abstract class BaseItem<T extends BaseItem> {
     private int viewType;
     BaseItemAdapter<T> mAdapter;
 
-    public BaseItem(@LayoutRes int layoutId) {
+    public BaseItem(final @LayoutRes int layoutId) {
         viewType = getViewTypeByLayoutId(layoutId);
         LAYOUT_SPARSE_ARRAY.put(viewType, layoutId);
     }
 
-    public BaseItem(@NonNull View view) {
+    public BaseItem(final @NonNull View view) {
         viewType = getViewTypeByView(view);
         VIEW_SPARSE_ARRAY.put(viewType, view);
     }
@@ -63,19 +63,19 @@ public abstract class BaseItem<T extends BaseItem> {
         return mAdapter;
     }
 
-    public boolean isViewType(@LayoutRes int layoutId) {
+    public boolean isViewType(final @LayoutRes int layoutId) {
         return viewType == getViewTypeByLayoutId(layoutId);
     }
 
-    public boolean isViewType(@NonNull View view) {
+    public boolean isViewType(final @NonNull View view) {
         return viewType == getViewTypeByView(view);
     }
 
-    private int getViewTypeByLayoutId(@LayoutRes int layoutId) {
+    private int getViewTypeByLayoutId(final @LayoutRes int layoutId) {
         return layoutId + getClass().hashCode();
     }
 
-    private int getViewTypeByView(@NonNull View view) {
+    private int getViewTypeByView(final @NonNull View view) {
         return view.hashCode() + getClass().hashCode();
     }
 

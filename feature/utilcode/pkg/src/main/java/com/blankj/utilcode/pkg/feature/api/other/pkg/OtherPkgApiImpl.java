@@ -16,7 +16,7 @@ import com.blankj.utilcode.util.ToastUtils;
 public class OtherPkgApiImpl extends OtherModuleApi {
 
     @Override
-    public void invokeWithParams(ApiBean bean) {
+    public void invokeWithParams(final ApiBean bean) {
         ToastUtils.showShort(bean.name);
     }
 

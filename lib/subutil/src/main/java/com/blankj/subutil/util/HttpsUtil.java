@@ -23,7 +23,7 @@ public final class HttpsUtil {
      * @return data receive from server
      * @author MilkZS
      */
-    public static String postJson(String data, String url) {
+    public static String postJson(final String data, final String url) {
         return doHttpAction(data, true, true, url);
     }
 
@@ -35,7 +35,7 @@ public final class HttpsUtil {
      * @return data receive from serv
      * @author MilkZS
      */
-    public static String postForm(String data, String url) {
+    public static String postForm(final String data, final String url) {
         return doHttpAction(data, false, true, url);
     }
 
@@ -47,7 +47,7 @@ public final class HttpsUtil {
      * @return data receive from server
      * @author MilkZS
      */
-    public static String getJson(String data, String url) {
+    public static String getJson(final String data, final String url) {
         return doHttpAction(data, true, false, url);
     }
 
@@ -59,11 +59,11 @@ public final class HttpsUtil {
      * @return data receive from server
      * @author MilkZS
      */
-    public static String getForm(String data, String url) {
+    public static String getForm(final String data, final String url) {
         return doHttpAction(data, false, false, url);
     }
 
-    private static String doHttpAction(String data, boolean json, boolean post, String url) {
+    private static String doHttpAction(final String data, final boolean json, final boolean post, final String url) {
         HttpURLConnection connection = null;
         DataOutputStream os = null;
         InputStream is = null;

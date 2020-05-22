@@ -146,7 +146,7 @@ public final class SpanUtils {
     private final int mTypeImage        = 1;
     private final int mTypeSpace        = 2;
 
-    private SpanUtils(TextView textView) {
+    private SpanUtils(final TextView textView) {
         this();
         mTextView = textView;
     }
@@ -539,13 +539,13 @@ public final class SpanUtils {
         this.clickSpan = new ClickableSpan() {
 
             @Override
-            public void updateDrawState(@NonNull TextPaint paint) {
+            public void updateDrawState(final @NonNull TextPaint paint) {
                 paint.setColor(color);
                 paint.setUnderlineText(underlineText);
             }
 
             @Override
-            public void onClick(@NonNull View widget) {
+            public void onClick(final @NonNull View widget) {
                 if (listener != null) {
                     listener.onClick(widget);
                 }
@@ -852,7 +852,7 @@ public final class SpanUtils {
     private void updateCharCharSequence() {
         if (mText.length() == 0) return;
         int start = mBuilder.length();
-        if (start == 0 && lineHeight != -1) {// bug of LineHeightSpan when first line
+        if (start == 0 && lineHeight != -1) { // bug of LineHeightSpan when first line
             mBuilder.append(Character.toString((char) 2))
                     .append("\n")
                     .setSpan(new AbsoluteSizeSpan(0), 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -993,18 +993,18 @@ public final class SpanUtils {
 
         final int mVerticalAlignment;
 
-        VerticalAlignSpan(int verticalAlignment) {
+        VerticalAlignSpan(final int verticalAlignment) {
             mVerticalAlignment = verticalAlignment;
         }
 
         @Override
-        public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, @Nullable Paint.FontMetricsInt fm) {
+        public int getSize(final @NonNull Paint paint, final CharSequence text, final int start, final int end, final @Nullable Paint.FontMetricsInt fm) {
             text = text.subSequence(start, end);
             return (int) paint.measureText(text.toString());
         }
 
         @Override
-        public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
+        public void draw(final @NonNull Canvas canvas, final CharSequence text, final int start, final int end, final float x, final int top, final int y, final int bottom, final @NonNull Paint paint) {
             text = text.subSequence(start, end);
             Paint.FontMetricsInt fm = paint.getFontMetricsInt();
 //            int need = height - (v + fm.descent - fm.ascent - spanstartv);
@@ -1044,7 +1044,7 @@ public final class SpanUtils {
         final  int                  mVerticalAlignment;
         static Paint.FontMetricsInt sfm;
 
-        CustomLineHeightSpan(int height, int verticalAlignment) {
+        CustomLineHeightSpan(final int height, final int verticalAlignment) {
             this.height = height;
             mVerticalAlignment = verticalAlignment;
         }

@@ -35,11 +35,11 @@ public class AppInfoItem extends BaseItem<AppInfoItem> {
     private TextView titleTv;
     private TextView contentTv;
 
-    public AppInfoItem(@StringRes int name, String info) {
+    public AppInfoItem(final @StringRes int name, final String info) {
         this(name, info, null);
     }
 
-    public AppInfoItem(@StringRes int name, String info, OnClickListener listener) {
+    public AppInfoItem(final @StringRes int name, final String info, final OnClickListener listener) {
         super(R.layout.du_item_base_info);
         mTitle = StringUtils.getString(name);
         mContent = info;
@@ -47,7 +47,7 @@ public class AppInfoItem extends BaseItem<AppInfoItem> {
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         titleTv = holder.findViewById(R.id.baseInfoTitleTv);
         contentTv = holder.findViewById(R.id.baseInfoContentTv);
 
@@ -75,7 +75,7 @@ public class AppInfoItem extends BaseItem<AppInfoItem> {
         appInfoItems.add(new AppInfoItem(R.string.du_app_info_target_sdk_version, String.valueOf(DebugUtils.getApp().getApplicationInfo().targetSdkVersion)));
         appInfoItems.add(new AppInfoItem(R.string.du_app_info_open_app_info_page, "", new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AppUtils.launchAppDetailsSettings();
             }
         }));

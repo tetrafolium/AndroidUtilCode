@@ -36,7 +36,7 @@ public class MvpModel extends BaseModel implements IMvp.Model {
             }
 
             @Override
-            public void onSuccess(String result) {
+            public void onSuccess(final String result) {
                 consumer.accept(result);
             }
         }));

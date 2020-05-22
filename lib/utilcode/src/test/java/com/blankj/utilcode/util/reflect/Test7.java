@@ -13,19 +13,19 @@ public class Test7 {
     public final String  s;
     public final Integer i;
 
-    private Test7(int i) {
+    private Test7(final int i) {
         this(null, i);
     }
 
-    private Test7(String s) {
+    private Test7(final String s) {
         this(s, null);
     }
 
-    private Test7(String s, int i) {
+    private Test7(final String s, final int i) {
         this(s, (Integer) i);
     }
 
-    private Test7(String s, Integer i) {
+    private Test7(final String s, final Integer i) {
         this.s = s;
         this.i = i;
     }

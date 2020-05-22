@@ -43,17 +43,17 @@ public class BusTest {
     }
 
     @BusUtils.Bus(tag = TAG_NO_PARAM)
-    public void sameTagParam2Fun(int arg0, Object arg1) {
+    public void sameTagParam2Fun(final int arg0, final Object arg1) {
         System.out.println("params2");
     }
 
     @BusUtils.Bus(tag = "params2")
-    public void param2Fun(int arg0, Object arg1) {
+    public void param2Fun(final int arg0, final Object arg1) {
         System.out.println("params2");
     }
 
     @BusUtils.Bus(tag = TAG_ONE_PARAM)
-    public void oneParamFun(String param) {
+    public void oneParamFun(final String param) {
         System.out.println(param);
     }
 
@@ -63,7 +63,7 @@ public class BusTest {
     }
 
     @BusUtils.Bus(tag = TAG_ONE_PARAM_STICKY, sticky = true)
-    public void oneParamStickyFun(Callback callback) {
+    public void oneParamStickyFun(final Callback callback) {
         for (String str : arr) {
             System.out.println(str);
         }
@@ -76,7 +76,7 @@ public class BusTest {
     }
 
     @BusUtils.Bus(tag = "manyparam", threadMode = BusUtils.ThreadMode.SINGLE)
-    public void haha(int a, int b) {
+    public void haha(final int a, final int b) {
         final Thread thread = Thread.currentThread();
         System.out.println(new Callback() {
             @Override
@@ -102,7 +102,7 @@ public class BusTest {
         for (List<BusInfo> value : busMap.values()) {
             value.sort(new Comparator<BusInfo>() {
                 @Override
-                public int compare(BusInfo t0, BusInfo t1) {
+                public int compare(final BusInfo t0, final BusInfo t1) {
                     return t1.priority - t0.priority;
                 }
             });
@@ -111,7 +111,7 @@ public class BusTest {
         return busMap;
     }
 
-    private static void inject2BusUtils(Map<String, List<BusInfo>> busMap) throws IOException {
+    private static void inject2BusUtils(final Map<String, List<BusInfo>> busMap) throws IOException {
         ClassReader cr = new ClassReader(BusUtils.class.getName());
         ClassWriter cw = new ClassWriter(cr, 0);
         ClassVisitor cv = new BusUtilsClassVisitor(cw, busMap, BusUtils.class.getName());

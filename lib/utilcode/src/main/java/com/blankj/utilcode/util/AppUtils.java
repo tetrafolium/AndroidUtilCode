@@ -590,7 +590,7 @@ public final class AppUtils {
      * @param pkgName The name of the package.
      * @return the application's signature for MD5 value
      */
-    public static int getAppUid(String pkgName) {
+    public static int getAppUid(final String pkgName) {
         try {
             return Utils.getApp().getPackageManager().getApplicationInfo(pkgName, 0).uid;
         } catch (Exception e) {
@@ -778,8 +778,8 @@ public final class AppUtils {
             this.versionName = versionName;
         }
 
-        public AppInfo(String packageName, String name, Drawable icon, String packagePath,
-                       String versionName, int versionCode, boolean isSystem) {
+        public AppInfo(final String packageName, final String name, final Drawable icon, final String packagePath,
+                       final String versionName, final int versionCode, final boolean isSystem) {
             this.setName(name);
             this.setIcon(icon);
             this.setPackageName(packageName);
@@ -791,15 +791,15 @@ public final class AppUtils {
 
         @Override
         public String toString() {
-            return "{" +
-                    "\n    pkg name: " + getPackageName() +
-                    "\n    app icon: " + getIcon() +
-                    "\n    app name: " + getName() +
-                    "\n    app path: " + getPackagePath() +
-                    "\n    app v name: " + getVersionName() +
-                    "\n    app v code: " + getVersionCode() +
-                    "\n    is system: " + isSystem() +
-                    "\n}";
+            return "{"
+                    + "\n    pkg name: " + getPackageName()
+                    + "\n    app icon: " + getIcon()
+                    + "\n    app name: " + getName()
+                    + "\n    app path: " + getPackagePath()
+                    + "\n    app v name: " + getVersionName()
+                    + "\n    app v code: " + getVersionCode()
+                    + "\n    is system: " + isSystem()
+                    + "\n}";
         }
     }
 }

@@ -40,11 +40,11 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     private int     mConfigCount     = 0;
     private boolean mIsBackground    = false;
 
-    void init(Application app) {
+    void init(final Application app) {
         app.registerActivityLifecycleCallbacks(this);
     }
 
-    void unInit(Application app) {
+    void unInit(final Application app) {
         mActivityList.clear();
         app.unregisterActivityLifecycleCallbacks(this);
     }
@@ -150,7 +150,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
         }
     }
 
-    private void consumeActivityLifecycleCallbacks(Activity activity, Lifecycle.Event event) {
+    private void consumeActivityLifecycleCallbacks(final Activity activity, final Lifecycle.Event event) {
         List<Utils.ActivityLifecycleCallbacks> listeners = mActivityLifecycleCallbacksMap.get(activity);
         if (listeners != null) {
             for (Utils.ActivityLifecycleCallbacks listener : listeners) {
@@ -179,7 +179,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     // lifecycle start
     ///////////////////////////////////////////////////////////////////////////
     @Override
-    public void onActivityCreated(@NonNull Activity activity, Bundle savedInstanceState) {
+    public void onActivityCreated(final @NonNull Activity activity, final Bundle savedInstanceState) {
         UtilsBridge.applyLanguage(activity);
         setAnimatorsEnabled();
         setTopActivity(activity);
@@ -187,7 +187,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     @Override
-    public void onActivityStarted(@NonNull Activity activity) {
+    public void onActivityStarted(final @NonNull Activity activity) {
         if (!mIsBackground) {
             setTopActivity(activity);
         }
@@ -211,12 +211,12 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     @Override
-    public void onActivityPaused(@NonNull Activity activity) {
+    public void onActivityPaused(final @NonNull Activity activity) {
         consumeActivityLifecycleCallbacks(activity, Lifecycle.Event.ON_PAUSE);
     }
 
     @Override
-    public void onActivityStopped(Activity activity) {
+    public void onActivityStopped(final Activity activity) {
         if (activity.isChangingConfigurations()) {
             --mConfigCount;
         } else {
@@ -231,10 +231,10 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     @Override
-    public void onActivitySaveInstanceState(@NonNull Activity activity, Bundle outState) {/**/}
+    public void onActivitySaveInstanceState(final @NonNull Activity activity, final Bundle outState) { /**/ }
 
     @Override
-    public void onActivityDestroyed(@NonNull Activity activity) {
+    public void onActivityDestroyed(final @NonNull Activity activity) {
         mActivityList.remove(activity);
         UtilsBridge.fixSoftInputLeaks(activity);
         consumeActivityLifecycleCallbacks(activity, Lifecycle.Event.ON_DESTROY);
@@ -248,7 +248,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
      * The preActivity set windowSoftInputMode will prevent
      * the keyboard from closing when curActivity onDestroy.
      */
-    private void processHideSoftInputOnActivityDestroy(final Activity activity, boolean isSave) {
+    private void processHideSoftInputOnActivityDestroy(final Activity activity, final boolean isSave) {
         if (isSave) {
             final WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
             final int softInputMode = attrs.softInputMode;

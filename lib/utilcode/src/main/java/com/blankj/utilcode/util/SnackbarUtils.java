@@ -198,7 +198,7 @@ public final class SnackbarUtils {
      *
      * @param isShowTop True to show the snack bar on the top, false otherwise.
      */
-    public Snackbar show(boolean isShowTop) {
+    public Snackbar show(final boolean isShowTop) {
         View view = this.view;
         if (view == null) return null;
         if (isShowTop) {
@@ -267,7 +267,7 @@ public final class SnackbarUtils {
      *
      * @param isShowTop True to show the snack bar on the top, false otherwise.
      */
-    public void showSuccess(boolean isShowTop) {
+    public void showSuccess(final boolean isShowTop) {
         bgColor = COLOR_SUCCESS;
         messageColor = COLOR_MESSAGE;
         actionTextColor = COLOR_MESSAGE;
@@ -286,7 +286,7 @@ public final class SnackbarUtils {
      *
      * @param isShowTop True to show the snackbar on the top, false otherwise.
      */
-    public void showWarning(boolean isShowTop) {
+    public void showWarning(final boolean isShowTop) {
         bgColor = COLOR_WARNING;
         messageColor = COLOR_MESSAGE;
         actionTextColor = COLOR_MESSAGE;
@@ -305,7 +305,7 @@ public final class SnackbarUtils {
      *
      * @param isShowTop True to show the snackbar on the top, false otherwise.
      */
-    public void showError(boolean isShowTop) {
+    public void showError(final boolean isShowTop) {
         bgColor = COLOR_ERROR;
         messageColor = COLOR_MESSAGE;
         actionTextColor = COLOR_MESSAGE;
@@ -368,7 +368,7 @@ public final class SnackbarUtils {
         }
     }
 
-    private static ViewGroup findSuitableParentCopyFromSnackbar(View view) {
+    private static ViewGroup findSuitableParentCopyFromSnackbar(final View view) {
         ViewGroup fallback = null;
 
         do {

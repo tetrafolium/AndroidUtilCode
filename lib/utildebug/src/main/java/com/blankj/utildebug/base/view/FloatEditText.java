@@ -22,17 +22,17 @@ import com.blankj.utildebug.helper.WindowHelper;
 @SuppressLint("AppCompatCustomView")
 public class FloatEditText extends EditText {
 
-    public FloatEditText(Context context) {
+    public FloatEditText(final Context context) {
         super(context);
         init();
     }
 
-    public FloatEditText(Context context, AttributeSet attrs) {
+    public FloatEditText(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public FloatEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FloatEditText(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -53,7 +53,7 @@ public class FloatEditText extends EditText {
     public void bindFloatView(final BaseContentFloatView floatView) {
         setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+            public void onFocusChange(final View v, final boolean hasFocus) {
                 WindowManager.LayoutParams params = floatView.getLayoutParams();
                 if ((params.flags & WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE) == WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE) {
                     params.flags = params.flags & ~WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;

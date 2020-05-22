@@ -76,13 +76,13 @@ public final class ActivityUtils {
      * @param context The context.
      * @return the activity by context.
      */
-    public static Activity getActivityByContext(Context context) {
+    public static Activity getActivityByContext(final Context context) {
         Activity activity = getActivityByContextInner(context);
         if (!isActivityAlive(activity)) return null;
         return activity;
     }
 
-    private static Activity getActivityByContextInner(Context context) {
+    private static Activity getActivityByContextInner(final Context context) {
         if (context == null) return null;
         List<Context> list = new ArrayList<>();
         while (context instanceof ContextWrapper) {
@@ -104,7 +104,7 @@ public final class ActivityUtils {
         return null;
     }
 
-    private static Activity getActivityFromDecorContext(Context context) {
+    private static Activity getActivityFromDecorContext(final Context context) {
         if (context == null) return null;
         if (context.getClass().getName().equals("com.android.internal.policy.DecorContext")) {
             try {
@@ -130,9 +130,9 @@ public final class ActivityUtils {
         Intent intent = new Intent();
         intent.setClassName(pkg, cls);
         PackageManager pm = Utils.getApp().getPackageManager();
-        return !(pm.resolveActivity(intent, 0) == null ||
-                intent.resolveActivity(pm) == null ||
-                pm.queryIntentActivities(intent, 0).size() == 0);
+        return !(pm.resolveActivity(intent, 0) == null
+                || intent.resolveActivity(pm) == null
+                || pm.queryIntentActivities(intent, 0).size() == 0);
     }
 
     /**

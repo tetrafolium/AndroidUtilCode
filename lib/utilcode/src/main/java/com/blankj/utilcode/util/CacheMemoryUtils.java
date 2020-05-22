@@ -65,7 +65,7 @@ public final class CacheMemoryUtils implements CacheConstants {
         return cache;
     }
 
-    private CacheMemoryUtils(String cacheKey, LruCache<String, CacheValue> memoryCache) {
+    private CacheMemoryUtils(final String cacheKey, final LruCache<String, CacheValue> memoryCache) {
         mCacheKey = cacheKey;
         mMemoryCache = memoryCache;
     }
@@ -92,7 +92,7 @@ public final class CacheMemoryUtils implements CacheConstants {
      * @param value    The value of cache.
      * @param saveTime The save time of cache, in seconds.
      */
-    public void put(@NonNull final String key, final Object value, int saveTime) {
+    public void put(@NonNull final String key, final Object value, final int saveTime) {
         if (value == null) return;
         long dueTime = saveTime < 0 ? -1 : System.currentTimeMillis() + saveTime * 1000;
         mMemoryCache.put(key, new CacheValue(dueTime, value));
@@ -160,7 +160,7 @@ public final class CacheMemoryUtils implements CacheConstants {
         long   dueTime;
         Object value;
 
-        CacheValue(long dueTime, Object value) {
+        CacheValue(final long dueTime, final Object value) {
             this.dueTime = dueTime;
             this.value = value;
         }

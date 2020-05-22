@@ -33,13 +33,13 @@ public final class SSLConfig {
     SSLSocketFactory mSSLSocketFactory;
     HostnameVerifier mHostnameVerifier;
 
-    public SSLConfig(@NonNull SSLSocketFactory factory, @NonNull HostnameVerifier verifier) {
+    public SSLConfig(final @NonNull SSLSocketFactory factory, final @NonNull HostnameVerifier verifier) {
         mSSLSocketFactory = factory;
         mHostnameVerifier = verifier;
     }
 
     public static final HostnameVerifier DEFAULT_VERIFIER           = new HostnameVerifier() {
-        public boolean verify(String hostname, SSLSession session) {
+        public boolean verify(final String hostname, final SSLSession session) {
             return true;
         }
     };
@@ -66,11 +66,11 @@ public final class SSLConfig {
                         new X509ExtendedTrustManager() {
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkClientTrusted(X509Certificate[] chain, String authType) {/**/}
+                            public void checkClientTrusted(final X509Certificate[] chain, final String authType) { /**/ }
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkServerTrusted(X509Certificate[] chain, String authType) {/**/}
+                            public void checkServerTrusted(final X509Certificate[] chain, final String authType) { /**/ }
 
                             @Override
                             public X509Certificate[] getAcceptedIssuers() {
@@ -79,19 +79,19 @@ public final class SSLConfig {
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkClientTrusted(X509Certificate[] chain, String authType, Socket socket) {/**/}
+                            public void checkClientTrusted(final X509Certificate[] chain, final String authType, final Socket socket) { /**/ }
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkServerTrusted(X509Certificate[] chain, String authType, Socket socket) {/**/}
+                            public void checkServerTrusted(final X509Certificate[] chain, final String authType, final Socket socket) { /**/ }
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkClientTrusted(X509Certificate[] chain, String authType, SSLEngine engine) {/**/}
+                            public void checkClientTrusted(final X509Certificate[] chain, final String authType, final SSLEngine engine) { /**/ }
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkServerTrusted(X509Certificate[] chain, String authType, SSLEngine engine) {/**/}
+                            public void checkServerTrusted(final X509Certificate[] chain, final String authType, final SSLEngine engine) { /**/ }
                         }
                 };
             } else {
@@ -99,11 +99,11 @@ public final class SSLConfig {
                         new X509TrustManager() {
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkClientTrusted(X509Certificate[] chain, String authType) {/**/}
+                            public void checkClientTrusted(final X509Certificate[] chain, final String authType) { /**/ }
 
                             @SuppressLint("TrustAllX509TrustManager")
                             @Override
-                            public void checkServerTrusted(X509Certificate[] chain, String authType) {/**/}
+                            public void checkServerTrusted(final X509Certificate[] chain, final String authType) { /**/ }
 
                             @Override
                             public X509Certificate[] getAcceptedIssuers() {
@@ -138,35 +138,35 @@ public final class SSLConfig {
         }
 
         @Override
-        public Socket createSocket(Socket s, String host, int port, boolean autoClose) throws IOException {
+        public Socket createSocket(final Socket s, final String host, final int port, final boolean autoClose) throws IOException {
             Socket ssl = mFactory.createSocket(s, host, port, autoClose);
             setSupportProtocolAndCipherSuites(ssl);
             return ssl;
         }
 
         @Override
-        public Socket createSocket(String host, int port) throws IOException {
+        public Socket createSocket(final String host, final int port) throws IOException {
             Socket ssl = mFactory.createSocket(host, port);
             setSupportProtocolAndCipherSuites(ssl);
             return ssl;
         }
 
         @Override
-        public Socket createSocket(String host, int port, InetAddress localHost, int localPort) throws IOException {
+        public Socket createSocket(final String host, final int port, final InetAddress localHost, final int localPort) throws IOException {
             Socket ssl = mFactory.createSocket(host, port, localHost, localPort);
             setSupportProtocolAndCipherSuites(ssl);
             return ssl;
         }
 
         @Override
-        public Socket createSocket(InetAddress host, int port) throws IOException {
+        public Socket createSocket(final InetAddress host, final int port) throws IOException {
             Socket ssl = mFactory.createSocket(host, port);
             setSupportProtocolAndCipherSuites(ssl);
             return ssl;
         }
 
         @Override
-        public Socket createSocket(InetAddress address, int port, InetAddress localAddress, int localPort) throws IOException {
+        public Socket createSocket(final InetAddress address, final int port, final InetAddress localAddress, final int localPort) throws IOException {
             Socket ssl = mFactory.createSocket(address, port, localAddress, localPort);
             setSupportProtocolAndCipherSuites(ssl);
             return ssl;
@@ -179,7 +179,7 @@ public final class SSLConfig {
             return ssl;
         }
 
-        private void setSupportProtocolAndCipherSuites(Socket socket) {
+        private void setSupportProtocolAndCipherSuites(final Socket socket) {
             if (socket instanceof SSLSocket) {
                 ((SSLSocket) socket).setEnabledProtocols(PROTOCOL_ARRAY);
             }

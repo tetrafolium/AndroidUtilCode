@@ -31,11 +31,11 @@ public class CommonItemSwitch extends CommonItem {
     private Utils.Consumer<Boolean> mSetStateConsumer;
 
 
-    public CommonItemSwitch(@StringRes int title, @NonNull Utils.Supplier<Boolean> getStateSupplier, @NonNull Utils.Consumer<Boolean> setStateConsumer) {
+    public CommonItemSwitch(final @StringRes int title, final @NonNull Utils.Supplier<Boolean> getStateSupplier, final @NonNull Utils.Consumer<Boolean> setStateConsumer) {
         this(StringUtils.getString(title), getStateSupplier, setStateConsumer);
     }
 
-    public CommonItemSwitch(@NonNull CharSequence title, @NonNull Utils.Supplier<Boolean> getStateSupplier, @NonNull Utils.Consumer<Boolean> setStateConsumer) {
+    public CommonItemSwitch(final @NonNull CharSequence title, final @NonNull Utils.Supplier<Boolean> getStateSupplier, final @NonNull Utils.Consumer<Boolean> setStateConsumer) {
         super(R.layout.common_item_title_switch);
         mTitle = title;
         mGetStateSupplier = getStateSupplier;
@@ -46,7 +46,7 @@ public class CommonItemSwitch extends CommonItem {
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
-    public void bind(@NonNull final ItemViewHolder holder, int position) {
+    public void bind(@NonNull final ItemViewHolder holder, final int position) {
         super.bind(holder, position);
         ClickUtils.applyPressedBgDark(holder.itemView);
         final TextView titleTv = holder.findViewById(R.id.commonItemTitleTv);
@@ -59,14 +59,14 @@ public class CommonItemSwitch extends CommonItem {
         switchView.setChecked(mState);
         switchView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(final View v, final MotionEvent event) {
                 holder.itemView.onTouchEvent(event);
                 return true;
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mSetStateConsumer.accept(!mState);
                 mState = mGetStateSupplier.get();
                 contentTv.setText(String.valueOf(mState));
@@ -75,7 +75,7 @@ public class CommonItemSwitch extends CommonItem {
         });
     }
 
-    public void setTitle(CharSequence title) {
+    public void setTitle(final CharSequence title) {
         mTitle = title;
         update();
     }

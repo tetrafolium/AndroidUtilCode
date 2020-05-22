@@ -78,7 +78,7 @@ public class GsonUtilsTest extends BaseTest {
         String message;
         T      data;
 
-        Result(T data) {
+        Result(final T data) {
             this.code = 200;
             this.message = "success";
             this.data = data;
@@ -91,7 +91,7 @@ public class GsonUtilsTest extends BaseTest {
         int    gender;
         String address;
 
-        Person(String name) {
+        Person(final String name) {
             this.name = name;
         }
     }

@@ -20,7 +20,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByFixed() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -37,7 +37,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -50,7 +50,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByFixedWithDelay() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -66,7 +66,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -79,7 +79,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByFixedAtFixRate() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestScheduledTask<String> task = new TestScheduledTask<String>(latch, 3) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -95,7 +95,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -108,7 +108,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeBySingle() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -124,7 +124,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -137,7 +137,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeBySingleWithDelay() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -153,7 +153,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -166,7 +166,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeBySingleAtFixRate() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestScheduledTask<String> task = new TestScheduledTask<String>(latch, 3) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -182,7 +182,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -195,7 +195,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByIo() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -211,7 +211,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -224,7 +224,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByIoWithDelay() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -240,7 +240,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -253,7 +253,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByIoAtFixRate() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestScheduledTask<String> task = new TestScheduledTask<String>(latch, 3) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -269,7 +269,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -282,7 +282,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByCpu() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -298,7 +298,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -311,7 +311,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByCpuWithDelay() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestTask<String> task = new TestTask<String>(latch) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -327,7 +327,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -340,7 +340,7 @@ public class ThreadUtilsTest extends BaseTest {
     public void executeByCpuAtFixRate() throws Exception {
         asyncTest(10, new TestRunnable<String>() {
             @Override
-            public void run(final int index, CountDownLatch latch) {
+            public void run(final int index, final CountDownLatch latch) {
                 final TestScheduledTask<String> task = new TestScheduledTask<String>(latch, 3) {
                     @Override
                     public String doInBackground() throws Throwable {
@@ -356,7 +356,7 @@ public class ThreadUtilsTest extends BaseTest {
                     }
 
                     @Override
-                    void onTestSuccess(String result) {
+                    void onTestSuccess(final String result) {
                         System.out.println(result);
                     }
                 };
@@ -379,7 +379,7 @@ public class ThreadUtilsTest extends BaseTest {
                 }
 
                 @Override
-                public void onSuccess(Integer result) {
+                public void onSuccess(final Integer result) {
                     System.out.println(result);
                     if (result == 10) {
                         ThreadUtils.cancel(ThreadUtils.getCachedPool());
@@ -394,7 +394,7 @@ public class ThreadUtilsTest extends BaseTest {
                 }
 
                 @Override
-                public void onFail(Throwable t) {
+                public void onFail(final Throwable t) {
                     countDownLatch.countDown();
                 }
             });
@@ -415,7 +415,7 @@ public class ThreadUtilsTest extends BaseTest {
             }
 
             @Override
-            public void onSuccess(Boolean result) {
+            public void onSuccess(final Boolean result) {
                 System.out.println("onSuccess");
             }
         }.setTimeout(1000, new ThreadUtils.Task.OnTimeoutListener() {
@@ -443,7 +443,7 @@ public class ThreadUtilsTest extends BaseTest {
         abstract void onTestSuccess(T result);
 
         @Override
-        public void onSuccess(T result) {
+        public void onSuccess(final T result) {
             onTestSuccess(result);
             if (ATOMIC_INTEGER.addAndGet(1) % mTimes == 0) {
                 mLatch.countDown();
@@ -457,7 +457,7 @@ public class ThreadUtilsTest extends BaseTest {
         }
 
         @Override
-        public void onFail(Throwable t) {
+        public void onFail(final Throwable t) {
             System.out.println(Thread.currentThread() + " onFail: " + t);
             mLatch.countDown();
         }
@@ -473,7 +473,7 @@ public class ThreadUtilsTest extends BaseTest {
         abstract void onTestSuccess(T result);
 
         @Override
-        public void onSuccess(T result) {
+        public void onSuccess(final T result) {
             onTestSuccess(result);
             mLatch.countDown();
         }
@@ -485,13 +485,13 @@ public class ThreadUtilsTest extends BaseTest {
         }
 
         @Override
-        public void onFail(Throwable t) {
+        public void onFail(final Throwable t) {
             System.out.println(Thread.currentThread() + " onFail: " + t);
             mLatch.countDown();
         }
     }
 
-    private <T> void asyncTest(int threadCount, TestRunnable<T> runnable) throws Exception {
+    private <T> void asyncTest(final int threadCount, final TestRunnable<T> runnable) throws Exception {
         CountDownLatch latch = new CountDownLatch(threadCount);
         for (int i = 0; i < threadCount; i++) {
             runnable.run(i, latch);

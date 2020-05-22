@@ -49,7 +49,7 @@ public class ApiTest {
         return apiImplMap;
     }
 
-    private static void inject2ApiUtils(Map<String, ApiInfo> apiImpls) throws IOException {
+    private static void inject2ApiUtils(final Map<String, ApiInfo> apiImpls) throws IOException {
         ClassReader cr = new ClassReader(ApiUtils.class.getName());
         ClassWriter cw = new ClassWriter(cr, 0);
         ClassVisitor cv = new ApiUtilsClassVisitor(cw, apiImpls, ApiUtils.class.getCanonicalName());
@@ -62,7 +62,7 @@ public class ApiTest {
     public static class TestApiImpl extends TestApi {
 
         @Override
-        public String test(String param) {
+        public String test(final String param) {
             System.out.println("param = " + param);
             return "haha";
         }

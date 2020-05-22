@@ -56,18 +56,18 @@ public class FileItem extends BaseItem<FileItem> {
     private TextView       fileInfoTv;
     private TextView       fileMenuDeleteTv;
 
-    public FileItem(File file, String name) {
+    public FileItem(final File file, final String name) {
         this(file, name, false);
     }
 
-    public FileItem(File file, String name, boolean isSdcard) {
+    public FileItem(final File file, final String name, final boolean isSdcard) {
         super(R.layout.du_item_file);
         mFile = file;
         mName = name;
         this.isSdcard = isSdcard;
     }
 
-    public FileItem(FileItem parent, File file) {
+    public FileItem(final FileItem parent, final File file) {
         super(R.layout.du_item_file);
         mParent = parent;
         mFile = file;
@@ -79,7 +79,7 @@ public class FileItem extends BaseItem<FileItem> {
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         if (isViewType(R.layout.du_item_empty)) return;
         fileContentRl = holder.findViewById(R.id.fileContentRl);
         fileTypeIv = holder.findViewById(R.id.fileTypeIv);
@@ -94,7 +94,7 @@ public class FileItem extends BaseItem<FileItem> {
 
         fileMenuDeleteTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 boolean delete = FileUtils.delete(mFile);
                 if (delete) {
                     getAdapter().removeItem(FileItem.this, true);
@@ -145,7 +145,7 @@ public class FileItem extends BaseItem<FileItem> {
                 ImageLoader.load(mFile, fileTypeIv);
                 fileContentRl.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(final View v) {
                         FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
                         ImageViewer.show(floatView, mFile);
                     }
@@ -156,7 +156,7 @@ public class FileItem extends BaseItem<FileItem> {
                 fileTypeIv.setImageResource(R.drawable.du_ic_item_file_sp);
                 fileContentRl.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(final View v) {
                         FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
                         SpViewerContentView.show(floatView, mFile);
                     }
@@ -164,7 +164,7 @@ public class FileItem extends BaseItem<FileItem> {
             } else {
                 fileContentRl.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(final View v) {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(UriUtils.file2Uri(mFile));
@@ -186,7 +186,7 @@ public class FileItem extends BaseItem<FileItem> {
         if (parent == null) return getFileItems();
         List<File> files = FileUtils.listFilesInDir(parent.getFile(), new Comparator<File>() {
             @Override
-            public int compare(File o1, File o2) {
+            public int compare(final File o1, final File o2) {
                 if (o1.isDirectory() && o2.isFile()) {
                     return -1;
                 } else if (o1.isFile() && o2.isDirectory()) {
@@ -198,7 +198,7 @@ public class FileItem extends BaseItem<FileItem> {
         });
         return (List<FileItem>) CollectionUtils.collect(files, new CollectionUtils.Transformer<File, FileItem>() {
             @Override
-            public FileItem transform(File input) {
+            public FileItem transform(final File input) {
                 return new FileItem(parent, input);
             }
         });
@@ -233,16 +233,16 @@ public class FileItem extends BaseItem<FileItem> {
         return fileItems;
     }
 
-    public static List<FileItem> filterItems(List<FileItem> items, final String key) {
+    public static List<FileItem> filterItems(final List<FileItem> items, final String key) {
         return (List<FileItem>) CollectionUtils.select(items, new CollectionUtils.Predicate<FileItem>() {
             @Override
-            public boolean evaluate(FileItem item) {
+            public boolean evaluate(final FileItem item) {
                 return item.mName.toLowerCase().contains(key.toLowerCase());
             }
         });
     }
 
-    public static boolean isEmptyItems(List<FileItem> items) {
+    public static boolean isEmptyItems(final List<FileItem> items) {
         return EMPTY == items;
     }
 }

@@ -1145,7 +1145,7 @@ public final class EncryptUtils {
      * @param data The data.
      * @param key  The key.
      */
-    public static byte[] rc4(byte[] data, byte[] key) {
+    public static byte[] rc4(final byte[] data, final byte[] key) {
         if (data == null || data.length == 0 || key == null) return null;
         if (key.length < 1 || key.length > 256) {
             throw new IllegalArgumentException("key must be between 1 and 256 bytes");

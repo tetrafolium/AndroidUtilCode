@@ -33,25 +33,25 @@ public class CommonActivityTitleView {
     public FrameLayout       baseTitleContentView;
     public ViewStub          mViewStub;
 
-    public CommonActivityTitleView(@NonNull AppCompatActivity activity, @StringRes int resId) {
+    public CommonActivityTitleView(final @NonNull AppCompatActivity activity, final @StringRes int resId) {
         this(activity, activity.getString(resId), true);
     }
 
-    public CommonActivityTitleView(@NonNull AppCompatActivity activity, @NonNull CharSequence title) {
+    public CommonActivityTitleView(final @NonNull AppCompatActivity activity, final @NonNull CharSequence title) {
         this(activity, title, true);
     }
 
-    public CommonActivityTitleView(@NonNull AppCompatActivity activity, @StringRes int resId, boolean isSupportScroll) {
+    public CommonActivityTitleView(final @NonNull AppCompatActivity activity, final @StringRes int resId, final boolean isSupportScroll) {
         this(activity, activity.getString(resId), isSupportScroll);
     }
 
-    public CommonActivityTitleView(@NonNull AppCompatActivity activity, @NonNull CharSequence title, boolean isSupportScroll) {
+    public CommonActivityTitleView(final @NonNull AppCompatActivity activity, final @NonNull CharSequence title, final boolean isSupportScroll) {
         mBaseActivity = activity;
         mTitle = title;
         mIsSupportScroll = isSupportScroll;
     }
 
-    public void setIsSupportScroll(boolean isSupportScroll) {
+    public void setIsSupportScroll(final boolean isSupportScroll) {
         mIsSupportScroll = isSupportScroll;
     }
 
@@ -84,7 +84,7 @@ public class CommonActivityTitleView {
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             mBaseActivity.finish();
             return true;

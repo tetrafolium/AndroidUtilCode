@@ -40,7 +40,7 @@ public final class GsonUtils {
      *
      * @param delegate The delegate of {@link Gson}.
      */
-    public static void setGsonDelegate(Gson delegate) {
+    public static void setGsonDelegate(final Gson delegate) {
         if (delegate == null) return;
         GSONS.put(KEY_DELEGATE, delegate);
     }

@@ -170,7 +170,7 @@ public final class SDCardUtils {
         private long    totalSize;
         private long    availableSize;
 
-        SDCardInfo(String path, String state, boolean isRemovable) {
+        SDCardInfo(final String path, final String state, final boolean isRemovable) {
             this.path = path;
             this.state = state;
             this.isRemovable = isRemovable;
@@ -200,13 +200,13 @@ public final class SDCardUtils {
 
         @Override
         public String toString() {
-            return "SDCardInfo {" +
-                    "path = " + path +
-                    ", state = " + state +
-                    ", isRemovable = " + isRemovable +
-                    ", totalSize = " + Formatter.formatFileSize(Utils.getApp(), totalSize) +
-                    ", availableSize = " + Formatter.formatFileSize(Utils.getApp(), availableSize) +
-                    '}';
+            return "SDCardInfo {"
+                    + "path = " + path
+                    + ", state = " + state
+                    + ", isRemovable = " + isRemovable
+                    + ", totalSize = " + Formatter.formatFileSize(Utils.getApp(), totalSize)
+                    + ", availableSize = " + Formatter.formatFileSize(Utils.getApp(), availableSize)
+                    + '}';
         }
     }
 }

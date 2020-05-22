@@ -39,11 +39,11 @@ public class SwipeRightMenu extends LinearLayout {
 
     private int mMenusWidth = 0;
 
-    public SwipeRightMenu(Context context) {
+    public SwipeRightMenu(final Context context) {
         this(context, null);
     }
 
-    public SwipeRightMenu(Context context, @Nullable AttributeSet attrs) {
+    public SwipeRightMenu(final Context context, final @Nullable AttributeSet attrs) {
         super(context, attrs);
         setOrientation(HORIZONTAL);
         post(new Runnable() {
@@ -95,7 +95,7 @@ public class SwipeRightMenu extends LinearLayout {
     private int mLastY;
     private int slideDirection;
 
-    private boolean isTouchPointInView(View view, int x, int y) {
+    private boolean isTouchPointInView(final View view, final int x, final int y) {
         if (view == null) {
             return false;
         }
@@ -113,7 +113,7 @@ public class SwipeRightMenu extends LinearLayout {
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(final MotionEvent event) {
         int x = (int) event.getRawX();
         int y = (int) event.getRawY();
         switch (event.getAction()) {
@@ -141,7 +141,7 @@ public class SwipeRightMenu extends LinearLayout {
                     if (Math.abs(x - mDownX) > Math.abs(y - mDownY)) {
                         slideDirection = SLIDE_HORIZONTAL;
                         cancelChildViewTouch();
-                        requestDisallowInterceptTouchEvent(true);// 让父 view 不要拦截
+                        requestDisallowInterceptTouchEvent(true); // 让父 view 不要拦截
                     } else {
                         slideDirection = SLIDE_VERTICAL;
                     }
@@ -181,17 +181,17 @@ public class SwipeRightMenu extends LinearLayout {
                     } else {
                         super.dispatchTouchEvent(event);
                     }
-                    if (swipeMenuOpened != null && swipeMenuOpened.get() == this) {// 如果之前是展开状态
-                        if (getScrollX() < mMenusWidth - THRESHOLD_DISTANCE) {// 超过阈值则关闭
+                    if (swipeMenuOpened != null && swipeMenuOpened.get() == this) { // 如果之前是展开状态
+                        if (getScrollX() < mMenusWidth - THRESHOLD_DISTANCE) { // 超过阈值则关闭
                             close(true);
-                        } else {// 否则还是打开
+                        } else { // 否则还是打开
                             open(true);
                         }
                     } else {
-                        if (getScrollX() > THRESHOLD_DISTANCE) {// 如果是关闭
-                            open(true);// 超过阈值则打开
+                        if (getScrollX() > THRESHOLD_DISTANCE) { // 如果是关闭
+                            open(true); // 超过阈值则打开
                         } else {
-                            close(true);// 否则还是关闭
+                            close(true); // 否则还是关闭
                         }
                     }
                 } finally {
@@ -205,20 +205,20 @@ public class SwipeRightMenu extends LinearLayout {
         return true;
     }
 
-    private void updateLeftMarginByPercent(float percent) {
+    private void updateLeftMarginByPercent(final float percent) {
         for (MenuBean menu : mMenus) {
             menu.getParams().leftMargin = (int) (menu.getCloseMargin() + percent * (menu.getOpenMargin() - menu.getCloseMargin()));
             menu.getView().requestLayout();
         }
     }
 
-    private void close(boolean isAnim) {
+    private void close(final boolean isAnim) {
         swipeMenuOpened = null;
         if (isAnim) {
             ValueAnimator anim = ValueAnimator.ofInt(getScrollX(), 0);
             anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
+                public void onAnimationUpdate(final ValueAnimator animation) {
                     scrollTo((int) animation.getAnimatedValue(), 0);
                 }
             });
@@ -229,7 +229,7 @@ public class SwipeRightMenu extends LinearLayout {
                 ValueAnimator menuAnim = ValueAnimator.ofInt(menu.getParams().leftMargin, menu.getCloseMargin());
                 menuAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
+                    public void onAnimationUpdate(final ValueAnimator animation) {
                         menu.getParams().leftMargin = (int) animation.getAnimatedValue();
                         menu.getView().requestLayout();
                     }
@@ -247,13 +247,13 @@ public class SwipeRightMenu extends LinearLayout {
         }
     }
 
-    private void open(boolean isAnim) {
+    private void open(final boolean isAnim) {
         swipeMenuOpened = new WeakReference<>(this);
         if (isAnim) {
             ValueAnimator anim = ValueAnimator.ofInt(getScrollX(), mMenusWidth);
             anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
+                public void onAnimationUpdate(final ValueAnimator animation) {
                     scrollTo((int) animation.getAnimatedValue(), 0);
                 }
             });
@@ -264,7 +264,7 @@ public class SwipeRightMenu extends LinearLayout {
                 ValueAnimator menuAnim = ValueAnimator.ofInt(menu.getParams().leftMargin, menu.getOpenMargin());
                 menuAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
+                    public void onAnimationUpdate(final ValueAnimator animation) {
                         menu.getParams().leftMargin = (int) animation.getAnimatedValue();
                         menu.getView().requestLayout();
                     }
@@ -282,7 +282,7 @@ public class SwipeRightMenu extends LinearLayout {
         }
     }
 
-    public void close(SwipeRightMenu exclude) {
+    public void close(final SwipeRightMenu exclude) {
         if (swipeMenuOpened != null) {
             final SwipeRightMenu swipeMenu = swipeMenuOpened.get();
             if (swipeMenu != exclude) {
@@ -309,7 +309,7 @@ public class SwipeRightMenu extends LinearLayout {
         private int                       mCloseMargin;
         private int                       mOpenMargin;
 
-        public MenuBean(View view) {
+        public MenuBean(final View view) {
             mView = view;
             mParams = (LayoutParams) view.getLayoutParams();
             mWidth = view.getWidth();
@@ -335,11 +335,11 @@ public class SwipeRightMenu extends LinearLayout {
             return mOpenMargin;
         }
 
-        public void setCloseMargin(int closeMargin) {
+        public void setCloseMargin(final int closeMargin) {
             mCloseMargin = closeMargin;
         }
 
-        public void setOpenMargin(int openMargin) {
+        public void setOpenMargin(final int openMargin) {
             mOpenMargin = openMargin;
         }
     }

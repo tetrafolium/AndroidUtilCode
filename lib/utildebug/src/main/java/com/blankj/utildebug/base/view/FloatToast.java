@@ -94,36 +94,36 @@ public class FloatToast extends BaseFloatView {
         toastMsgTv.setText(mMsg);
     }
 
-    private void setType(int type) {
+    private void setType(final int type) {
         mType = type;
     }
 
-    private void setMsg(String msg) {
+    private void setMsg(final String msg) {
         mMsg = msg == null ? "" : msg;
     }
 
-    public static void showShort(String msg) {
+    public static void showShort(final String msg) {
         show(msg, 2000);
     }
 
-    public static void showShort(@Type int type, String msg) {
+    public static void showShort(final @Type int type, final String msg) {
         show(type, msg, 2000);
     }
 
-    public static void showLong(String msg) {
+    public static void showLong(final String msg) {
         show(msg, 3500);
     }
 
-    public static void showLong(@Type int type, String msg) {
+    public static void showLong(final @Type int type, final String msg) {
         show(type, msg, 3500);
     }
 
     @SuppressLint("WrongConstant")
-    public static void show(String msg, long millis) {
+    public static void show(final String msg, final long millis) {
         show(-1, msg, millis);
     }
 
-    public static void show(@Type int type, String msg, long millis) {
+    public static void show(final @Type int type, final String msg, final long millis) {
         INSTANCE.removeCallbacks(DISMISS_RUNNABLE);
         INSTANCE.dismiss();
         INSTANCE.setType(type);

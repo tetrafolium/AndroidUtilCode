@@ -38,7 +38,7 @@ public final class TimeUtils {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static SimpleDateFormat getSafeDateFormat(String pattern) {
+    public static SimpleDateFormat getSafeDateFormat(final String pattern) {
         Map<String, SimpleDateFormat> sdfMap = SDF_THREAD_LOCAL.get();
         //noinspection ConstantConditions
         SimpleDateFormat simpleDateFormat = sdfMap.get(pattern);
@@ -71,7 +71,7 @@ public final class TimeUtils {
      * @param pattern The pattern of date format, such as yyyy/MM/dd HH:mm
      * @return the formatted time string
      */
-    public static String millis2String(long millis, @NonNull final String pattern) {
+    public static String millis2String(final long millis, @NonNull final String pattern) {
         return millis2String(millis, getSafeDateFormat(pattern));
     }
 
@@ -1595,7 +1595,7 @@ public final class TimeUtils {
         return millis / unit;
     }
 
-    static String millis2FitTimeSpan(long millis, int precision) {
+    static String millis2FitTimeSpan(final long millis, final int precision) {
         if (precision <= 0) return null;
         precision = Math.min(precision, 5);
         String[] units = {"天", "小时", "分钟", "秒", "毫秒"};

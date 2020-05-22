@@ -23,7 +23,7 @@ public class ViewUtils {
      * @param view    The view.
      * @param enabled True to enabled, false otherwise.
      */
-    public static void setViewEnabled(View view, boolean enabled) {
+    public static void setViewEnabled(final View view, final boolean enabled) {
         setViewEnabled(view, enabled, (View) null);
     }
 
@@ -34,7 +34,7 @@ public class ViewUtils {
      * @param enabled  True to enabled, false otherwise.
      * @param excludes The excludes.
      */
-    public static void setViewEnabled(View view, boolean enabled, View... excludes) {
+    public static void setViewEnabled(final View view, final boolean enabled, final View... excludes) {
         if (view == null) return;
         if (excludes != null) {
             for (View exclude : excludes) {
@@ -62,7 +62,7 @@ public class ViewUtils {
      * @param runnable    The runnable.
      * @param delayMillis The delay (in milliseconds) until the Runnable will be executed.
      */
-    public static void runOnUiThreadDelayed(final Runnable runnable, long delayMillis) {
+    public static void runOnUiThreadDelayed(final Runnable runnable, final long delayMillis) {
         UtilsBridge.runOnUiThreadDelayed(runnable, delayMillis);
     }
 
@@ -89,7 +89,7 @@ public class ViewUtils {
      *
      * @param view The root view inner of ScrollView.
      */
-    public static void fixScrollViewTopping(View view) {
+    public static void fixScrollViewTopping(final View view) {
         view.setFocusable(false);
         ViewGroup viewGroup = null;
         if (view instanceof ViewGroup) {

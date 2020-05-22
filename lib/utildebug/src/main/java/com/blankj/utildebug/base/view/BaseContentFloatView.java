@@ -97,24 +97,24 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         }
     }
 
-    public void setTitle(CharSequence title) {
+    public void setTitle(final CharSequence title) {
         bcfTitleTv.setText(title);
     }
 
-    void setOnRefreshListener(OnRefreshListener listener) {
+    void setOnRefreshListener(final OnRefreshListener listener) {
         mRefreshListener = listener;
     }
 
-    void setRefreshEnabled(boolean enabled) {
+    void setRefreshEnabled(final boolean enabled) {
         swipePanel.setTopEnabled(enabled);
     }
 
-    public void setSwipeBackEnabled(boolean enabled) {
+    public void setSwipeBackEnabled(final boolean enabled) {
         swipePanel.setLeftEnabled(enabled);
     }
 
     public void back() {
-        swipePanel.close(SwipePanel.TOP, false);// 返回先关闭刷新
+        swipePanel.close(SwipePanel.TOP, false); // 返回先关闭刷新
         swipePanel.removeAllViews();
         if (mContentView == null) {
             dismiss();
@@ -160,7 +160,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         super.onDetachedFromWindow();
     }
 
-    void replace(BaseContentView<T> view, boolean isAddStack) {
+    void replace(final BaseContentView<T> view, final boolean isAddStack) {
         if (view == null) return;
         if (isAddStack) {
             mViewStack.add(view);
@@ -182,14 +182,14 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         ClickUtils.applyPressedBgDark(bcfTitleRl);
         bcfTitleRl.setOnClickListener(new ClickUtils.OnMultiClickListener(2) {
             @Override
-            public void onTriggerClick(View v) {
+            public void onTriggerClick(final View v) {
                 mLayoutParams.alpha = mLayoutParams.alpha == 0.5f ? 1f : 0.5f;
                 WindowHelper.updateViewLayout(BaseContentFloatView.this, mLayoutParams);
                 DebugConfig.saveViewAlpha(BaseContentFloatView.this, mLayoutParams.alpha);
             }
 
             @Override
-            public void onBeforeTriggerClick(View v, int count) {
+            public void onBeforeTriggerClick(final View v, final int count) {
                 if (count == 1) {
 
                 }
@@ -197,19 +197,19 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         });
         TouchUtils.setOnTouchListener(bcfTitleRl, new TouchUtils.OnTouchUtilsListener() {
             @Override
-            public boolean onDown(View view, int x, int y, MotionEvent event) {
+            public boolean onDown(final View view, final int x, final int y, final MotionEvent event) {
                 return true;
             }
 
             @Override
-            public boolean onMove(View view, int direction, int x, int y, int dx, int dy, int totalX, int totalY, MotionEvent event) {
+            public boolean onMove(final View view, final int direction, final int x, final int y, final int dx, final int dy, final int totalX, final int totalY, final MotionEvent event) {
                 mLayoutParams.y = Math.min(Math.max(mLayoutParams.y + dy, 0), WindowHelper.getAppWindowHeight() - bcfRootLayout.getHeight());
                 WindowHelper.updateViewLayout(BaseContentFloatView.this, mLayoutParams);
                 return true;
             }
 
             @Override
-            public boolean onStop(View view, int direction, int x, int y, int totalX, int totalY, int vx, int vy, MotionEvent event) {
+            public boolean onStop(final View view, final int direction, final int x, final int y, final int totalX, final int totalY, final int vx, final int vy, final MotionEvent event) {
                 DebugConfig.saveViewY(BaseContentFloatView.this, mLayoutParams.y);
                 return true;
             }
@@ -218,7 +218,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         ClickUtils.applyPressedBgDark(bcfCloseIv, 0.8f);
         bcfCloseIv.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 dismiss();
             }
         });
@@ -226,7 +226,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         ClickUtils.applyPressedBgDark(bcfAdjustIv, 0.8f);
         bcfAdjustIv.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 FloatToast.showLong(FloatToast.WARNING, StringUtils.getString(R.string.du_adjust_tips));
             }
         });
@@ -235,7 +235,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
             private int minHeight;
 
             @Override
-            public boolean onDown(View view, int x, int y, MotionEvent event) {
+            public boolean onDown(final View view, final int x, final int y, final MotionEvent event) {
                 int[] locations = new int[2];
                 getLocationOnScreen(locations);
                 mLayoutParams.height = WindowHelper.getAppWindowHeight() - locations[1];
@@ -246,7 +246,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
             }
 
             @Override
-            public boolean onMove(View view, int direction, int x, int y, int dx, final int dy, int totalX, int totalY, MotionEvent event) {
+            public boolean onMove(final View view, final int direction, final int x, final int y, final int dx, final int dy, final int totalX, final int totalY, final MotionEvent event) {
                 ViewGroup.LayoutParams layoutParams = bcfRootLayout.getLayoutParams();
                 layoutParams.height = Math.min(Math.max(bcfRootLayout.getHeight() + dy, minHeight), mLayoutParams.height);
                 bcfRootLayout.setLayoutParams(layoutParams);
@@ -254,7 +254,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
             }
 
             @Override
-            public boolean onStop(View view, int direction, int x, int y, int totalX, int totalY, int vx, int vy, MotionEvent event) {
+            public boolean onStop(final View view, final int direction, final int x, final int y, final int totalX, final int totalY, final int vx, final int vy, final MotionEvent event) {
                 mLayoutParams.height = bcfRootLayout.getHeight();
                 WindowHelper.updateViewLayout(BaseContentFloatView.this, mLayoutParams);
                 DebugConfig.saveViewHeight(BaseContentFloatView.this, mLayoutParams.height);
@@ -267,7 +267,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
         swipePanel = findViewById(R.id.bcfSwipePanel);
         swipePanel.setOnFullSwipeListener(new SwipePanel.OnFullSwipeListener() {
             @Override
-            public void onFullSwipe(int direction) {
+            public void onFullSwipe(final int direction) {
                 if (direction == SwipePanel.LEFT) {
                     swipePanel.close(direction);
                     back();
@@ -282,7 +282,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
 
         swipePanel.setOnProgressChangedListener(new SwipePanel.OnProgressChangedListener() {
             @Override
-            public void onProgressChanged(int direction, float progress, boolean isTouch) {
+            public void onProgressChanged(final int direction, final float progress, final boolean isTouch) {
                 if (direction == SwipePanel.TOP) {
                     Drawable topDrawable = swipePanel.getTopDrawable();
                     if (isTouch) {
@@ -325,7 +325,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
     }
 
     @Override
-    protected void onConfigurationChanged(Configuration newConfig) {
+    protected void onConfigurationChanged(final Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         wrapWindow();
     }

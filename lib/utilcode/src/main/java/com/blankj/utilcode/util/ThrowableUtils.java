@@ -22,7 +22,7 @@ public class ThrowableUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-    public static String getFullStackTrace(Throwable throwable) {
+    public static String getFullStackTrace(final Throwable throwable) {
         final List<Throwable> throwableList = new ArrayList<>();
         while (throwable != null && !throwableList.contains(throwable)) {
             throwableList.add(throwable);

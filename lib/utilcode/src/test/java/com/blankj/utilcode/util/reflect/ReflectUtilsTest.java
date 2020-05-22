@@ -489,7 +489,7 @@ public class ReflectUtilsTest {
         class MyMap extends HashMap<String, Object> {
             private String baz;
 
-            public void setBaz(String baz) {
+            public void setBaz(final String baz) {
                 this.baz = "MyMap: " + baz;
             }
 

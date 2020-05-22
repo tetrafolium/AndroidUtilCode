@@ -28,11 +28,11 @@ public abstract class BaseView<V extends BaseView> {
 
     public abstract void onDestroyView();
 
-    public BaseView(FragmentActivity activity) {
+    public BaseView(final FragmentActivity activity) {
         mActivity = activity;
     }
 
-    public BaseView(Fragment fragment) {
+    public BaseView(final Fragment fragment) {
         mFragment = fragment;
         mActivity = fragment.getActivity();
     }
@@ -47,13 +47,13 @@ public abstract class BaseView<V extends BaseView> {
         return (T) mFragment;
     }
 
-    public void addPresenter(BasePresenter<V> presenter) {
+    public void addPresenter(final BasePresenter<V> presenter) {
         mPresenterMap.put(presenter.getClass(), presenter);
         //noinspection unchecked
         presenter.bindView((V) this);
     }
 
-    public <P extends BasePresenter<V>> P getPresenter(Class<P> presenterClass) {
+    public <P extends BasePresenter<V>> P getPresenter(final Class<P> presenterClass) {
         BasePresenter<V> basePresenter = mPresenterMap.get(presenterClass);
         if (basePresenter != null) {
             //noinspection unchecked

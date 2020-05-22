@@ -193,14 +193,14 @@ public final class ObjectUtils {
      * Consequently, if both arguments are {@code null} 0
      * is returned.
      */
-    public static <T> int compare(T a, T b, @NonNull Comparator<? super T> c) {
+    public static <T> int compare(final T a, final T b, final @NonNull Comparator<? super T> c) {
         return (a == b) ? 0 : c.compare(a, b);
     }
 
     /**
      * Checks that the specified object reference is not {@code null}.
      */
-    public static <T> T requireNonNull(T obj) {
+    public static <T> T requireNonNull(final T obj) {
         if (obj == null) throw new NullPointerException();
         return obj;
     }
@@ -209,7 +209,7 @@ public final class ObjectUtils {
      * Checks that the specified object reference is not {@code null} and
      * throws a customized {@link NullPointerException} if it is.
      */
-    public static <T> T requireNonNull(T obj, String ifNullTip) {
+    public static <T> T requireNonNull(final T obj, final String ifNullTip) {
         if (obj == null) throw new NullPointerException(ifNullTip);
         return obj;
     }
@@ -246,7 +246,7 @@ public final class ObjectUtils {
      * Returns the result of calling {@code toString} for a non-{@code
      * null} argument and {@code "null"} for a {@code null} argument.
      */
-    public static String toString(Object obj) {
+    public static String toString(final Object obj) {
         return String.valueOf(obj);
     }
 
@@ -255,7 +255,7 @@ public final class ObjectUtils {
      * argument if the first argument is not {@code null} and returns
      * the second argument otherwise.
      */
-    public static String toString(Object o, String nullDefault) {
+    public static String toString(final Object o, final String nullDefault) {
         return (o != null) ? o.toString() : nullDefault;
     }
 
@@ -272,7 +272,7 @@ public final class ObjectUtils {
     /**
      * Return the hash code of objects.
      */
-    public static int hashCodes(Object... values) {
+    public static int hashCodes(final Object... values) {
         return Arrays.hashCode(values);
     }
 }

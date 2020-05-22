@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
     private Boolean isMainProcess;
 
     @Override
-    protected void attachBaseContext(Context base) {
+    protected void attachBaseContext(final Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
@@ -70,7 +70,7 @@ public class BaseApplication extends Application {
                 // 新增 ArrayList 格式化器，默认已支持 Array, Throwable, Bundle, Intent 的格式化输出
                 .addFormatter(new LogUtils.IFormatter<ArrayList>() {
                     @Override
-                    public String format(ArrayList arrayList) {
+                    public String format(final ArrayList arrayList) {
                         return "LogUtils Formatter ArrayList { " + arrayList.toString() + " }";
                     }
                 })
@@ -81,7 +81,7 @@ public class BaseApplication extends Application {
     private void initCrash() {
         CrashUtils.init(new CrashUtils.OnCrashListener() {
             @Override
-            public void onCrash(String crashInfo, Throwable e) {
+            public void onCrash(final String crashInfo, final Throwable e) {
                 LogUtils.e(crashInfo);
                 AppUtils.relaunchApp();
             }

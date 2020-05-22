@@ -187,7 +187,7 @@ public final class ZipUtils {
     }
 
     private static boolean zipFile(final File srcFile,
-                                   String rootPath,
+                                   final String rootPath,
                                    final ZipOutputStream zos,
                                    final String comment)
             throws IOException {

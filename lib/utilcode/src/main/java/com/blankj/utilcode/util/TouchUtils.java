@@ -61,7 +61,7 @@ public class TouchUtils {
             resetTouch(-1, -1);
         }
 
-        private void resetTouch(int x, int y) {
+        private void resetTouch(final int x, final int y) {
             downX = x;
             downY = y;
             lastX = x;
@@ -96,7 +96,7 @@ public class TouchUtils {
                                        MotionEvent event);
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public boolean onTouch(final View v, final MotionEvent event) {
             if (touchSlop == 0) {
                 touchSlop = ViewConfiguration.get(v.getContext()).getScaledTouchSlop();
             }
@@ -127,7 +127,7 @@ public class TouchUtils {
             return false;
         }
 
-        public boolean onUtilsDown(View view, MotionEvent event) {
+        public boolean onUtilsDown(final View view, final MotionEvent event) {
             int x = (int) event.getRawX();
             int y = (int) event.getRawY();
 
@@ -136,7 +136,7 @@ public class TouchUtils {
             return onDown(view, x, y, event);
         }
 
-        public boolean onUtilsMove(View view, MotionEvent event) {
+        public boolean onUtilsMove(final View view, final MotionEvent event) {
             int x = (int) event.getRawX();
             int y = (int) event.getRawY();
 
@@ -173,7 +173,7 @@ public class TouchUtils {
             return consumeMove;
         }
 
-        public boolean onUtilsStop(View view, MotionEvent event) {
+        public boolean onUtilsStop(final View view, final MotionEvent event) {
             int x = (int) event.getRawX();
             int y = (int) event.getRawY();
 

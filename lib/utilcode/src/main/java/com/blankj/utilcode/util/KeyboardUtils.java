@@ -50,7 +50,7 @@ public final class KeyboardUtils {
     /**
      * Show the soft input.
      */
-    public static void showSoftInput(@NonNull Activity activity) {
+    public static void showSoftInput(final @NonNull Activity activity) {
         if (!isSoftInputVisible(activity)) {
             toggleSoftInput();
         }
@@ -81,7 +81,7 @@ public final class KeyboardUtils {
         view.requestFocus();
         imm.showSoftInput(view, flags, new ResultReceiver(new Handler()) {
             @Override
-            protected void onReceiveResult(int resultCode, Bundle resultData) {
+            protected void onReceiveResult(final int resultCode, final Bundle resultData) {
                 if (resultCode == InputMethodManager.RESULT_UNCHANGED_HIDDEN
                         || resultCode == InputMethodManager.RESULT_HIDDEN) {
                     toggleSoftInput();
@@ -326,7 +326,7 @@ public final class KeyboardUtils {
                 if (view.getRootView() == window.getDecorView().getRootView()) {
                     leakViewField.set(imm, null);
                 }
-            } catch (Throwable ignore) {/**/}
+            } catch (Throwable ignore) { /**/ }
         }
     }
 

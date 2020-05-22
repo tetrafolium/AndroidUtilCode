@@ -20,20 +20,20 @@ public class RotateView extends View {
 
     private ObjectAnimator headerAnimator;
 
-    public RotateView(Context context) {
+    public RotateView(final Context context) {
         this(context, null);
     }
 
-    public RotateView(Context context, @Nullable AttributeSet attrs) {
+    public RotateView(final Context context, final @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RotateView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RotateView(final Context context, final @Nullable AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
-    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+    protected void onVisibilityChanged(final @NonNull View changedView, final int visibility) {
         super.onVisibilityChanged(changedView, visibility);
         if (headerAnimator == null) {
             initAnimator();

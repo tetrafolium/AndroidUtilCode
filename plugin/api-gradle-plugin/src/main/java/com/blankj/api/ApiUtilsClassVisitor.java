@@ -23,14 +23,14 @@ public class ApiUtilsClassVisitor extends ClassVisitor {
     private Map<String, ApiInfo> mApiImplMap;
     private String               mApiUtilsClass;
 
-    public ApiUtilsClassVisitor(ClassVisitor classVisitor, Map<String, ApiInfo> apiImplMap, String apiUtilsClass) {
+    public ApiUtilsClassVisitor(final ClassVisitor classVisitor, final Map<String, ApiInfo> apiImplMap, final String apiUtilsClass) {
         super(Opcodes.ASM5, classVisitor);
         mApiImplMap = apiImplMap;
         mApiUtilsClass = apiUtilsClass.replace(".", "/");
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+    public MethodVisitor visitMethod(final int access, final String name, final String descriptor, final String signature, final String[] exceptions) {
         if (!"init".equals(name)) {
             return super.visitMethod(access, name, descriptor, signature, exceptions);
         }
@@ -40,7 +40,7 @@ public class ApiUtilsClassVisitor extends ClassVisitor {
         mv = new AdviceAdapter(Opcodes.ASM5, mv, access, name, descriptor) {
 
             @Override
-            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+            public AnnotationVisitor visitAnnotation(final String desc, final boolean visible) {
                 return super.visitAnnotation(desc, visible);
             }
 
@@ -50,7 +50,7 @@ public class ApiUtilsClassVisitor extends ClassVisitor {
             }
 
             @Override
-            protected void onMethodExit(int opcode) {
+            protected void onMethodExit(final int opcode) {
                 super.onMethodExit(opcode);
                 for (Map.Entry<String, ApiInfo> apiImplEntry : mApiImplMap.entrySet()) {
                     mv.visitVarInsn(Opcodes.ALOAD, 0);

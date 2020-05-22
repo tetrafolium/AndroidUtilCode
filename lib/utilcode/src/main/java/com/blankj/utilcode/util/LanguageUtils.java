@@ -153,7 +153,7 @@ public class LanguageUtils {
      * @param locale The locale.
      * @return {@code true}: yes<br>{@code false}: no
      */
-    public static boolean isAppliedLanguage(Locale locale) {
+    public static boolean isAppliedLanguage(final Locale locale) {
         final String spLocale = UtilsBridge.getSpUtils4Utils().getString(KEY_LOCALE);
         if (TextUtils.isEmpty(spLocale)) {
             return false;
@@ -194,13 +194,13 @@ public class LanguageUtils {
         updateLanguage(activity, settingLocale);
     }
 
-    private static String locale2String(Locale locale) {
+    private static String locale2String(final Locale locale) {
         String localLanguage = locale.getLanguage();
         String localCountry = locale.getCountry();
         return localLanguage + "$" + localCountry;
     }
 
-    private static Locale string2Locale(String str) {
+    private static Locale string2Locale(final String str) {
         String[] language_country = str.split("\\$");
         if (language_country.length != 2) {
             Log.e("LanguageUtils", "The string of " + str + " is not in the correct format.");
@@ -210,7 +210,7 @@ public class LanguageUtils {
     }
 
 
-    private static void updateLanguage(final Context context, Locale locale) {
+    private static void updateLanguage(final Context context, final Locale locale) {
         Resources resources = context.getResources();
         Configuration config = resources.getConfiguration();
         Locale contextLocale = config.locale;
@@ -227,7 +227,7 @@ public class LanguageUtils {
                     Field mBaseField = ContextWrapper.class.getDeclaredField("mBase");
                     mBaseField.setAccessible(true);
                     mBaseField.set(context, newContext);
-                } catch (Exception ignored) {/**/}
+                } catch (Exception ignored) { /**/ }
             }
         } else {
             config.locale = locale;
@@ -235,7 +235,7 @@ public class LanguageUtils {
         resources.updateConfiguration(config, dm);
     }
 
-    private static boolean isSameLocale(Locale l0, Locale l1) {
+    private static boolean isSameLocale(final Locale l0, final Locale l1) {
         return UtilsBridge.equals(l1.getLanguage(), l0.getLanguage())
                 && UtilsBridge.equals(l1.getCountry(), l0.getCountry());
     }

@@ -41,11 +41,11 @@ public final class HttpUtils {
     private final  Config    mConfig;
     private static HttpUtils sHttpUtils;
 
-    private HttpUtils(@NonNull Config config) {
+    private HttpUtils(final @NonNull Config config) {
         mConfig = config;
     }
 
-    public static HttpUtils getInstance(@NonNull Config config) {
+    public static HttpUtils getInstance(final @NonNull Config config) {
         if (sHttpUtils == null) {
             synchronized (HttpUtils.class) {
                 sHttpUtils = new HttpUtils(config);
@@ -73,7 +73,7 @@ public final class HttpUtils {
         return conn;
     }
 
-    private static void addBody(HttpURLConnection conn, Request.Body body) throws IOException {
+    private static void addBody(final HttpURLConnection conn, final Request.Body body) throws IOException {
         if (body == null) {
             conn.setRequestMethod("GET");
         } else {
@@ -198,7 +198,7 @@ public final class HttpUtils {
         private Request          request;
         private ResponseCallback callback;
 
-        public Call(Request request, ResponseCallback callback) {
+        public Call(final Request request, final ResponseCallback callback) {
             this.request = request;
             this.callback = callback;
         }
@@ -222,8 +222,8 @@ public final class HttpUtils {
                     if (es != null) {
                         errorMsg = is2String(es, "utf-8");
                     }
-                    callback.onFailed(new NetworkErrorException("error code: " + responseCode +
-                            (isSpace(errorMsg) ? "" : ("\n" + "error message: " + errorMsg))));
+                    callback.onFailed(new NetworkErrorException("error code: " + responseCode
+                            + (isSpace(errorMsg) ? "" : ("\n" + "error message: " + errorMsg))));
                 }
             } catch (IOException e) {
                 callback.onFailed(e);

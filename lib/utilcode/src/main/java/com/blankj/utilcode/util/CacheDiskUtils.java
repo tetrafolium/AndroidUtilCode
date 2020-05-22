@@ -98,7 +98,7 @@ public final class CacheDiskUtils implements CacheConstants {
      * @param maxCount  The max count of cache.
      * @return the single {@link CacheDiskUtils} instance
      */
-    public static CacheDiskUtils getInstance(String cacheName, final long maxSize, final int maxCount) {
+    public static CacheDiskUtils getInstance(final String cacheName, final long maxSize, final int maxCount) {
         if (UtilsBridge.isSpace(cacheName)) cacheName = "cacheUtils";
         File file = new File(Utils.getApp().getCacheDir(), cacheName);
         return getInstance(file, maxSize, maxCount);
@@ -196,7 +196,7 @@ public final class CacheDiskUtils implements CacheConstants {
         realPutBytes(TYPE_BYTE + key, value, saveTime);
     }
 
-    private void realPutBytes(final String key, byte[] value, int saveTime) {
+    private void realPutBytes(final String key, final byte[] value, final int saveTime) {
         if (value == null) return;
         DiskCacheManager diskCacheManager = getDiskCacheManager();
         if (diskCacheManager == null) return;
@@ -669,7 +669,7 @@ public final class CacheDiskUtils implements CacheConstants {
                     int count = 0;
                     final File[] cachedFiles = cacheDir.listFiles(new FilenameFilter() {
                         @Override
-                        public boolean accept(File dir, String name) {
+                        public boolean accept(final File dir, final String name) {
                             return name.startsWith(CACHE_PREFIX);
                         }
                     });
@@ -753,7 +753,7 @@ public final class CacheDiskUtils implements CacheConstants {
         private boolean clear() {
             File[] files = cacheDir.listFiles(new FilenameFilter() {
                 @Override
-                public boolean accept(File dir, String name) {
+                public boolean accept(final File dir, final String name) {
                     return name.startsWith(CACHE_PREFIX);
                 }
             });

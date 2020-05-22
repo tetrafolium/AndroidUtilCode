@@ -24,7 +24,7 @@ import java.util.concurrent.Executor;
 public class BaseTest {
 
     @BusUtils.Bus(tag = "base")
-    public void noParamFun(int i) {
+    public void noParamFun(final int i) {
         System.out.println("base" + i);
     }
 
@@ -32,7 +32,7 @@ public class BaseTest {
         ShadowLog.stream = System.out;
         ThreadUtils.setDeliver(new Executor() {
             @Override
-            public void execute(@NonNull Runnable command) {
+            public void execute(final @NonNull Runnable command) {
                 command.run();
             }
         });

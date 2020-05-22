@@ -70,11 +70,11 @@ public class DebugMenu extends BaseContentFloatView<DebugMenu> {
         debugMenuRv.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    public void setDebugs(List<IDebug> debugs) {
+    public void setDebugs(final List<IDebug> debugs) {
         mDebugs = debugs;
     }
 
-    public void addDebugs(List<IDebug> debugs) {
+    public void addDebugs(final List<IDebug> debugs) {
         if (debugs == null || debugs.size() == 0) return;
         mDebugs.addAll(debugs);
         if (mAdapter == null) return;

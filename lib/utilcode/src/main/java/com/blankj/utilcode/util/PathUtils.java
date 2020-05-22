@@ -29,7 +29,7 @@ public final class PathUtils {
      * @param child  The child path.
      * @return the path
      */
-    public static String join(String parent, String child) {
+    public static String join(final String parent, final String child) {
         if (TextUtils.isEmpty(child)) return parent;
         if (parent == null) {
             parent = "";
@@ -47,7 +47,7 @@ public final class PathUtils {
         return newPath;
     }
 
-    private static String getLegalSegment(String segment) {
+    private static String getLegalSegment(final String segment) {
         int st = -1, end = -1;
         char[] charArray = segment.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
@@ -140,7 +140,7 @@ public final class PathUtils {
      * @param name The name of database.
      * @return the path of /data/data/package/databases/name
      */
-    public static String getInternalAppDbPath(String name) {
+    public static String getInternalAppDbPath(final String name) {
         return getAbsolutePath(Utils.getApp().getDatabasePath(name));
     }
 

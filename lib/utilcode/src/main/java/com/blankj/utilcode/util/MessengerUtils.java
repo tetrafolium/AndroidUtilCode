@@ -109,7 +109,7 @@ public class MessengerUtils {
         subscribers.remove(key);
     }
 
-    public static void post(@NonNull String key, @NonNull Bundle data) {
+    public static void post(final @NonNull String key, final @NonNull Bundle data) {
         data.putString(KEY_STRING, key);
         if (sLocalClient != null) {
             sLocalClient.sendMsg2Server(data);
@@ -131,7 +131,7 @@ public class MessengerUtils {
         @SuppressLint("HandlerLeak")
         Handler mReceiveServeMsgHandler = new Handler() {
             @Override
-            public void handleMessage(Message msg) {
+            public void handleMessage(final Message msg) {
                 Bundle data = msg.getData();
                 if (data != null) {
                     String key = data.getString(KEY_STRING);
@@ -148,7 +148,7 @@ public class MessengerUtils {
         ServiceConnection mConn   = new ServiceConnection() {
 
             @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
+            public void onServiceConnected(final ComponentName name, final IBinder service) {
                 Log.d("MessengerUtils", "client service connected " + name);
                 mServer = new Messenger(service);
                 int key = UtilsBridge.getCurrentProcessName().hashCode();
@@ -163,7 +163,7 @@ public class MessengerUtils {
             }
 
             @Override
-            public void onServiceDisconnected(ComponentName name) {
+            public void onServiceDisconnected(final ComponentName name) {
                 Log.w("MessengerUtils", "client service disconnected:" + name);
                 mServer = null;
                 if (!bind()) {
@@ -172,7 +172,7 @@ public class MessengerUtils {
             }
         };
 
-        Client(String pkgName) {
+        Client(final String pkgName) {
             this.mPkgName = pkgName;
         }
 
@@ -207,10 +207,10 @@ public class MessengerUtils {
             }
             try {
                 Utils.getApp().unbindService(mConn);
-            } catch (Exception ignore) {/*ignore*/}
+            } catch (Exception ignore) { /*ignore*/ }
         }
 
-        void sendMsg2Server(Bundle bundle) {
+        void sendMsg2Server(final Bundle bundle) {
             if (mServer == null) {
                 mCached.addFirst(bundle);
                 Log.i("MessengerUtils", "save the bundle " + bundle);
@@ -231,7 +231,7 @@ public class MessengerUtils {
             }
         }
 
-        private boolean send2Server(Bundle bundle) {
+        private boolean send2Server(final Bundle bundle) {
             Message msg = Message.obtain(mReceiveServeMsgHandler, WHAT_SEND);
             msg.setData(bundle);
             msg.replyTo = mClient;
@@ -252,7 +252,7 @@ public class MessengerUtils {
         @SuppressLint("HandlerLeak")
         private final Handler mReceiveClientMsgHandler = new Handler() {
             @Override
-            public void handleMessage(Message msg) {
+            public void handleMessage(final Message msg) {
                 switch (msg.what) {
                     case WHAT_SUBSCRIBE:
                         mClientMap.put(msg.arg1, msg.replyTo);
@@ -274,12 +274,12 @@ public class MessengerUtils {
 
         @Nullable
         @Override
-        public IBinder onBind(Intent intent) {
+        public IBinder onBind(final Intent intent) {
             return messenger.getBinder();
         }
 
         @Override
-        public int onStartCommand(Intent intent, int flags, int startId) {
+        public int onStartCommand(final Intent intent, final int flags, final int startId) {
             if (intent != null) {
                 Bundle extras = intent.getExtras();
                 if (extras != null) {

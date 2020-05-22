@@ -72,7 +72,7 @@ public final class ThreadUtils {
         }
     }
 
-    public static void runOnUiThreadDelayed(final Runnable runnable, long delayMillis) {
+    public static void runOnUiThreadDelayed(final Runnable runnable, final long delayMillis) {
         HANDLER.postDelayed(runnable, delayMillis);
     }
 
@@ -297,7 +297,7 @@ public final class ThreadUtils {
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
                                                    final Task<T> task,
-                                                   long initialDelay,
+                                                   final long initialDelay,
                                                    final long period,
                                                    final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(size), task, initialDelay, period, unit);
@@ -316,7 +316,7 @@ public final class ThreadUtils {
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
                                                    final Task<T> task,
-                                                   long initialDelay,
+                                                   final long initialDelay,
                                                    final long period,
                                                    final TimeUnit unit,
                                                    @IntRange(from = 1, to = 10) final int priority) {
@@ -415,7 +415,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    long initialDelay,
+                                                    final long initialDelay,
                                                     final long period,
                                                     final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_SINGLE), task, initialDelay, period, unit);
@@ -432,7 +432,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    long initialDelay,
+                                                    final long initialDelay,
                                                     final long period,
                                                     final TimeUnit unit,
                                                     @IntRange(from = 1, to = 10) final int priority) {
@@ -533,7 +533,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    long initialDelay,
+                                                    final long initialDelay,
                                                     final long period,
                                                     final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CACHED), task, initialDelay, period, unit);
@@ -550,7 +550,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    long initialDelay,
+                                                    final long initialDelay,
                                                     final long period,
                                                     final TimeUnit unit,
                                                     @IntRange(from = 1, to = 10) final int priority) {
@@ -651,7 +651,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                long initialDelay,
+                                                final long initialDelay,
                                                 final long period,
                                                 final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_IO), task, initialDelay, period, unit);
@@ -668,7 +668,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                long initialDelay,
+                                                final long initialDelay,
                                                 final long period,
                                                 final TimeUnit unit,
                                                 @IntRange(from = 1, to = 10) final int priority) {
@@ -769,7 +769,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 long initialDelay,
+                                                 final long initialDelay,
                                                  final long period,
                                                  final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CPU), task, initialDelay, period, unit);
@@ -786,7 +786,7 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 long initialDelay,
+                                                 final long initialDelay,
                                                  final long period,
                                                  final TimeUnit unit,
                                                  @IntRange(from = 1, to = 10) final int priority) {
@@ -850,7 +850,7 @@ public final class ThreadUtils {
      */
     public static <T> void executeByCustomAtFixRate(final ExecutorService pool,
                                                     final Task<T> task,
-                                                    long initialDelay,
+                                                    final long initialDelay,
                                                     final long period,
                                                     final TimeUnit unit) {
         executeAtFixedRate(pool, task, initialDelay, period, unit);
@@ -897,7 +897,7 @@ public final class ThreadUtils {
      *
      * @param executorService The pool.
      */
-    public static void cancel(ExecutorService executorService) {
+    public static void cancel(final ExecutorService executorService) {
         if (executorService instanceof ThreadPoolExecutor4Util) {
             for (Map.Entry<Task, ExecutorService> taskTaskInfoEntry : TASK_POOL_MAP.entrySet()) {
                 if (taskTaskInfoEntry.getValue() == executorService) {
@@ -931,14 +931,14 @@ public final class ThreadUtils {
 
     private static <T> void executeAtFixedRate(final ExecutorService pool,
                                                final Task<T> task,
-                                               long delay,
+                                               final long delay,
                                                final long period,
                                                final TimeUnit unit) {
         execute(pool, task, delay, period, unit);
     }
 
     private static <T> void execute(final ExecutorService pool, final Task<T> task,
-                                    long delay, final long period, final TimeUnit unit) {
+                                    final long delay, final long period, final TimeUnit unit) {
         synchronized (TASK_POOL_MAP) {
             if (TASK_POOL_MAP.get(task) != null) {
                 Log.e("ThreadUtils", "Task can only be executed once.");
@@ -1035,10 +1035,10 @@ public final class ThreadUtils {
 
         private LinkedBlockingQueue4Util mWorkQueue;
 
-        ThreadPoolExecutor4Util(int corePoolSize, int maximumPoolSize,
-                                long keepAliveTime, TimeUnit unit,
-                                LinkedBlockingQueue4Util workQueue,
-                                ThreadFactory threadFactory) {
+        ThreadPoolExecutor4Util(final int corePoolSize, final int maximumPoolSize,
+                                final long keepAliveTime, final TimeUnit unit,
+                                final LinkedBlockingQueue4Util workQueue,
+                                final ThreadFactory threadFactory) {
             super(corePoolSize, maximumPoolSize,
                     keepAliveTime, unit,
                     workQueue,
@@ -1053,13 +1053,13 @@ public final class ThreadUtils {
         }
 
         @Override
-        protected void afterExecute(Runnable r, Throwable t) {
+        protected void afterExecute(final Runnable r, final Throwable t) {
             mSubmittedCount.decrementAndGet();
             super.afterExecute(r, t);
         }
 
         @Override
-        public void execute(@NonNull Runnable command) {
+        public void execute(final @NonNull Runnable command) {
             if (this.isShutdown()) return;
             mSubmittedCount.incrementAndGet();
             try {
@@ -1083,22 +1083,22 @@ public final class ThreadUtils {
             super();
         }
 
-        LinkedBlockingQueue4Util(boolean isAddSubThreadFirstThenAddQueue) {
+        LinkedBlockingQueue4Util(final boolean isAddSubThreadFirstThenAddQueue) {
             super();
             if (isAddSubThreadFirstThenAddQueue) {
                 mCapacity = 0;
             }
         }
 
-        LinkedBlockingQueue4Util(int capacity) {
+        LinkedBlockingQueue4Util(final int capacity) {
             super();
             mCapacity = capacity;
         }
 
         @Override
-        public boolean offer(@NonNull Runnable runnable) {
-            if (mCapacity <= size() &&
-                    mPool != null && mPool.getPoolSize() < mPool.getMaximumPoolSize()) {
+        public boolean offer(final @NonNull Runnable runnable) {
+            if (mCapacity <= size()
+                    && mPool != null && mPool.getPoolSize() < mPool.getMaximumPoolSize()) {
                 // create a non-core thread
                 return false;
             }
@@ -1114,20 +1114,20 @@ public final class ThreadUtils {
         private final        int           priority;
         private final        boolean       isDaemon;
 
-        UtilsThreadFactory(String prefix, int priority) {
+        UtilsThreadFactory(final String prefix, final int priority) {
             this(prefix, priority, false);
         }
 
-        UtilsThreadFactory(String prefix, int priority, boolean isDaemon) {
-            namePrefix = prefix + "-pool-" +
-                    POOL_NUMBER.getAndIncrement() +
-                    "-thread-";
+        UtilsThreadFactory(final String prefix, final int priority, final boolean isDaemon) {
+            namePrefix = prefix + "-pool-"
+                    + POOL_NUMBER.getAndIncrement()
+                    + "-thread-";
             this.priority = priority;
             this.isDaemon = isDaemon;
         }
 
         @Override
-        public Thread newThread(@NonNull Runnable r) {
+        public Thread newThread(final @NonNull Runnable r) {
             Thread t = new Thread(r, namePrefix + getAndIncrement()) {
                 @Override
                 public void run() {
@@ -1141,7 +1141,7 @@ public final class ThreadUtils {
             t.setDaemon(isDaemon);
             t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
                 @Override
-                public void uncaughtException(Thread t, Throwable e) {
+                public void uncaughtException(final Thread t, final Throwable e) {
                     System.out.println(e);
                 }
             });
@@ -1158,7 +1158,7 @@ public final class ThreadUtils {
         }
 
         @Override
-        public void onFail(Throwable t) {
+        public void onFail(final Throwable t) {
             Log.e("ThreadUtils", "onFail: ", t);
         }
 
@@ -1259,7 +1259,7 @@ public final class ThreadUtils {
             cancel(true);
         }
 
-        public void cancel(boolean mayInterruptIfRunning) {
+        public void cancel(final boolean mayInterruptIfRunning) {
             synchronized (state) {
                 if (state.get() > RUNNING) return;
                 state.set(CANCELLED);
@@ -1299,7 +1299,7 @@ public final class ThreadUtils {
             return state.get() > RUNNING;
         }
 
-        public Task<T> setDeliver(Executor deliver) {
+        public Task<T> setDeliver(final Executor deliver) {
             this.deliver = deliver;
             return this;
         }
@@ -1313,7 +1313,7 @@ public final class ThreadUtils {
             return this;
         }
 
-        private void setSchedule(boolean isSchedule) {
+        private void setSchedule(final boolean isSchedule) {
             this.isSchedule = isSchedule;
         }
 
@@ -1345,7 +1345,7 @@ public final class ThreadUtils {
         private AtomicBoolean  mFlag  = new AtomicBoolean();
         private T              mValue;
 
-        public void setValue(T value) {
+        public void setValue(final T value) {
             if (mFlag.compareAndSet(false, true)) {
                 mValue = value;
                 mLatch.countDown();
@@ -1368,7 +1368,7 @@ public final class ThreadUtils {
         if (sDeliver == null) {
             sDeliver = new Executor() {
                 @Override
-                public void execute(@NonNull Runnable command) {
+                public void execute(final @NonNull Runnable command) {
                     runOnUiThread(command);
                 }
             };

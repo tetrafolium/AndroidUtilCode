@@ -235,7 +235,7 @@ public final class ScreenUtils {
      * @param isDeleteStatusBar True to delete status bar, false otherwise.
      * @return the bitmap of screen
      */
-    public static Bitmap screenShot(@NonNull final Activity activity, boolean isDeleteStatusBar) {
+    public static Bitmap screenShot(@NonNull final Activity activity, final boolean isDeleteStatusBar) {
         View decorView = activity.getWindow().getDecorView();
         boolean drawingCacheEnabled = decorView.isDrawingCacheEnabled();
         boolean willNotCacheDrawing = decorView.willNotCacheDrawing();

@@ -23,7 +23,7 @@ public class MvpPresenter extends BasePresenter<MvpView>
         getView().setLoadingVisible(true);
         getModel(MvpModel.class).requestUpdateMsg(new Utils.Consumer<String>() {
             @Override
-            public void accept(String s) {
+            public void accept(final String s) {
                 getView().showMsg(s);
                 getView().setLoadingVisible(false);
             }

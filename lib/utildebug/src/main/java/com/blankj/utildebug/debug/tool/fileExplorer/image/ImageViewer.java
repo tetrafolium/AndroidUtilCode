@@ -22,11 +22,11 @@ public class ImageViewer extends BaseContentView<FileExplorerFloatView> {
 
     private PhotoView photoView;
 
-    public static void show(FileExplorerFloatView floatView, File file) {
+    public static void show(final FileExplorerFloatView floatView, final File file) {
         new ImageViewer(file).attach(floatView, true);
     }
 
-    public ImageViewer(File file) {
+    public ImageViewer(final File file) {
         mFile = file;
     }
 

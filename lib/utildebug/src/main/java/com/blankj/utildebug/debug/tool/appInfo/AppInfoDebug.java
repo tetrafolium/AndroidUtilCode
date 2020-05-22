@@ -19,7 +19,7 @@ import com.blankj.utildebug.menu.DebugMenu;
 public class AppInfoDebug extends AbsToolDebug {
 
     @Override
-    public void onAppCreate(Context context) {
+    public void onAppCreate(final Context context) {
 
     }
 
@@ -36,7 +36,7 @@ public class AppInfoDebug extends AbsToolDebug {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         DebugMenu.getInstance().dismiss();
         new AppInfoFloatView().show();
     }

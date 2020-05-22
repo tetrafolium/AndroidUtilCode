@@ -18,7 +18,7 @@ public class UiMessageUtilsTest extends BaseTest {
     public void singleMessageTest() {
         UiMessageUtils.UiMessageCallback listener = new UiMessageUtils.UiMessageCallback() {
             @Override
-            public void handleMessage(@NonNull UiMessageUtils.UiMessage localMessage) {
+            public void handleMessage(final @NonNull UiMessageUtils.UiMessage localMessage) {
                 System.out.println("receive -> " + localMessage.getId() + ": " + localMessage.getObject());
             }
         };
@@ -35,7 +35,7 @@ public class UiMessageUtilsTest extends BaseTest {
     public void multiMessageTest() {
         UiMessageUtils.UiMessageCallback listener = new UiMessageUtils.UiMessageCallback() {
             @Override
-            public void handleMessage(@NonNull UiMessageUtils.UiMessage localMessage) {
+            public void handleMessage(final @NonNull UiMessageUtils.UiMessage localMessage) {
                 switch (localMessage.getId()) {
                     case 1:
                         System.out.println("receive -> 1: " + localMessage.getObject());

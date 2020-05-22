@@ -57,7 +57,7 @@ public final class RegexUtils {
      * @param newSegments The new segments of mobile number.
      * @return {@code true}: yes<br>{@code false}: no
      */
-    public static boolean isMobileExact(final CharSequence input, List<String> newSegments) {
+    public static boolean isMobileExact(final CharSequence input, final List<String> newSegments) {
         boolean match = isMatch(RegexConstants.REGEX_MOBILE_EXACT, input);
         if (match) return true;
         if (newSegments == null) return false;

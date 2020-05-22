@@ -347,7 +347,7 @@ public final class ToastUtils {
 
     static class ToastFactory {
 
-        static IToast makeToast(Context context, CharSequence text, int duration) {
+        static IToast makeToast(final Context context, final CharSequence text, final int duration) {
             if (NotificationManagerCompat.from(context).areNotificationsEnabled()) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (!UtilsBridge.isGrantedDrawOverlays()) {
@@ -358,7 +358,7 @@ public final class ToastUtils {
             return new ToastWithoutNotification(makeNormalToast(context, text, duration));
         }
 
-        static IToast newToast(Context context) {
+        static IToast newToast(final Context context) {
             if (NotificationManagerCompat.from(context).areNotificationsEnabled()) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (!UtilsBridge.isGrantedDrawOverlays()) {
@@ -369,7 +369,7 @@ public final class ToastUtils {
             return new ToastWithoutNotification(new Toast(context));
         }
 
-        private static Toast makeNormalToast(Context context, CharSequence text, int duration) {
+        private static Toast makeNormalToast(final Context context, final CharSequence text, final int duration) {
             @SuppressLint("ShowToast")
             Toast toast = Toast.makeText(context, "", duration);
             toast.setText(text);
@@ -379,7 +379,7 @@ public final class ToastUtils {
 
     static class SystemToast extends AbsToast {
 
-        SystemToast(Toast toast) {
+        SystemToast(final Toast toast) {
             super(toast);
             if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N_MR1) {
                 try {
@@ -391,7 +391,7 @@ public final class ToastUtils {
                     mTNmHandlerField.setAccessible(true);
                     Handler tnHandler = (Handler) mTNmHandlerField.get(mTN);
                     mTNmHandlerField.set(mTN, new SafeHandler(tnHandler));
-                } catch (Exception ignored) {/**/}
+                } catch (Exception ignored) { /**/ }
             }
         }
 
@@ -408,17 +408,17 @@ public final class ToastUtils {
         static class SafeHandler extends Handler {
             private Handler impl;
 
-            SafeHandler(Handler impl) {
+            SafeHandler(final Handler impl) {
                 this.impl = impl;
             }
 
             @Override
-            public void handleMessage(Message msg) {
+            public void handleMessage(final Message msg) {
                 impl.handleMessage(msg);
             }
 
             @Override
-            public void dispatchMessage(Message msg) {
+            public void dispatchMessage(final Message msg) {
                 try {
                     impl.dispatchMessage(msg);
                 } catch (Exception e) {
@@ -435,7 +435,7 @@ public final class ToastUtils {
 
         private WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
 
-        ToastWithoutNotification(Toast toast) {
+        ToastWithoutNotification(final Toast toast) {
             super(toast);
         }
 
@@ -490,7 +490,7 @@ public final class ToastUtils {
                 if (mWM != null) {
                     mWM.addView(mView, mParams);
                 }
-            } catch (Exception ignored) {/**/}
+            } catch (Exception ignored) { /**/ }
 
             UtilsBridge.runOnUiThreadDelayed(new Runnable() {
                 @Override
@@ -528,7 +528,7 @@ public final class ToastUtils {
         private Utils.ActivityLifecycleCallbacks getActivityLifecycleCallbacks() {
             return new Utils.ActivityLifecycleCallbacks() {
                 @Override
-                public void onActivityDestroyed(@NonNull Activity activity) {
+                public void onActivityDestroyed(final @NonNull Activity activity) {
                     if (iToast == null) return;
                     activity.getWindow().getDecorView().setVisibility(View.GONE);
                     iToast.cancel();
@@ -542,7 +542,7 @@ public final class ToastUtils {
                 if (mWM != null) {
                     mWM.removeViewImmediate(mView);
                 }
-            } catch (Exception ignored) {/**/}
+            } catch (Exception ignored) { /**/ }
             mView = null;
             mWM = null;
             mToast = null;
@@ -553,12 +553,12 @@ public final class ToastUtils {
 
         Toast mToast;
 
-        AbsToast(Toast toast) {
+        AbsToast(final Toast toast) {
             mToast = toast;
         }
 
         @Override
-        public void setView(View view) {
+        public void setView(final View view) {
             mToast.setView(view);
         }
 
@@ -568,22 +568,22 @@ public final class ToastUtils {
         }
 
         @Override
-        public void setDuration(int duration) {
+        public void setDuration(final int duration) {
             mToast.setDuration(duration);
         }
 
         @Override
-        public void setGravity(int gravity, int xOffset, int yOffset) {
+        public void setGravity(final int gravity, final int xOffset, final int yOffset) {
             mToast.setGravity(gravity, xOffset, yOffset);
         }
 
         @Override
-        public void setText(int resId) {
+        public void setText(final int resId) {
             mToast.setText(resId);
         }
 
         @Override
-        public void setText(CharSequence s) {
+        public void setText(final CharSequence s) {
             mToast.setText(s);
         }
     }

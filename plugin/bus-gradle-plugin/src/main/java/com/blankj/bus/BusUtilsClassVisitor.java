@@ -22,14 +22,14 @@ public class BusUtilsClassVisitor extends ClassVisitor {
     private Map<String, List<BusInfo>> mBusMap;
     private String                     mBusUtilsClass;
 
-    public BusUtilsClassVisitor(ClassVisitor classVisitor, Map<String, List<BusInfo>> busMap, String busUtilsClass) {
+    public BusUtilsClassVisitor(final ClassVisitor classVisitor, final Map<String, List<BusInfo>> busMap, final String busUtilsClass) {
         super(Opcodes.ASM5, classVisitor);
         mBusMap = busMap;
         mBusUtilsClass = busUtilsClass.replace(".", "/");
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+    public MethodVisitor visitMethod(final int access, final String name, final String descriptor, final String signature, final String[] exceptions) {
         if (!"init".equals(name)) {
             return super.visitMethod(access, name, descriptor, signature, exceptions);
         }
@@ -39,7 +39,7 @@ public class BusUtilsClassVisitor extends ClassVisitor {
         mv = new AdviceAdapter(Opcodes.ASM5, mv, access, name, descriptor) {
 
             @Override
-            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+            public AnnotationVisitor visitAnnotation(final String desc, final boolean visible) {
                 return super.visitAnnotation(desc, visible);
             }
 
@@ -49,7 +49,7 @@ public class BusUtilsClassVisitor extends ClassVisitor {
             }
 
             @Override
-            protected void onMethodExit(int opcode) {
+            protected void onMethodExit(final int opcode) {
                 super.onMethodExit(opcode);
                 for (Map.Entry<String, List<BusInfo>> busEntry : mBusMap.entrySet()) {
                     List<BusInfo> infoList = busEntry.getValue();

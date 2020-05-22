@@ -45,17 +45,17 @@ public final class BusUtils {
      * It'll be injected the bus who have {@link Bus} annotation
      * by function of {@link BusUtils#registerBus} when execute transform task.
      */
-    private void init() {/*inject*/}
+    private void init() { /*inject*/ }
 
-    private void registerBus(String tag,
-                             String className, String funName, String paramType, String paramName,
-                             boolean sticky, String threadMode) {
+    private void registerBus(final String tag,
+                             final String className, final String funName, final String paramType, final String paramName,
+                             final boolean sticky, final String threadMode) {
         registerBus(tag, className, funName, paramType, paramName, sticky, threadMode, 0);
     }
 
-    private void registerBus(String tag,
-                             String className, String funName, String paramType, String paramName,
-                             boolean sticky, String threadMode, int priority) {
+    private void registerBus(final String tag,
+                             final String className, final String funName, final String paramType, final String paramName,
+                             final boolean sticky, final String threadMode, final int priority) {
         List<BusInfo> busInfoList = mTag_BusInfoListMap.get(tag);
         if (busInfoList == null) {
             busInfoList = new ArrayList<>();
@@ -187,7 +187,7 @@ public final class BusUtils {
         }
     }
 
-    private Method getMethodByBusInfo(BusInfo busInfo) {
+    private Method getMethodByBusInfo(final BusInfo busInfo) {
         try {
             if ("".equals(busInfo.paramType)) {
                 return Class.forName(busInfo.className).getDeclaredMethod(busInfo.funName);
@@ -202,7 +202,7 @@ public final class BusUtils {
         return null;
     }
 
-    private Class getClassName(String paramType) throws ClassNotFoundException {
+    private Class getClassName(final String paramType) throws ClassNotFoundException {
         switch (paramType) {
             case "boolean":
                 return boolean.class;
@@ -253,7 +253,7 @@ public final class BusUtils {
         }
     }
 
-    private void realInvokeMethod(final String tag, Object arg, BusInfo busInfo, boolean sticky) {
+    private void realInvokeMethod(final String tag, final Object arg, final BusInfo busInfo, final boolean sticky) {
         Set<Object> buses = new HashSet<>();
         for (String subClassName : busInfo.subClassNames) {
             Set<Object> subBuses = mClassName_BusesMap.get(subClassName);
@@ -331,9 +331,9 @@ public final class BusUtils {
         }
     }
 
-    static void registerBus4Test(String tag,
-                                 String className, String funName, String paramType, String paramName,
-                                 boolean sticky, String threadMode, int priority) {
+    static void registerBus4Test(final String tag,
+                                 final String className, final String funName, final String paramType, final String paramName,
+                                 final boolean sticky, final String threadMode, final int priority) {
         getInstance().registerBus(tag, className, funName, paramType, paramName, sticky, threadMode, priority);
     }
 
@@ -349,8 +349,8 @@ public final class BusUtils {
         Method       method;
         List<String> subClassNames;
 
-        BusInfo(String className, String funName, String paramType, String paramName,
-                boolean sticky, String threadMode, int priority) {
+        BusInfo(final String className, final String funName, final String paramType, final String paramName,
+                final boolean sticky, final String threadMode, final int priority) {
             this.className = className;
             this.funName = funName;
             this.paramType = paramType;
@@ -363,13 +363,13 @@ public final class BusUtils {
 
         @Override
         public String toString() {
-            return "BusInfo { desc: " + className + "#" + funName +
-                    ("".equals(paramType) ? "()" : ("(" + paramType + " " + paramName + ")")) +
-                    ", sticky: " + sticky +
-                    ", threadMode: " + threadMode +
-                    ", method: " + method +
-                    ", priority: " + priority +
-                    " }";
+            return "BusInfo { desc: " + className + "#" + funName
+                    + ("".equals(paramType) ? "()" : ("(" + paramType + " " + paramName + ")"))
+                    + ", sticky: " + sticky
+                    + ", threadMode: " + threadMode
+                    + ", method: " + method
+                    + ", priority: " + priority
+                    + " }";
         }
     }
 

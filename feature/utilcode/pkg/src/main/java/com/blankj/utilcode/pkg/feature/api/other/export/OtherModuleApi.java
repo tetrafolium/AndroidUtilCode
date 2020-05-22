@@ -20,7 +20,7 @@ public abstract class OtherModuleApi extends ApiUtils.BaseApi {
 
         public String name;
 
-        public ApiBean(String name) {
+        public ApiBean(final String name) {
             this.name = name;
         }
     }

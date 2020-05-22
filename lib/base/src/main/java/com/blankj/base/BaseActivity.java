@@ -21,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             onDebouncingClick(v);
         }
     };
@@ -30,7 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity
     public Activity mActivity;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         mActivity = this;
         super.onCreate(savedInstanceState);
         initData(getIntent().getExtras());
@@ -46,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity
         setContentView(mContentView);
     }
 
-    public void applyDebouncingClickListener(View... views) {
+    public void applyDebouncingClickListener(final View... views) {
         ClickUtils.applyGlobalDebouncing(views, mClickListener);
         ClickUtils.applyPressedViewScale(views);
     }

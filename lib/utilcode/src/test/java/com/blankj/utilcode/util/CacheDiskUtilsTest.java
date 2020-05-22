@@ -278,7 +278,7 @@ public class CacheDiskUtilsTest extends BaseTest {
             return author;
         }
 
-        public void setAuthor(String author) {
+        public void setAuthor(final String author) {
             this.author = author;
         }
 
@@ -286,22 +286,22 @@ public class CacheDiskUtilsTest extends BaseTest {
             return className;
         }
 
-        public void setClassName(String className) {
+        public void setClassName(final String className) {
             this.className = className;
         }
 
-        ParcelableTest(String author, String className) {
+        ParcelableTest(final String author, final String className) {
             this.author = author;
             this.className = className;
         }
 
-        ParcelableTest(Parcel in) {
+        ParcelableTest(final Parcel in) {
             author = in.readString();
             className = in.readString();
         }
 
         @Override
-        public void writeToParcel(Parcel dest, int flags) {
+        public void writeToParcel(final Parcel dest, final int flags) {
             dest.writeString(author);
             dest.writeString(className);
         }
@@ -313,18 +313,18 @@ public class CacheDiskUtilsTest extends BaseTest {
 
         public static final Creator<ParcelableTest> CREATOR = new Creator<ParcelableTest>() {
             @Override
-            public ParcelableTest createFromParcel(Parcel in) {
+            public ParcelableTest createFromParcel(final Parcel in) {
                 return new ParcelableTest(in);
             }
 
             @Override
-            public ParcelableTest[] newArray(int size) {
+            public ParcelableTest[] newArray(final int size) {
                 return new ParcelableTest[size];
             }
         };
 
         @Override
-        public boolean equals(Object obj) {
+        public boolean equals(final Object obj) {
             return obj instanceof ParcelableTest
                     && ((ParcelableTest) obj).author.equals(author)
                     && ((ParcelableTest) obj).className.equals(className);
@@ -338,7 +338,7 @@ public class CacheDiskUtilsTest extends BaseTest {
         String author;
         String className;
 
-        SerializableTest(String author, String className) {
+        SerializableTest(final String author, final String className) {
             this.author = author;
             this.className = className;
         }
@@ -347,7 +347,7 @@ public class CacheDiskUtilsTest extends BaseTest {
             return author;
         }
 
-        public void setAuthor(String author) {
+        public void setAuthor(final String author) {
             this.author = author;
         }
 
@@ -355,12 +355,12 @@ public class CacheDiskUtilsTest extends BaseTest {
             return className;
         }
 
-        public void setClassName(String className) {
+        public void setClassName(final String className) {
             this.className = className;
         }
 
         @Override
-        public boolean equals(Object obj) {
+        public boolean equals(final Object obj) {
             return obj instanceof SerializableTest
                     && ((SerializableTest) obj).author.equals(author)
                     && ((SerializableTest) obj).className.equals(className);

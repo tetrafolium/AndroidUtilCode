@@ -26,7 +26,7 @@ public abstract class AbsToolDebug implements IDebug {
         return TOOLS;
     }
 
-    public static void addToolDebugs(List<IDebug> debugList) {
+    public static void addToolDebugs(final List<IDebug> debugList) {
         debugList.add(new AppInfoDebug());
         debugList.add(new DeviceInfoDebug());
         debugList.add(new FileExplorerDebug());

@@ -28,7 +28,7 @@ public final class ColorUtils {
      * @param id The desired resource identifier.
      * @return a color associated with a particular resource ID
      */
-    public static int getColor(@ColorRes int id) {
+    public static int getColor(final @ColorRes int id) {
         return ContextCompat.getColor(Utils.getApp(), id);
     }
 
@@ -40,7 +40,7 @@ public final class ColorUtils {
      * @return the {@code color} with {@code alpha} component
      */
     public static int setAlphaComponent(@ColorInt final int color,
-                                        @IntRange(from = 0x0, to = 0xFF) int alpha) {
+                                        final @IntRange(from = 0x0, to = 0xFF) int alpha) {
         return (color & 0x00ffffff) | (alpha << 24);
     }
 
@@ -51,8 +51,8 @@ public final class ColorUtils {
      * @param alpha Alpha component \([0..1]\) of the color.
      * @return the {@code color} with {@code alpha} component
      */
-    public static int setAlphaComponent(@ColorInt int color,
-                                        @FloatRange(from = 0, to = 1) float alpha) {
+    public static int setAlphaComponent(final @ColorInt int color,
+                                        final @FloatRange(from = 0, to = 1) float alpha) {
         return (color & 0x00ffffff) | ((int) (alpha * 255.0f + 0.5f) << 24);
     }
 
@@ -63,8 +63,8 @@ public final class ColorUtils {
      * @param red   Red component \([0..255]\) of the color.
      * @return the {@code color} with {@code red} component
      */
-    public static int setRedComponent(@ColorInt int color,
-                                      @IntRange(from = 0x0, to = 0xFF) int red) {
+    public static int setRedComponent(final @ColorInt int color,
+                                      final @IntRange(from = 0x0, to = 0xFF) int red) {
         return (color & 0xff00ffff) | (red << 16);
     }
 
@@ -75,8 +75,8 @@ public final class ColorUtils {
      * @param red   Red component \([0..1]\) of the color.
      * @return the {@code color} with {@code red} component
      */
-    public static int setRedComponent(@ColorInt int color,
-                                      @FloatRange(from = 0, to = 1) float red) {
+    public static int setRedComponent(final @ColorInt int color,
+                                      final @FloatRange(from = 0, to = 1) float red) {
         return (color & 0xff00ffff) | ((int) (red * 255.0f + 0.5f) << 16);
     }
 
@@ -87,8 +87,8 @@ public final class ColorUtils {
      * @param green Green component \([0..255]\) of the color.
      * @return the {@code color} with {@code green} component
      */
-    public static int setGreenComponent(@ColorInt int color,
-                                        @IntRange(from = 0x0, to = 0xFF) int green) {
+    public static int setGreenComponent(final @ColorInt int color,
+                                        final @IntRange(from = 0x0, to = 0xFF) int green) {
         return (color & 0xffff00ff) | (green << 8);
     }
 
@@ -99,8 +99,8 @@ public final class ColorUtils {
      * @param green Green component \([0..1]\) of the color.
      * @return the {@code color} with {@code green} component
      */
-    public static int setGreenComponent(@ColorInt int color,
-                                        @FloatRange(from = 0, to = 1) float green) {
+    public static int setGreenComponent(final @ColorInt int color,
+                                        final @FloatRange(from = 0, to = 1) float green) {
         return (color & 0xffff00ff) | ((int) (green * 255.0f + 0.5f) << 8);
     }
 
@@ -111,8 +111,8 @@ public final class ColorUtils {
      * @param blue  Blue component \([0..255]\) of the color.
      * @return the {@code color} with {@code blue} component
      */
-    public static int setBlueComponent(@ColorInt int color,
-                                       @IntRange(from = 0x0, to = 0xFF) int blue) {
+    public static int setBlueComponent(final @ColorInt int color,
+                                       final @IntRange(from = 0x0, to = 0xFF) int blue) {
         return (color & 0xffffff00) | blue;
     }
 
@@ -123,8 +123,8 @@ public final class ColorUtils {
      * @param blue  Blue component \([0..1]\) of the color.
      * @return the {@code color} with {@code blue} component
      */
-    public static int setBlueComponent(@ColorInt int color,
-                                       @FloatRange(from = 0, to = 1) float blue) {
+    public static int setBlueComponent(final @ColorInt int color,
+                                       final @FloatRange(from = 0, to = 1) float blue) {
         return (color & 0xffffff00) | (int) (blue * 255.0f + 0.5f);
     }
 
@@ -149,7 +149,7 @@ public final class ColorUtils {
      * @return color-int
      * @throws IllegalArgumentException The string cannot be parsed.
      */
-    public static int string2Int(@NonNull String colorString) {
+    public static int string2Int(final @NonNull String colorString) {
         return Color.parseColor(colorString);
     }
 
@@ -159,7 +159,7 @@ public final class ColorUtils {
      * @param colorInt The color-int.
      * @return color-string
      */
-    public static String int2RgbString(@ColorInt int colorInt) {
+    public static String int2RgbString(final @ColorInt int colorInt) {
         colorInt = colorInt & 0x00ffffff;
         String color = Integer.toHexString(colorInt);
         while (color.length() < 6) {

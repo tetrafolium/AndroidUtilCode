@@ -403,7 +403,7 @@ public final class DeviceUtils {
      * @return the unique device id
      */
     @SuppressLint({"MissingPermission", "HardwareIds"})
-    public static String getUniqueDeviceId(String prefix) {
+    public static String getUniqueDeviceId(final String prefix) {
         return getUniqueDeviceId(prefix, true);
     }
 
@@ -417,7 +417,7 @@ public final class DeviceUtils {
      * @return the unique device id
      */
     @SuppressLint({"MissingPermission", "HardwareIds"})
-    public static String getUniqueDeviceId(boolean useCache) {
+    public static String getUniqueDeviceId(final boolean useCache) {
         return getUniqueDeviceId("", useCache);
     }
 
@@ -432,7 +432,7 @@ public final class DeviceUtils {
      * @return the unique device id
      */
     @SuppressLint({"MissingPermission", "HardwareIds"})
-    public static String getUniqueDeviceId(String prefix, boolean useCache) {
+    public static String getUniqueDeviceId(final String prefix, final boolean useCache) {
         if (!useCache) {
             return getUniqueDeviceIdReal(prefix);
         }
@@ -451,14 +451,14 @@ public final class DeviceUtils {
         return udid;
     }
 
-    private static String getUniqueDeviceIdReal(String prefix) {
+    private static String getUniqueDeviceIdReal(final String prefix) {
         try {
             final String androidId = getAndroidID();
             if (!TextUtils.isEmpty(androidId)) {
                 return saveUdid(prefix + 2, androidId);
             }
 
-        } catch (Exception ignore) {/**/}
+        } catch (Exception ignore) { /**/ }
         return saveUdid(prefix + 9, "");
     }
 
@@ -487,13 +487,13 @@ public final class DeviceUtils {
         return false;
     }
 
-    private static String saveUdid(String prefix, String id) {
+    private static String saveUdid(final String prefix, final String id) {
         udid = getUdid(prefix, id);
         UtilsBridge.getSpUtils4Utils().put(KEY_UDID, udid);
         return udid;
     }
 
-    private static String getUdid(String prefix, String id) {
+    private static String getUdid(final String prefix, final String id) {
         if (id.equals("")) {
             return prefix + UUID.randomUUID().toString().replace("-", "");
         }

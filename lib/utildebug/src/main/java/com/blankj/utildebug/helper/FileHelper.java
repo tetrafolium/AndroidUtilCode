@@ -31,12 +31,12 @@ public class FileHelper {
     }
 
     @FileType
-    public static int getFileType(String path) {
+    public static int getFileType(final String path) {
         return getFileType(FileUtils.getFileByPath(path));
     }
 
     @FileType
-    public static int getFileType(File file) {
+    public static int getFileType(final File file) {
         if (!FileUtils.isFileExists(file)) return UNKNOWN;
         if (ImageUtils.isImage(file)) {
             return IMAGE;

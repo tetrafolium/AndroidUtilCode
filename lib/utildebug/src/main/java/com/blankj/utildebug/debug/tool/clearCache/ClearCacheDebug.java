@@ -28,7 +28,7 @@ public class ClearCacheDebug extends AbsToolDebug {
     private ThreadUtils.SimpleTask<Long> clearCacheTask;
 
     @Override
-    public void onAppCreate(Context context) {
+    public void onAppCreate(final Context context) {
 
     }
 
@@ -43,7 +43,7 @@ public class ClearCacheDebug extends AbsToolDebug {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         clearCache();
     }
 
@@ -87,7 +87,7 @@ public class ClearCacheDebug extends AbsToolDebug {
             }
 
             @Override
-            public void onSuccess(Long result) {
+            public void onSuccess(final Long result) {
                 if (result != -1) {
                     ToastUtils.showLong("Clear Cache: " + ConvertUtils.byte2FitMemorySize(result));
                 }

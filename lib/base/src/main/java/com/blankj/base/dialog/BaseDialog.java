@@ -29,11 +29,11 @@ public abstract class BaseDialog extends Dialog {
 
     public abstract void setWindowStyle(Window window);
 
-    public BaseDialog(@NonNull Context context) {
+    public BaseDialog(final @NonNull Context context) {
         this(context, 0);
     }
 
-    public BaseDialog(@NonNull Context context, int themeResId) {
+    public BaseDialog(final @NonNull Context context, final int themeResId) {
         super(context, themeResId);
         Activity activity = ActivityUtils.getActivityByContext(context);
         if (activity == null) {
@@ -43,7 +43,7 @@ public abstract class BaseDialog extends Dialog {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View contentView = View.inflate(mActivity, bindLayout(), null);
         setContentView(contentView);

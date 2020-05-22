@@ -175,7 +175,7 @@ public final class LunarUtils {
         return solar;
     }
 
-    private static long solarToInt(int y, int m, final int d) {
+    private static long solarToInt(final int y, final int m, final int d) {
         m = (m + 9) % 12;
         y = y - m / 10;
         return 365 * y + y / 4 - y / 100 + y / 400 + (m * 306 + 5) / 10 + (d - 1);
@@ -191,7 +191,7 @@ public final class LunarUtils {
         Lunar() {
         }
 
-        public Lunar(int lunarYear, int lunarMonth, int lunarDay, boolean isLeap) {
+        public Lunar(final int lunarYear, final int lunarMonth, final int lunarDay, final boolean isLeap) {
             this.lunarYear = lunarYear;
             this.lunarMonth = lunarMonth;
             this.lunarDay = lunarDay;
@@ -213,7 +213,7 @@ public final class LunarUtils {
         Solar() {
         }
 
-        public Solar(int solarYear, int solarMonth, int solarDay) {
+        public Solar(final int solarYear, final int solarMonth, final int solarDay) {
             this.solarYear = solarYear;
             this.solarMonth = solarMonth;
             this.solarDay = solarDay;

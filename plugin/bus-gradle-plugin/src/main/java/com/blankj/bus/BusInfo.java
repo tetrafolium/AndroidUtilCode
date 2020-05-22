@@ -21,7 +21,7 @@ public class BusInfo {
     public int              priority;                 // 优先级
     public boolean          isParamSizeNoMoreThanOne; // 参数是否不多于 1 个
 
-    public BusInfo(String className, String funName) {
+    public BusInfo(final String className, final String funName) {
         this.className = className;
         this.funName = funName;
         paramsInfo = new ArrayList<>();
@@ -34,20 +34,20 @@ public class BusInfo {
     @Override
     public String toString() {
         String paramsInfoString = paramsInfo.toString();
-        return "{ desc: " + className + "#" + funName +
-                "(" + paramsInfoString.substring(1, paramsInfoString.length() - 1) + ")" +
-                (!sticky ? "" : ", sticky: true") +
-                (threadMode.equals("POSTING") ? "" : ", threadMode: " + threadMode) +
-                (priority == 0 ? "" : ", priority: " + priority) +
-                (isParamSizeNoMoreThanOne ? "" : ", paramSize: " + paramsInfo.size()) +
-                " }";
+        return "{ desc: " + className + "#" + funName
+                + "(" + paramsInfoString.substring(1, paramsInfoString.length() - 1) + ")"
+                + (!sticky ? "" : ", sticky: true")
+                + (threadMode.equals("POSTING") ? "" : ", threadMode: " + threadMode)
+                + (priority == 0 ? "" : ", priority: " + priority)
+                + (isParamSizeNoMoreThanOne ? "" : ", paramSize: " + paramsInfo.size())
+                + " }";
     }
 
     public static class ParamsInfo {
         public String className;
         public String name;
 
-        public ParamsInfo(String className, String name) {
+        public ParamsInfo(final String className, final String name) {
             this.className = className;
             this.name = name;
         }

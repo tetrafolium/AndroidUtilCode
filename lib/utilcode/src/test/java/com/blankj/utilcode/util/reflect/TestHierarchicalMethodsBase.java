@@ -18,15 +18,15 @@ public class TestHierarchicalMethodsBase {
     public  int visibleField1;
     public  int visibleField2;
 
-    public String pub_base_method(int number) {
+    public String pub_base_method(final int number) {
         return PUBLIC_RESULT;
     }
 
-    public String pub_method(int number) {
+    public String pub_method(final int number) {
         return PUBLIC_RESULT;
     }
 
-    private String priv_method(int number) {
+    private String priv_method(final int number) {
         return PRIVATE_RESULT;
     }
 

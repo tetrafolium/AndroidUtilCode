@@ -33,7 +33,7 @@ public final class ReflectUtils {
         this(type, type);
     }
 
-    private ReflectUtils(final Class<?> type, Object object) {
+    private ReflectUtils(final Class<?> type, final Object object) {
         this.type = type;
         this.object = object;
     }
@@ -91,7 +91,7 @@ public final class ReflectUtils {
         return new ReflectUtils(object == null ? Object.class : object.getClass(), object);
     }
 
-    private static Class<?> forName(String className) {
+    private static Class<?> forName(final String className) {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
@@ -99,7 +99,7 @@ public final class ReflectUtils {
         }
     }
 
-    private static Class<?> forName(String name, ClassLoader classLoader) {
+    private static Class<?> forName(final String name, final ClassLoader classLoader) {
         try {
             return Class.forName(name, true, classLoader);
         } catch (ClassNotFoundException e) {
@@ -126,7 +126,7 @@ public final class ReflectUtils {
      * @param args The args.
      * @return the single {@link ReflectUtils} instance
      */
-    public ReflectUtils newInstance(Object... args) {
+    public ReflectUtils newInstance(final Object... args) {
         Class<?>[] types = getArgsType(args);
         try {
             Constructor<?> constructor = type().getDeclaredConstructor(types);
@@ -157,10 +157,10 @@ public final class ReflectUtils {
         return result;
     }
 
-    private void sortConstructors(List<Constructor<?>> list) {
+    private void sortConstructors(final List<Constructor<?>> list) {
         Collections.sort(list, new Comparator<Constructor<?>>() {
             @Override
-            public int compare(Constructor<?> o1, Constructor<?> o2) {
+            public int compare(final Constructor<?> o1, final Constructor<?> o2) {
                 Class<?>[] types1 = o1.getParameterTypes();
                 Class<?>[] types2 = o2.getParameterTypes();
                 int len = types1.length;
@@ -215,7 +215,7 @@ public final class ReflectUtils {
      * @param value The value.
      * @return the single {@link ReflectUtils} instance
      */
-    public ReflectUtils field(String name, Object value) {
+    public ReflectUtils field(final String name, final Object value) {
         try {
             Field field = getField(name);
             field.set(object, unwrap(value));
@@ -225,7 +225,7 @@ public final class ReflectUtils {
         }
     }
 
-    private Field getField(String name) throws IllegalAccessException {
+    private Field getField(final String name) throws IllegalAccessException {
         Field field = getAccessibleField(name);
         if ((field.getModifiers() & Modifier.FINAL) == Modifier.FINAL) {
             try {
@@ -240,7 +240,7 @@ public final class ReflectUtils {
         return field;
     }
 
-    private Field getAccessibleField(String name) {
+    private Field getAccessibleField(final String name) {
         Class<?> type = type();
         try {
             return accessible(type.getField(name));
@@ -256,7 +256,7 @@ public final class ReflectUtils {
         }
     }
 
-    private Object unwrap(Object object) {
+    private Object unwrap(final Object object) {
         if (object instanceof ReflectUtils) {
             return ((ReflectUtils) object).get();
         }
@@ -365,7 +365,7 @@ public final class ReflectUtils {
     private void sortMethods(final List<Method> methods) {
         Collections.sort(methods, new Comparator<Method>() {
             @Override
-            public int compare(Method o1, Method o2) {
+            public int compare(final Method o1, final Method o2) {
                 Class<?>[] types1 = o1.getParameterTypes();
                 Class<?>[] types2 = o2.getParameterTypes();
                 int len = types1.length;
@@ -405,7 +405,7 @@ public final class ReflectUtils {
         }
     }
 
-    private <T extends AccessibleObject> T accessible(T accessible) {
+    private <T extends AccessibleObject> T accessible(final T accessible) {
         if (accessible == null) return null;
         if (accessible instanceof Member) {
             Member member = (Member) accessible;
@@ -435,7 +435,7 @@ public final class ReflectUtils {
         final InvocationHandler handler = new InvocationHandler() {
             @Override
             @SuppressWarnings("null")
-            public Object invoke(Object proxy, Method method, Object[] args) {
+            public Object invoke(final Object proxy, final Method method, final Object[] args) {
                 String name = method.getName();
                 try {
                     return reflect(object).method(name, args).get();
@@ -465,7 +465,7 @@ public final class ReflectUtils {
     /**
      * Get the POJO property name of an getter/setter
      */
-    private static String property(String string) {
+    private static String property(final String string) {
         int length = string.length();
 
         if (length == 0) {
@@ -525,7 +525,7 @@ public final class ReflectUtils {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         return obj instanceof ReflectUtils && object.equals(((ReflectUtils) obj).get());
     }
 
@@ -541,15 +541,15 @@ public final class ReflectUtils {
 
         private static final long serialVersionUID = 858774075258496016L;
 
-        public ReflectException(String message) {
+        public ReflectException(final String message) {
             super(message);
         }
 
-        public ReflectException(String message, Throwable cause) {
+        public ReflectException(final String message, final Throwable cause) {
             super(message, cause);
         }
 
-        public ReflectException(Throwable cause) {
+        public ReflectException(final Throwable cause) {
             super(cause);
         }
     }

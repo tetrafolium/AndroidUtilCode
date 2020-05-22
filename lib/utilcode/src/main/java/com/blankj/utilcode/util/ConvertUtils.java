@@ -54,7 +54,7 @@ public final class ConvertUtils {
      * @param num The int number.
      * @return the hex string
      */
-    public static String int2HexString(int num) {
+    public static String int2HexString(final int num) {
         return Integer.toHexString(num);
     }
 
@@ -64,7 +64,7 @@ public final class ConvertUtils {
      * @param hexString The hex string.
      * @return the int
      */
-    public static int hexString2Int(String hexString) {
+    public static int hexString2Int(final String hexString) {
         return Integer.parseInt(hexString, 16);
     }
 
@@ -91,7 +91,7 @@ public final class ConvertUtils {
      * @param bits The bits.
      * @return bytes
      */
-    public static byte[] bits2Bytes(String bits) {
+    public static byte[] bits2Bytes(final String bits) {
         int lenMod = bits.length() % 8;
         int byteLen = bits.length() / 8;
         // add "0" until length to 8 times
@@ -163,7 +163,7 @@ public final class ConvertUtils {
      * @param isUpperCase True to use upper case, false otherwise.
      * @return hex string
      */
-    public static String bytes2HexString(final byte[] bytes, boolean isUpperCase) {
+    public static String bytes2HexString(final byte[] bytes, final boolean isUpperCase) {
         if (bytes == null) return "";
         char[] hexDigits = isUpperCase ? HEX_DIGITS_UPPER : HEX_DIGITS_LOWER;
         int len = bytes.length;
@@ -183,7 +183,7 @@ public final class ConvertUtils {
      * @param hexString The hex string.
      * @return the bytes
      */
-    public static byte[] hexString2Bytes(String hexString) {
+    public static byte[] hexString2Bytes(final String hexString) {
         if (UtilsBridge.isSpace(hexString)) return new byte[0];
         int len = hexString.length();
         if (len % 2 != 0) {
@@ -381,7 +381,7 @@ public final class ConvertUtils {
     /**
      * Bitmap to bytes.
      */
-    public static byte[] bitmap2Bytes(final Bitmap bitmap, final Bitmap.CompressFormat format, int quality) {
+    public static byte[] bitmap2Bytes(final Bitmap bitmap, final Bitmap.CompressFormat format, final int quality) {
         return UtilsBridge.bitmap2Bytes(bitmap, format, quality);
     }
 
@@ -402,7 +402,7 @@ public final class ConvertUtils {
     /**
      * Drawable to bytes.
      */
-    public static byte[] drawable2Bytes(final Drawable drawable, final Bitmap.CompressFormat format, int quality) {
+    public static byte[] drawable2Bytes(final Drawable drawable, final Bitmap.CompressFormat format, final int quality) {
         return UtilsBridge.drawable2Bytes(drawable, format, quality);
     }
 
@@ -465,7 +465,7 @@ public final class ConvertUtils {
      * @return fit size of memory
      */
     @SuppressLint("DefaultLocale")
-    public static String byte2FitMemorySize(final long byteSize, int precision) {
+    public static String byte2FitMemorySize(final long byteSize, final int precision) {
         if (precision < 0) {
             throw new IllegalArgumentException("precision shouldn't be less than zero!");
         }
@@ -534,7 +534,7 @@ public final class ConvertUtils {
      *                  </ul>
      * @return fit time span
      */
-    public static String millis2FitTimeSpan(long millis, int precision) {
+    public static String millis2FitTimeSpan(final long millis, final int precision) {
         return UtilsBridge.millis2FitTimeSpan(millis, precision);
     }
 
@@ -751,7 +751,7 @@ public final class ConvertUtils {
         return UtilsBridge.px2sp(pxValue);
     }
 
-    private static String getSafeCharset(String charsetName) {
+    private static String getSafeCharset(final String charsetName) {
         String cn = charsetName;
         if (UtilsBridge.isSpace(charsetName) || !Charset.isSupported(charsetName)) {
             cn = "UTF-8";

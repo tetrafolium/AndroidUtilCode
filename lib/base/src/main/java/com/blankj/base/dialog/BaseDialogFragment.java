@@ -37,19 +37,19 @@ public class BaseDialogFragment extends DialogFragment {
     protected FragmentActivity mActivity;
     protected View             mContentView;
 
-    public BaseDialogFragment init(Context context, DialogLayoutCallback listener) {
+    public BaseDialogFragment init(final Context context, final DialogLayoutCallback listener) {
         mActivity = getFragmentActivity(context);
         mDialogLayoutCallback = listener;
         return this;
     }
 
-    public BaseDialogFragment init(Context context, DialogCallback dialogCallback) {
+    public BaseDialogFragment init(final Context context, final DialogCallback dialogCallback) {
         mActivity = getFragmentActivity(context);
         mDialogCallback = dialogCallback;
         return this;
     }
 
-    private FragmentActivity getFragmentActivity(Context context) {
+    private FragmentActivity getFragmentActivity(final Context context) {
         Activity activity = ActivityUtils.getActivityByContext(context);
         if (activity == null) return null;
         if (activity instanceof FragmentActivity) {
@@ -71,7 +71,7 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     @NonNull
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog(final Bundle savedInstanceState) {
         Dialog dialog;
         if (mDialogCallback != null) {
             dialog = mDialogCallback.bindDialog(mActivity);
@@ -89,7 +89,7 @@ public class BaseDialogFragment extends DialogFragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final @NonNull LayoutInflater inflater, final @Nullable ViewGroup container, final @Nullable Bundle savedInstanceState) {
         if (mDialogLayoutCallback != null) {
             return inflater.inflate(mDialogLayoutCallback.bindLayout(), container, false);
         }
@@ -97,7 +97,7 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final @NonNull View view, final @Nullable Bundle savedInstanceState) {
         if (mDialogLayoutCallback != null) {
             mDialogLayoutCallback.initView(this, view);
             return;
@@ -106,7 +106,7 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onCancel(DialogInterface dialog) {
+    public void onCancel(final DialogInterface dialog) {
         super.onCancel(dialog);
         if (mDialogLayoutCallback != null) {
             mDialogLayoutCallback.onCancel(this);
@@ -114,7 +114,7 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
+    public void onDismiss(final DialogInterface dialog) {
         super.onDismiss(dialog);
         if (mDialogLayoutCallback != null) {
             mDialogLayoutCallback.onDismiss(this);

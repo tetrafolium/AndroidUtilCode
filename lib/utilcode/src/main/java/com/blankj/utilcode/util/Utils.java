@@ -86,7 +86,7 @@ public final class Utils {
         }
 
         @Override
-        public void onSuccess(Result result) {
+        public void onSuccess(final Result result) {
             if (mConsumer != null) {
                 mConsumer.accept(result);
             }
@@ -101,19 +101,19 @@ public final class Utils {
 
     public static class ActivityLifecycleCallbacks {
 
-        public void onActivityCreated(@NonNull Activity activity) {/**/}
+        public void onActivityCreated(final @NonNull Activity activity) { /**/ }
 
-        public void onActivityStarted(@NonNull Activity activity) {/**/}
+        public void onActivityStarted(final @NonNull Activity activity) { /**/ }
 
-        public void onActivityResumed(@NonNull Activity activity) {/**/}
+        public void onActivityResumed(final @NonNull Activity activity) { /**/ }
 
-        public void onActivityPaused(@NonNull Activity activity) {/**/}
+        public void onActivityPaused(final @NonNull Activity activity) { /**/ }
 
-        public void onActivityStopped(@NonNull Activity activity) {/**/}
+        public void onActivityStopped(final @NonNull Activity activity) { /**/ }
 
-        public void onActivityDestroyed(@NonNull Activity activity) {/**/}
+        public void onActivityDestroyed(final @NonNull Activity activity) { /**/ }
 
-        public void onLifecycleChanged(@NonNull Activity activity, Lifecycle.Event event) {/**/}
+        public void onLifecycleChanged(final @NonNull Activity activity, final Lifecycle.Event event) { /**/ }
     }
 
     public interface Consumer<T> {

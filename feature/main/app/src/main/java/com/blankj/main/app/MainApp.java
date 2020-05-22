@@ -21,7 +21,7 @@ public class MainApp extends CommonApplication {
     }
 
     @Override
-    protected void attachBaseContext(Context base) {
+    protected void attachBaseContext(final Context base) {
         super.attachBaseContext(base);
     }
 

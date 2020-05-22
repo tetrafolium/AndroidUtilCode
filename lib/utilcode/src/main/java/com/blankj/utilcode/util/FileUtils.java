@@ -81,7 +81,7 @@ public final class FileUtils {
         return isFileExistsApi29(filePath);
     }
 
-    private static boolean isFileExistsApi29(String filePath) {
+    private static boolean isFileExistsApi29(final String filePath) {
         if (Build.VERSION.SDK_INT >= 29) {
             try {
                 Uri uri = Uri.parse(filePath);
@@ -453,8 +453,8 @@ public final class FileUtils {
         // srcFile doesn't exist or isn't a file then return false
         if (!srcFile.exists() || !srcFile.isFile()) return false;
         if (destFile.exists()) {
-            if (listener == null || listener.onReplace(srcFile, destFile)) {// require delete the old file
-                if (!destFile.delete()) {// unsuccessfully delete then return false
+            if (listener == null || listener.onReplace(srcFile, destFile)) { // require delete the old file
+                if (!destFile.delete()) { // unsuccessfully delete then return false
                     return false;
                 }
             } else {
@@ -549,7 +549,7 @@ public final class FileUtils {
     public static boolean deleteAllInDir(final File dir) {
         return deleteFilesInDirWithFilter(dir, new FileFilter() {
             @Override
-            public boolean accept(File pathname) {
+            public boolean accept(final File pathname) {
                 return true;
             }
         });
@@ -574,7 +574,7 @@ public final class FileUtils {
     public static boolean deleteFilesInDir(final File dir) {
         return deleteFilesInDirWithFilter(dir, new FileFilter() {
             @Override
-            public boolean accept(File pathname) {
+            public boolean accept(final File pathname) {
                 return pathname.isFile();
             }
         });
@@ -650,7 +650,7 @@ public final class FileUtils {
      * @param comparator The comparator to determine the order of the list.
      * @return the files in directory
      */
-    public static List<File> listFilesInDir(final String dirPath, Comparator<File> comparator) {
+    public static List<File> listFilesInDir(final String dirPath, final Comparator<File> comparator) {
         return listFilesInDir(getFileByPath(dirPath), false, comparator);
     }
 
@@ -662,7 +662,7 @@ public final class FileUtils {
      * @param comparator The comparator to determine the order of the list.
      * @return the files in directory
      */
-    public static List<File> listFilesInDir(final File dir, Comparator<File> comparator) {
+    public static List<File> listFilesInDir(final File dir, final Comparator<File> comparator) {
         return listFilesInDir(dir, false, comparator);
     }
 
@@ -715,7 +715,7 @@ public final class FileUtils {
                                             final Comparator<File> comparator) {
         return listFilesInDirWithFilter(dir, new FileFilter() {
             @Override
-            public boolean accept(File pathname) {
+            public boolean accept(final File pathname) {
                 return true;
             }
         }, isRecursive, comparator);
@@ -980,7 +980,7 @@ public final class FileUtils {
      * 1110xxxx 10xxxxxx 10xxxxxx
      * 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
      */
-    private static int isUtf8(byte[] raw) {
+    private static int isUtf8(final byte[] raw) {
         int i, len;
         int utf8 = 0, ascii = 0;
         if (raw.length > 3) {
@@ -1410,7 +1410,7 @@ public final class FileUtils {
      * @param anyPathInFs Any path in file system.
      * @return the total size of file system
      */
-    public static long getFsTotalSize(String anyPathInFs) {
+    public static long getFsTotalSize(final String anyPathInFs) {
         if (TextUtils.isEmpty(anyPathInFs)) return 0;
         StatFs statFs = new StatFs(anyPathInFs);
         long blockSize;

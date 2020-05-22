@@ -25,67 +25,67 @@ public class CommonItemClick extends CommonItem<CommonItemClick> {
     private CharSequence mContent;
     private boolean      mIsJump;
 
-    public CommonItemClick(@StringRes int title) {
+    public CommonItemClick(final @StringRes int title) {
         this(StringUtils.getString(title), "", false, null);
     }
 
-    public CommonItemClick(@NonNull CharSequence title) {
+    public CommonItemClick(final @NonNull CharSequence title) {
         this(title, "", false, null);
     }
 
-    public CommonItemClick(@StringRes int title, boolean isJump) {
+    public CommonItemClick(final @StringRes int title, final boolean isJump) {
         this(StringUtils.getString(title), "", isJump);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, boolean isJump) {
+    public CommonItemClick(final @NonNull CharSequence title, final boolean isJump) {
         this(title, "", isJump, null);
     }
 
-    public CommonItemClick(@StringRes int title, CharSequence content) {
+    public CommonItemClick(final @StringRes int title, final CharSequence content) {
         this(StringUtils.getString(title), content, false, null);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, CharSequence content) {
+    public CommonItemClick(final @NonNull CharSequence title, final CharSequence content) {
         this(title, content, false, null);
     }
 
-    public CommonItemClick(@StringRes int title, CharSequence content, boolean isJump) {
+    public CommonItemClick(final @StringRes int title, final CharSequence content, final boolean isJump) {
         this(StringUtils.getString(title), content, isJump);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, CharSequence content, boolean isJump) {
+    public CommonItemClick(final @NonNull CharSequence title, final CharSequence content, final boolean isJump) {
         this(title, content, isJump, null);
     }
 
-    public CommonItemClick(@StringRes int title, final Runnable simpleClickListener) {
+    public CommonItemClick(final @StringRes int title, final Runnable simpleClickListener) {
         this(StringUtils.getString(title), "", false, simpleClickListener);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, final Runnable simpleClickListener) {
+    public CommonItemClick(final @NonNull CharSequence title, final Runnable simpleClickListener) {
         this(title, "", false, simpleClickListener);
     }
 
-    public CommonItemClick(@StringRes int title, boolean isJump, final Runnable simpleClickListener) {
+    public CommonItemClick(final @StringRes int title, final boolean isJump, final Runnable simpleClickListener) {
         this(StringUtils.getString(title), "", isJump, simpleClickListener);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, boolean isJump, final Runnable simpleClickListener) {
+    public CommonItemClick(final @NonNull CharSequence title, final boolean isJump, final Runnable simpleClickListener) {
         this(title, "", isJump, simpleClickListener);
     }
 
-    public CommonItemClick(@StringRes int title, CharSequence content, final Runnable simpleClickListener) {
+    public CommonItemClick(final @StringRes int title, final CharSequence content, final Runnable simpleClickListener) {
         this(StringUtils.getString(title), content, false, simpleClickListener);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, CharSequence content, final Runnable simpleClickListener) {
+    public CommonItemClick(final @NonNull CharSequence title, final CharSequence content, final Runnable simpleClickListener) {
         this(title, content, false, simpleClickListener);
     }
 
-    public CommonItemClick(@StringRes int title, CharSequence content, boolean isJump, final Runnable simpleClickListener) {
+    public CommonItemClick(final @StringRes int title, final CharSequence content, final boolean isJump, final Runnable simpleClickListener) {
         this(StringUtils.getString(title), content, isJump, simpleClickListener);
     }
 
-    public CommonItemClick(@NonNull CharSequence title, CharSequence content, boolean isJump, final Runnable simpleClickListener) {
+    public CommonItemClick(final @NonNull CharSequence title, final CharSequence content, final boolean isJump, final Runnable simpleClickListener) {
         super(R.layout.common_item_title_click);
         mTitle = title;
         mContent = content;
@@ -93,7 +93,7 @@ public class CommonItemClick extends CommonItem<CommonItemClick> {
         if (simpleClickListener == null) return;
         setOnItemClickListener(new OnItemClickListener<CommonItemClick>() {
             @Override
-            public void onItemClick(ItemViewHolder holder, CommonItemClick item, int position) {
+            public void onItemClick(final ItemViewHolder holder, final CommonItemClick item, final int position) {
                 if (simpleClickListener != null) {
                     simpleClickListener.run();
                 }
@@ -104,7 +104,7 @@ public class CommonItemClick extends CommonItem<CommonItemClick> {
     public CommonItemClick setOnClickUpdateContentListener(@NonNull final Utils.Supplier<CharSequence> supplier) {
         setOnItemClickListener(new OnItemClickListener<CommonItemClick>() {
             @Override
-            public void onItemClick(ItemViewHolder holder, CommonItemClick item, int position) {
+            public void onItemClick(final ItemViewHolder holder, final CommonItemClick item, final int position) {
                 item.mContent = supplier.get();
                 update();
             }
@@ -113,7 +113,7 @@ public class CommonItemClick extends CommonItem<CommonItemClick> {
     }
 
     @Override
-    public void bind(@NonNull ItemViewHolder holder, int position) {
+    public void bind(final @NonNull ItemViewHolder holder, final int position) {
         super.bind(holder, position);
         final TextView titleTv = holder.findViewById(R.id.commonItemTitleTv);
         final TextView contentTv = holder.findViewById(R.id.commonItemContentTv);
@@ -125,7 +125,7 @@ public class CommonItemClick extends CommonItem<CommonItemClick> {
         holder.findViewById(R.id.commonItemGoIv).setVisibility(mIsJump ? View.VISIBLE : View.GONE);
     }
 
-    public void setTitle(CharSequence title) {
+    public void setTitle(final CharSequence title) {
         mTitle = title;
         update();
     }

@@ -18,12 +18,12 @@ import com.blankj.utilcode.util.ApiUtils;
 public class UtilCodeApiImpl extends UtilCodeApi {
 
     @Override
-    public void startUtilCodeActivity(Context context) {
+    public void startUtilCodeActivity(final Context context) {
         CoreUtilActivity.Companion.start(context);
     }
 
     @Override
-    public void testCallback(Callback callback) {
+    public void testCallback(final Callback callback) {
         if (callback != null) {
             callback.call();
         }

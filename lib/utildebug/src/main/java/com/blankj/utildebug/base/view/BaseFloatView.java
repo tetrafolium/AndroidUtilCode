@@ -92,12 +92,12 @@ public abstract class BaseFloatView extends RelativeLayout
     }
 
     @Override
-    public void onForeground(Activity activity) {
+    public void onForeground(final Activity activity) {
         setVisibility(VISIBLE);
     }
 
     @Override
-    public void onBackground(Activity activity) {
+    public void onBackground(final Activity activity) {
         setVisibility(GONE);
     }
 
@@ -106,7 +106,7 @@ public abstract class BaseFloatView extends RelativeLayout
     ///////////////////////////////////////////////////////////////////////////
 
     @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
+    public boolean dispatchKeyEvent(final KeyEvent event) {
         Activity topActivity = ActivityUtils.getTopActivity();
         if (topActivity != null) {
             if (topActivity.getWindow().getDecorView().dispatchKeyEvent(event)) {

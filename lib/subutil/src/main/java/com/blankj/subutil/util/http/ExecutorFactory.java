@@ -22,7 +22,7 @@ public final class ExecutorFactory {
             new ThreadFactory() {
                 private final AtomicInteger mCount = new AtomicInteger(1);
 
-                public Thread newThread(@NonNull Runnable r) {
+                public Thread newThread(final @NonNull Runnable r) {
                     return new Thread(r, "http-pool-" + mCount.getAndIncrement());
                 }
             }
@@ -32,7 +32,7 @@ public final class ExecutorFactory {
         private final Handler mHandler = new Handler(Looper.getMainLooper());
 
         @Override
-        public void execute(@NonNull Runnable command) {
+        public void execute(final @NonNull Runnable command) {
             mHandler.post(command);
         }
     };

@@ -36,7 +36,7 @@ public class DebugIcon extends RelativeLayout {
         return INSTANCE;
     }
 
-    public static void setVisibility(boolean isShow) {
+    public static void setVisibility(final boolean isShow) {
         if (INSTANCE == null) return;
         INSTANCE.setVisibility(isShow ? VISIBLE : GONE);
     }
@@ -54,7 +54,7 @@ public class DebugIcon extends RelativeLayout {
             private int statusBarHeight;
 
             @Override
-            public boolean onDown(View view, int x, int y, MotionEvent event) {
+            public boolean onDown(final View view, final int x, final int y, final MotionEvent event) {
                 viewWidth = view.getWidth();
                 viewHeight = view.getHeight();
                 View contentView = view.getRootView().findViewById(android.R.id.content);
@@ -67,20 +67,20 @@ public class DebugIcon extends RelativeLayout {
             }
 
             @Override
-            public boolean onMove(View view, int direction, int x, int y, int dx, int dy, int totalX, int totalY, MotionEvent event) {
+            public boolean onMove(final View view, final int direction, final int x, final int y, final int dx, final int dy, final int totalX, final int totalY, final MotionEvent event) {
                 view.setX(Math.min(Math.max(0, view.getX() + dx), rootViewWidth - viewWidth));
                 view.setY(Math.min(Math.max(statusBarHeight, view.getY() + dy), rootViewHeight - viewHeight));
                 return true;
             }
 
             @Override
-            public boolean onStop(View view, int direction, int x, int y, int totalX, int totalY, int vx, int vy, MotionEvent event) {
+            public boolean onStop(final View view, final int direction, final int x, final int y, final int totalX, final int totalY, final int vx, final int vy, final MotionEvent event) {
                 stick2HorizontalSide(view);
                 processScale(view, false);
                 return true;
             }
 
-            private void stick2HorizontalSide(View view) {
+            private void stick2HorizontalSide(final View view) {
                 view.animate()
                         .setInterpolator(new DecelerateInterpolator())
                         .translationX(view.getX() + viewWidth / 2f > rootViewWidth / 2f ? rootViewWidth - viewWidth : 0)
@@ -94,7 +94,7 @@ public class DebugIcon extends RelativeLayout {
                         .start();
             }
 
-            private void processScale(final View view, boolean isDown) {
+            private void processScale(final View view, final boolean isDown) {
                 float value = isDown ? 1 - 0.1f : 1;
                 view.animate()
                         .scaleX(value)
@@ -106,7 +106,7 @@ public class DebugIcon extends RelativeLayout {
 
         setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     PermissionUtils.requestDrawOverlays(new PermissionUtils.SimpleCallback() {
                         @Override
@@ -144,7 +144,7 @@ public class DebugIcon extends RelativeLayout {
     }
 
     @Override
-    protected void onConfigurationChanged(Configuration newConfig) {
+    protected void onConfigurationChanged(final Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         wrapPosition();
     }

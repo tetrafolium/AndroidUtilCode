@@ -38,11 +38,11 @@ public class SpViewerContentView extends BaseContentView<FileExplorerFloatView> 
     private SearchEditText spViewSearchEt;
     private RecyclerView   spViewRv;
 
-    public static void show(FileExplorerFloatView floatView, File file) {
+    public static void show(final FileExplorerFloatView floatView, final File file) {
         new SpViewerContentView(file).attach(floatView, true);
     }
 
-    public SpViewerContentView(File file) {
+    public SpViewerContentView(final File file) {
         mFile = file;
         mSpName = FileUtils.getFileNameNoExtension(mFile);
         mSPUtils = SPUtils.getInstance(mSpName);
@@ -70,7 +70,7 @@ public class SpViewerContentView extends BaseContentView<FileExplorerFloatView> 
 
         spViewSearchEt.setOnTextChangedListener(new SearchEditText.OnTextChangedListener() {
             @Override
-            public void onTextChanged(String text) {
+            public void onTextChanged(final String text) {
                 mAdapter.setItems(SpItem.filterItems(mSrcItems, text));
                 mAdapter.notifyDataSetChanged();
             }
@@ -78,7 +78,7 @@ public class SpViewerContentView extends BaseContentView<FileExplorerFloatView> 
 
         setOnRefreshListener(spViewRv, new OnRefreshListener() {
             @Override
-            public void onRefresh(BaseContentFloatView floatView) {
+            public void onRefresh(final BaseContentFloatView floatView) {
                 mSrcItems = SpItem.getSpItems(mSPUtils);
                 mAdapter.setItems(mSrcItems);
                 mAdapter.notifyDataSetChanged();

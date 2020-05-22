@@ -27,7 +27,7 @@ public class ApiClassVisitor extends ClassVisitor {
     private String               mApiUtilsClass;
     public  String               errorStr;
 
-    public ApiClassVisitor(ClassVisitor classVisitor, Map<String, ApiInfo> apiImplMap, List<String> apiClasses, String apiUtilsClass) {
+    public ApiClassVisitor(final ClassVisitor classVisitor, final Map<String, ApiInfo> apiImplMap, final List<String> apiClasses, final String apiUtilsClass) {
         super(Opcodes.ASM5, classVisitor);
         mApiImplMap = apiImplMap;
         mApiClasses = apiClasses;
@@ -35,7 +35,7 @@ public class ApiClassVisitor extends ClassVisitor {
     }
 
     @Override
-    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+    public void visit(final int version, final int access, final String name, final String signature, final String superName, final String[] interfaces) {
         className = name;
         superClassName = superName;
         if ((mApiUtilsClass + "$BaseApi").equals(superName)) {
@@ -45,12 +45,12 @@ public class ApiClassVisitor extends ClassVisitor {
     }
 
     @Override
-    public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+    public AnnotationVisitor visitAnnotation(final String desc, final boolean visible) {
         if (("L" + mApiUtilsClass + "$Api;").equals(desc)) {
             hasAnnotation = true;
             return new AnnotationVisitor(Opcodes.ASM5, super.visitAnnotation(desc, visible)) {
                 @Override
-                public void visit(String name, Object value) {// 可获取注解的值
+                public void visit(final String name, final Object value) { // 可获取注解的值
                     isMock = (boolean) value;
                     super.visit(name, value);
                 }
@@ -63,14 +63,14 @@ public class ApiClassVisitor extends ClassVisitor {
     public void visitEnd() {
         super.visitEnd();
         if (hasAnnotation) {
-            if (!isMock) {// 如果不是 mock 的话
+            if (!isMock) { // 如果不是 mock 的话
                 ApiInfo apiInfo = mApiImplMap.get(superClassName);
                 if (apiInfo == null) {
                     mApiImplMap.put(superClassName, new ApiInfo(className, false));
-                } else {// 存在一个 api 多个实现就报错
+                } else { // 存在一个 api 多个实现就报错
                     errorStr = "<" + className + "> and <" + apiInfo.implApiClass + "> impl same api of <" + superClassName + ">";
                 }
-            } else {// mock 的话，如果 map 中已存在就不覆盖了
+            } else { // mock 的话，如果 map 中已存在就不覆盖了
                 if (!mApiImplMap.containsKey(superClassName)) {
                     mApiImplMap.put(superClassName, new ApiInfo(className, true));
                 }

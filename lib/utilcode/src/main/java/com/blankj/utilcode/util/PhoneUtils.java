@@ -107,7 +107,7 @@ public final class PhoneUtils {
 
     @SuppressLint("HardwareIds")
     @RequiresPermission(READ_PHONE_STATE)
-    public static String getImeiOrMeid(boolean isImei) {
+    public static String getImeiOrMeid(final boolean isImei) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             return "";
         }
@@ -174,7 +174,7 @@ public final class PhoneUtils {
         return "";
     }
 
-    private static String getMinOne(String s0, String s1) {
+    private static String getMinOne(final String s0, final String s1) {
         boolean empty0 = TextUtils.isEmpty(s0);
         boolean empty1 = TextUtils.isEmpty(s1);
         if (empty0 && empty1) return "";
@@ -189,13 +189,13 @@ public final class PhoneUtils {
         return s1;
     }
 
-    private static String getSystemPropertyByReflect(String key) {
+    private static String getSystemPropertyByReflect(final String key) {
         try {
             @SuppressLint("PrivateApi")
             Class<?> clz = Class.forName("android.os.SystemProperties");
             Method getMethod = clz.getMethod("get", String.class, String.class);
             return (String) getMethod.invoke(clz, key, "");
-        } catch (Exception e) {/**/}
+        } catch (Exception e) { /**/ }
         return "";
     }
 

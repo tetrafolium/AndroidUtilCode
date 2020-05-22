@@ -18,7 +18,7 @@ import com.blankj.utilcode.util.ToastUtils;
 public class SubUtilApiMock extends SubUtilApi {
 
     @Override
-    public void startSubUtilActivity(Context context) {
+    public void startSubUtilActivity(final Context context) {
         ToastUtils.showShort("startSubUtilActivity");
     }
 

@@ -48,7 +48,7 @@ public final class CacheDoubleStaticUtils {
      * @param value    The value of cache.
      * @param saveTime The save time of cache, in seconds.
      */
-    public static void put(@NonNull final String key, byte[] value, final int saveTime) {
+    public static void put(@NonNull final String key, final byte[] value, final int saveTime) {
         put(key, value, saveTime, getDefaultCacheDoubleUtils());
     }
 
@@ -437,7 +437,7 @@ public final class CacheDoubleStaticUtils {
      *
      * @param key The key of cache.
      */
-    public static void remove(@NonNull String key) {
+    public static void remove(final @NonNull String key) {
         remove(key, getDefaultCacheDoubleUtils());
     }
 
@@ -949,7 +949,7 @@ public final class CacheDoubleStaticUtils {
      * @param key              The key of cache.
      * @param cacheDoubleUtils The instance of {@link CacheDoubleUtils}.
      */
-    public static void remove(@NonNull String key, @NonNull final CacheDoubleUtils cacheDoubleUtils) {
+    public static void remove(final @NonNull String key, @NonNull final CacheDoubleUtils cacheDoubleUtils) {
         cacheDoubleUtils.remove(key);
     }
 

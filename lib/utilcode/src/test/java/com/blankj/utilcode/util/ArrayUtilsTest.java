@@ -202,7 +202,7 @@ public class ArrayUtilsTest extends BaseTest {
         int[] array = new int[]{0, 1, 2, 3};
         ArrayUtils.forAllDo(array, new ArrayUtils.Closure<Integer>() {
             @Override
-            public void execute(int index, Integer item) {
+            public void execute(final int index, final Integer item) {
                 System.out.println(index + ", " + item);
             }
         });

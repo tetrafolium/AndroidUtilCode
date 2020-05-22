@@ -318,7 +318,7 @@ public final class PermissionUtils {
         getPermissionsStatus(activity);
         mOnRationaleListener.rationale(activity, new ShouldRequest() {
             @Override
-            public void again(boolean again) {
+            public void again(final boolean again) {
                 if (again) {
                     mPermissionsDenied = new ArrayList<>();
                     mPermissionsDeniedForever = new ArrayList<>();
@@ -392,14 +392,14 @@ public final class PermissionUtils {
         public static void start(final int type) {
             UtilsTransActivity.start(new Utils.Consumer<Intent>() {
                 @Override
-                public void accept(Intent data) {
+                public void accept(final Intent data) {
                     data.putExtra(TYPE, type);
                 }
             }, INSTANCE);
         }
 
         @Override
-        public void onCreated(final UtilsTransActivity activity, @Nullable Bundle savedInstanceState) {
+        public void onCreated(final UtilsTransActivity activity, final @Nullable Bundle savedInstanceState) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
             int type = activity.getIntent().getIntExtra(TYPE, -1);
@@ -433,7 +433,7 @@ public final class PermissionUtils {
             }
         }
 
-        private void requestPermissions(Activity activity) {
+        private void requestPermissions(final Activity activity) {
             if (sInstance.mPermissionsRequest != null) {
                 int size = sInstance.mPermissionsRequest.size();
                 if (size <= 0) {
@@ -445,10 +445,10 @@ public final class PermissionUtils {
         }
 
         @Override
-        public void onRequestPermissionsResult(UtilsTransActivity activity,
-                                               int requestCode,
-                                               String[] permissions,
-                                               int[] grantResults) {
+        public void onRequestPermissionsResult(final UtilsTransActivity activity,
+                                               final int requestCode,
+                                               final String[] permissions,
+                                               final int[] grantResults) {
             activity.finish();
             if (sInstance != null && sInstance.mPermissionsRequest != null) {
                 sInstance.onRequestPermissionsResult(activity);
@@ -457,7 +457,7 @@ public final class PermissionUtils {
 
 
         @Override
-        public boolean dispatchTouchEvent(UtilsTransActivity activity, MotionEvent ev) {
+        public boolean dispatchTouchEvent(final UtilsTransActivity activity, final MotionEvent ev) {
             activity.finish();
             return true;
         }
@@ -472,11 +472,11 @@ public final class PermissionUtils {
         }
 
         @Override
-        public void onActivityResult(UtilsTransActivity activity, int requestCode, int resultCode, Intent data) {
+        public void onActivityResult(final UtilsTransActivity activity, final int requestCode, final int resultCode, final Intent data) {
             activity.finish();
         }
 
-        private void checkRequestCallback(int requestCode) {
+        private void checkRequestCallback(final int requestCode) {
             if (requestCode == TYPE_WRITE_SETTINGS) {
                 if (sSimpleCallback4WriteSettings == null) return;
                 if (isGrantedWriteSettings()) {

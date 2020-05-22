@@ -20,7 +20,7 @@ public class Response {
     private Map<String, List<String>> mHeaders;
     private InputStream               mBody;
 
-    public Response(Map<String, List<String>> headers, InputStream body) {
+    public Response(final Map<String, List<String>> headers, final InputStream body) {
         mHeaders = headers;
         mBody = body;
     }

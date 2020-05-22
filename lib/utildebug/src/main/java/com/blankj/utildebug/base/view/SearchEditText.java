@@ -19,32 +19,32 @@ public class SearchEditText extends FloatEditText {
     private static final long LIMIT = 200;
 
     private OnTextChangedListener mListener;
-    private String                mStartSearchText = "";// 记录开始输入前的文本内容
+    private String                mStartSearchText = ""; // 记录开始输入前的文本内容
     private Runnable              mAction          = new Runnable() {
         @Override
         public void run() {
             if (mListener != null) {
                 // 判断最终和开始前是否一致
                 if (!StringUtils.equals(mStartSearchText, getText().toString())) {
-                    mStartSearchText = getText().toString();// 更新 mStartSearchText
+                    mStartSearchText = getText().toString(); // 更新 mStartSearchText
                     mListener.onTextChanged(mStartSearchText);
                 }
             }
         }
     };
 
-    public SearchEditText(Context context) {
+    public SearchEditText(final Context context) {
         this(context, null);
     }
 
-    public SearchEditText(Context context, AttributeSet attrs) {
+    public SearchEditText(final Context context, final AttributeSet attrs) {
         super(context, attrs);
     }
 
     /**
      * 在 LIMIT 时间内连续输入不触发文本变化
      */
-    public void setOnTextChangedListener(OnTextChangedListener listener) {
+    public void setOnTextChangedListener(final OnTextChangedListener listener) {
         mListener = listener;
     }
 
@@ -55,7 +55,7 @@ public class SearchEditText extends FloatEditText {
     }
 
     @Override
-    protected void onTextChanged(final CharSequence text, int start, int lengthBefore, int lengthAfter) {
+    protected void onTextChanged(final CharSequence text, final int start, final int lengthBefore, final int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
         // 移除上一次的回调
         removeCallbacks(mAction);
