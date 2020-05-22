@@ -108,10 +108,8 @@ public abstract class BaseFloatView extends RelativeLayout
     @Override
     public boolean dispatchKeyEvent(final KeyEvent event) {
         Activity topActivity = ActivityUtils.getTopActivity();
-        if (topActivity != null) {
-            if (topActivity.getWindow().getDecorView().dispatchKeyEvent(event)) {
-                return true;
-            }
+        if ((topActivity != null) && (topActivity.getWindow().getDecorView().dispatchKeyEvent(event))) {
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }

@@ -43,10 +43,8 @@ public class FileHelper {
         }
         if (FileUtils.getFileExtension(file).equals("xml")) {
             File parentFile = file.getParentFile();
-            if (parentFile != null) {
-                if (StringUtils.equals(parentFile.getName(), "shared_prefs")) {
-                    return SP;
-                }
+            if ((parentFile != null) && (StringUtils.equals(parentFile.getName(), "shared_prefs"))) {
+                return SP;
             }
         }
         if (FileUtils.isUtf8(file)) {

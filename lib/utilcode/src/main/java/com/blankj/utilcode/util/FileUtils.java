@@ -435,9 +435,7 @@ public final class FileUtils {
                 File oneDestFile = new File(destPath + file.getName());
                 if (file.isFile()) {
                     if (!copyOrMoveFile(file, oneDestFile, listener, isMove)) return false;
-                } else if (file.isDirectory()) {
-                    if (!copyOrMoveDir(file, oneDestFile, listener, isMove)) return false;
-                }
+                } else if ((file.isDirectory()) && (!copyOrMoveDir(file, oneDestFile, listener, isMove))) return false;
             }
         }
         return !isMove || deleteDir(srcDir);
@@ -512,9 +510,7 @@ public final class FileUtils {
             for (File file : files) {
                 if (file.isFile()) {
                     if (!file.delete()) return false;
-                } else if (file.isDirectory()) {
-                    if (!deleteDir(file)) return false;
-                }
+                } else if ((file.isDirectory()) && (!deleteDir(file))) return false;
             }
         }
         return dir.delete();
@@ -611,9 +607,7 @@ public final class FileUtils {
                 if (filter.accept(file)) {
                     if (file.isFile()) {
                         if (!file.delete()) return false;
-                    } else if (file.isDirectory()) {
-                        if (!deleteDir(file)) return false;
-                    }
+                    } else if ((file.isDirectory()) && (!deleteDir(file))) return false;
                 }
             }
         }
@@ -983,10 +977,8 @@ public final class FileUtils {
     private static int isUtf8(final byte[] raw) {
         int i, len;
         int utf8 = 0, ascii = 0;
-        if (raw.length > 3) {
-            if ((raw[0] == (byte) 0xEF) && (raw[1] == (byte) 0xBB) && (raw[2] == (byte) 0xBF)) {
-                return 100;
-            }
+        if ((raw.length > 3) && ((raw[0] == (byte) 0xEF) && (raw[1] == (byte) 0xBB) && (raw[2] == (byte) 0xBF))) {
+            return 100;
         }
         len = raw.length;
         int child = 0;

@@ -238,10 +238,8 @@ public final class ProcessUtils {
             if (info == null || info.size() == 0) return "";
             int pid = android.os.Process.myPid();
             for (ActivityManager.RunningAppProcessInfo aInfo : info) {
-                if (aInfo.pid == pid) {
-                    if (aInfo.processName != null) {
-                        return aInfo.processName;
-                    }
+                if ((aInfo.pid == pid) && (aInfo.processName != null)) {
+                    return aInfo.processName;
                 }
             }
         } catch (Exception e) {

@@ -169,10 +169,8 @@ public final class AppUtils {
         List<ActivityManager.RunningAppProcessInfo> info = am.getRunningAppProcesses();
         if (info == null || info.size() == 0) return false;
         for (ActivityManager.RunningAppProcessInfo aInfo : info) {
-            if (aInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
-                if (aInfo.processName.equals(Utils.getApp().getPackageName())) {
-                    return true;
-                }
+            if ((aInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) && (aInfo.processName.equals(Utils.getApp().getPackageName()))) {
+                return true;
             }
         }
         return false;
@@ -205,10 +203,8 @@ public final class AppUtils {
             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(Integer.MAX_VALUE);
             if (taskInfo != null && taskInfo.size() > 0) {
                 for (ActivityManager.RunningTaskInfo aInfo : taskInfo) {
-                    if (aInfo.baseActivity != null) {
-                        if (pkgName.equals(aInfo.baseActivity.getPackageName())) {
-                            return true;
-                        }
+                    if ((aInfo.baseActivity != null) && (pkgName.equals(aInfo.baseActivity.getPackageName()))) {
+                        return true;
                     }
                 }
             }
