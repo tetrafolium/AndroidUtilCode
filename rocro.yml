@@ -5,6 +5,7 @@ inspecode:
     thresholds: { num-issues: 999 }
 
   checkstyle:
+    config-file: inspecode-checkstyle.xml
     auto-fix: true
     thresholds: { num-issues: 999 }
 
