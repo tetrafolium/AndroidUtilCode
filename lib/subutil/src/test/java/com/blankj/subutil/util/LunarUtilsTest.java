@@ -12,19 +12,20 @@ import org.junit.Test;
  */
 public class LunarUtilsTest {
 
-    @Test
-    public void lunarYear2GanZhi() throws Exception {
-        System.out.println(LunarUtils.lunarYear2GanZhi(2018));
-    }
+  @Test
+  public void lunarYear2GanZhi() throws Exception {
+    System.out.println(LunarUtils.lunarYear2GanZhi(2018));
+  }
 
-    @Test
-    public void lunar2Solar() throws Exception {
-        System.out.println(LunarUtils.lunar2Solar(new LunarUtils.Lunar(2018, 2, 23, false)));
-    }
+  @Test
+  public void lunar2Solar() throws Exception {
+    System.out.println(
+        LunarUtils.lunar2Solar(new LunarUtils.Lunar(2018, 2, 23, false)));
+  }
 
-    @Test
-    public void solar2Lunar() throws Exception {
-        System.out.println(LunarUtils.solar2Lunar(new LunarUtils.Solar(2018, 4, 8)));
-    }
-
+  @Test
+  public void solar2Lunar() throws Exception {
+    System.out.println(
+        LunarUtils.solar2Lunar(new LunarUtils.Solar(2018, 4, 8)));
+  }
 }

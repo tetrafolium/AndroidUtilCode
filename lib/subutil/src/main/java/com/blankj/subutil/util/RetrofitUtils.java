@@ -8,6 +8,4 @@ package com.blankj.subutil.util;
  *     desc  : utils about retrofit
  * </pre>
  */
-public final class RetrofitUtils {
-
-}
+public final class RetrofitUtils {}

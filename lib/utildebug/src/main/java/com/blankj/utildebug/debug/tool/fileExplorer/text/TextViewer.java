@@ -8,7 +8,4 @@ package com.blankj.utildebug.debug.tool.fileExplorer.text;
  *     desc  :
  * </pre>
  */
-public class TextViewer {
-
-
-}
+public class TextViewer {}

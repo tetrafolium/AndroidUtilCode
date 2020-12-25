@@ -12,5 +12,5 @@ import android.support.annotation.Keep;
  */
 @Keep
 public class TestPrivateStaticFinal {
-    public static final String STR = "str";
+  public static final String STR = "str";
 }

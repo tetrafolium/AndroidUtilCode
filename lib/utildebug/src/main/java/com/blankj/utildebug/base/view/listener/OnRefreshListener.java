@@ -11,5 +11,5 @@ import com.blankj.utildebug.base.view.BaseContentFloatView;
  * </pre>
  */
 public interface OnRefreshListener {
-    void onRefresh(BaseContentFloatView floatView);
+  void onRefresh(BaseContentFloatView floatView);
 }

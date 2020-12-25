@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.StringUtils;
 
 /**
@@ -19,22 +18,21 @@ import com.blankj.utilcode.util.StringUtils;
 @SuppressLint("AppCompatCustomView")
 public class EmptyGoneTextView extends TextView {
 
-    public EmptyGoneTextView(Context context) {
-        this(context, null);
-    }
+  public EmptyGoneTextView(Context context) { this(context, null); }
 
-    public EmptyGoneTextView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        setVisibility(GONE);
-    }
+  public EmptyGoneTextView(Context context, @Nullable AttributeSet attrs) {
+    super(context, attrs);
+    setVisibility(GONE);
+  }
 
-    @Override
-    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
-        super.onTextChanged(text, start, lengthBefore, lengthAfter);
-        if (StringUtils.isEmpty(text)) {
-            setVisibility(GONE);
-        } else {
-            setVisibility(VISIBLE);
-        }
+  @Override
+  protected void onTextChanged(CharSequence text, int start, int lengthBefore,
+                               int lengthAfter) {
+    super.onTextChanged(text, start, lengthBefore, lengthAfter);
+    if (StringUtils.isEmpty(text)) {
+      setVisibility(GONE);
+    } else {
+      setVisibility(VISIBLE);
     }
+  }
 }

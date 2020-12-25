@@ -1,20 +1,20 @@
-//package com.blankj.utilcode.util;
+// package com.blankj.utilcode.util;
 //
-//import android.app.Activity;
-//import android.app.Dialog;
-//import android.content.Context;
-//import android.content.ContextWrapper;
-//import android.graphics.drawable.ColorDrawable;
-//import android.os.Build;
-//import android.support.annotation.LayoutRes;
-//import android.support.annotation.NonNull;
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.Window;
+// import android.app.Activity;
+// import android.app.Dialog;
+// import android.content.Context;
+// import android.content.ContextWrapper;
+// import android.graphics.drawable.ColorDrawable;
+// import android.os.Build;
+// import android.support.annotation.LayoutRes;
+// import android.support.annotation.NonNull;
+// import android.util.Log;
+// import android.view.LayoutInflater;
+// import android.view.View;
+// import android.view.Window;
 //
-//import java.util.HashMap;
-//import java.util.TreeSet;
+// import java.util.HashMap;
+// import java.util.TreeSet;
 //
 ///**
 // * <pre>
@@ -24,7 +24,7 @@
 // *     desc  : utils about dialog
 // * </pre>
 // */
-//public class DialogUtils {
+// public class DialogUtils {
 //
 //    private DialogUtils() {
 //        throw new UnsupportedOperationException("u can't instantiate me...");
@@ -58,7 +58,8 @@
 //
 //    public static Dialog create(Activity activity, @LayoutRes int layoutId) {
 //        Dialog dialog = new Dialog(activity);
-//        View dialogContent = LayoutInflater.from(activity).inflate(layoutId, null);
+//        View dialogContent = LayoutInflater.from(activity).inflate(layoutId,
+//        null);
 //
 //        dialog.setContentView(dialogContent);
 //        Window window = dialog.getWindow();
@@ -71,7 +72,8 @@
 //
 //    private static boolean isActivityAlive(final Activity activity) {
 //        return activity != null && !activity.isFinishing()
-//                && (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1 || !activity.isDestroyed());
+//                && (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1
+//                || !activity.isDestroyed());
 //    }
 //
 //    private static Activity getActivityByContext(Context context) {

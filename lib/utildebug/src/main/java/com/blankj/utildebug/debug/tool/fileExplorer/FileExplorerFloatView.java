@@ -11,20 +11,21 @@ import com.blankj.utildebug.base.view.BaseContentFloatView;
  *     desc  :
  * </pre>
  */
-public class FileExplorerFloatView extends BaseContentFloatView<FileExplorerFloatView> {
+public class FileExplorerFloatView
+    extends BaseContentFloatView<FileExplorerFloatView> {
 
-    @Override
-    public int bindTitle() {
-        return R.string.du_file_explorer;
-    }
+  @Override
+  public int bindTitle() {
+    return R.string.du_file_explorer;
+  }
 
-    @Override
-    public int bindContentLayout() {
-        return NO_ID;
-    }
+  @Override
+  public int bindContentLayout() {
+    return NO_ID;
+  }
 
-    @Override
-    public void initContentView() {
-        FileContentView.show(this);
-    }
+  @Override
+  public void initContentView() {
+    FileContentView.show(this);
+  }
 }

@@ -2,7 +2,6 @@ package com.blankj.base.mvp;
 
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,24 +15,26 @@ import java.util.List;
  */
 public abstract class BaseModel {
 
-    private List<ThreadUtils.Task> mTasks = new ArrayList<>();
+  private List<ThreadUtils.Task> mTasks = new ArrayList<>();
 
-    public abstract void onCreateModel();
+  public abstract void onCreateModel();
 
-    public abstract void onDestroyModel();
+  public abstract void onDestroyModel();
 
-    public <T> ThreadUtils.Task<T> addAutoDestroyTask(ThreadUtils.Task<T> task) {
-        if (task == null) return null;
-        mTasks.add(task);
-        return task;
+  public <T> ThreadUtils.Task<T> addAutoDestroyTask(ThreadUtils.Task<T> task) {
+    if (task == null)
+      return null;
+    mTasks.add(task);
+    return task;
+  }
+
+  void destroy() {
+    onDestroyModel();
+    for (ThreadUtils.Task task : mTasks) {
+      if (task == null)
+        continue;
+      task.cancel();
+      ToastUtils.showLong("Mvp Task Canceled.");
     }
-
-    void destroy() {
-        onDestroyModel();
-        for (ThreadUtils.Task task : mTasks) {
-            if (task == null) continue;
-            task.cancel();
-            ToastUtils.showLong("Mvp Task Canceled.");
-        }
-    }
+  }
 }

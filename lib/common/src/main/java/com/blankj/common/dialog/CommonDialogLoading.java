@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.blankj.base.dialog.BaseDialogFragment;
 import com.blankj.base.dialog.DialogLayoutCallback;
 import com.blankj.common.R;
@@ -21,45 +20,45 @@ import com.blankj.utilcode.util.BarUtils;
  */
 public class CommonDialogLoading extends BaseDialogFragment {
 
-    public CommonDialogLoading init(Context context, final Runnable onCancelListener) {
-        super.init(context, new DialogLayoutCallback() {
-            @Override
-            public int bindTheme() {
-                return R.style.CommonLoadingDialogStyle;
-            }
+  public CommonDialogLoading init(Context context,
+                                  final Runnable onCancelListener) {
+    super.init(context, new DialogLayoutCallback() {
+      @Override
+      public int bindTheme() {
+        return R.style.CommonLoadingDialogStyle;
+      }
 
-            @Override
-            public int bindLayout() {
-                return R.layout.common_dialog_loading;
-            }
+      @Override
+      public int bindLayout() {
+        return R.layout.common_dialog_loading;
+      }
 
-            @Override
-            public void initView(BaseDialogFragment dialog, View contentView) {
-                if (onCancelListener == null) {
-                    setCancelable(false);
-                } else {
-                    setCancelable(true);
-                }
-            }
+      @Override
+      public void initView(BaseDialogFragment dialog, View contentView) {
+        if (onCancelListener == null) {
+          setCancelable(false);
+        } else {
+          setCancelable(true);
+        }
+      }
 
-            @Override
-            public void setWindowStyle(final Window window) {
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                BarUtils.setStatusBarColor(window, Color.TRANSPARENT);
-            }
+      @Override
+      public void setWindowStyle(final Window window) {
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                         WindowManager.LayoutParams.MATCH_PARENT);
+        BarUtils.setStatusBarColor(window, Color.TRANSPARENT);
+      }
 
-            @Override
-            public void onCancel(BaseDialogFragment dialog) {
-                if (onCancelListener != null) {
-                    onCancelListener.run();
-                }
-            }
+      @Override
+      public void onCancel(BaseDialogFragment dialog) {
+        if (onCancelListener != null) {
+          onCancelListener.run();
+        }
+      }
 
-            @Override
-            public void onDismiss(BaseDialogFragment dialog) {
-
-            }
-        });
-        return this;
-    }
+      @Override
+      public void onDismiss(BaseDialogFragment dialog) {}
+    });
+    return this;
+  }
 }

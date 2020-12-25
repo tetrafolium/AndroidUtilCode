@@ -18,39 +18,39 @@ import android.view.animation.LinearInterpolator;
  */
 public class RotateView extends View {
 
-    private ObjectAnimator headerAnimator;
+  private ObjectAnimator headerAnimator;
 
-    public RotateView(Context context) {
-        this(context, null);
-    }
+  public RotateView(Context context) { this(context, null); }
 
-    public RotateView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
+  public RotateView(Context context, @Nullable AttributeSet attrs) {
+    this(context, attrs, 0);
+  }
 
-    public RotateView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+  public RotateView(Context context, @Nullable AttributeSet attrs,
+                    int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+  }
 
-    @Override
-    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
-        super.onVisibilityChanged(changedView, visibility);
-        if (headerAnimator == null) {
-            initAnimator();
-        }
-        if (visibility == VISIBLE) {
-            headerAnimator.start();
-        } else {
-            headerAnimator.end();
-        }
+  @Override
+  protected void onVisibilityChanged(@NonNull View changedView,
+                                     int visibility) {
+    super.onVisibilityChanged(changedView, visibility);
+    if (headerAnimator == null) {
+      initAnimator();
     }
+    if (visibility == VISIBLE) {
+      headerAnimator.start();
+    } else {
+      headerAnimator.end();
+    }
+  }
 
-    private void initAnimator() {
-        headerAnimator = ObjectAnimator.ofFloat(this, "rotation", 0f, 360f);
-        headerAnimator.setRepeatCount(ObjectAnimator.INFINITE);
-        headerAnimator.setInterpolator(new LinearInterpolator());
-        headerAnimator.setRepeatMode(ObjectAnimator.RESTART);
-        headerAnimator.setDuration(1000);
-        headerAnimator.start();
-    }
+  private void initAnimator() {
+    headerAnimator = ObjectAnimator.ofFloat(this, "rotation", 0f, 360f);
+    headerAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+    headerAnimator.setInterpolator(new LinearInterpolator());
+    headerAnimator.setRepeatMode(ObjectAnimator.RESTART);
+    headerAnimator.setDuration(1000);
+    headerAnimator.start();
+  }
 }

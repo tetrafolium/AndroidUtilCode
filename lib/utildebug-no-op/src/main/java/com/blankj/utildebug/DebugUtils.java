@@ -1,7 +1,6 @@
 package com.blankj.utildebug;
 
 import com.blankj.utildebug.debug.IDebug;
-
 import java.util.List;
 
 /**
@@ -14,13 +13,11 @@ import java.util.List;
  */
 public class DebugUtils {
 
-    private DebugUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
-    }
+  private DebugUtils() {
+    throw new UnsupportedOperationException("u can't instantiate me...");
+  }
 
-    public static void setIconId(final int icon) {
-    }
+  public static void setIconId(final int icon) {}
 
-    public static void addDebugs(final List<IDebug> debugs) {
-    }
+  public static void addDebugs(final List<IDebug> debugs) {}
 }

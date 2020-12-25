@@ -1,7 +1,6 @@
 package com.blankj.subutil.pkg;
 
 import android.content.Context;
-
 import com.blankj.subutil.export.api.SubUtilApi;
 import com.blankj.subutil.pkg.feature.SubUtilActivity;
 import com.blankj.utilcode.util.ApiUtils;
@@ -17,9 +16,8 @@ import com.blankj.utilcode.util.ApiUtils;
 @ApiUtils.Api
 public class SubUtilApiImpl extends SubUtilApi {
 
-    @Override
-    public void startSubUtilActivity(Context context) {
-        SubUtilActivity.Companion.start(context);
-    }
-
+  @Override
+  public void startSubUtilActivity(Context context) {
+    SubUtilActivity.Companion.start(context);
+  }
 }

@@ -10,9 +10,7 @@ package com.blankj.utilcode.util.reflect;
  */
 public class Test4 {
 
-    public static void s_method() {
-    }
+  public static void s_method() {}
 
-    public void i_method() {
-    }
+  public void i_method() {}
 }

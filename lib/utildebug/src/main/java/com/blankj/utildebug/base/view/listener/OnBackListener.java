@@ -8,6 +8,4 @@ package com.blankj.utildebug.base.view.listener;
  *     desc  :
  * </pre>
  */
-public interface OnBackListener {
-    void onBack();
-}
+public interface OnBackListener { void onBack(); }

@@ -8,7 +8,6 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.List;
 
 /**
@@ -21,144 +20,146 @@ import java.util.List;
  */
 public abstract class BaseItem<T extends BaseItem> {
 
-    private static final SparseIntArray    LAYOUT_SPARSE_ARRAY = new SparseIntArray();
-    private static final SparseArray<View> VIEW_SPARSE_ARRAY   = new SparseArray<>();
+  private static final SparseIntArray LAYOUT_SPARSE_ARRAY =
+      new SparseIntArray();
+  private static final SparseArray<View> VIEW_SPARSE_ARRAY =
+      new SparseArray<>();
 
-    static ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutByType = LAYOUT_SPARSE_ARRAY.get(viewType, -1);
-        if (layoutByType != -1) {
-            return new ItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(layoutByType, parent, false));
+  static ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                           int viewType) {
+    int layoutByType = LAYOUT_SPARSE_ARRAY.get(viewType, -1);
+    if (layoutByType != -1) {
+      return new ItemViewHolder(LayoutInflater.from(parent.getContext())
+                                    .inflate(layoutByType, parent, false));
+    }
+    View viewByType = VIEW_SPARSE_ARRAY.get(viewType);
+    if (viewByType != null) {
+      return new ItemViewHolder(viewByType);
+    }
+    throw new RuntimeException(
+        "onCreateViewHolder: get holder from view type failed.");
+  }
+
+  public abstract void bind(@NonNull final ItemViewHolder holder,
+                            final int position);
+
+  public void partialUpdate(List<Object> payloads) {}
+
+  void bindViewHolder(@NonNull final ItemViewHolder holder,
+                      final int position) {
+    if (mOnItemClickListener != null) {
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          if (mOnItemClickListener != null) {
+            // noinspection unchecked
+            mOnItemClickListener.onItemClick(holder, (T)BaseItem.this,
+                                             getIndex());
+          }
         }
-        View viewByType = VIEW_SPARSE_ARRAY.get(viewType);
-        if (viewByType != null) {
-            return new ItemViewHolder(viewByType);
+      });
+    } else {
+      holder.itemView.setOnClickListener(null);
+    }
+    if (mOnItemLongClickListener != null) {
+      holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+          if (mOnItemLongClickListener != null) {
+            // noinspection unchecked
+            return mOnItemLongClickListener.onItemLongClick(
+                holder, (T)BaseItem.this, getIndex());
+          }
+          return false;
         }
-        throw new RuntimeException("onCreateViewHolder: get holder from view type failed.");
+      });
+    } else {
+      holder.itemView.setOnLongClickListener(null);
     }
+    bind(holder, position);
+  }
 
-    public abstract void bind(@NonNull final ItemViewHolder holder, final int position);
+  public void onViewRecycled(@NonNull final ItemViewHolder holder,
+                             final int position) { /**/
+  }
 
-    public void partialUpdate(List<Object> payloads) {
-    }
+  public long getItemId() { return RecyclerView.NO_ID; }
 
-    void bindViewHolder(@NonNull final ItemViewHolder holder, final int position) {
-        if (mOnItemClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mOnItemClickListener != null) {
-                        //noinspection unchecked
-                        mOnItemClickListener.onItemClick(holder, (T) BaseItem.this, getIndex());
-                    }
-                }
-            });
-        } else {
-            holder.itemView.setOnClickListener(null);
-        }
-        if (mOnItemLongClickListener != null) {
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    if (mOnItemLongClickListener != null) {
-                        //noinspection unchecked
-                        return mOnItemLongClickListener.onItemLongClick(holder, (T) BaseItem.this, getIndex());
-                    }
-                    return false;
-                }
-            });
-        } else {
-            holder.itemView.setOnLongClickListener(null);
-        }
-        bind(holder, position);
-    }
+  private int viewType;
+  BaseItemAdapter<T> mAdapter;
+  private OnItemClickListener<T> mOnItemClickListener;
+  private OnItemLongClickListener<T> mOnItemLongClickListener;
 
-    public void onViewRecycled(@NonNull final ItemViewHolder holder, final int position) {/**/}
+  public BaseItem(@LayoutRes int layoutId) {
+    viewType = getViewTypeByLayoutId(layoutId);
+    LAYOUT_SPARSE_ARRAY.put(viewType, layoutId);
+  }
 
-    public long getItemId() {
-        return RecyclerView.NO_ID;
-    }
+  public BaseItem(@NonNull View view) {
+    viewType = getViewTypeByView(view);
+    VIEW_SPARSE_ARRAY.put(viewType, view);
+  }
 
-    private int viewType;
-    BaseItemAdapter<T> mAdapter;
-    private OnItemClickListener<T>     mOnItemClickListener;
-    private OnItemLongClickListener<T> mOnItemLongClickListener;
+  public int getViewType() { return viewType; }
 
-    public BaseItem(@LayoutRes int layoutId) {
-        viewType = getViewTypeByLayoutId(layoutId);
-        LAYOUT_SPARSE_ARRAY.put(viewType, layoutId);
-    }
+  public BaseItemAdapter<T> getAdapter() { return mAdapter; }
 
-    public BaseItem(@NonNull View view) {
-        viewType = getViewTypeByView(view);
-        VIEW_SPARSE_ARRAY.put(viewType, view);
-    }
+  public boolean isViewType(@LayoutRes int layoutId) {
+    return viewType == getViewTypeByLayoutId(layoutId);
+  }
 
-    public int getViewType() {
-        return viewType;
-    }
+  public boolean isViewType(@NonNull View view) {
+    return viewType == getViewTypeByView(view);
+  }
 
-    public BaseItemAdapter<T> getAdapter() {
-        return mAdapter;
-    }
+  private int getViewTypeByLayoutId(@LayoutRes int layoutId) {
+    return layoutId + getClass().hashCode();
+  }
 
-    public boolean isViewType(@LayoutRes int layoutId) {
-        return viewType == getViewTypeByLayoutId(layoutId);
-    }
+  private int getViewTypeByView(@NonNull View view) {
+    return view.hashCode() + getClass().hashCode();
+  }
 
-    public boolean isViewType(@NonNull View view) {
-        return viewType == getViewTypeByView(view);
-    }
+  public void update() {
+    if (getAdapter() == null)
+      return;
+    // noinspection unchecked
+    getAdapter().updateItem((T)this);
+  }
 
-    private int getViewTypeByLayoutId(@LayoutRes int layoutId) {
-        return layoutId + getClass().hashCode();
-    }
+  public List<T> getItems() { return getAdapter().getItems(); }
 
-    private int getViewTypeByView(@NonNull View view) {
-        return view.hashCode() + getClass().hashCode();
-    }
+  public int getCount() { return getAdapter().getItemCount(); }
 
-    public void update() {
-        if (getAdapter() == null) return;
-        //noinspection unchecked
-        getAdapter().updateItem((T) this);
-    }
+  public int getIndex() {
+    // noinspection SuspiciousMethodCalls
+    return getAdapter().getItems().indexOf(this);
+  }
 
-    public List<T> getItems() {
-        return getAdapter().getItems();
-    }
+  public OnItemClickListener<T> getOnItemClickListener() {
+    return mOnItemClickListener;
+  }
 
-    public int getCount() {
-        return getAdapter().getItemCount();
-    }
+  public T setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
+    mOnItemClickListener = onItemClickListener;
+    return (T)this;
+  }
 
-    public int getIndex() {
-        //noinspection SuspiciousMethodCalls
-        return getAdapter().getItems().indexOf(this);
-    }
+  public OnItemLongClickListener<T> getOnItemLongClickListener() {
+    return mOnItemLongClickListener;
+  }
 
-    public OnItemClickListener<T> getOnItemClickListener() {
-        return mOnItemClickListener;
-    }
+  public T setOnItemLongClickListener(
+      OnItemLongClickListener<T> onItemLongClickListener) {
+    mOnItemLongClickListener = onItemLongClickListener;
+    return (T)this;
+  }
 
-    public T setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
-        mOnItemClickListener = onItemClickListener;
-        return (T) this;
-    }
+  public interface OnItemClickListener<T> {
+    void onItemClick(ItemViewHolder holder, T item, int position);
+  }
 
-    public OnItemLongClickListener<T> getOnItemLongClickListener() {
-        return mOnItemLongClickListener;
-    }
-
-    public T setOnItemLongClickListener(OnItemLongClickListener<T> onItemLongClickListener) {
-        mOnItemLongClickListener = onItemLongClickListener;
-        return (T) this;
-    }
-
-    public interface OnItemClickListener<T> {
-        void onItemClick(ItemViewHolder holder, T item, int position);
-    }
-
-    public interface OnItemLongClickListener<T> {
-        boolean onItemLongClick(ItemViewHolder holder, T item, int position);
-    }
+  public interface OnItemLongClickListener<T> {
+    boolean onItemLongClick(ItemViewHolder holder, T item, int position);
+  }
 }

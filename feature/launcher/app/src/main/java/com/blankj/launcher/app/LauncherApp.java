@@ -1,7 +1,6 @@
 package com.blankj.launcher.app;
 
 import android.content.Context;
-
 import com.blankj.common.CommonApplication;
 import com.blankj.utilcode.util.ResourceUtils;
 
@@ -15,22 +14,18 @@ import com.blankj.utilcode.util.ResourceUtils;
  */
 public class LauncherApp extends CommonApplication {
 
-    private static LauncherApp sInstance;
+  private static LauncherApp sInstance;
 
-    public static LauncherApp getInstance() {
-        return sInstance;
-    }
+  public static LauncherApp getInstance() { return sInstance; }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-    }
+  @Override
+  protected void attachBaseContext(Context base) {
+    super.attachBaseContext(base);
+  }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        sInstance = this;
-    }
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    sInstance = this;
+  }
 }
-
-

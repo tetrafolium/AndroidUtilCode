@@ -1,7 +1,6 @@
 package com.blankj.utilcode.pkg;
 
 import android.content.Context;
-
 import com.blankj.utilcode.export.api.UtilCodeApi;
 import com.blankj.utilcode.pkg.feature.CoreUtilActivity;
 import com.blankj.utilcode.util.ApiUtils;
@@ -17,15 +16,15 @@ import com.blankj.utilcode.util.ApiUtils;
 @ApiUtils.Api
 public class UtilCodeApiImpl extends UtilCodeApi {
 
-    @Override
-    public void startUtilCodeActivity(Context context) {
-        CoreUtilActivity.Companion.start(context);
-    }
+  @Override
+  public void startUtilCodeActivity(Context context) {
+    CoreUtilActivity.Companion.start(context);
+  }
 
-    @Override
-    public void testCallback(Callback callback) {
-        if (callback != null) {
-            callback.call();
-        }
+  @Override
+  public void testCallback(Callback callback) {
+    if (callback != null) {
+      callback.call();
     }
+  }
 }

@@ -12,15 +12,15 @@ import android.view.Window;
  * </pre>
  */
 public interface DialogLayoutCallback {
-    int bindTheme();
+  int bindTheme();
 
-    int bindLayout();
+  int bindLayout();
 
-    void initView(BaseDialogFragment dialog, View contentView);
+  void initView(BaseDialogFragment dialog, View contentView);
 
-    void setWindowStyle(Window window);
+  void setWindowStyle(Window window);
 
-    void onCancel(BaseDialogFragment dialog);
+  void onCancel(BaseDialogFragment dialog);
 
-    void onDismiss(BaseDialogFragment dialog);
+  void onDismiss(BaseDialogFragment dialog);
 }

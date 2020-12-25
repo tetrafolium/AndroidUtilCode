@@ -14,8 +14,7 @@ import android.view.Window;
  * </pre>
  */
 public interface DialogCallback {
-    @NonNull
-    Dialog bindDialog(Activity activity);
+  @NonNull Dialog bindDialog(Activity activity);
 
-    void setWindowStyle(Window window);
+  void setWindowStyle(Window window);
 }

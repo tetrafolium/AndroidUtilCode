@@ -1,7 +1,6 @@
 package com.blankj.subutil.util;
 
 import com.blankj.utilcode.util.Utils;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -20,12 +19,8 @@ import org.robolectric.annotation.Config;
 @Config(manifest = Config.NONE)
 public class TestUtils {
 
-    public static void init() {
-        Utils.init(RuntimeEnvironment.application);
-    }
+  public static void init() { Utils.init(RuntimeEnvironment.application); }
 
-    @Test
-    public void test() throws Exception {
-
-    }
+  @Test
+  public void test() throws Exception {}
 }

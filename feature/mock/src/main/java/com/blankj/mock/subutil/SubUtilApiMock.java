@@ -1,7 +1,6 @@
 package com.blankj.mock.subutil;
 
 import android.content.Context;
-
 import com.blankj.subutil.export.api.SubUtilApi;
 import com.blankj.utilcode.util.ApiUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -17,9 +16,8 @@ import com.blankj.utilcode.util.ToastUtils;
 @ApiUtils.Api(isMock = true)
 public class SubUtilApiMock extends SubUtilApi {
 
-    @Override
-    public void startSubUtilActivity(Context context) {
-        ToastUtils.showShort("startSubUtilActivity");
-    }
-
+  @Override
+  public void startSubUtilActivity(Context context) {
+    ToastUtils.showShort("startSubUtilActivity");
+  }
 }

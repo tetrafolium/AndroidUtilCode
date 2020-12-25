@@ -2,7 +2,6 @@ package com.blankj.utildebug.debug.tool.logcat;
 
 import android.content.Context;
 import android.view.View;
-
 import com.blankj.utildebug.R;
 import com.blankj.utildebug.base.view.FloatToast;
 import com.blankj.utildebug.debug.tool.AbsToolDebug;
@@ -16,23 +15,21 @@ import com.blankj.utildebug.debug.tool.AbsToolDebug;
  * </pre>
  */
 public class LogcatDebug extends AbsToolDebug {
-    @Override
-    public void onAppCreate(Context context) {
+  @Override
+  public void onAppCreate(Context context) {}
 
-    }
+  @Override
+  public int getIcon() {
+    return R.drawable.du_ic_debug_logcat;
+  }
 
-    @Override
-    public int getIcon() {
-        return R.drawable.du_ic_debug_logcat;
-    }
+  @Override
+  public int getName() {
+    return R.string.du_logcat;
+  }
 
-    @Override
-    public int getName() {
-        return R.string.du_logcat;
-    }
-
-    @Override
-    public void onClick(View view) {
-        FloatToast.showShort(FloatToast.WARNING, "Developing...");
-    }
+  @Override
+  public void onClick(View view) {
+    FloatToast.showShort(FloatToast.WARNING, "Developing...");
+  }
 }

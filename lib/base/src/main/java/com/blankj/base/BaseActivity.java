@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import com.blankj.utilcode.util.ClickUtils;
 
 /**
@@ -16,39 +15,39 @@ import com.blankj.utilcode.util.ClickUtils;
  *     desc  : base about activity
  * </pre>
  */
-public abstract class BaseActivity extends AppCompatActivity
-    implements IBaseView {
+public abstract class BaseActivity
+    extends AppCompatActivity implements IBaseView {
 
-    private View.OnClickListener mClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            onDebouncingClick(v);
-        }
-    };
-
-    public View     mContentView;
-    public Activity mActivity;
-
+  private View.OnClickListener mClickListener = new View.OnClickListener() {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        mActivity = this;
-        super.onCreate(savedInstanceState);
-        initData(getIntent().getExtras());
-        setContentView();
-        initView(savedInstanceState, mContentView);
-        doBusiness();
+    public void onClick(View v) {
+      onDebouncingClick(v);
     }
+  };
 
-    @Override
-    public void setContentView() {
-        if (bindLayout() <= 0) return;
-        mContentView = LayoutInflater.from(this).inflate(bindLayout(), null);
-        setContentView(mContentView);
-    }
+  public View mContentView;
+  public Activity mActivity;
 
-    public void applyDebouncingClickListener(View... views) {
-        ClickUtils.applyGlobalDebouncing(views, mClickListener);
-        ClickUtils.applyPressedViewScale(views);
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    mActivity = this;
+    super.onCreate(savedInstanceState);
+    initData(getIntent().getExtras());
+    setContentView();
+    initView(savedInstanceState, mContentView);
+    doBusiness();
+  }
+
+  @Override
+  public void setContentView() {
+    if (bindLayout() <= 0)
+      return;
+    mContentView = LayoutInflater.from(this).inflate(bindLayout(), null);
+    setContentView(mContentView);
+  }
+
+  public void applyDebouncingClickListener(View... views) {
+    ClickUtils.applyGlobalDebouncing(views, mClickListener);
+    ClickUtils.applyPressedViewScale(views);
+  }
 }
-

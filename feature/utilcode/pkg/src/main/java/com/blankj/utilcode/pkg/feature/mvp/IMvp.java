@@ -12,17 +12,17 @@ import com.blankj.utilcode.util.Utils;
  */
 public interface IMvp {
 
-    interface View {
-        void setLoadingVisible(boolean visible);
+  interface View {
+    void setLoadingVisible(boolean visible);
 
-        void showMsg(CharSequence msg);
-    }
+    void showMsg(CharSequence msg);
+  }
 
-    interface Presenter {
-        void updateMsg();
-    }
+  interface Presenter {
+    void updateMsg();
+  }
 
-    interface Model {
-        void requestUpdateMsg(final Utils.Consumer<String> consumer);
-    }
+  interface Model {
+    void requestUpdateMsg(final Utils.Consumer<String> consumer);
+  }
 }

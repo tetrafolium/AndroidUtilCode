@@ -6,7 +6,5 @@ import java.util.Map;
 
 public class Headers {
 
-    private Map<String, List<String>> header = new HashMap<>();
-
-
+  private Map<String, List<String>> header = new HashMap<>();
 }

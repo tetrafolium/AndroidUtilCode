@@ -10,18 +10,16 @@ package com.blankj.api;
  */
 public class ApiInfo {
 
-    public String  implApiClass;
-    public boolean isMock;
+  public String implApiClass;
+  public boolean isMock;
 
-    public ApiInfo(String implApiClass, boolean isMock) {
-        this.implApiClass = implApiClass;
-        this.isMock = isMock;
-    }
+  public ApiInfo(String implApiClass, boolean isMock) {
+    this.implApiClass = implApiClass;
+    this.isMock = isMock;
+  }
 
-    @Override
-    public String toString() {
-        return "{ implApiClass: " + implApiClass +
-               ", isMock: " + isMock +
-               " }";
-    }
+  @Override
+  public String toString() {
+    return "{ implApiClass: " + implApiClass + ", isMock: " + isMock + " }";
+  }
 }
