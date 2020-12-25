@@ -853,7 +853,7 @@ private static Object realAdd(Object array, int index, Object element,
 
 /**
  * <p>Removes the element at the specified position from the specified array.
- * All subsequent elements are shifted to the left (substracts one from
+ * All subsequent elements are shifted to the left (subtracts one from
  * their indices).</p>
  *
  * <p>This method returns a new array with the same elements of the input
@@ -888,7 +888,7 @@ public static Object[] remove(Object[] array, int index) {
 /**
  * <p>Removes the first occurrence of the specified element from the
  * specified array. All subsequent elements are shifted to the left
- * (substracts one from their indices). If the array doesn't contains
+ * (subtracts one from their indices). If the array doesn't contains
  * such an element, no elements are removed from the array.</p>
  *
  * <p>This method returns a new array with the same elements of the input
