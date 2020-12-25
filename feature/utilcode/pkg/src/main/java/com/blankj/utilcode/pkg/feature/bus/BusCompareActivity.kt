@@ -15,7 +15,6 @@ import org.greenrobot.eventbus.Subscribe
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 
-
 /**
  * ```
  * author: Blankj
@@ -141,7 +140,6 @@ class BusCompareActivity : CommonActivity() {
             }
 
             override fun restState() {
-
             }
         }, object : OnFinishCallback {
             override fun onFinish() {
@@ -209,8 +207,13 @@ class BusCompareActivity : CommonActivity() {
      * @param callback         比较的回调函数
      * @param onFinishCallback 执行结束的回调
      */
-    private fun compareWithEventBus(name: String, sampleSize: Int, times: Int,
-                                    callback: CompareCallback, onFinishCallback: OnFinishCallback) {
+    private fun compareWithEventBus(
+        name: String,
+        sampleSize: Int,
+        times: Int,
+        callback: CompareCallback,
+        onFinishCallback: OnFinishCallback
+    ) {
         showLoading()
         ThreadUtils.executeByCpu(object : ThreadUtils.Task<String>() {
             override fun doInBackground(): String {
@@ -236,7 +239,7 @@ class BusCompareActivity : CommonActivity() {
                 }
                 return name +
                         "\nEventBusCostTime: " + eventBusAverageTime / sampleSize +
-                        "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize;
+                        "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize
             }
 
             override fun onSuccess(result: String?) {

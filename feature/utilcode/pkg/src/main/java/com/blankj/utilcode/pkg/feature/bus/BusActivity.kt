@@ -2,7 +2,6 @@ package com.blankj.utilcode.pkg.feature.bus
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.support.annotation.Keep
 import com.blankj.common.activity.CommonActivity
 import com.blankj.common.item.CommonItem
@@ -14,7 +13,6 @@ import com.blankj.utilcode.util.CollectionUtils
 import com.blankj.utilcode.util.ThreadUtils
 import kotlin.random.Random
 
-
 /**
  * ```
  * author: Blankj
@@ -25,7 +23,7 @@ import kotlin.random.Random
  */
 class BusActivity : CommonActivity() {
 
-    private val titleItem: CommonItemTitle = CommonItemTitle("", true);
+    private val titleItem: CommonItemTitle = CommonItemTitle("", true)
 
     @BusUtils.Bus(tag = TAG_BASIC_TYPE)
     fun test(param: Int) {

@@ -5,7 +5,6 @@ import android.os.Looper
 import android.support.annotation.StringRes
 import android.widget.TextView
 import android.widget.Toast
-
 import com.blankj.utilcode.pkg.R
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils

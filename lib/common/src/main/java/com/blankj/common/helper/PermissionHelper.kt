@@ -18,13 +18,20 @@ import com.blankj.utilcode.util.*
  */
 object PermissionHelper {
 
-    fun request(context: Context, callback: PermissionUtils.SimpleCallback,
-                @PermissionConstants.Permission vararg permissions: String) {
+    fun request(
+        context: Context,
+        callback: PermissionUtils.SimpleCallback,
+        @PermissionConstants.Permission vararg permissions: String
+    ) {
         PermissionUtils.permission(*permissions)
                 .rationale { activity, shouldRequest -> showRationaleDialog(activity, shouldRequest) }
                 .callback(object : PermissionUtils.SingleCallback {
-                    override fun callback(isAllGranted: Boolean, granted: MutableList<String>,
-                                          deniedForever: MutableList<String>, denied: MutableList<String>) {
+                    override fun callback(
+                        isAllGranted: Boolean,
+                        granted: MutableList<String>,
+                        deniedForever: MutableList<String>,
+                        denied: MutableList<String>
+                    ) {
                         LogUtils.d(isAllGranted, granted, deniedForever, denied)
                         if (isAllGranted) {
                             callback.onGranted()

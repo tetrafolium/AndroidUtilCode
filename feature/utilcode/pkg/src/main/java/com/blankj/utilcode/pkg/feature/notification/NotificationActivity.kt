@@ -41,7 +41,7 @@ class NotificationActivity : CommonActivity() {
                 CommonItemTitle("areNotificationsEnabled", NotificationUtils.areNotificationsEnabled().toString()),
                 CommonItemClick(R.string.notification_notify) {
                     NotificationUtils.notify(id++) { param ->
-                        intent.putExtra("id", id);
+                        intent.putExtra("id", id)
                         param.setSmallIcon(R.mipmap.ic_launcher)
                                 .setContentTitle("title")
                                 .setContentText("content text: $id")
@@ -59,7 +59,7 @@ class NotificationActivity : CommonActivity() {
                 },
                 CommonItemClick(R.string.notification_cancel_all) {
                     NotificationUtils.cancelAll()
-                    cancelId = id;
+                    cancelId = id
                 },
                 CommonItemClick(R.string.notification_show) {
                     NotificationUtils.setNotificationBarVisibility(true)

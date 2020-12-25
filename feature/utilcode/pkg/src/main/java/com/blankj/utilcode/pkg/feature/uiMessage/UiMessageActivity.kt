@@ -10,7 +10,6 @@ import com.blankj.utilcode.pkg.R
 import com.blankj.utilcode.util.CollectionUtils
 import com.blankj.utilcode.util.UiMessageUtils
 
-
 /**
  * ```
  * author: Blankj
@@ -21,7 +20,7 @@ import com.blankj.utilcode.util.UiMessageUtils
  */
 class UiMessageActivity : CommonActivity(), UiMessageUtils.UiMessageCallback {
 
-    private val titleItem: CommonItemTitle = CommonItemTitle("", true);
+    private val titleItem: CommonItemTitle = CommonItemTitle("", true)
     private var sendContent: String = ""
 
     companion object {

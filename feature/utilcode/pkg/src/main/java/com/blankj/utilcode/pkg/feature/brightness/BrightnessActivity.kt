@@ -41,7 +41,6 @@ class BrightnessActivity : CommonActivity() {
         }
     }
 
-
     override fun bindTitleRes(): Int {
         return R.string.demo_brightness
     }

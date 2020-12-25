@@ -92,7 +92,7 @@ class ClickActivity : CommonActivity() {
 
 class ClickItem : CommonItem<ClickItem> {
 
-    private val mConsumer: Utils.Consumer<View>;
+    private val mConsumer: Utils.Consumer<View>
     private val mTitle: String
 
     constructor(@StringRes title: Int, consumer: Utils.Consumer<View>) : super(R.layout.common_item_title_click) {

@@ -18,7 +18,6 @@ import com.blankj.utilcode.util.ColorUtils
 import com.blankj.utilcode.util.Utils
 import kotlinx.android.synthetic.main.bar_status_drawer_activity.*
 
-
 /**
  * ```
  * author: Blankj

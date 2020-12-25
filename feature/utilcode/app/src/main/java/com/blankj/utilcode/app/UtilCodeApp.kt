@@ -3,7 +3,6 @@ package com.blankj.utilcode.app
 import com.blankj.common.CommonApplication
 import com.blankj.utilcode.util.Utils
 
-
 /**
  * ```
  * author: Blankj
@@ -26,5 +25,3 @@ class UtilCodeApp : CommonApplication() {
 //        BusUtils.register("com.blankj.androidutilcode")
     }
 }
-
-

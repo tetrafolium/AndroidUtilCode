@@ -2,7 +2,6 @@ package com.blankj.utilcode.pkg.feature.shadow
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import com.blankj.common.activity.CommonActivity

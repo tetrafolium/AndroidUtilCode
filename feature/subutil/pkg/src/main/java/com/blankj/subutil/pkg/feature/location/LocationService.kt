@@ -7,7 +7,6 @@ import android.os.Binder
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Looper
-
 import com.blankj.subutil.util.LocationUtils
 import com.blankj.utilcode.util.ToastUtils
 
@@ -87,9 +86,13 @@ class LocationService : Service() {
      */
     interface OnGetLocationListener {
         fun getLocation(
-                lastLatitude: String, lastLongitude: String,
-                latitude: String, longitude: String,
-                country: String, locality: String, street: String
+            lastLatitude: String,
+            lastLongitude: String,
+            latitude: String,
+            longitude: String,
+            country: String,
+            locality: String,
+            street: String
         )
     }
 }

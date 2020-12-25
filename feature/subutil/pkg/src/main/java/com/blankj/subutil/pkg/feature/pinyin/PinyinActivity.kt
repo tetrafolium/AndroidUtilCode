@@ -33,10 +33,10 @@ class PinyinActivity : CommonActivity() {
     override fun bindItems(): MutableList<CommonItem<*>> {
         val surnames = "乐乘乜仇会便区单参句召员宓弗折曾朴查洗盖祭种秘繁缪能蕃覃解谌适都阿难黑"
         val size = surnames.length
-        val sb = StringBuilder("澹台: " + PinyinUtils.getSurnamePinyin("澹台")
-                + "\n尉迟: " + PinyinUtils.getSurnamePinyin("尉迟")
-                + "\n万俟: " + PinyinUtils.getSurnamePinyin("万俟")
-                + "\n单于: " + PinyinUtils.getSurnamePinyin("单于"))
+        val sb = StringBuilder("澹台: " + PinyinUtils.getSurnamePinyin("澹台") +
+                "\n尉迟: " + PinyinUtils.getSurnamePinyin("尉迟") +
+                "\n万俟: " + PinyinUtils.getSurnamePinyin("万俟") +
+                "\n单于: " + PinyinUtils.getSurnamePinyin("单于"))
         for (i in 0 until size) {
             val surname = surnames[i].toString()
             sb.append(String.format(

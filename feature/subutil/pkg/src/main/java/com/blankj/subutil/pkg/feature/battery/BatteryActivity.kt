@@ -22,7 +22,7 @@ import com.blankj.utilcode.util.ToastUtils
  */
 class BatteryActivity : CommonActivity(), BatteryUtils.OnBatteryStatusChangedListener {
 
-    private val titleItem: CommonItemTitle = CommonItemTitle("", true);
+    private val titleItem: CommonItemTitle = CommonItemTitle("", true)
 
     companion object {
         fun start(context: Context) {

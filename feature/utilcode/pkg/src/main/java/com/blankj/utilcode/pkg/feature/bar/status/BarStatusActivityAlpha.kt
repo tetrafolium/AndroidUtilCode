@@ -62,6 +62,6 @@ class BarStatusActivityAlpha : CommonActivity() {
 
     private fun updateStatusBar() {
         BarUtils.setStatusBarColor(this, Color.argb(mAlpha, 0, 0, 0))
-        BarUtils.addMarginTopEqualStatusBarHeight(findViewById(R.id.commonItemRv))// 其实这个只需要调用一次即可
+        BarUtils.addMarginTopEqualStatusBarHeight(findViewById(R.id.commonItemRv)) // 其实这个只需要调用一次即可
     }
 }

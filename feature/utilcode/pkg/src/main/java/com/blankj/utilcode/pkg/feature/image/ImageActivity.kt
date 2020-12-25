@@ -31,7 +31,7 @@ import java.util.*
 class ImageActivity : CommonActivity() {
 
     private val savePath = Config.CACHE_PATH + "lena.jpg"
-    private val titleItem: CommonItemTitle = CommonItemTitle("isImage: $savePath", "");
+    private val titleItem: CommonItemTitle = CommonItemTitle("isImage: $savePath", "")
 
     companion object {
         fun start(context: Context) {

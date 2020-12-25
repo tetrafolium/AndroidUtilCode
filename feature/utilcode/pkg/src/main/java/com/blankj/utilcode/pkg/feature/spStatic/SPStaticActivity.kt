@@ -75,7 +75,6 @@ class SPStaticActivity : CommonActivity() {
                     .append(key)
                     .append(": ")
                     .append(value)
-
         }
         return sb.deleteCharAt(0).toString()
     }

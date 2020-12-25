@@ -114,8 +114,10 @@ class PermissionActivity : CommonActivity() {
                         itemsView.updateItems(bindItems())
                     }
 
-                    override fun onDenied(permissionsDeniedForever: List<String>,
-                                          permissionsDenied: List<String>) {
+                    override fun onDenied(
+                        permissionsDeniedForever: List<String>,
+                        permissionsDenied: List<String>
+                    ) {
                         LogUtils.d(permissionsDeniedForever, permissionsDenied)
                         if (permissionsDeniedForever.isNotEmpty()) {
                             showSnackbar(false, "Calendar is denied forever")
@@ -139,8 +141,10 @@ class PermissionActivity : CommonActivity() {
                         itemsView.updateItems(bindItems())
                     }
 
-                    override fun onDenied(permissionsDeniedForever: List<String>,
-                                          permissionsDenied: List<String>) {
+                    override fun onDenied(
+                        permissionsDeniedForever: List<String>,
+                        permissionsDenied: List<String>
+                    ) {
                         LogUtils.d(permissionsDeniedForever, permissionsDenied)
                         if (permissionsDeniedForever.isNotEmpty()) {
                             showSnackbar(false, "Microphone is denied forever")
@@ -165,8 +169,10 @@ class PermissionActivity : CommonActivity() {
                         itemsView.updateItems(bindItems())
                     }
 
-                    override fun onDenied(permissionsDeniedForever: List<String>,
-                                          permissionsDenied: List<String>) {
+                    override fun onDenied(
+                        permissionsDeniedForever: List<String>,
+                        permissionsDenied: List<String>
+                    ) {
                         LogUtils.d(permissionsDeniedForever, permissionsDenied)
                         if (permissionsDeniedForever.isNotEmpty()) {
                             showSnackbar(false, "Calendar or Microphone is denied forever")
@@ -210,7 +216,6 @@ class PermissionActivity : CommonActivity() {
             })
         }
     }
-
 
     private fun showSnackbar(isSuccess: Boolean, msg: String) {
         SnackbarUtils.with(mContentView)

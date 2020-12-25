@@ -9,7 +9,6 @@ import com.blankj.common.activity.CommonActivity
 import com.blankj.utilcode.pkg.R
 import com.blankj.utilcode.util.BarUtils
 
-
 /**
  * ```
  * author: Blankj

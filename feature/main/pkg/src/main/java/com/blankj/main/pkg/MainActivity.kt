@@ -15,7 +15,6 @@ import com.blankj.utilcode.util.ClickUtils
 import com.blankj.utilcode.util.CollectionUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 /**
  * ```
  * author: Blankj

@@ -46,8 +46,15 @@ class LocationActivity : CommonActivity() {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             mLocationService = (service as LocationService.LocationBinder).service
             mLocationService.setOnGetLocationListener(object : LocationService.OnGetLocationListener {
-                override fun getLocation(lastLatitude: String, lastLongitude: String, latitude: String,
-                                         longitude: String, country: String, locality: String, street: String) {
+                override fun getLocation(
+                    lastLatitude: String,
+                    lastLongitude: String,
+                    latitude: String,
+                    longitude: String,
+                    country: String,
+                    locality: String,
+                    street: String
+                ) {
                     runOnUiThread {
                         itemsView.updateItems(
                                 CollectionUtils.newArrayList<CommonItem<*>>(

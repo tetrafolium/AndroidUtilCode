@@ -161,7 +161,7 @@ class ContainerFragment : CommonFragment(), FragmentUtils.OnBackClickListener {
 
 class SharedElementItem : CommonItem<SharedElementItem> {
 
-    lateinit var element: ImageView;
+    lateinit var element: ImageView
 
     constructor() : super(R.layout.fragment_item_shared_element)
 

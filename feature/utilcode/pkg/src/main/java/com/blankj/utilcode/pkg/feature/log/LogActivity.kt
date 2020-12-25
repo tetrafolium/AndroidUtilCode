@@ -15,7 +15,6 @@ import com.blankj.utilcode.util.*
 import java.io.File
 import java.util.*
 
-
 /**
  * ```
  * author: Blankj
@@ -104,7 +103,6 @@ class LogActivity : CommonActivity() {
         LogUtils.e("error")
         LogUtils.a("assert")
     }
-
 
     override fun bindTitleRes(): Int {
         return R.string.demo_log

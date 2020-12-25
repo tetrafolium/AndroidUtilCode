@@ -3,7 +3,6 @@ package com.blankj.subutil.app
 import android.content.Context
 import com.blankj.common.CommonApplication
 
-
 /**
  * ```
  * author: Blankj
@@ -28,5 +27,3 @@ class SubUtilApp : CommonApplication() {
         instance = this
     }
 }
-
-

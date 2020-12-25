@@ -10,7 +10,6 @@ import com.blankj.utilcode.pkg.R
 import com.blankj.utilcode.util.ColorUtils
 import kotlinx.android.synthetic.main.activity_sub_activity.*
 
-
 /**
  * ```
  * author: Blankj

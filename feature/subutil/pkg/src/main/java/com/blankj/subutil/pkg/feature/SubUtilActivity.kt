@@ -31,7 +31,6 @@ class SubUtilActivity : CommonActivity() {
         }
     }
 
-
     override fun bindTitleRes(): Int {
         return R.string.sub_util
     }

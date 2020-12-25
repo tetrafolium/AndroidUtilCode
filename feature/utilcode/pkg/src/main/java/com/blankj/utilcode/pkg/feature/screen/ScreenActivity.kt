@@ -12,7 +12,6 @@ import com.blankj.utilcode.pkg.R
 import com.blankj.utilcode.pkg.helper.DialogHelper
 import com.blankj.utilcode.util.*
 
-
 /**
  * ```
  * author: Blankj

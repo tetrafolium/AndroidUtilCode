@@ -3,8 +3,6 @@ package com.blankj.utilcode.pkg.feature.api
 import android.content.Context
 import android.content.Intent
 import com.blankj.common.activity.CommonActivity
-import com.blankj.common.activity.CommonActivityItemsView
-import com.blankj.common.activity.CommonActivityTitleView
 import com.blankj.common.item.CommonItem
 import com.blankj.common.item.CommonItemClick
 import com.blankj.utilcode.pkg.R
@@ -42,6 +40,6 @@ class ApiActivity : CommonActivity() {
                 CommonItemClick(R.string.api_invoke_with_return_value) {
                     ToastUtils.showShort(ApiUtils.getApi(OtherModuleApi::class.java).invokeWithReturnValue().name)
                 }
-        );
+        )
     }
 }

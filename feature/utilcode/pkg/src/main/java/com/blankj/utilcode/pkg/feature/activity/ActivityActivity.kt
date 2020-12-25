@@ -183,7 +183,7 @@ class ActivityActivity : CommonActivity() {
 
 class ActivityItem : CommonItem<ActivityItem> {
 
-    lateinit var element: ImageView;
+    lateinit var element: ImageView
 
     constructor() : super(R.layout.activity_item_shared_element_activity)
 
