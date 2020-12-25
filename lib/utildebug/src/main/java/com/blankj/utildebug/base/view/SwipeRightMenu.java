@@ -160,15 +160,13 @@ public class SwipeRightMenu extends LinearLayout {
       try {
         if (event.getAction() == MotionEvent.ACTION_UP) {
           if (mState == STATE_DOWN) {
-            if (isOpen()) {
-              if (isTouchPointInView(mContentView, x, y)) {
-                close(true);
-                final long now = SystemClock.uptimeMillis();
-                final MotionEvent cancelEvent = MotionEvent.obtain(
-                    now, now, MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
-                super.dispatchTouchEvent(cancelEvent);
-                return true;
-              }
+            if ((isOpen()) && (isTouchPointInView(mContentView, x, y))) {
+              close(true);
+              final long now = SystemClock.uptimeMillis();
+              final MotionEvent cancelEvent = MotionEvent.obtain(
+                  now, now, MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
+              super.dispatchTouchEvent(cancelEvent);
+              return true;
             }
             super.dispatchTouchEvent(event);
             close(true);

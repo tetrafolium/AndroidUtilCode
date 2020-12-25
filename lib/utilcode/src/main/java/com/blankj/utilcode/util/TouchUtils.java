@@ -184,13 +184,11 @@ public class TouchUtils {
       boolean consumeStop =
           onStop(view, direction, x, y, x - downX, y - downY, vx, vy, event);
 
-      if (event.getAction() == MotionEvent.ACTION_UP) {
-        if (state == STATE_DOWN) {
-          if (event.getEventTime() - event.getDownTime() <= MIN_TAP_TIME) {
-            view.performClick();
-          } else {
-            view.performLongClick();
-          }
+      if ((event.getAction() == MotionEvent.ACTION_UP) && (state == STATE_DOWN)) {
+        if (event.getEventTime() - event.getDownTime() <= MIN_TAP_TIME) {
+          view.performClick();
+        } else {
+          view.performLongClick();
         }
       }
 

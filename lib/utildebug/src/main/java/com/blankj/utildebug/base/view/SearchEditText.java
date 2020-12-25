@@ -22,12 +22,10 @@ public class SearchEditText extends FloatEditText {
   private Runnable mAction = new Runnable() {
     @Override
     public void run() {
-      if (mListener != null) {
-        // 判断最终和开始前是否一致
-        if (!StringUtils.equals(mStartSearchText, getText().toString())) {
-          mStartSearchText = getText().toString(); // 更新 mStartSearchText
-          mListener.onTextChanged(mStartSearchText);
-        }
+      // 判断最终和开始前是否一致
+      if ((mListener != null) && (!StringUtils.equals(mStartSearchText, getText().toString()))) {
+        mStartSearchText = getText().toString(); // 更新 mStartSearchText
+        mListener.onTextChanged(mStartSearchText);
       }
     }
   };

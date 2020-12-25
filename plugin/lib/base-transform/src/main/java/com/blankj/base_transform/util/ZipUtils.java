@@ -307,10 +307,8 @@ public final class ZipUtils {
             System.out.println("entryName: " + entryName + " is dangerous!");
             continue;
           }
-          if (entryName.contains(keyword)) {
-            if (!unzipChildFile(destDir, files, zip, entry, entryName))
-              return files;
-          }
+          if ((entryName.contains(keyword)) && (!unzipChildFile(destDir, files, zip, entry, entryName)))
+            return files;
         }
       }
     } finally {

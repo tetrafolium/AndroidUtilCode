@@ -58,11 +58,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     mIsInPager = true;
     if (isVisibleToUser)
       mIsVisibleToUser = true;
-    if (isLazy()) {
-      if (!mIsBusinessDone && isVisibleToUser && mContentView != null) {
-        mIsBusinessDone = true;
-        doBusiness();
-      }
+    if ((isLazy()) && (!mIsBusinessDone && isVisibleToUser && mContentView != null)) {
+      mIsBusinessDone = true;
+      doBusiness();
     }
   }
 

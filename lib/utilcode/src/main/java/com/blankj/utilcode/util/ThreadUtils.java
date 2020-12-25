@@ -1293,10 +1293,8 @@ public final class ThreadUtils {
           return;
         state.set(CANCELLED);
       }
-      if (mayInterruptIfRunning) {
-        if (runner != null) {
-          runner.interrupt();
-        }
+      if ((mayInterruptIfRunning) && (runner != null)) {
+        runner.interrupt();
       }
 
       getDeliver().execute(new Runnable() {

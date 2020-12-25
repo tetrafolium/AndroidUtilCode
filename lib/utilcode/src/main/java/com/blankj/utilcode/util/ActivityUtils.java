@@ -656,11 +656,9 @@ public final class ActivityUtils {
     Context context = UtilsBridge.getTopActivityOrApp();
     boolean isSuccess = startActivity(
         intent, context, getOptionsBundle(context, enterAnim, exitAnim));
-    if (isSuccess) {
-      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN &&
-          context instanceof Activity) {
-        ((Activity)context).overridePendingTransition(enterAnim, exitAnim);
-      }
+    if ((isSuccess) && (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN &&
+          context instanceof Activity)) {
+      ((Activity)context).overridePendingTransition(enterAnim, exitAnim);
     }
     return isSuccess;
   }

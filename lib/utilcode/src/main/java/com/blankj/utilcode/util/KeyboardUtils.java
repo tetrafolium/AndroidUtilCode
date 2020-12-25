@@ -250,11 +250,9 @@ public final class KeyboardUtils {
   unregisterSoftInputChangedListener(@NonNull final Window window) {
     final FrameLayout contentView = window.findViewById(android.R.id.content);
     Object tag = contentView.getTag(TAG_ON_GLOBAL_LAYOUT_LISTENER);
-    if (tag instanceof OnGlobalLayoutListener) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-        contentView.getViewTreeObserver().removeOnGlobalLayoutListener(
-            (OnGlobalLayoutListener)tag);
-      }
+    if ((tag instanceof OnGlobalLayoutListener) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)) {
+      contentView.getViewTreeObserver().removeOnGlobalLayoutListener(
+          (OnGlobalLayoutListener)tag);
     }
   }
 

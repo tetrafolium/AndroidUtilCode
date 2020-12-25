@@ -309,10 +309,8 @@ public final class ZipUtils {
             Log.e("ZipUtils", "entryName: " + entryName + " is dangerous!");
             continue;
           }
-          if (entryName.contains(keyword)) {
-            if (!unzipChildFile(destDir, files, zip, entry, entryName))
-              return files;
-          }
+          if ((entryName.contains(keyword)) && (!unzipChildFile(destDir, files, zip, entry, entryName)))
+            return files;
         }
       }
     } finally {

@@ -97,10 +97,8 @@ public abstract class CommonActivity extends BaseActivity {
     }
 
     mDrawerView = bindDrawerView();
-    if (mDrawerView == null) {
-      if (bindDrawer()) {
-        mDrawerView = new CommonActivityDrawerView(this);
-      }
+    if ((mDrawerView == null) && (bindDrawer())) {
+      mDrawerView = new CommonActivityDrawerView(this);
     }
 
     if (mTitleView != null && mItemsView != null) {

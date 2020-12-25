@@ -108,10 +108,8 @@ public abstract class BaseFloatView
   @Override
   public boolean dispatchKeyEvent(KeyEvent event) {
     Activity topActivity = ActivityUtils.getTopActivity();
-    if (topActivity != null) {
-      if (topActivity.getWindow().getDecorView().dispatchKeyEvent(event)) {
-        return true;
-      }
+    if ((topActivity != null) && (topActivity.getWindow().getDecorView().dispatchKeyEvent(event))) {
+      return true;
     }
     return super.dispatchKeyEvent(event);
   }

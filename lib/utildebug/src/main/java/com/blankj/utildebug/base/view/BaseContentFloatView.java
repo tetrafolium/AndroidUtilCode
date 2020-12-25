@@ -282,11 +282,9 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>>
         if (direction == SwipePanel.LEFT) {
           swipePanel.close(direction);
           back();
-        } else if (direction == SwipePanel.TOP) {
-          if (mRefreshListener != null) {
-            startRotate();
-            mRefreshListener.onRefresh(BaseContentFloatView.this);
-          }
+        } else if ((direction == SwipePanel.TOP) && (mRefreshListener != null)) {
+          startRotate();
+          mRefreshListener.onRefresh(BaseContentFloatView.this);
         }
       }
     });
