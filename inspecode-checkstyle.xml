@@ -73,6 +73,7 @@
     <module name="FileLength"/>
     <module name="LineLength">
       <property name="fileExtensions" value="java"/>
+      <property name="max" value="200"/>
     </module>
 
     <!-- Checks for whitespace                               -->
@@ -102,9 +103,11 @@
         <module name="InvalidJavadocPosition"/>
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
+        <!--
         <module name="JavadocVariable"/>
         <module name="JavadocStyle"/>
         <module name="MissingJavadocMethod"/>
+        -->
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See https://checkstyle.org/config_naming.html -->
@@ -155,7 +158,9 @@
         <module name="AvoidNestedBlocks"/>
         <module name="EmptyBlock"/>
         <module name="LeftCurly"/>
+        <!--
         <module name="NeedBraces"/>
+        -->
         <module name="RightCurly"/>
 
         <!-- Checks for common coding problems               -->
@@ -165,7 +170,9 @@
         <module name="HiddenField"/>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
+        <!--
         <module name="MagicNumber"/>
+        -->
         <module name="MissingSwitchDefault"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="SimplifyBooleanExpression"/>
@@ -173,7 +180,9 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
+        <!--
         <module name="DesignForExtension"/>
+        -->
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
@@ -182,7 +191,9 @@
         <!-- Miscellaneous other checks.                   -->
         <!-- See https://checkstyle.org/config_misc.html -->
         <module name="ArrayTypeStyle"/>
+        <!--
         <module name="FinalParameters"/>
+        -->
         <module name="TodoComment"/>
         <module name="UpperEll"/>
 
