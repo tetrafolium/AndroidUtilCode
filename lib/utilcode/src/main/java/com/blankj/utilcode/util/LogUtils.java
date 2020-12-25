@@ -90,7 +90,7 @@ public final class LogUtils {
     private static final String TOP_BORDER     = TOP_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
     private static final String MIDDLE_BORDER  = MIDDLE_CORNER + MIDDLE_DIVIDER + MIDDLE_DIVIDER;
     private static final String BOTTOM_BORDER  = BOTTOM_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
-    private static final int    MAX_LEN        = 1100;// fit for Chinese character
+    private static final int    MAX_LEN        = 1100; // fit for Chinese character
     private static final String NOTHING        = "log nothing";
     private static final String NULL           = "null";
     private static final String ARGS           = "args";
@@ -253,7 +253,7 @@ public final class LogUtils {
                 StackTraceElement targetElement = stackTrace[3];
                 final String fileName = getFileName(targetElement);
                 if (CONFIG.mTagIsSpace && UtilsBridge.isSpace(tag)) {
-                    int index = fileName.indexOf('.');// Use proguard may not find '.'.
+                    int index = fileName.indexOf('.'); // Use proguard may not find '.'.
                     tag = index == -1 ? fileName : fileName.substring(0, index);
                 }
                 return new TagHead(tag, null, ": ");
@@ -261,7 +261,7 @@ public final class LogUtils {
             StackTraceElement targetElement = stackTrace[stackIndex];
             final String fileName = getFileName(targetElement);
             if (CONFIG.mTagIsSpace && UtilsBridge.isSpace(tag)) {
-                int index = fileName.indexOf('.');// Use proguard may not find '.'.
+                int index = fileName.indexOf('.'); // Use proguard may not find '.'.
                 tag = index == -1 ? fileName : fileName.substring(0, index);
             }
             if (CONFIG.isLogHeadSwitch()) {
@@ -600,10 +600,10 @@ public final class LogUtils {
     }
 
     public static final class Config {
-        private String      mDefaultDir;// The default storage directory of log.
+        private String      mDefaultDir; // The default storage directory of log.
         private String      mDir;       // The storage directory of log.
-        private String      mFilePrefix        = "util";// The file prefix of log.
-        private String      mFileExtension     = ".txt";// The file extension of log.
+        private String      mFilePrefix        = "util"; // The file prefix of log.
+        private String      mFileExtension     = ".txt"; // The file extension of log.
         private boolean     mLogSwitch         = true;  // The switch of log.
         private boolean     mLog2ConsoleSwitch = true;  // The logcat's switch of log.
         private String      mGlobalTag         = "";    // The global tag of log.

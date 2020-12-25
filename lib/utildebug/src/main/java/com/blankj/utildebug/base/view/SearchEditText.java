@@ -19,14 +19,14 @@ public class SearchEditText extends FloatEditText {
     private static final long LIMIT = 200;
 
     private OnTextChangedListener mListener;
-    private String                mStartSearchText = "";// 记录开始输入前的文本内容
+    private String                mStartSearchText = ""; // 记录开始输入前的文本内容
     private Runnable              mAction          = new Runnable() {
         @Override
         public void run() {
             if (mListener != null) {
                 // 判断最终和开始前是否一致
                 if (!StringUtils.equals(mStartSearchText, getText().toString())) {
-                    mStartSearchText = getText().toString();// 更新 mStartSearchText
+                    mStartSearchText = getText().toString(); // 更新 mStartSearchText
                     mListener.onTextChanged(mStartSearchText);
                 }
             }

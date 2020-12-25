@@ -141,7 +141,7 @@ public class SwipeRightMenu extends LinearLayout {
                 if (Math.abs(x - mDownX) > Math.abs(y - mDownY)) {
                     slideDirection = SLIDE_HORIZONTAL;
                     cancelChildViewTouch();
-                    requestDisallowInterceptTouchEvent(true);// 让父 view 不要拦截
+                    requestDisallowInterceptTouchEvent(true); // 让父 view 不要拦截
                 } else {
                     slideDirection = SLIDE_VERTICAL;
                 }
@@ -189,9 +189,9 @@ public class SwipeRightMenu extends LinearLayout {
                     }
                 } else {
                     if (getScrollX() > THRESHOLD_DISTANCE) {// 如果是关闭
-                        open(true);// 超过阈值则打开
+                        open(true); // 超过阈值则打开
                     } else {
-                        close(true);// 否则还是关闭
+                        close(true); // 否则还是关闭
                     }
                 }
             } finally {

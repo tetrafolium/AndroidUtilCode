@@ -15,7 +15,7 @@ public class NumberUtilsTest {
 
     @Test
     public void format() {
-        double val = Math.PI * 100000;// 314159.2653589793
+        double val = Math.PI * 100000; // 314159.2653589793
 
         Assert.assertEquals("314159.27", NumberUtils.format(val, 2));
         Assert.assertEquals("314159.265", NumberUtils.format(val, 3));

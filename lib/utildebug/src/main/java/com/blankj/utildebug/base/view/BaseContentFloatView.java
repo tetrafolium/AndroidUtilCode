@@ -114,7 +114,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
     }
 
     public void back() {
-        swipePanel.close(SwipePanel.TOP, false);// 返回先关闭刷新
+        swipePanel.close(SwipePanel.TOP, false); // 返回先关闭刷新
         swipePanel.removeAllViews();
         if (mContentView == null) {
             dismiss();

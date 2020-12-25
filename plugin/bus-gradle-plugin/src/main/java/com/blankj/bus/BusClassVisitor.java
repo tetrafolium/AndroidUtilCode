@@ -83,7 +83,7 @@ public class BusClassVisitor extends ClassVisitor {
 
             @Override
             public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
-                super.visitLocalVariable(name, desc, signature, start, end, index);// 获取方法参数信息
+                super.visitLocalVariable(name, desc, signature, start, end, index); // 获取方法参数信息
                 if (busInfo != null && !funParamDesc.equals("")) {
                     if (!isStartVisitParams && index != 0) {
                         return;
@@ -92,7 +92,7 @@ public class BusClassVisitor extends ClassVisitor {
                     if ("this".equals(name)) {
                         return;
                     }
-                    funParamDesc = funParamDesc.substring(desc.length());// 每次去除参数直到为 ""，那么之后的就不是参数了
+                    funParamDesc = funParamDesc.substring(desc.length()); // 每次去除参数直到为 ""，那么之后的就不是参数了
                     busInfo.paramsInfo.add(new BusInfo.ParamsInfo(Type.getType(desc).getClassName(), name));
                     if (busInfo.isParamSizeNoMoreThanOne && busInfo.paramsInfo.size() > 1) {
                         busInfo.isParamSizeNoMoreThanOne = false;
