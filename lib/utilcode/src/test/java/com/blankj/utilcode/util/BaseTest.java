@@ -21,22 +21,23 @@ import org.robolectric.shadows.ShadowLog;
 @Config(manifest = Config.NONE, shadows = {ShadowLog.class})
 public class BaseTest {
 
-  @BusUtils.Bus(tag = "base")
-  public void noParamFun(int i) {
-    System.out.println("base" + i);
-  }
+@BusUtils.Bus(tag = "base")
+public void noParamFun(int i) {
+	System.out.println("base" + i);
+}
 
-  public BaseTest() {
-    ShadowLog.stream = System.out;
-    ThreadUtils.setDeliver(new Executor() {
-      @Override
-      public void execute(@NonNull Runnable command) {
-        command.run();
-      }
-    });
-    Utils.init(RuntimeEnvironment.application);
-  }
+public BaseTest() {
+	ShadowLog.stream = System.out;
+	ThreadUtils.setDeliver(new Executor() {
+			@Override
+			public void execute(@NonNull Runnable command) {
+			        command.run();
+			}
+		});
+	Utils.init(RuntimeEnvironment.application);
+}
 
-  @Test
-  public void test() throws Exception {}
+@Test
+public void test() throws Exception {
+}
 }

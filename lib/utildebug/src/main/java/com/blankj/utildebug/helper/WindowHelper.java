@@ -17,24 +17,25 @@ import com.blankj.utilcode.util.Utils;
  */
 public class WindowHelper {
 
-  private static WindowManager sWM;
+private static WindowManager sWM;
 
-  private WindowHelper() {}
+private WindowHelper() {
+}
 
-  public static void updateViewLayout(final View view,
-                                      ViewGroup.LayoutParams params) {
-    getWindowManager().updateViewLayout(view, params);
-  }
+public static void updateViewLayout(final View view,
+                                    ViewGroup.LayoutParams params) {
+	getWindowManager().updateViewLayout(view, params);
+}
 
-  public static int getAppWindowHeight() {
-    return ScreenUtils.getAppScreenHeight();
-  }
+public static int getAppWindowHeight() {
+	return ScreenUtils.getAppScreenHeight();
+}
 
-  public static WindowManager getWindowManager() {
-    if (sWM == null) {
-      sWM = (WindowManager)Utils.getApp().getSystemService(
-          Context.WINDOW_SERVICE);
-    }
-    return sWM;
-  }
+public static WindowManager getWindowManager() {
+	if (sWM == null) {
+		sWM = (WindowManager)Utils.getApp().getSystemService(
+			Context.WINDOW_SERVICE);
+	}
+	return sWM;
+}
 }

@@ -13,10 +13,10 @@ import android.support.v4.content.FileProvider;
  */
 public class UtilsFileProvider extends FileProvider {
 
-  @Override
-  public boolean onCreate() {
-    // noinspection ConstantConditions
-    Utils.init((Application)getContext().getApplicationContext());
-    return true;
-  }
+@Override
+public boolean onCreate() {
+	// noinspection ConstantConditions
+	Utils.init((Application)getContext().getApplicationContext());
+	return true;
+}
 }

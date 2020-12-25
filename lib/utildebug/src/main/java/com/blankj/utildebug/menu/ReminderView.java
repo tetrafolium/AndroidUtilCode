@@ -15,28 +15,28 @@ import com.blankj.utildebug.config.DebugConfig;
  */
 public class ReminderView extends BaseContentFloatView<ReminderView> {
 
-  private Switch reminderNoMoreSwitch;
+private Switch reminderNoMoreSwitch;
 
-  @Override
-  public int bindTitle() {
-    return R.string.du_reminder;
-  }
+@Override
+public int bindTitle() {
+	return R.string.du_reminder;
+}
 
-  @Override
-  public int bindContentLayout() {
-    return R.layout.du_reminder_view;
-  }
+@Override
+public int bindContentLayout() {
+	return R.layout.du_reminder_view;
+}
 
-  @Override
-  public void initContentView() {
-    reminderNoMoreSwitch = findViewById(R.id.reminderNoMoreSwitch);
-  }
+@Override
+public void initContentView() {
+	reminderNoMoreSwitch = findViewById(R.id.reminderNoMoreSwitch);
+}
 
-  @Override
-  public void dismiss() {
-    super.dismiss();
-    if (reminderNoMoreSwitch.isChecked()) {
-      DebugConfig.saveNoMoreReminder();
-    }
-  }
+@Override
+public void dismiss() {
+	super.dismiss();
+	if (reminderNoMoreSwitch.isChecked()) {
+		DebugConfig.saveNoMoreReminder();
+	}
+}
 }

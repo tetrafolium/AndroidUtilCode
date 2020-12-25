@@ -18,60 +18,62 @@ import java.util.Map;
  * </pre>
  */
 public abstract class BasePresenter<V extends BaseView>
-    extends Utils.ActivityLifecycleCallbacks {
+	extends Utils.ActivityLifecycleCallbacks {
 
-  private V mView;
-  private Map<Class, BaseModel> mModelMap = new HashMap<>();
+private V mView;
+private Map<Class, BaseModel> mModelMap = new HashMap<>();
 
-  public abstract void onAttachView();
+public abstract void onAttachView();
 
-  void bindView(V view) {
-    this.mView = view;
-    onAttachView();
-    ActivityUtils.addActivityLifecycleCallbacks(mView.getActivity(), this);
-  }
+void bindView(V view) {
+	this.mView = view;
+	onAttachView();
+	ActivityUtils.addActivityLifecycleCallbacks(mView.getActivity(), this);
+}
 
-  public V getView() { return mView; }
+public V getView() {
+	return mView;
+}
 
-  public <M extends BaseModel> M getModel(Class<M> modelClass) {
-    BaseModel baseModel = mModelMap.get(modelClass);
-    if (baseModel != null) {
-      // noinspection unchecked
-      return (M)baseModel;
-    }
-    try {
-      M model = modelClass.newInstance();
-      mModelMap.put(modelClass, model);
-      model.onCreateModel();
-      return model;
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    } catch (InstantiationException e) {
-      e.printStackTrace();
-    }
-    return null;
-  }
+public <M extends BaseModel> M getModel(Class<M> modelClass) {
+	BaseModel baseModel = mModelMap.get(modelClass);
+	if (baseModel != null) {
+		// noinspection unchecked
+		return (M)baseModel;
+	}
+	try {
+		M model = modelClass.newInstance();
+		mModelMap.put(modelClass, model);
+		model.onCreateModel();
+		return model;
+	} catch (IllegalAccessException e) {
+		e.printStackTrace();
+	} catch (InstantiationException e) {
+		e.printStackTrace();
+	}
+	return null;
+}
 
-  @Override
-  public void onLifecycleChanged(@NonNull Activity activity,
-                                 Lifecycle.Event event) {
-    super.onLifecycleChanged(activity, event);
-    if (event == Lifecycle.Event.ON_DESTROY) {
-      destroyPresenter();
-    }
-    LogUtils.i("onLifecycleChanged: " + event);
-  }
+@Override
+public void onLifecycleChanged(@NonNull Activity activity,
+                               Lifecycle.Event event) {
+	super.onLifecycleChanged(activity, event);
+	if (event == Lifecycle.Event.ON_DESTROY) {
+		destroyPresenter();
+	}
+	LogUtils.i("onLifecycleChanged: " + event);
+}
 
-  private void destroyPresenter() {
-    if (mView != null) {
-      mView.mPresenterMap.remove(this.getClass());
-      mView.onDestroyView();
-    }
-    for (BaseModel model : mModelMap.values()) {
-      if (model != null) {
-        model.destroy();
-      }
-    }
-    mModelMap.clear();
-  }
+private void destroyPresenter() {
+	if (mView != null) {
+		mView.mPresenterMap.remove(this.getClass());
+		mView.onDestroyView();
+	}
+	for (BaseModel model : mModelMap.values()) {
+		if (model != null) {
+			model.destroy();
+		}
+	}
+	mModelMap.clear();
+}
 }

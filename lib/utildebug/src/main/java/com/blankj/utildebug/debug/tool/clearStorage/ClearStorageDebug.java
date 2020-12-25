@@ -17,21 +17,22 @@ import com.blankj.utildebug.debug.tool.AbsToolDebug;
  */
 public class ClearStorageDebug extends AbsToolDebug {
 
-  @Override
-  public void onAppCreate(Context context) {}
+@Override
+public void onAppCreate(Context context) {
+}
 
-  @Override
-  public int getIcon() {
-    return R.drawable.du_ic_debug_clear_storage;
-  }
+@Override
+public int getIcon() {
+	return R.drawable.du_ic_debug_clear_storage;
+}
 
-  @Override
-  public int getName() {
-    return R.string.du_clear_storage;
-  }
+@Override
+public int getName() {
+	return R.string.du_clear_storage;
+}
 
-  @Override
-  public void onClick(View view) {
-    ShellUtils.execCmd("pm clear " + AppUtils.getAppPackageName(), false);
-  }
+@Override
+public void onClick(View view) {
+	ShellUtils.execCmd("pm clear " + AppUtils.getAppPackageName(), false);
+}
 }

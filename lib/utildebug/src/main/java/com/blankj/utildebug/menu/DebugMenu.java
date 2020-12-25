@@ -20,60 +20,64 @@ import java.util.List;
  */
 public class DebugMenu extends BaseContentFloatView<DebugMenu> {
 
-  private static final DebugMenu INSTANCE = new DebugMenu();
+private static final DebugMenu INSTANCE = new DebugMenu();
 
-  private List<IDebug> mDebugs;
+private List<IDebug> mDebugs;
 
-  private BaseItemAdapter<DebugMenuItem> mAdapter;
+private BaseItemAdapter<DebugMenuItem> mAdapter;
 
-  private RecyclerView debugMenuRv;
+private RecyclerView debugMenuRv;
 
-  public static DebugMenu getInstance() { return INSTANCE; }
+public static DebugMenu getInstance() {
+	return INSTANCE;
+}
 
-  @Override
-  public int bindTitle() {
-    return R.string.du_menus;
-  }
+@Override
+public int bindTitle() {
+	return R.string.du_menus;
+}
 
-  @Override
-  public int bindContentLayout() {
-    return R.layout.du_debug_menu;
-  }
+@Override
+public int bindContentLayout() {
+	return R.layout.du_debug_menu;
+}
 
-  @Override
-  protected void onAttachedToWindow() {
-    super.onAttachedToWindow();
-    DebugIcon.setVisibility(false);
-    if (!DebugConfig.isNoMoreReminder()) {
-      new ReminderView().show();
-    }
-  }
+@Override
+protected void onAttachedToWindow() {
+	super.onAttachedToWindow();
+	DebugIcon.setVisibility(false);
+	if (!DebugConfig.isNoMoreReminder()) {
+		new ReminderView().show();
+	}
+}
 
-  @Override
-  protected void onDetachedFromWindow() {
-    DebugIcon.setVisibility(true);
-    super.onDetachedFromWindow();
-  }
+@Override
+protected void onDetachedFromWindow() {
+	DebugIcon.setVisibility(true);
+	super.onDetachedFromWindow();
+}
 
-  @Override
-  public void initContentView() {
-    setSwipeBackEnabled(false);
+@Override
+public void initContentView() {
+	setSwipeBackEnabled(false);
 
-    debugMenuRv = findViewById(R.id.debugMenuRv);
-    mAdapter = new BaseItemAdapter<>();
-    mAdapter.setItems(DebugMenuItem.getDebugMenuItems(mDebugs));
-    debugMenuRv.setAdapter(mAdapter);
-    debugMenuRv.setLayoutManager(new LinearLayoutManager(getContext()));
-  }
+	debugMenuRv = findViewById(R.id.debugMenuRv);
+	mAdapter = new BaseItemAdapter<>();
+	mAdapter.setItems(DebugMenuItem.getDebugMenuItems(mDebugs));
+	debugMenuRv.setAdapter(mAdapter);
+	debugMenuRv.setLayoutManager(new LinearLayoutManager(getContext()));
+}
 
-  public void setDebugs(List<IDebug> debugs) { mDebugs = debugs; }
+public void setDebugs(List<IDebug> debugs) {
+	mDebugs = debugs;
+}
 
-  public void addDebugs(List<IDebug> debugs) {
-    if (debugs == null || debugs.size() == 0)
-      return;
-    mDebugs.addAll(debugs);
-    if (mAdapter == null)
-      return;
-    mAdapter.notifyDataSetChanged();
-  }
+public void addDebugs(List<IDebug> debugs) {
+	if (debugs == null || debugs.size() == 0)
+		return;
+	mDebugs.addAll(debugs);
+	if (mAdapter == null)
+		return;
+	mAdapter.notifyDataSetChanged();
+}
 }

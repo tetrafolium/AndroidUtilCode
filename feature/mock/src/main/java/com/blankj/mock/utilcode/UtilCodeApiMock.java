@@ -16,15 +16,15 @@ import com.blankj.utilcode.util.ToastUtils;
 @ApiUtils.Api(isMock = true)
 public class UtilCodeApiMock extends UtilCodeApi {
 
-  @Override
-  public void startUtilCodeActivity(Context context) {
-    ToastUtils.showShort("startUtilCodeActivity");
-  }
+@Override
+public void startUtilCodeActivity(Context context) {
+	ToastUtils.showShort("startUtilCodeActivity");
+}
 
-  @Override
-  public void testCallback(Callback callback) {
-    if (callback != null) {
-      callback.call();
-    }
-  }
+@Override
+public void testCallback(Callback callback) {
+	if (callback != null) {
+		callback.call();
+	}
+}
 }

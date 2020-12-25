@@ -16,38 +16,38 @@ import com.blankj.utilcode.util.ClickUtils;
  * </pre>
  */
 public abstract class BaseActivity
-    extends AppCompatActivity implements IBaseView {
+	extends AppCompatActivity implements IBaseView {
 
-  private View.OnClickListener mClickListener = new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-      onDebouncingClick(v);
-    }
-  };
+private View.OnClickListener mClickListener = new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
+		onDebouncingClick(v);
+	}
+};
 
-  public View mContentView;
-  public Activity mActivity;
+public View mContentView;
+public Activity mActivity;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    mActivity = this;
-    super.onCreate(savedInstanceState);
-    initData(getIntent().getExtras());
-    setContentView();
-    initView(savedInstanceState, mContentView);
-    doBusiness();
-  }
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	mActivity = this;
+	super.onCreate(savedInstanceState);
+	initData(getIntent().getExtras());
+	setContentView();
+	initView(savedInstanceState, mContentView);
+	doBusiness();
+}
 
-  @Override
-  public void setContentView() {
-    if (bindLayout() <= 0)
-      return;
-    mContentView = LayoutInflater.from(this).inflate(bindLayout(), null);
-    setContentView(mContentView);
-  }
+@Override
+public void setContentView() {
+	if (bindLayout() <= 0)
+		return;
+	mContentView = LayoutInflater.from(this).inflate(bindLayout(), null);
+	setContentView(mContentView);
+}
 
-  public void applyDebouncingClickListener(View... views) {
-    ClickUtils.applyGlobalDebouncing(views, mClickListener);
-    ClickUtils.applyPressedViewScale(views);
-  }
+public void applyDebouncingClickListener(View... views) {
+	ClickUtils.applyGlobalDebouncing(views, mClickListener);
+	ClickUtils.applyPressedViewScale(views);
+}
 }

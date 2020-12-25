@@ -13,18 +13,18 @@ import android.view.View;
  */
 public interface IDebug {
 
-  void onAppCreate(Context context);
+void onAppCreate(Context context);
 
-  int getCategory();
+int getCategory();
 
-  int getIcon();
+int getIcon();
 
-  int getName();
+int getName();
 
-  void onClick(View view);
+void onClick(View view);
 
-  int TOOLS = 0;
-  int PERFORMANCE = 1;
-  int UI = 2;
-  int BIZ = 3;
+int TOOLS = 0;
+int PERFORMANCE = 1;
+int UI = 2;
+int BIZ = 3;
 }

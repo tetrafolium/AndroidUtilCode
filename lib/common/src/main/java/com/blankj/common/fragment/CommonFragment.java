@@ -25,82 +25,89 @@ import java.util.List;
  */
 public class CommonFragment extends BaseFragment {
 
-  private CommonActivityItemsView mItemsView;
+private CommonActivityItemsView mItemsView;
 
-  ///////////////////////////////////////////////////////////////////////////
-  // items view
-  ///////////////////////////////////////////////////////////////////////////
-  public CommonActivityItemsView bindItemsView() { return null; }
+///////////////////////////////////////////////////////////////////////////
+// items view
+///////////////////////////////////////////////////////////////////////////
+public CommonActivityItemsView bindItemsView() {
+	return null;
+}
 
-  public List<CommonItem> bindItems() { return null; }
+public List<CommonItem> bindItems() {
+	return null;
+}
 
-  @CallSuper
-  @Override
-  public void initData(@Nullable Bundle bundle) {
-    mItemsView = bindItemsView();
-    if (mItemsView == null) {
-      List<CommonItem> items = bindItems();
-      if (items != null) {
-        mItemsView = new CommonActivityItemsView(mActivity, items);
-      }
-    }
-  }
+@CallSuper
+@Override
+public void initData(@Nullable Bundle bundle) {
+	mItemsView = bindItemsView();
+	if (mItemsView == null) {
+		List<CommonItem> items = bindItems();
+		if (items != null) {
+			mItemsView = new CommonActivityItemsView(mActivity, items);
+		}
+	}
+}
 
-  @Override
-  public int bindLayout() {
-    return View.NO_ID;
-  }
+@Override
+public int bindLayout() {
+	return View.NO_ID;
+}
 
-  @Override
-  public void setContentView() {
-    if (mItemsView != null) {
-      mContentView = mInflater.inflate(mItemsView.bindLayout(), null);
-    } else {
-      super.setContentView();
-    }
-  }
+@Override
+public void setContentView() {
+	if (mItemsView != null) {
+		mContentView = mInflater.inflate(mItemsView.bindLayout(), null);
+	} else {
+		super.setContentView();
+	}
+}
 
-  @CallSuper
-  @Override
-  public void initView(@Nullable Bundle savedInstanceState,
-                       @Nullable View contentView) {
-    if (mItemsView != null) {
-      mItemsView.initView();
-    }
-  }
+@CallSuper
+@Override
+public void initView(@Nullable Bundle savedInstanceState,
+                     @Nullable View contentView) {
+	if (mItemsView != null) {
+		mItemsView.initView();
+	}
+}
 
-  @Override
-  public void doBusiness() {
-    log("doBusiness");
-  }
+@Override
+public void doBusiness() {
+	log("doBusiness");
+}
 
-  @Override
-  public void onDebouncingClick(@NonNull View view) {}
+@Override
+public void onDebouncingClick(@NonNull View view) {
+}
 
-  public CommonActivityItemsView getItemsView() { return mItemsView; }
+public CommonActivityItemsView getItemsView() {
+	return mItemsView;
+}
 
-  private BaseItemAdapter<CommonItem> mCommonItemAdapter;
+private BaseItemAdapter<CommonItem> mCommonItemAdapter;
 
-  public void setCommonItems(RecyclerView rv, List<CommonItem> items) {
-    mCommonItemAdapter = new BaseItemAdapter<>();
-    mCommonItemAdapter.setItems(items);
-    rv.setAdapter(mCommonItemAdapter);
-    rv.setLayoutManager(new LinearLayoutManager(mActivity));
-    rv.addItemDecoration(
-        new RecycleViewDivider(mActivity, RecycleViewDivider.VERTICAL,
-                               R.drawable.common_item_divider));
-  }
+public void setCommonItems(RecyclerView rv, List<CommonItem> items) {
+	mCommonItemAdapter = new BaseItemAdapter<>();
+	mCommonItemAdapter.setItems(items);
+	rv.setAdapter(mCommonItemAdapter);
+	rv.setLayoutManager(new LinearLayoutManager(mActivity));
+	rv.addItemDecoration(
+		new RecycleViewDivider(mActivity, RecycleViewDivider.VERTICAL,
+		                       R.drawable.common_item_divider));
+}
 
-  public void updateCommonItems(List<CommonItem> data) {
-    mCommonItemAdapter.setItems(data);
-    mCommonItemAdapter.notifyDataSetChanged();
-  }
+public void updateCommonItems(List<CommonItem> data) {
+	mCommonItemAdapter.setItems(data);
+	mCommonItemAdapter.notifyDataSetChanged();
+}
 
-  public void updateCommonItem(int position) {
-    mCommonItemAdapter.notifyItemChanged(position);
-  }
+public void updateCommonItem(int position) {
+	mCommonItemAdapter.notifyItemChanged(position);
+}
 
-  public BaseItemAdapter<CommonItem> getCommonItemAdapter() {
-    return mCommonItemAdapter;
-  }
+public BaseItemAdapter<CommonItem> getCommonItemAdapter() {
+	return mCommonItemAdapter;
+}
 }

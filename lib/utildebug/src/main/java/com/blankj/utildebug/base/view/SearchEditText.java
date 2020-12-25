@@ -15,55 +15,57 @@ import com.blankj.utilcode.util.StringUtils;
  */
 public class SearchEditText extends FloatEditText {
 
-  private static final long LIMIT = 200;
+private static final long LIMIT = 200;
 
-  private OnTextChangedListener mListener;
-  private String mStartSearchText = ""; // 记录开始输入前的文本内容
-  private Runnable mAction = new Runnable() {
-    @Override
-    public void run() {
-      // 判断最终和开始前是否一致
-      if ((mListener != null) && (!StringUtils.equals(mStartSearchText, getText().toString()))) {
-        mStartSearchText = getText().toString(); // 更新 mStartSearchText
-        mListener.onTextChanged(mStartSearchText);
-      }
-    }
-  };
+private OnTextChangedListener mListener;
+private String mStartSearchText = "";   // 记录开始输入前的文本内容
+private Runnable mAction = new Runnable() {
+	@Override
+	public void run() {
+		// 判断最终和开始前是否一致
+		if ((mListener != null) && (!StringUtils.equals(mStartSearchText, getText().toString()))) {
+			mStartSearchText = getText().toString(); // 更新 mStartSearchText
+			mListener.onTextChanged(mStartSearchText);
+		}
+	}
+};
 
-  public SearchEditText(Context context) { this(context, null); }
+public SearchEditText(Context context) {
+	this(context, null);
+}
 
-  public SearchEditText(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
+public SearchEditText(Context context, AttributeSet attrs) {
+	super(context, attrs);
+}
 
-  /**
-   * 在 LIMIT 时间内连续输入不触发文本变化
-   */
-  public void setOnTextChangedListener(OnTextChangedListener listener) {
-    mListener = listener;
-  }
+/**
+ * 在 LIMIT 时间内连续输入不触发文本变化
+ */
+public void setOnTextChangedListener(OnTextChangedListener listener) {
+	mListener = listener;
+}
 
-  public void reset() {
-    mStartSearchText = "";
-    setText("");
-    KeyboardUtils.hideSoftInput(this);
-  }
+public void reset() {
+	mStartSearchText = "";
+	setText("");
+	KeyboardUtils.hideSoftInput(this);
+}
 
-  @Override
-  protected void onTextChanged(final CharSequence text, int start,
-                               int lengthBefore, int lengthAfter) {
-    super.onTextChanged(text, start, lengthBefore, lengthAfter);
-    // 移除上一次的回调
-    removeCallbacks(mAction);
-    postDelayed(mAction, LIMIT);
-  }
+@Override
+protected void onTextChanged(final CharSequence text, int start,
+                             int lengthBefore, int lengthAfter) {
+	super.onTextChanged(text, start, lengthBefore, lengthAfter);
+	// 移除上一次的回调
+	removeCallbacks(mAction);
+	postDelayed(mAction, LIMIT);
+}
 
-  @Override
-  protected void onDetachedFromWindow() {
-    removeCallbacks(mAction);
-    KeyboardUtils.hideSoftInput(this);
-    super.onDetachedFromWindow();
-  }
+@Override
+protected void onDetachedFromWindow() {
+	removeCallbacks(mAction);
+	KeyboardUtils.hideSoftInput(this);
+	super.onDetachedFromWindow();
+}
 
-  public interface OnTextChangedListener { void onTextChanged(String text); }
+public interface OnTextChangedListener { void onTextChanged(String text); }
 }

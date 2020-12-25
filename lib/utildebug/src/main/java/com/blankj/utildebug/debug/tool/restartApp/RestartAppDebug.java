@@ -16,21 +16,22 @@ import com.blankj.utildebug.debug.tool.AbsToolDebug;
  */
 public class RestartAppDebug extends AbsToolDebug {
 
-  @Override
-  public void onAppCreate(Context context) {}
+@Override
+public void onAppCreate(Context context) {
+}
 
-  @Override
-  public int getIcon() {
-    return R.drawable.du_ic_debug_restart_app;
-  }
+@Override
+public int getIcon() {
+	return R.drawable.du_ic_debug_restart_app;
+}
 
-  @Override
-  public int getName() {
-    return R.string.du_restart_app;
-  }
+@Override
+public int getName() {
+	return R.string.du_restart_app;
+}
 
-  @Override
-  public void onClick(View view) {
-    AppUtils.relaunchApp(true);
-  }
+@Override
+public void onClick(View view) {
+	AppUtils.relaunchApp(true);
+}
 }

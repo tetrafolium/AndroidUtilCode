@@ -14,18 +14,18 @@ import com.blankj.utilcode.util.SizeUtils;
  */
 public class ShadowHelper {
 
-  public static void applyDebugIcon(View view) {
-    ShadowUtils.apply(view, new ShadowUtils.Config().setCircle().setShadowColor(
-                                0xc0_ffffff, 0x60_ffffff));
-  }
+public static void applyDebugIcon(View view) {
+	ShadowUtils.apply(view, new ShadowUtils.Config().setCircle().setShadowColor(
+				  0xc0_ffffff, 0x60_ffffff));
+}
 
-  public static void applyFloatView(View view) {
-    ShadowUtils.apply(
-        view, new ShadowUtils.Config().setShadowRadius(SizeUtils.dp2px(8)));
-  }
+public static void applyFloatView(View view) {
+	ShadowUtils.apply(
+		view, new ShadowUtils.Config().setShadowRadius(SizeUtils.dp2px(8)));
+}
 
-  public static void applyMenu(View view) {
-    ShadowUtils.apply(
-        view, new ShadowUtils.Config().setShadowRadius(SizeUtils.dp2px(4)));
-  }
+public static void applyMenu(View view) {
+	ShadowUtils.apply(
+		view, new ShadowUtils.Config().setShadowRadius(SizeUtils.dp2px(4)));
+}
 }

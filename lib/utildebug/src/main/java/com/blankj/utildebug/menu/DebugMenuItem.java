@@ -27,60 +27,60 @@ import java.util.Map;
  */
 public class DebugMenuItem extends BaseItem<DebugMenuItem> {
 
-  private String mTitle;
-  private List<IDebug> mDebugs;
+private String mTitle;
+private List<IDebug> mDebugs;
 
-  private DebugMenuItem(String title, List<IDebug> debugs) {
-    super(R.layout.du_item_menu);
-    mTitle = title;
-    mDebugs = debugs;
-  }
+private DebugMenuItem(String title, List<IDebug> debugs) {
+	super(R.layout.du_item_menu);
+	mTitle = title;
+	mDebugs = debugs;
+}
 
-  @Override
-  public void bind(@NonNull ItemViewHolder holder, int position) {
-    TextView menuTitle = holder.findViewById(R.id.menuCategory);
-    RecyclerView menuRv = holder.findViewById(R.id.menuRv);
+@Override
+public void bind(@NonNull ItemViewHolder holder, int position) {
+	TextView menuTitle = holder.findViewById(R.id.menuCategory);
+	RecyclerView menuRv = holder.findViewById(R.id.menuRv);
 
-    ShadowHelper.applyMenu(holder.itemView);
+	ShadowHelper.applyMenu(holder.itemView);
 
-    menuTitle.setText(mTitle);
+	menuTitle.setText(mTitle);
 
-    BaseItemAdapter<DebugItem> adapter = new BaseItemAdapter<>();
-    adapter.setItems(DebugItem.getDebugItems(mDebugs));
-    menuRv.setAdapter(adapter);
-    menuRv.setLayoutManager(new GridLayoutManager(menuRv.getContext(), 4));
-  }
+	BaseItemAdapter<DebugItem> adapter = new BaseItemAdapter<>();
+	adapter.setItems(DebugItem.getDebugItems(mDebugs));
+	menuRv.setAdapter(adapter);
+	menuRv.setLayoutManager(new GridLayoutManager(menuRv.getContext(), 4));
+}
 
-  public static List<DebugMenuItem> getDebugMenuItems(List<IDebug> debugs) {
-    Map<Integer, List<IDebug>> debugMap = new LinkedHashMap<>();
-    for (IDebug debug : debugs) {
-      List<IDebug> debugList = debugMap.get(debug.getCategory());
-      if (debugList == null) {
-        debugList = new ArrayList<>();
-        debugMap.put(debug.getCategory(), debugList);
-      }
-      debugList.add(debug);
-    }
-    List<DebugMenuItem> itemList = new ArrayList<>();
-    for (Map.Entry<Integer, List<IDebug>> entry : debugMap.entrySet()) {
-      itemList.add(new DebugMenuItem(getCategoryString(entry.getKey()),
-                                     entry.getValue()));
-    }
-    return itemList;
-  }
+public static List<DebugMenuItem> getDebugMenuItems(List<IDebug> debugs) {
+	Map<Integer, List<IDebug> > debugMap = new LinkedHashMap<>();
+	for (IDebug debug : debugs) {
+		List<IDebug> debugList = debugMap.get(debug.getCategory());
+		if (debugList == null) {
+			debugList = new ArrayList<>();
+			debugMap.put(debug.getCategory(), debugList);
+		}
+		debugList.add(debug);
+	}
+	List<DebugMenuItem> itemList = new ArrayList<>();
+	for (Map.Entry<Integer, List<IDebug> > entry : debugMap.entrySet()) {
+		itemList.add(new DebugMenuItem(getCategoryString(entry.getKey()),
+		                               entry.getValue()));
+	}
+	return itemList;
+}
 
-  private static String getCategoryString(int category) {
-    switch (category) {
-    case IDebug.TOOLS:
-      return StringUtils.getString(R.string.du_tools);
-    case IDebug.PERFORMANCE:
-      return StringUtils.getString(R.string.du_performance);
-    case IDebug.UI:
-      return StringUtils.getString(R.string.du_ui);
-    case IDebug.BIZ:
-      return StringUtils.getString(R.string.du_biz);
-    default:
-      return StringUtils.getString(R.string.du_uncategorized);
-    }
-  }
+private static String getCategoryString(int category) {
+	switch (category) {
+	case IDebug.TOOLS:
+		return StringUtils.getString(R.string.du_tools);
+	case IDebug.PERFORMANCE:
+		return StringUtils.getString(R.string.du_performance);
+	case IDebug.UI:
+		return StringUtils.getString(R.string.du_ui);
+	case IDebug.BIZ:
+		return StringUtils.getString(R.string.du_biz);
+	default:
+		return StringUtils.getString(R.string.du_uncategorized);
+	}
+}
 }

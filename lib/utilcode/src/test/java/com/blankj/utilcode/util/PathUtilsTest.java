@@ -14,16 +14,16 @@ import org.junit.Test;
  */
 public class PathUtilsTest extends BaseTest {
 
-  @Test
-  public void join() {
-    assertEquals(PathUtils.join("", ""), "");
-    assertEquals(PathUtils.join("", "data"), "/data");
+@Test
+public void join() {
+	assertEquals(PathUtils.join("", ""), "");
+	assertEquals(PathUtils.join("", "data"), "/data");
 
-    assertEquals(PathUtils.join("", "//data"), "/data");
-    assertEquals(PathUtils.join("", "data//"), "/data");
-    assertEquals(PathUtils.join("", "//data//"), "/data");
+	assertEquals(PathUtils.join("", "//data"), "/data");
+	assertEquals(PathUtils.join("", "data//"), "/data");
+	assertEquals(PathUtils.join("", "//data//"), "/data");
 
-    assertEquals(PathUtils.join("/sdcard", "data"), "/sdcard/data");
-    assertEquals(PathUtils.join("/sdcard/", "data"), "/sdcard/data");
-  }
+	assertEquals(PathUtils.join("/sdcard", "data"), "/sdcard/data");
+	assertEquals(PathUtils.join("/sdcard/", "data"), "/sdcard/data");
+}
 }

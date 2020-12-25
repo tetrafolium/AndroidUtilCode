@@ -15,14 +15,14 @@ import com.blankj.utilcode.util.ToastUtils;
 @ApiUtils.Api
 public class OtherPkgApiImpl extends OtherModuleApi {
 
-  @Override
-  public void invokeWithParams(ApiBean bean) {
-    ToastUtils.showShort(bean.name);
-  }
+@Override
+public void invokeWithParams(ApiBean bean) {
+	ToastUtils.showShort(bean.name);
+}
 
-  @Override
-  public ApiBean invokeWithReturnValue() {
-    String value = "value";
-    return new ApiBean(value);
-  }
+@Override
+public ApiBean invokeWithReturnValue() {
+	String value = "value";
+	return new ApiBean(value);
+}
 }

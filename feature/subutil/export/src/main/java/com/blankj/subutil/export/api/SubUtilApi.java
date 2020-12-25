@@ -13,5 +13,5 @@ import com.blankj.utilcode.util.ApiUtils;
  */
 public abstract class SubUtilApi extends ApiUtils.BaseApi {
 
-  public abstract void startSubUtilActivity(Context context);
+public abstract void startSubUtilActivity(Context context);
 }

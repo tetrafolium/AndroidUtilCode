@@ -21,26 +21,26 @@ import org.robolectric.annotation.Config;
 @Config(manifest = Config.NONE)
 public class ClipboardUtilsTest {
 
-  static { TestUtils.init(); }
+static { TestUtils.init(); }
 
-  @Test
-  public void testText() throws Exception {
-    ClipboardUtils.copyText("test");
-    assertEquals("test", ClipboardUtils.getText());
-  }
+@Test
+public void testText() throws Exception {
+	ClipboardUtils.copyText("test");
+	assertEquals("test", ClipboardUtils.getText());
+}
 
-  @Test
-  public void testUri() throws Exception {
-    ClipboardUtils.copyUri(Uri.parse("http://www.blankj.com"));
-    System.out.println((ClipboardUtils.getUri()));
-  }
+@Test
+public void testUri() throws Exception {
+	ClipboardUtils.copyUri(Uri.parse("http://www.blankj.com"));
+	System.out.println((ClipboardUtils.getUri()));
+}
 
-  @Test
-  public void testIntent() throws Exception {
-    Intent intent = new Intent();
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    intent.setAction(Intent.ACTION_DIAL);
-    ClipboardUtils.copyIntent(intent);
-    System.out.println(ClipboardUtils.getText());
-  }
+@Test
+public void testIntent() throws Exception {
+	Intent intent = new Intent();
+	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	intent.setAction(Intent.ACTION_DIAL);
+	ClipboardUtils.copyIntent(intent);
+	System.out.println(ClipboardUtils.getText());
+}
 }

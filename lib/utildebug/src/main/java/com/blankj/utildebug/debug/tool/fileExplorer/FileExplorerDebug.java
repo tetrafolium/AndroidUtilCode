@@ -16,22 +16,23 @@ import com.blankj.utildebug.menu.DebugMenu;
  */
 public class FileExplorerDebug extends AbsToolDebug {
 
-  @Override
-  public void onAppCreate(Context context) {}
+@Override
+public void onAppCreate(Context context) {
+}
 
-  @Override
-  public int getIcon() {
-    return R.drawable.du_ic_debug_file_explorer;
-  }
+@Override
+public int getIcon() {
+	return R.drawable.du_ic_debug_file_explorer;
+}
 
-  @Override
-  public int getName() {
-    return R.string.du_file_explorer;
-  }
+@Override
+public int getName() {
+	return R.string.du_file_explorer;
+}
 
-  @Override
-  public void onClick(View view) {
-    DebugMenu.getInstance().dismiss();
-    new FileExplorerFloatView().show();
-  }
+@Override
+public void onClick(View view) {
+	DebugMenu.getInstance().dismiss();
+	new FileExplorerFloatView().show();
+}
 }

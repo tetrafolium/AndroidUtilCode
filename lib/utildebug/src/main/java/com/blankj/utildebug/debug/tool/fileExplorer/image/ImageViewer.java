@@ -17,24 +17,26 @@ import java.io.File;
  */
 public class ImageViewer extends BaseContentView<FileExplorerFloatView> {
 
-  private File mFile;
+private File mFile;
 
-  private PhotoView photoView;
+private PhotoView photoView;
 
-  public static void show(FileExplorerFloatView floatView, File file) {
-    new ImageViewer(file).attach(floatView, true);
-  }
+public static void show(FileExplorerFloatView floatView, File file) {
+	new ImageViewer(file).attach(floatView, true);
+}
 
-  public ImageViewer(File file) { mFile = file; }
+public ImageViewer(File file) {
+	mFile = file;
+}
 
-  @Override
-  public int bindLayout() {
-    return R.layout.du_debug_file_explorer_image;
-  }
+@Override
+public int bindLayout() {
+	return R.layout.du_debug_file_explorer_image;
+}
 
-  @Override
-  public void onAttach() {
-    photoView = findViewById(R.id.imageViewerPv);
-    photoView.setImageBitmap(ImageUtils.getBitmap(mFile));
-  }
+@Override
+public void onAttach() {
+	photoView = findViewById(R.id.imageViewerPv);
+	photoView.setImageBitmap(ImageUtils.getBitmap(mFile));
+}
 }

@@ -18,51 +18,51 @@ import org.objectweb.asm.commons.AdviceAdapter;
  */
 public class ApiUtilsClassVisitor extends ClassVisitor {
 
-  private Map<String, ApiInfo> mApiImplMap;
-  private String mApiUtilsClass;
+private Map<String, ApiInfo> mApiImplMap;
+private String mApiUtilsClass;
 
-  public ApiUtilsClassVisitor(ClassVisitor classVisitor,
-                              Map<String, ApiInfo> apiImplMap,
-                              String apiUtilsClass) {
-    super(Opcodes.ASM5, classVisitor);
-    mApiImplMap = apiImplMap;
-    mApiUtilsClass = apiUtilsClass.replace(".", "/");
-  }
+public ApiUtilsClassVisitor(ClassVisitor classVisitor,
+                            Map<String, ApiInfo> apiImplMap,
+                            String apiUtilsClass) {
+	super(Opcodes.ASM5, classVisitor);
+	mApiImplMap = apiImplMap;
+	mApiUtilsClass = apiUtilsClass.replace(".", "/");
+}
 
-  @Override
-  public MethodVisitor visitMethod(int access, String name, String descriptor,
-                                   String signature, String[] exceptions) {
-    if (!"init".equals(name)) {
-      return super.visitMethod(access, name, descriptor, signature, exceptions);
-    }
-    // 往 init() 函数中写入
-    if (cv == null)
-      return null;
-    MethodVisitor mv =
-        cv.visitMethod(access, name, descriptor, signature, exceptions);
-    mv = new AdviceAdapter(Opcodes.ASM5, mv, access, name, descriptor) {
-      @Override
-      public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-        return super.visitAnnotation(desc, visible);
-      }
+@Override
+public MethodVisitor visitMethod(int access, String name, String descriptor,
+                                 String signature, String[] exceptions) {
+	if (!"init".equals(name)) {
+		return super.visitMethod(access, name, descriptor, signature, exceptions);
+	}
+	// 往 init() 函数中写入
+	if (cv == null)
+		return null;
+	MethodVisitor mv =
+		cv.visitMethod(access, name, descriptor, signature, exceptions);
+	mv = new AdviceAdapter(Opcodes.ASM5, mv, access, name, descriptor) {
+		@Override
+		public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+			return super.visitAnnotation(desc, visible);
+		}
 
-      @Override
-      protected void onMethodEnter() {
-        super.onMethodEnter();
-      }
+		@Override
+		protected void onMethodEnter() {
+			super.onMethodEnter();
+		}
 
-      @Override
-      protected void onMethodExit(int opcode) {
-        super.onMethodExit(opcode);
-        for (Map.Entry<String, ApiInfo> apiImplEntry : mApiImplMap.entrySet()) {
-          mv.visitVarInsn(Opcodes.ALOAD, 0);
-          mv.visitLdcInsn(
-              Type.getType("L" + apiImplEntry.getValue().implApiClass + ";"));
-          mv.visitMethodInsn(Opcodes.INVOKESPECIAL, mApiUtilsClass,
-                             "registerImpl", "(Ljava/lang/Class;)V", false);
-        }
-      }
-    };
-    return mv;
-  }
+		@Override
+		protected void onMethodExit(int opcode) {
+			super.onMethodExit(opcode);
+			for (Map.Entry<String, ApiInfo> apiImplEntry : mApiImplMap.entrySet()) {
+				mv.visitVarInsn(Opcodes.ALOAD, 0);
+				mv.visitLdcInsn(
+					Type.getType("L" + apiImplEntry.getValue().implApiClass + ";"));
+				mv.visitMethodInsn(Opcodes.INVOKESPECIAL, mApiUtilsClass,
+				                   "registerImpl", "(Ljava/lang/Class;)V", false);
+			}
+		}
+	};
+	return mv;
+}
 }

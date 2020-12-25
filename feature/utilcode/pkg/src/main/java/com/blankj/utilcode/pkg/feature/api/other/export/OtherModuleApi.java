@@ -12,14 +12,16 @@ import com.blankj.utilcode.util.ApiUtils;
  */
 public abstract class OtherModuleApi extends ApiUtils.BaseApi {
 
-  public abstract void invokeWithParams(ApiBean bean);
+public abstract void invokeWithParams(ApiBean bean);
 
-  public abstract ApiBean invokeWithReturnValue();
+public abstract ApiBean invokeWithReturnValue();
 
-  public static class ApiBean {
+public static class ApiBean {
 
-    public String name;
+public String name;
 
-    public ApiBean(String name) { this.name = name; }
-  }
+public ApiBean(String name) {
+	this.name = name;
+}
+}
 }

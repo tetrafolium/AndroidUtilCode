@@ -20,18 +20,18 @@ import java.util.List;
  */
 public abstract class AbsToolDebug implements IDebug {
 
-  @Override
-  public int getCategory() {
-    return TOOLS;
-  }
+@Override
+public int getCategory() {
+	return TOOLS;
+}
 
-  public static void addToolDebugs(List<IDebug> debugList) {
-    debugList.add(new AppInfoDebug());
-    debugList.add(new DeviceInfoDebug());
-    debugList.add(new FileExplorerDebug());
-    debugList.add(new LogcatDebug());
-    debugList.add(new RestartAppDebug());
-    debugList.add(new ClearStorageDebug());
-    debugList.add(new ClearCacheDebug());
-  }
+public static void addToolDebugs(List<IDebug> debugList) {
+	debugList.add(new AppInfoDebug());
+	debugList.add(new DeviceInfoDebug());
+	debugList.add(new FileExplorerDebug());
+	debugList.add(new LogcatDebug());
+	debugList.add(new RestartAppDebug());
+	debugList.add(new ClearStorageDebug());
+	debugList.add(new ClearCacheDebug());
+}
 }

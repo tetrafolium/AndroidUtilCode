@@ -17,27 +17,27 @@ import com.blankj.utildebug.base.view.BaseContentFloatView;
  */
 public class AppInfoFloatView extends BaseContentFloatView<AppInfoFloatView> {
 
-  private RecyclerView appInfoRv;
+private RecyclerView appInfoRv;
 
-  @Override
-  public int bindTitle() {
-    return R.string.du_app_info;
-  }
+@Override
+public int bindTitle() {
+	return R.string.du_app_info;
+}
 
-  @Override
-  public int bindContentLayout() {
-    return R.layout.du_debug_app_info;
-  }
+@Override
+public int bindContentLayout() {
+	return R.layout.du_debug_app_info;
+}
 
-  @Override
-  public void initContentView() {
-    appInfoRv = findViewById(R.id.appInfoRv);
-    BaseItemAdapter<AppInfoItem> adapter = new BaseItemAdapter<>();
-    adapter.setItems(AppInfoItem.getAppInfoItems());
-    appInfoRv.setAdapter(adapter);
-    appInfoRv.setLayoutManager(new LinearLayoutManager(getContext()));
-    appInfoRv.addItemDecoration(
-        new RecycleViewDivider(getContext(), RecycleViewDivider.VERTICAL,
-                               R.drawable.du_shape_divider));
-  }
+@Override
+public void initContentView() {
+	appInfoRv = findViewById(R.id.appInfoRv);
+	BaseItemAdapter<AppInfoItem> adapter = new BaseItemAdapter<>();
+	adapter.setItems(AppInfoItem.getAppInfoItems());
+	appInfoRv.setAdapter(adapter);
+	appInfoRv.setLayoutManager(new LinearLayoutManager(getContext()));
+	appInfoRv.addItemDecoration(
+		new RecycleViewDivider(getContext(), RecycleViewDivider.VERTICAL,
+		                       R.drawable.du_shape_divider));
+}
 }

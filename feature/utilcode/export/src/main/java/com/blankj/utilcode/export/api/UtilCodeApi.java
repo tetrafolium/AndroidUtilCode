@@ -13,9 +13,9 @@ import com.blankj.utilcode.util.ApiUtils;
  */
 public abstract class UtilCodeApi extends ApiUtils.BaseApi {
 
-  public abstract void startUtilCodeActivity(Context context);
+public abstract void startUtilCodeActivity(Context context);
 
-  public abstract void testCallback(Callback callback);
+public abstract void testCallback(Callback callback);
 
-  public interface Callback { void call(); }
+public interface Callback { void call(); }
 }
