@@ -221,7 +221,7 @@ public final class SnackbarUtils {
             SpannableString spannableString = new SpannableString(message);
             ForegroundColorSpan colorSpan = new ForegroundColorSpan(messageColor);
             spannableString.setSpan(
-                    colorSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                colorSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             );
             sReference = new WeakReference<>(Snackbar.make(view, spannableString, duration));
         } else {
@@ -242,7 +242,7 @@ public final class SnackbarUtils {
         }
         if (bottomMargin != 0) {
             ViewGroup.MarginLayoutParams params =
-                    (ViewGroup.MarginLayoutParams) snackbarView.getLayoutParams();
+                (ViewGroup.MarginLayoutParams) snackbarView.getLayoutParams();
             params.bottomMargin = bottomMargin;
         }
         if (actionText.length() > 0 && actionListener != null) {

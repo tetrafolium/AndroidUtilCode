@@ -130,7 +130,7 @@ public final class FileUtils {
         File newFile = new File(file.getParent() + File.separator + newName);
         // the new name of file exists then return false
         return !newFile.exists()
-                && file.renameTo(newFile);
+               && file.renameTo(newFile);
     }
 
     /**
@@ -464,7 +464,7 @@ public final class FileUtils {
         if (!createOrExistsDir(destFile.getParentFile())) return false;
         try {
             return UtilsBridge.writeFileFromIS(destFile.getAbsolutePath(), new FileInputStream(srcFile))
-                    && !(isMove && !deleteFile(srcFile));
+                   && !(isMove && !deleteFile(srcFile));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -588,7 +588,7 @@ public final class FileUtils {
      * @return {@code true}: success<br>{@code false}: fail
      */
     public static boolean deleteFilesInDirWithFilter(final String dirPath,
-                                                     final FileFilter filter) {
+            final FileFilter filter) {
         return deleteFilesInDirWithFilter(getFileByPath(dirPath), filter);
     }
 
@@ -730,7 +730,7 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final String dirPath,
-                                                      final FileFilter filter) {
+            final FileFilter filter) {
         return listFilesInDirWithFilter(getFileByPath(dirPath), filter);
     }
 
@@ -743,7 +743,7 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final File dir,
-                                                      final FileFilter filter) {
+            final FileFilter filter) {
         return listFilesInDirWithFilter(dir, filter, false, null);
     }
 
@@ -757,8 +757,8 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final String dirPath,
-                                                      final FileFilter filter,
-                                                      final Comparator<File> comparator) {
+            final FileFilter filter,
+            final Comparator<File> comparator) {
         return listFilesInDirWithFilter(getFileByPath(dirPath), filter, comparator);
     }
 
@@ -772,8 +772,8 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final File dir,
-                                                      final FileFilter filter,
-                                                      final Comparator<File> comparator) {
+            final FileFilter filter,
+            final Comparator<File> comparator) {
         return listFilesInDirWithFilter(dir, filter, false, comparator);
     }
 
@@ -786,8 +786,8 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final String dirPath,
-                                                      final FileFilter filter,
-                                                      final boolean isRecursive) {
+            final FileFilter filter,
+            final boolean isRecursive) {
         return listFilesInDirWithFilter(getFileByPath(dirPath), filter, isRecursive);
     }
 
@@ -800,8 +800,8 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final File dir,
-                                                      final FileFilter filter,
-                                                      final boolean isRecursive) {
+            final FileFilter filter,
+            final boolean isRecursive) {
         return listFilesInDirWithFilter(dir, filter, isRecursive, null);
     }
 
@@ -816,9 +816,9 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final String dirPath,
-                                                      final FileFilter filter,
-                                                      final boolean isRecursive,
-                                                      final Comparator<File> comparator) {
+            final FileFilter filter,
+            final boolean isRecursive,
+            final Comparator<File> comparator) {
         return listFilesInDirWithFilter(getFileByPath(dirPath), filter, isRecursive, comparator);
     }
 
@@ -832,9 +832,9 @@ public final class FileUtils {
      * @return the files that satisfy the filter in directory
      */
     public static List<File> listFilesInDirWithFilter(final File dir,
-                                                      final FileFilter filter,
-                                                      final boolean isRecursive,
-                                                      final Comparator<File> comparator) {
+            final FileFilter filter,
+            final boolean isRecursive,
+            final Comparator<File> comparator) {
         List<File> files = listFilesInDirWithFilterInner(dir, filter, isRecursive);
         if (comparator != null) {
             Collections.sort(files, comparator);
@@ -843,8 +843,8 @@ public final class FileUtils {
     }
 
     private static List<File> listFilesInDirWithFilterInner(final File dir,
-                                                            final FileFilter filter,
-                                                            final boolean isRecursive) {
+            final FileFilter filter,
+            final boolean isRecursive) {
         List<File> list = new ArrayList<>();
         if (!isDir(dir)) return list;
         File[] files = dir.listFiles();
@@ -919,12 +919,12 @@ public final class FileUtils {
             }
         }
         switch (p) {
-            case 0xfffe:
-                return "Unicode";
-            case 0xfeff:
-                return "UTF-16BE";
-            default:
-                return "GBK";
+        case 0xfffe:
+            return "Unicode";
+        case 0xfeff:
+            return "UTF-16BE";
+        default:
+            return "GBK";
         }
     }
 

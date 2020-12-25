@@ -49,8 +49,9 @@ public final class DeviceUtils {
     public static boolean isDeviceRooted() {
         String su = "su";
         String[] locations = {"/system/bin/", "/system/xbin/", "/sbin/", "/system/sd/xbin/",
-                "/system/bin/failsafe/", "/data/local/xbin/", "/data/local/bin/", "/data/local/",
-                "/system/sbin/", "/usr/bin/", "/vendor/bin/"};
+                              "/system/bin/failsafe/", "/data/local/xbin/", "/data/local/bin/", "/data/local/",
+                              "/system/sbin/", "/usr/bin/", "/vendor/bin/"
+                             };
         for (String location : locations) {
             if (new File(location + su).exists()) {
                 return true;
@@ -67,9 +68,9 @@ public final class DeviceUtils {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static boolean isAdbEnabled() {
         return Settings.Secure.getInt(
-                Utils.getApp().getContentResolver(),
-                Settings.Global.ADB_ENABLED, 0
-        ) > 0;
+                   Utils.getApp().getContentResolver(),
+                   Settings.Global.ADB_ENABLED, 0
+               ) > 0;
     }
 
     /**
@@ -98,9 +99,9 @@ public final class DeviceUtils {
     @SuppressLint("HardwareIds")
     public static String getAndroidID() {
         String id = Settings.Secure.getString(
-                Utils.getApp().getContentResolver(),
-                Settings.Secure.ANDROID_ID
-        );
+                        Utils.getApp().getContentResolver(),
+                        Settings.Secure.ANDROID_ID
+                    );
         if ("9774d56d682e549c".equals(id)) return "";
         return id == null ? "" : id;
     }
@@ -188,7 +189,7 @@ public final class DeviceUtils {
     private static String getMacAddressByWifiInfo() {
         try {
             final WifiManager wifi = (WifiManager) Utils.getApp()
-                    .getApplicationContext().getSystemService(WIFI_SERVICE);
+                                     .getApplicationContext().getSystemService(WIFI_SERVICE);
             if (wifi != null) {
                 final WifiInfo info = wifi.getConnectionInfo();
                 if (info != null) return info.getMacAddress();
@@ -318,9 +319,9 @@ public final class DeviceUtils {
             return Build.SUPPORTED_ABIS;
         } else {
             if (!TextUtils.isEmpty(Build.CPU_ABI2)) {
-                return new String[]{Build.CPU_ABI, Build.CPU_ABI2};
+                return new String[] {Build.CPU_ABI, Build.CPU_ABI2};
             }
-            return new String[]{Build.CPU_ABI};
+            return new String[] {Build.CPU_ABI};
         }
     }
 
@@ -332,7 +333,7 @@ public final class DeviceUtils {
     public static boolean isTablet() {
         return (Resources.getSystem().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+               >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     /**
@@ -342,14 +343,14 @@ public final class DeviceUtils {
      */
     public static boolean isEmulator() {
         boolean checkProperty = Build.FINGERPRINT.startsWith("generic")
-                || Build.FINGERPRINT.toLowerCase().contains("vbox")
-                || Build.FINGERPRINT.toLowerCase().contains("test-keys")
-                || Build.MODEL.contains("google_sdk")
-                || Build.MODEL.contains("Emulator")
-                || Build.MODEL.contains("Android SDK built for x86")
-                || Build.MANUFACTURER.contains("Genymotion")
-                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
-                || "google_sdk".equals(Build.PRODUCT);
+                                || Build.FINGERPRINT.toLowerCase().contains("vbox")
+                                || Build.FINGERPRINT.toLowerCase().contains("test-keys")
+                                || Build.MODEL.contains("google_sdk")
+                                || Build.MODEL.contains("Emulator")
+                                || Build.MODEL.contains("Android SDK built for x86")
+                                || Build.MANUFACTURER.contains("Genymotion")
+                                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                                || "google_sdk".equals(Build.PRODUCT);
         if (checkProperty) return true;
 
         String operatorName = "";

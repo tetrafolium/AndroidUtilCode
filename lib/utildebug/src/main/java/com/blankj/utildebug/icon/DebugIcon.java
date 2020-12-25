@@ -82,25 +82,25 @@ public class DebugIcon extends RelativeLayout {
 
             private void stick2HorizontalSide(View view) {
                 view.animate()
-                        .setInterpolator(new DecelerateInterpolator())
-                        .translationX(view.getX() + viewWidth / 2f > rootViewWidth / 2f ? rootViewWidth - viewWidth : 0)
-                        .setDuration(100)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                savePosition();
-                            }
-                        })
-                        .start();
+                .setInterpolator(new DecelerateInterpolator())
+                .translationX(view.getX() + viewWidth / 2f > rootViewWidth / 2f ? rootViewWidth - viewWidth : 0)
+                .setDuration(100)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        savePosition();
+                    }
+                })
+                .start();
             }
 
             private void processScale(final View view, boolean isDown) {
                 float value = isDown ? 1 - 0.1f : 1;
                 view.animate()
-                        .scaleX(value)
-                        .scaleY(value)
-                        .setDuration(100)
-                        .start();
+                .scaleX(value)
+                .scaleY(value)
+                .setDuration(100)
+                .start();
             }
         });
 

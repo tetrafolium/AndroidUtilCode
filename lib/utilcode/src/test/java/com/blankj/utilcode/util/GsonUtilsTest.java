@@ -26,8 +26,8 @@ public class GsonUtilsTest extends BaseTest {
     public void toJson() {
         Result<Person> result = new Result<>(new Person("Blankj"));
         Assert.assertEquals(
-                "{\"code\":200,\"message\":\"success\",\"data\":{\"name\":\"Blankj\",\"gender\":0,\"address\":null}}",
-                GsonUtils.toJson(result)
+            "{\"code\":200,\"message\":\"success\",\"data\":{\"name\":\"Blankj\",\"gender\":0,\"address\":null}}",
+            GsonUtils.toJson(result)
         );
     }
 
@@ -39,37 +39,37 @@ public class GsonUtilsTest extends BaseTest {
         Result<List<Person>> result = new Result<>(people);
 
         Assert.assertEquals(
-                GsonUtils.toJson(result),
-                GsonUtils.toJson(
-                        GsonUtils.fromJson(
-                                GsonUtils.toJson(result),
-                                GsonUtils.getType(Result.class, GsonUtils.getListType(Person.class))
-                        )
+            GsonUtils.toJson(result),
+            GsonUtils.toJson(
+                GsonUtils.fromJson(
+                    GsonUtils.toJson(result),
+                    GsonUtils.getType(Result.class, GsonUtils.getListType(Person.class))
                 )
+            )
         );
     }
 
     @Test
     public void getType() {
         Assert.assertEquals(
-                "java.util.List<java.lang.String>",
-                GsonUtils.getListType(String.class).toString()
+            "java.util.List<java.lang.String>",
+            GsonUtils.getListType(String.class).toString()
         );
         Assert.assertEquals(
-                "java.util.Map<java.lang.String, java.lang.Integer>",
-                GsonUtils.getMapType(String.class, Integer.class).toString()
+            "java.util.Map<java.lang.String, java.lang.Integer>",
+            GsonUtils.getMapType(String.class, Integer.class).toString()
         );
         Assert.assertEquals(
-                "java.lang.String[]",
-                GsonUtils.getArrayType(String.class).toString()
+            "java.lang.String[]",
+            GsonUtils.getArrayType(String.class).toString()
         );
         Assert.assertEquals(
-                "com.blankj.utilcode.util.GsonUtilsTest$Result<java.lang.String>",
-                GsonUtils.getType(Result.class, String.class).toString()
+            "com.blankj.utilcode.util.GsonUtilsTest$Result<java.lang.String>",
+            GsonUtils.getType(Result.class, String.class).toString()
         );
         Assert.assertEquals(
-                "java.util.Map<java.lang.String, java.util.List<java.lang.String>>",
-                GsonUtils.getMapType(String.class, GsonUtils.getListType(String.class)).toString()
+            "java.util.Map<java.lang.String, java.util.List<java.lang.String>>",
+            GsonUtils.getMapType(String.class, GsonUtils.getListType(String.class)).toString()
         );
     }
 

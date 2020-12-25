@@ -27,7 +27,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final String command) {
-        return execCmd(new String[]{command}, false, true);
+        return execCmd(new String[] {command}, false, true);
     }
 
     /**
@@ -38,7 +38,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final String command, final boolean isRooted) {
-        return execCmd(new String[]{command}, isRooted, true);
+        return execCmd(new String[] {command}, isRooted, true);
     }
 
     /**
@@ -48,7 +48,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final List<String> commands) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}), false, true);
+        return execCmd(commands == null ? null : commands.toArray(new String[] {}), false, true);
     }
 
     /**
@@ -59,7 +59,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final List<String> commands, final boolean isRooted) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRooted, true);
+        return execCmd(commands == null ? null : commands.toArray(new String[] {}), isRooted, true);
     }
 
     /**
@@ -94,7 +94,7 @@ public final class ShellUtils {
     public static CommandResult execCmd(final String command,
                                         final boolean isRooted,
                                         final boolean isNeedResultMsg) {
-        return execCmd(new String[]{command}, isRooted, isNeedResultMsg);
+        return execCmd(new String[] {command}, isRooted, isNeedResultMsg);
     }
 
     /**
@@ -108,9 +108,9 @@ public final class ShellUtils {
     public static CommandResult execCmd(final List<String> commands,
                                         final boolean isRooted,
                                         final boolean isNeedResultMsg) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}),
-                isRooted,
-                isNeedResultMsg);
+        return execCmd(commands == null ? null : commands.toArray(new String[] {}),
+                       isRooted,
+                       isNeedResultMsg);
     }
 
     /**
@@ -150,10 +150,10 @@ public final class ShellUtils {
                 successMsg = new StringBuilder();
                 errorMsg = new StringBuilder();
                 successResult = new BufferedReader(
-                        new InputStreamReader(process.getInputStream(), "UTF-8")
+                    new InputStreamReader(process.getInputStream(), "UTF-8")
                 );
                 errorResult = new BufferedReader(
-                        new InputStreamReader(process.getErrorStream(), "UTF-8")
+                    new InputStreamReader(process.getErrorStream(), "UTF-8")
                 );
                 String line;
                 if ((line = successResult.readLine()) != null) {
@@ -198,10 +198,10 @@ public final class ShellUtils {
             }
         }
         return new CommandResult(
-                result,
-                successMsg == null ? "" : successMsg.toString(),
-                errorMsg == null ? "" : errorMsg.toString()
-        );
+                   result,
+                   successMsg == null ? "" : successMsg.toString(),
+                   errorMsg == null ? "" : errorMsg.toString()
+               );
     }
 
     /**
@@ -221,8 +221,8 @@ public final class ShellUtils {
         @Override
         public String toString() {
             return "result: " + result + "\n" +
-                    "successMsg: " + successMsg + "\n" +
-                    "errorMsg: " + errorMsg;
+                   "successMsg: " + successMsg + "\n" +
+                   "errorMsg: " + errorMsg;
         }
     }
 }

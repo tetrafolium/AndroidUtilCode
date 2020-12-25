@@ -72,16 +72,16 @@ public class DebugMenuItem extends BaseItem<DebugMenuItem> {
 
     private static String getCategoryString(int category) {
         switch (category) {
-            case IDebug.TOOLS:
-                return StringUtils.getString(R.string.du_tools);
-            case IDebug.PERFORMANCE:
-                return StringUtils.getString(R.string.du_performance);
-            case IDebug.UI:
-                return StringUtils.getString(R.string.du_ui);
-            case IDebug.BIZ:
-                return StringUtils.getString(R.string.du_biz);
-            default:
-                return StringUtils.getString(R.string.du_uncategorized);
+        case IDebug.TOOLS:
+            return StringUtils.getString(R.string.du_tools);
+        case IDebug.PERFORMANCE:
+            return StringUtils.getString(R.string.du_performance);
+        case IDebug.UI:
+            return StringUtils.getString(R.string.du_ui);
+        case IDebug.BIZ:
+            return StringUtils.getString(R.string.du_biz);
+        default:
+            return StringUtils.getString(R.string.du_uncategorized);
         }
     }
 }

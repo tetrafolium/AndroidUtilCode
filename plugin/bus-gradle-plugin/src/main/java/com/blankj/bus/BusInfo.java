@@ -35,12 +35,12 @@ public class BusInfo {
     public String toString() {
         String paramsInfoString = paramsInfo.toString();
         return "{ desc: " + className + "#" + funName +
-                "(" + paramsInfoString.substring(1, paramsInfoString.length() - 1) + ")" +
-                (!sticky ? "" : ", sticky: true") +
-                (threadMode.equals("POSTING") ? "" : ", threadMode: " + threadMode) +
-                (priority == 0 ? "" : ", priority: " + priority) +
-                (isParamSizeNoMoreThanOne ? "" : ", paramSize: " + paramsInfo.size()) +
-                " }";
+               "(" + paramsInfoString.substring(1, paramsInfoString.length() - 1) + ")" +
+               (!sticky ? "" : ", sticky: true") +
+               (threadMode.equals("POSTING") ? "" : ", threadMode: " + threadMode) +
+               (priority == 0 ? "" : ", priority: " + priority) +
+               (isParamSizeNoMoreThanOne ? "" : ", paramSize: " + paramsInfo.size()) +
+               " }";
     }
 
     public static class ParamsInfo {

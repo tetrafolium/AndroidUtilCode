@@ -54,7 +54,7 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
     private void setOrientation(int orientation) {
         if (orientation != HORIZONTAL && orientation != VERTICAL) {
             throw new IllegalArgumentException(
-                    "Invalid orientation. It should be either HORIZONTAL or VERTICAL");
+                "Invalid orientation. It should be either HORIZONTAL or VERTICAL");
         }
         mOrientation = orientation;
     }
@@ -80,7 +80,7 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
             left = parent.getPaddingLeft();
             right = parent.getWidth() - parent.getPaddingRight();
             canvas.clipRect(left, parent.getPaddingTop(), right,
-                    parent.getHeight() - parent.getPaddingBottom());
+                            parent.getHeight() - parent.getPaddingBottom());
         } else {
             left = 0;
             right = parent.getWidth();
@@ -108,7 +108,7 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
             top = parent.getPaddingTop();
             bottom = parent.getHeight() - parent.getPaddingBottom();
             canvas.clipRect(parent.getPaddingLeft(), top,
-                    parent.getWidth() - parent.getPaddingRight(), bottom);
+                            parent.getWidth() - parent.getPaddingRight(), bottom);
         } else {
             top = 0;
             bottom = parent.getHeight();

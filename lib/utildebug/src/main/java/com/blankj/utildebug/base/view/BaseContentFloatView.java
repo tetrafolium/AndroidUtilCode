@@ -59,7 +59,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
     };
 
     private static final ViewGroup.LayoutParams PARAMS = new ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
     );
 
     private Stack<BaseContentView<T>> mViewStack = new Stack<>();
@@ -93,7 +93,7 @@ public abstract class BaseContentFloatView<T extends BaseContentFloatView<T>> ex
                 @Override
                 public void onAttach() {
                 }
-            }.attach((T) this, true);
+            } .attach((T) this, true);
         }
     }
 

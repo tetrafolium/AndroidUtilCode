@@ -202,24 +202,24 @@ public final class BusUtils {
 
     private Class getClassName(String paramType) throws ClassNotFoundException {
         switch (paramType) {
-            case "boolean":
-                return boolean.class;
-            case "int":
-                return int.class;
-            case "long":
-                return long.class;
-            case "short":
-                return short.class;
-            case "byte":
-                return byte.class;
-            case "double":
-                return double.class;
-            case "float":
-                return float.class;
-            case "char":
-                return char.class;
-            default:
-                return Class.forName(paramType);
+        case "boolean":
+            return boolean.class;
+        case "int":
+            return int.class;
+        case "long":
+            return long.class;
+        case "short":
+            return short.class;
+        case "byte":
+            return byte.class;
+        case "double":
+            return double.class;
+        case "float":
+            return float.class;
+        case "char":
+            return char.class;
+        default:
+            return Class.forName(paramType);
         }
     }
 
@@ -246,8 +246,8 @@ public final class BusUtils {
 //            case "SINGLE":
 //                ThreadUtils.getSinglePool().execute(runnable);
 //                return;
-            default:
-                runnable.run();
+        default:
+            runnable.run();
         }
     }
 
@@ -356,12 +356,12 @@ public final class BusUtils {
         @Override
         public String toString() {
             return "BusInfo { desc: " + className + "#" + funName +
-                    ("".equals(paramType) ? "()" : ("(" + paramType + " " + paramName + ")")) +
-                    ", sticky: " + sticky +
-                    ", threadMode: " + threadMode +
-                    ", method: " + method +
-                    ", priority: " + priority +
-                    " }";
+                   ("".equals(paramType) ? "()" : ("(" + paramType + " " + paramName + ")")) +
+                   ", sticky: " + sticky +
+                   ", threadMode: " + threadMode +
+                   ", method: " + method +
+                   ", priority: " + priority +
+                   " }";
         }
     }
 

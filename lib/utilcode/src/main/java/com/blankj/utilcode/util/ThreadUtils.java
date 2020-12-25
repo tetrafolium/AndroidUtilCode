@@ -98,7 +98,7 @@ public final class ThreadUtils {
      * @return a fixed thread pool
      */
     public static ExecutorService getFixedPool(@IntRange(from = 1) final int size,
-                                               @IntRange(from = 1, to = 10) final int priority) {
+            @IntRange(from = 1, to = 10) final int priority) {
         return getPoolByTypeAndPriority(size, priority);
     }
 
@@ -227,9 +227,9 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeByFixedWithDelay(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   final long delay,
-                                                   final TimeUnit unit) {
+            final Task<T> task,
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(getPoolByTypeAndPriority(size), task, delay, unit);
     }
 
@@ -244,10 +244,10 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByFixedWithDelay(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   final long delay,
-                                                   final TimeUnit unit,
-                                                   @IntRange(from = 1, to = 10) final int priority) {
+            final Task<T> task,
+            final long delay,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeWithDelay(getPoolByTypeAndPriority(size, priority), task, delay, unit);
     }
 
@@ -261,9 +261,9 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   final long period,
-                                                   final TimeUnit unit) {
+            final Task<T> task,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(size), task, 0, period, unit);
     }
 
@@ -278,10 +278,10 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   final long period,
-                                                   final TimeUnit unit,
-                                                   @IntRange(from = 1, to = 10) final int priority) {
+            final Task<T> task,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(size, priority), task, 0, period, unit);
     }
 
@@ -296,10 +296,10 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   long initialDelay,
-                                                   final long period,
-                                                   final TimeUnit unit) {
+            final Task<T> task,
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(size), task, initialDelay, period, unit);
     }
 
@@ -315,11 +315,11 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByFixedAtFixRate(@IntRange(from = 1) final int size,
-                                                   final Task<T> task,
-                                                   long initialDelay,
-                                                   final long period,
-                                                   final TimeUnit unit,
-                                                   @IntRange(from = 1, to = 10) final int priority) {
+            final Task<T> task,
+            long initialDelay,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(size, priority), task, initialDelay, period, unit);
     }
 
@@ -354,8 +354,8 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeBySingleWithDelay(final Task<T> task,
-                                                    final long delay,
-                                                    final TimeUnit unit) {
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_SINGLE), task, delay, unit);
     }
 
@@ -369,9 +369,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeBySingleWithDelay(final Task<T> task,
-                                                    final long delay,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            final long delay,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_SINGLE, priority), task, delay, unit);
     }
 
@@ -384,8 +384,8 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_SINGLE), task, 0, period, unit);
     }
 
@@ -399,9 +399,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    final long period,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_SINGLE, priority), task, 0, period, unit);
     }
 
@@ -415,9 +415,9 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    long initialDelay,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_SINGLE), task, initialDelay, period, unit);
     }
 
@@ -432,12 +432,12 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeBySingleAtFixRate(final Task<T> task,
-                                                    long initialDelay,
-                                                    final long period,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(
-                getPoolByTypeAndPriority(TYPE_SINGLE, priority), task, initialDelay, period, unit
+            getPoolByTypeAndPriority(TYPE_SINGLE, priority), task, initialDelay, period, unit
         );
     }
 
@@ -472,8 +472,8 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeByCachedWithDelay(final Task<T> task,
-                                                    final long delay,
-                                                    final TimeUnit unit) {
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_CACHED), task, delay, unit);
     }
 
@@ -487,9 +487,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByCachedWithDelay(final Task<T> task,
-                                                    final long delay,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            final long delay,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_CACHED, priority), task, delay, unit);
     }
 
@@ -502,8 +502,8 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CACHED), task, 0, period, unit);
     }
 
@@ -517,9 +517,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    final long period,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CACHED, priority), task, 0, period, unit);
     }
 
@@ -533,9 +533,9 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    long initialDelay,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CACHED), task, initialDelay, period, unit);
     }
 
@@ -550,12 +550,12 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCachedAtFixRate(final Task<T> task,
-                                                    long initialDelay,
-                                                    final long period,
-                                                    final TimeUnit unit,
-                                                    @IntRange(from = 1, to = 10) final int priority) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(
-                getPoolByTypeAndPriority(TYPE_CACHED, priority), task, initialDelay, period, unit
+            getPoolByTypeAndPriority(TYPE_CACHED, priority), task, initialDelay, period, unit
         );
     }
 
@@ -590,8 +590,8 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeByIoWithDelay(final Task<T> task,
-                                                final long delay,
-                                                final TimeUnit unit) {
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_IO), task, delay, unit);
     }
 
@@ -605,9 +605,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByIoWithDelay(final Task<T> task,
-                                                final long delay,
-                                                final TimeUnit unit,
-                                                @IntRange(from = 1, to = 10) final int priority) {
+            final long delay,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_IO, priority), task, delay, unit);
     }
 
@@ -620,8 +620,8 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                final long period,
-                                                final TimeUnit unit) {
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_IO), task, 0, period, unit);
     }
 
@@ -635,9 +635,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                final long period,
-                                                final TimeUnit unit,
-                                                @IntRange(from = 1, to = 10) final int priority) {
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_IO, priority), task, 0, period, unit);
     }
 
@@ -651,9 +651,9 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                long initialDelay,
-                                                final long period,
-                                                final TimeUnit unit) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_IO), task, initialDelay, period, unit);
     }
 
@@ -668,12 +668,12 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByIoAtFixRate(final Task<T> task,
-                                                long initialDelay,
-                                                final long period,
-                                                final TimeUnit unit,
-                                                @IntRange(from = 1, to = 10) final int priority) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(
-                getPoolByTypeAndPriority(TYPE_IO, priority), task, initialDelay, period, unit
+            getPoolByTypeAndPriority(TYPE_IO, priority), task, initialDelay, period, unit
         );
     }
 
@@ -708,8 +708,8 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeByCpuWithDelay(final Task<T> task,
-                                                 final long delay,
-                                                 final TimeUnit unit) {
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_CPU), task, delay, unit);
     }
 
@@ -723,9 +723,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByCpuWithDelay(final Task<T> task,
-                                                 final long delay,
-                                                 final TimeUnit unit,
-                                                 @IntRange(from = 1, to = 10) final int priority) {
+            final long delay,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeWithDelay(getPoolByTypeAndPriority(TYPE_CPU, priority), task, delay, unit);
     }
 
@@ -738,8 +738,8 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 final long period,
-                                                 final TimeUnit unit) {
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CPU), task, 0, period, unit);
     }
 
@@ -753,9 +753,9 @@ public final class ThreadUtils {
      * @param <T>      The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 final long period,
-                                                 final TimeUnit unit,
-                                                 @IntRange(from = 1, to = 10) final int priority) {
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CPU, priority), task, 0, period, unit);
     }
 
@@ -769,9 +769,9 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 long initialDelay,
-                                                 final long period,
-                                                 final TimeUnit unit) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(getPoolByTypeAndPriority(TYPE_CPU), task, initialDelay, period, unit);
     }
 
@@ -786,12 +786,12 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCpuAtFixRate(final Task<T> task,
-                                                 long initialDelay,
-                                                 final long period,
-                                                 final TimeUnit unit,
-                                                 @IntRange(from = 1, to = 10) final int priority) {
+            long initialDelay,
+            final long period,
+            final TimeUnit unit,
+            @IntRange(from = 1, to = 10) final int priority) {
         executeAtFixedRate(
-                getPoolByTypeAndPriority(TYPE_CPU, priority), task, initialDelay, period, unit
+            getPoolByTypeAndPriority(TYPE_CPU, priority), task, initialDelay, period, unit
         );
     }
 
@@ -816,9 +816,9 @@ public final class ThreadUtils {
      * @param <T>   The type of the task's result.
      */
     public static <T> void executeByCustomWithDelay(final ExecutorService pool,
-                                                    final Task<T> task,
-                                                    final long delay,
-                                                    final TimeUnit unit) {
+            final Task<T> task,
+            final long delay,
+            final TimeUnit unit) {
         executeWithDelay(pool, task, delay, unit);
     }
 
@@ -832,9 +832,9 @@ public final class ThreadUtils {
      * @param <T>    The type of the task's result.
      */
     public static <T> void executeByCustomAtFixRate(final ExecutorService pool,
-                                                    final Task<T> task,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            final Task<T> task,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(pool, task, 0, period, unit);
     }
 
@@ -849,10 +849,10 @@ public final class ThreadUtils {
      * @param <T>          The type of the task's result.
      */
     public static <T> void executeByCustomAtFixRate(final ExecutorService pool,
-                                                    final Task<T> task,
-                                                    long initialDelay,
-                                                    final long period,
-                                                    final TimeUnit unit) {
+            final Task<T> task,
+            long initialDelay,
+            final long period,
+            final TimeUnit unit) {
         executeAtFixedRate(pool, task, initialDelay, period, unit);
     }
 
@@ -923,17 +923,17 @@ public final class ThreadUtils {
     }
 
     private static <T> void executeWithDelay(final ExecutorService pool,
-                                             final Task<T> task,
-                                             final long delay,
-                                             final TimeUnit unit) {
+            final Task<T> task,
+            final long delay,
+            final TimeUnit unit) {
         execute(pool, task, delay, 0, unit);
     }
 
     private static <T> void executeAtFixedRate(final ExecutorService pool,
-                                               final Task<T> task,
-                                               long delay,
-                                               final long period,
-                                               final TimeUnit unit) {
+            final Task<T> task,
+            long delay,
+            final long period,
+            final TimeUnit unit) {
         execute(pool, task, delay, period, unit);
     }
 
@@ -998,36 +998,36 @@ public final class ThreadUtils {
 
         private static ExecutorService createPool(final int type, final int priority) {
             switch (type) {
-                case TYPE_SINGLE:
-                    return new ThreadPoolExecutor4Util(1, 1,
-                            0L, TimeUnit.MILLISECONDS,
-                            new LinkedBlockingQueue4Util(),
-                            new UtilsThreadFactory("single", priority)
-                    );
-                case TYPE_CACHED:
-                    return new ThreadPoolExecutor4Util(0, 128,
-                            60L, TimeUnit.SECONDS,
-                            new LinkedBlockingQueue4Util(true),
-                            new UtilsThreadFactory("cached", priority)
-                    );
-                case TYPE_IO:
-                    return new ThreadPoolExecutor4Util(2 * CPU_COUNT + 1, 2 * CPU_COUNT + 1,
-                            30, TimeUnit.SECONDS,
-                            new LinkedBlockingQueue4Util(),
-                            new UtilsThreadFactory("io", priority)
-                    );
-                case TYPE_CPU:
-                    return new ThreadPoolExecutor4Util(CPU_COUNT + 1, 2 * CPU_COUNT + 1,
-                            30, TimeUnit.SECONDS,
-                            new LinkedBlockingQueue4Util(true),
-                            new UtilsThreadFactory("cpu", priority)
-                    );
-                default:
-                    return new ThreadPoolExecutor4Util(type, type,
-                            0L, TimeUnit.MILLISECONDS,
-                            new LinkedBlockingQueue4Util(),
-                            new UtilsThreadFactory("fixed(" + type + ")", priority)
-                    );
+            case TYPE_SINGLE:
+                return new ThreadPoolExecutor4Util(1, 1,
+                                                   0L, TimeUnit.MILLISECONDS,
+                                                   new LinkedBlockingQueue4Util(),
+                                                   new UtilsThreadFactory("single", priority)
+                                                  );
+            case TYPE_CACHED:
+                return new ThreadPoolExecutor4Util(0, 128,
+                                                   60L, TimeUnit.SECONDS,
+                                                   new LinkedBlockingQueue4Util(true),
+                                                   new UtilsThreadFactory("cached", priority)
+                                                  );
+            case TYPE_IO:
+                return new ThreadPoolExecutor4Util(2 * CPU_COUNT + 1, 2 * CPU_COUNT + 1,
+                                                   30, TimeUnit.SECONDS,
+                                                   new LinkedBlockingQueue4Util(),
+                                                   new UtilsThreadFactory("io", priority)
+                                                  );
+            case TYPE_CPU:
+                return new ThreadPoolExecutor4Util(CPU_COUNT + 1, 2 * CPU_COUNT + 1,
+                                                   30, TimeUnit.SECONDS,
+                                                   new LinkedBlockingQueue4Util(true),
+                                                   new UtilsThreadFactory("cpu", priority)
+                                                  );
+            default:
+                return new ThreadPoolExecutor4Util(type, type,
+                                                   0L, TimeUnit.MILLISECONDS,
+                                                   new LinkedBlockingQueue4Util(),
+                                                   new UtilsThreadFactory("fixed(" + type + ")", priority)
+                                                  );
             }
         }
 
@@ -1040,10 +1040,10 @@ public final class ThreadUtils {
                                 LinkedBlockingQueue4Util workQueue,
                                 ThreadFactory threadFactory) {
             super(corePoolSize, maximumPoolSize,
-                    keepAliveTime, unit,
-                    workQueue,
-                    threadFactory
-            );
+                  keepAliveTime, unit,
+                  workQueue,
+                  threadFactory
+                 );
             workQueue.mPool = this;
             mWorkQueue = workQueue;
         }
@@ -1107,7 +1107,7 @@ public final class ThreadUtils {
     }
 
     static final class UtilsThreadFactory extends AtomicLong
-            implements ThreadFactory {
+        implements ThreadFactory {
         private static final AtomicInteger POOL_NUMBER      = new AtomicInteger(1);
         private static final long          serialVersionUID = -9209200509960368598L;
         private final        String        namePrefix;
@@ -1120,8 +1120,8 @@ public final class ThreadUtils {
 
         UtilsThreadFactory(String prefix, int priority, boolean isDaemon) {
             namePrefix = prefix + "-pool-" +
-                    POOL_NUMBER.getAndIncrement() +
-                    "-thread-";
+                         POOL_NUMBER.getAndIncrement() +
+                         "-thread-";
             this.priority = priority;
             this.isDaemon = isDaemon;
         }

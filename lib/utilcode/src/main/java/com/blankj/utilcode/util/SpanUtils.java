@@ -854,8 +854,8 @@ public final class SpanUtils {
         int start = mBuilder.length();
         if (start == 0 && lineHeight != -1) {// bug of LineHeightSpan when first line
             mBuilder.append(Character.toString((char) 2))
-                    .append("\n")
-                    .setSpan(new AbsoluteSizeSpan(0), 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            .append("\n")
+            .setSpan(new AbsoluteSizeSpan(0), 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             start = 2;
         }
         mBuilder.append(mText);
@@ -874,18 +874,18 @@ public final class SpanUtils {
         }
         if (quoteColor != COLOR_DEFAULT) {
             mBuilder.setSpan(
-                    new CustomQuoteSpan(quoteColor, stripeWidth, quoteGapWidth),
-                    start,
-                    end,
-                    flag
+                new CustomQuoteSpan(quoteColor, stripeWidth, quoteGapWidth),
+                start,
+                end,
+                flag
             );
         }
         if (bulletColor != COLOR_DEFAULT) {
             mBuilder.setSpan(
-                    new CustomBulletSpan(bulletColor, bulletRadius, bulletGapWidth),
-                    start,
-                    end,
-                    flag
+                new CustomBulletSpan(bulletColor, bulletRadius, bulletGapWidth),
+                start,
+                end,
+                flag
             );
         }
         if (fontSize != -1) {
@@ -938,10 +938,10 @@ public final class SpanUtils {
         }
         if (blurRadius != -1) {
             mBuilder.setSpan(
-                    new MaskFilterSpan(new BlurMaskFilter(blurRadius, style)),
-                    start,
-                    end,
-                    flag
+                new MaskFilterSpan(new BlurMaskFilter(blurRadius, style)),
+                start,
+                end,
+                flag
             );
         }
         if (shader != null) {
@@ -949,10 +949,10 @@ public final class SpanUtils {
         }
         if (shadowRadius != -1) {
             mBuilder.setSpan(
-                    new ShadowSpan(shadowRadius, shadowDx, shadowDy, shadowColor),
-                    start,
-                    end,
-                    flag
+                new ShadowSpan(shadowRadius, shadowDx, shadowDy, shadowColor),
+                start,
+                end,
+                flag
             );
         }
         if (spans != null) {
@@ -1264,7 +1264,7 @@ public final class SpanUtils {
             super(verticalAlignment);
             mDrawable = new BitmapDrawable(Utils.getApp().getResources(), b);
             mDrawable.setBounds(
-                    0, 0, mDrawable.getIntrinsicWidth(), mDrawable.getIntrinsicHeight()
+                0, 0, mDrawable.getIntrinsicWidth(), mDrawable.getIntrinsicHeight()
             );
         }
 
@@ -1272,7 +1272,7 @@ public final class SpanUtils {
             super(verticalAlignment);
             mDrawable = d;
             mDrawable.setBounds(
-                    0, 0, mDrawable.getIntrinsicWidth(), mDrawable.getIntrinsicHeight()
+                0, 0, mDrawable.getIntrinsicWidth(), mDrawable.getIntrinsicHeight()
             );
         }
 
@@ -1295,11 +1295,11 @@ public final class SpanUtils {
                 Bitmap bitmap;
                 try {
                     InputStream is =
-                            Utils.getApp().getContentResolver().openInputStream(mContentUri);
+                        Utils.getApp().getContentResolver().openInputStream(mContentUri);
                     bitmap = BitmapFactory.decodeStream(is);
                     drawable = new BitmapDrawable(Utils.getApp().getResources(), bitmap);
                     drawable.setBounds(
-                            0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()
+                        0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()
                     );
                     if (is != null) {
                         is.close();
@@ -1311,7 +1311,7 @@ public final class SpanUtils {
                 try {
                     drawable = ContextCompat.getDrawable(Utils.getApp(), mResourceId);
                     drawable.setBounds(
-                            0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()
+                        0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()
                     );
                 } catch (Exception e) {
                     Log.e("sms", "Unable to find resource: " + mResourceId);
@@ -1453,7 +1453,7 @@ public final class SpanUtils {
     }
 
     private static class SerializableSpannableStringBuilder extends SpannableStringBuilder
-            implements Serializable {
+        implements Serializable {
 
         private static final long serialVersionUID = 4909567650765875771L;
     }

@@ -54,7 +54,7 @@ public class DebugUtils {
 
         private int                    mConfigCount = 0;
         private ViewGroup.LayoutParams mParams      = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         );
 
         @Override

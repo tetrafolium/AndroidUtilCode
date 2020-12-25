@@ -190,9 +190,9 @@ public class BusUtilsVsEventBusTest extends BaseTest {
             busUtilsAverageTime += dur[1][i];
         }
         System.out.println(
-                name +
-                "\nEventBusCostTime: " + eventBusAverageTime / sampleSize +
-                "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize
+            name +
+            "\nEventBusCostTime: " + eventBusAverageTime / sampleSize +
+            "\nBusUtilsCostTime: " + busUtilsAverageTime / sampleSize
         );
     }
 

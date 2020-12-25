@@ -34,8 +34,8 @@ public final class FlashlightUtils {
      */
     public static boolean isFlashlightEnable() {
         return Utils.getApp()
-                .getPackageManager()
-                .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+               .getPackageManager()
+               .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
     /**

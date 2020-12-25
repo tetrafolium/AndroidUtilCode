@@ -111,8 +111,8 @@ public class CacheDoubleStaticUtilsTest extends BaseTest {
         assertEquals(BITMAP, CacheDoubleStaticUtils.getBitmap("bitmap"));
         CACHE_MEMORY_UTILS.remove("bitmap");
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CacheDoubleStaticUtils.getBitmap("bitmap"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CacheDoubleStaticUtils.getBitmap("bitmap"), Bitmap.CompressFormat.PNG, 100)
         );
         CACHE_DISK_UTILS.remove("bitmap");
         assertNull(CacheDoubleStaticUtils.getBitmap("bitmap"));
@@ -123,8 +123,8 @@ public class CacheDoubleStaticUtilsTest extends BaseTest {
         assertEquals(DRAWABLE, CacheDoubleStaticUtils.getDrawable("drawable"));
         CACHE_MEMORY_UTILS.remove("drawable");
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CacheDoubleStaticUtils.getDrawable("drawable"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CacheDoubleStaticUtils.getDrawable("drawable"), Bitmap.CompressFormat.PNG, 100)
         );
         CACHE_DISK_UTILS.remove("drawable");
         assertNull(CacheDoubleStaticUtils.getDrawable("drawable"));
@@ -255,8 +255,8 @@ public class CacheDoubleStaticUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof ParcelableTest
-                    && ((ParcelableTest) obj).author.equals(author)
-                    && ((ParcelableTest) obj).className.equals(className);
+                   && ((ParcelableTest) obj).author.equals(author)
+                   && ((ParcelableTest) obj).className.equals(className);
         }
     }
 
@@ -291,8 +291,8 @@ public class CacheDoubleStaticUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof SerializableTest
-                    && ((SerializableTest) obj).author.equals(author)
-                    && ((SerializableTest) obj).className.equals(className);
+                   && ((SerializableTest) obj).author.equals(author)
+                   && ((SerializableTest) obj).className.equals(className);
         }
     }
 }

@@ -42,7 +42,7 @@ public final class ZipUtils {
      */
     public static boolean zipFiles(final Collection<String> srcFiles,
                                    final String zipFilePath)
-            throws IOException {
+    throws IOException {
         return zipFiles(srcFiles, zipFilePath, null);
     }
 
@@ -58,7 +58,7 @@ public final class ZipUtils {
     public static boolean zipFiles(final Collection<String> srcFilePaths,
                                    final String zipFilePath,
                                    final String comment)
-            throws IOException {
+    throws IOException {
         if (srcFilePaths == null || zipFilePath == null) return false;
         ZipOutputStream zos = null;
         try {
@@ -84,7 +84,7 @@ public final class ZipUtils {
      * @throws IOException if an I/O error has occurred
      */
     public static boolean zipFiles(final Collection<File> srcFiles, final File zipFile)
-            throws IOException {
+    throws IOException {
         return zipFiles(srcFiles, zipFile, null);
     }
 
@@ -100,7 +100,7 @@ public final class ZipUtils {
     public static boolean zipFiles(final Collection<File> srcFiles,
                                    final File zipFile,
                                    final String comment)
-            throws IOException {
+    throws IOException {
         if (srcFiles == null || zipFile == null) return false;
         ZipOutputStream zos = null;
         try {
@@ -127,7 +127,7 @@ public final class ZipUtils {
      */
     public static boolean zipFile(final String srcFilePath,
                                   final String zipFilePath)
-            throws IOException {
+    throws IOException {
         return zipFile(getFileByPath(srcFilePath), getFileByPath(zipFilePath), null);
     }
 
@@ -143,7 +143,7 @@ public final class ZipUtils {
     public static boolean zipFile(final String srcFilePath,
                                   final String zipFilePath,
                                   final String comment)
-            throws IOException {
+    throws IOException {
         return zipFile(getFileByPath(srcFilePath), getFileByPath(zipFilePath), comment);
     }
 
@@ -157,7 +157,7 @@ public final class ZipUtils {
      */
     public static boolean zipFile(final File srcFile,
                                   final File zipFile)
-            throws IOException {
+    throws IOException {
         return zipFile(srcFile, zipFile, null);
     }
 
@@ -173,7 +173,7 @@ public final class ZipUtils {
     public static boolean zipFile(final File srcFile,
                                   final File zipFile,
                                   final String comment)
-            throws IOException {
+    throws IOException {
         if (srcFile == null || zipFile == null) return false;
         ZipOutputStream zos = null;
         try {
@@ -190,7 +190,7 @@ public final class ZipUtils {
                                    String rootPath,
                                    final ZipOutputStream zos,
                                    final String comment)
-            throws IOException {
+    throws IOException {
         rootPath = rootPath + (isSpace(rootPath) ? "" : File.separator) + srcFile.getName();
         if (srcFile.isDirectory()) {
             File[] fileList = srcFile.listFiles();
@@ -236,7 +236,7 @@ public final class ZipUtils {
      */
     public static List<File> unzipFile(final String zipFilePath,
                                        final String destDirPath)
-            throws IOException {
+    throws IOException {
         return unzipFileByKeyword(zipFilePath, destDirPath, null);
     }
 
@@ -250,7 +250,7 @@ public final class ZipUtils {
      */
     public static List<File> unzipFile(final File zipFile,
                                        final File destDir)
-            throws IOException {
+    throws IOException {
         return unzipFileByKeyword(zipFile, destDir, null);
     }
 
@@ -264,9 +264,9 @@ public final class ZipUtils {
      * @throws IOException if unzip unsuccessfully
      */
     public static List<File> unzipFileByKeyword(final String zipFilePath,
-                                                final String destDirPath,
-                                                final String keyword)
-            throws IOException {
+            final String destDirPath,
+            final String keyword)
+    throws IOException {
         return unzipFileByKeyword(getFileByPath(zipFilePath), getFileByPath(destDirPath), keyword);
     }
 
@@ -280,9 +280,9 @@ public final class ZipUtils {
      * @throws IOException if unzip unsuccessfully
      */
     public static List<File> unzipFileByKeyword(final File zipFile,
-                                                final File destDir,
-                                                final String keyword)
-            throws IOException {
+            final File destDir,
+            final String keyword)
+    throws IOException {
         if (zipFile == null || destDir == null) return null;
         List<File> files = new ArrayList<>();
         ZipFile zip = new ZipFile(zipFile);
@@ -358,7 +358,7 @@ public final class ZipUtils {
      * @throws IOException if an I/O error has occurred
      */
     public static List<String> getFilesPath(final String zipFilePath)
-            throws IOException {
+    throws IOException {
         return getFilesPath(getFileByPath(zipFilePath));
     }
 
@@ -370,7 +370,7 @@ public final class ZipUtils {
      * @throws IOException if an I/O error has occurred
      */
     public static List<String> getFilesPath(final File zipFile)
-            throws IOException {
+    throws IOException {
         if (zipFile == null) return null;
         List<String> paths = new ArrayList<>();
         ZipFile zip = new ZipFile(zipFile);
@@ -396,7 +396,7 @@ public final class ZipUtils {
      * @throws IOException if an I/O error has occurred
      */
     public static List<String> getComments(final String zipFilePath)
-            throws IOException {
+    throws IOException {
         return getComments(getFileByPath(zipFilePath));
     }
 
@@ -408,7 +408,7 @@ public final class ZipUtils {
      * @throws IOException if an I/O error has occurred
      */
     public static List<String> getComments(final File zipFile)
-            throws IOException {
+    throws IOException {
         if (zipFile == null) return null;
         List<String> comments = new ArrayList<>();
         ZipFile zip = new ZipFile(zipFile);

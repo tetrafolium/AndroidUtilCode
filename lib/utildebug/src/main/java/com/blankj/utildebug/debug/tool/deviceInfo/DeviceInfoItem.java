@@ -88,7 +88,7 @@ public class DeviceInfoItem extends BaseItem<DeviceInfoItem> {
 
     private static String getScreenInfo() {
         return "width=" + ScreenUtils.getScreenWidth() +
-                ", height=" + ScreenUtils.getScreenHeight() +
-                ", density=" + ScreenUtils.getScreenDensity();
+               ", height=" + ScreenUtils.getScreenHeight() +
+               ", density=" + ScreenUtils.getScreenDensity();
     }
 }

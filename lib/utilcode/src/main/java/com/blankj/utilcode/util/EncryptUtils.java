@@ -639,9 +639,9 @@ public final class EncryptUtils {
      * @return the hex string of DES encryption
      */
     public static String encryptDES2HexString(final byte[] data,
-                                              final byte[] key,
-                                              final String transformation,
-                                              final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return UtilsBridge.bytes2HexString(encryptDES(data, key, transformation, iv));
     }
 
@@ -690,9 +690,9 @@ public final class EncryptUtils {
      * @return the bytes of DES decryption for hex string
      */
     public static byte[] decryptHexStringDES(final String data,
-                                             final byte[] key,
-                                             final String transformation,
-                                             final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return decryptDES(UtilsBridge.hexString2Bytes(data), key, transformation, iv);
     }
 
@@ -745,9 +745,9 @@ public final class EncryptUtils {
      * @return the hex string of 3DES encryption
      */
     public static String encrypt3DES2HexString(final byte[] data,
-                                               final byte[] key,
-                                               final String transformation,
-                                               final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return UtilsBridge.bytes2HexString(encrypt3DES(data, key, transformation, iv));
     }
 
@@ -796,9 +796,9 @@ public final class EncryptUtils {
      * @return the bytes of 3DES decryption for hex string
      */
     public static byte[] decryptHexString3DES(final String data,
-                                              final byte[] key,
-                                              final String transformation,
-                                              final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return decrypt3DES(UtilsBridge.hexString2Bytes(data), key, transformation, iv);
     }
 
@@ -851,9 +851,9 @@ public final class EncryptUtils {
      * @return the hex string of AES encryption
      */
     public static String encryptAES2HexString(final byte[] data,
-                                              final byte[] key,
-                                              final String transformation,
-                                              final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return UtilsBridge.bytes2HexString(encryptAES(data, key, transformation, iv));
     }
 
@@ -902,9 +902,9 @@ public final class EncryptUtils {
      * @return the bytes of AES decryption for hex string
      */
     public static byte[] decryptHexStringAES(final String data,
-                                             final byte[] key,
-                                             final String transformation,
-                                             final byte[] iv) {
+            final byte[] key,
+            final String transformation,
+            final byte[] iv) {
         return decryptAES(UtilsBridge.hexString2Bytes(data), key, transformation, iv);
     }
 
@@ -995,9 +995,9 @@ public final class EncryptUtils {
      * @return the hex string of RSA encryption
      */
     public static String encryptRSA2HexString(final byte[] data,
-                                              final byte[] publicKey,
-                                              final int keySize,
-                                              final String transformation) {
+            final byte[] publicKey,
+            final int keySize,
+            final String transformation) {
         return UtilsBridge.bytes2HexString(encryptRSA(data, publicKey, keySize, transformation));
     }
 
@@ -1043,9 +1043,9 @@ public final class EncryptUtils {
      * @return the bytes of RSA decryption for hex string
      */
     public static byte[] decryptHexStringRSA(final String data,
-                                             final byte[] privateKey,
-                                             final int keySize,
-                                             final String transformation) {
+            final byte[] privateKey,
+            final int keySize,
+            final String transformation) {
         return decryptRSA(UtilsBridge.hexString2Bytes(data), privateKey, keySize, transformation);
     }
 

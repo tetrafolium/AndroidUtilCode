@@ -27,7 +27,8 @@ import java.util.Set;
 public final class BatteryUtils {
 
     @IntDef({BatteryStatus.UNKNOWN, BatteryStatus.DISCHARGING, BatteryStatus.CHARGING,
-            BatteryStatus.NOT_CHARGING, BatteryStatus.FULL})
+             BatteryStatus.NOT_CHARGING, BatteryStatus.FULL
+            })
     @Retention(RetentionPolicy.SOURCE)
     public @interface BatteryStatus {
         int UNKNOWN      = BatteryManager.BATTERY_STATUS_UNKNOWN;

@@ -77,18 +77,18 @@ public final class SizeUtils {
     public static float applyDimension(final float value, final int unit) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         switch (unit) {
-            case TypedValue.COMPLEX_UNIT_PX:
-                return value;
-            case TypedValue.COMPLEX_UNIT_DIP:
-                return value * metrics.density;
-            case TypedValue.COMPLEX_UNIT_SP:
-                return value * metrics.scaledDensity;
-            case TypedValue.COMPLEX_UNIT_PT:
-                return value * metrics.xdpi * (1.0f / 72);
-            case TypedValue.COMPLEX_UNIT_IN:
-                return value * metrics.xdpi;
-            case TypedValue.COMPLEX_UNIT_MM:
-                return value * metrics.xdpi * (1.0f / 25.4f);
+        case TypedValue.COMPLEX_UNIT_PX:
+            return value;
+        case TypedValue.COMPLEX_UNIT_DIP:
+            return value * metrics.density;
+        case TypedValue.COMPLEX_UNIT_SP:
+            return value * metrics.scaledDensity;
+        case TypedValue.COMPLEX_UNIT_PT:
+            return value * metrics.xdpi * (1.0f / 72);
+        case TypedValue.COMPLEX_UNIT_IN:
+            return value * metrics.xdpi;
+        case TypedValue.COMPLEX_UNIT_MM:
+            return value * metrics.xdpi * (1.0f / 25.4f);
         }
         return 0;
     }
@@ -149,8 +149,8 @@ public final class SizeUtils {
         ViewGroup.LayoutParams lp = view.getLayoutParams();
         if (lp == null) {
             lp = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
             );
         }
         int widthSpec = ViewGroup.getChildMeasureSpec(0, 0, lp.width);
@@ -162,7 +162,7 @@ public final class SizeUtils {
             heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         }
         view.measure(widthSpec, heightSpec);
-        return new int[]{view.getMeasuredWidth(), view.getMeasuredHeight()};
+        return new int[] {view.getMeasuredWidth(), view.getMeasuredHeight()};
     }
 
     ///////////////////////////////////////////////////////////////////////////

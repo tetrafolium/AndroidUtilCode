@@ -87,12 +87,12 @@ public final class UriUtils {
         String scheme = uri.getScheme();
         String path = uri.getPath();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && path != null) {
-            String[] externals = new String[]{"/external/", "/external_path/"};
+            String[] externals = new String[] {"/external/", "/external_path/"};
             File file = null;
             for (String external : externals) {
                 if (path.startsWith(external)) {
                     file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-                            + path.replace(external, "/"));
+                                    + path.replace(external, "/"));
                     if (file.exists()) {
                         Log.d("UriUtils", uri.toString() + " -> " + external);
                         return file;
@@ -102,16 +102,16 @@ public final class UriUtils {
             file = null;
             if (path.startsWith("/files_path/")) {
                 file = new File(Utils.getApp().getFilesDir().getAbsolutePath()
-                        + path.replace("/files_path/", "/"));
+                                + path.replace("/files_path/", "/"));
             } else if (path.startsWith("/cache_path/")) {
                 file = new File(Utils.getApp().getCacheDir().getAbsolutePath()
-                        + path.replace("/cache_path/", "/"));
+                                + path.replace("/cache_path/", "/"));
             } else if (path.startsWith("/external_files_path/")) {
                 file = new File(Utils.getApp().getExternalFilesDir(null).getAbsolutePath()
-                        + path.replace("/external_files_path/", "/"));
+                                + path.replace("/external_files_path/", "/"));
             } else if (path.startsWith("/external_cache_path/")) {
                 file = new File(Utils.getApp().getExternalCacheDir().getAbsolutePath()
-                        + path.replace("/external_cache_path/", "/"));
+                                + path.replace("/external_cache_path/", "/"));
             }
             if (file != null && file.exists()) {
                 Log.d("UriUtils", uri.toString() + " -> " + path);
@@ -124,7 +124,7 @@ public final class UriUtils {
             return null;
         }// end 0
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
-                && DocumentsContract.isDocumentUri(Utils.getApp(), uri)) {
+                 && DocumentsContract.isDocumentUri(Utils.getApp(), uri)) {
             if ("com.android.externalstorage.documents".equals(authority)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
@@ -152,7 +152,7 @@ public final class UriUtils {
                             //String uuid = (String) getUuid.invoke(storageVolumeElement);
 
                             final boolean mounted = Environment.MEDIA_MOUNTED.equals(getState.invoke(storageVolumeElement))
-                                    || Environment.MEDIA_MOUNTED_READ_ONLY.equals(getState.invoke(storageVolumeElement));
+                                                    || Environment.MEDIA_MOUNTED_READ_ONLY.equals(getState.invoke(storageVolumeElement));
 
                             //if the media is not mounted, we need not get the volume details
                             if (!mounted) continue;
@@ -186,10 +186,10 @@ public final class UriUtils {
                     return new File(id.substring(4));
                 }
 
-                String[] contentUriPrefixesToTry = new String[]{
-                        "content://downloads/public_downloads",
-                        "content://downloads/all_downloads",
-                        "content://downloads/my_downloads"
+                String[] contentUriPrefixesToTry = new String[] {
+                    "content://downloads/public_downloads",
+                    "content://downloads/all_downloads",
+                    "content://downloads/my_downloads"
                 };
 
                 for (String contentUriPrefix : contentUriPrefixesToTry) {
@@ -222,7 +222,7 @@ public final class UriUtils {
                     return null;
                 }
                 final String selection = "_id=?";
-                final String[] selectionArgs = new String[]{split[1]};
+                final String[] selectionArgs = new String[] {split[1]};
                 return getFileFromUri(contentUri, selection, selectionArgs, "1_2");
             }// end 1_2
             else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
@@ -268,7 +268,7 @@ public final class UriUtils {
         }
 
         final Cursor cursor = Utils.getApp().getContentResolver().query(
-                uri, new String[]{"_data"}, selection, selectionArgs, null);
+                                  uri, new String[] {"_data"}, selection, selectionArgs, null);
         if (cursor == null) {
             Log.d("UriUtils", uri.toString() + " parse failed(cursor is null). -> " + code);
             return null;

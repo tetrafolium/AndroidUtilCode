@@ -167,7 +167,7 @@ public class NotificationUtils {
     public static class ChannelConfig {
 
         public static final ChannelConfig DEFAULT_CHANNEL_CONFIG = new ChannelConfig(
-                Utils.getApp().getPackageName(), Utils.getApp().getPackageName(), IMPORTANCE_DEFAULT
+            Utils.getApp().getPackageName(), Utils.getApp().getPackageName(), IMPORTANCE_DEFAULT
         );
 
         private NotificationChannel mNotificationChannel;

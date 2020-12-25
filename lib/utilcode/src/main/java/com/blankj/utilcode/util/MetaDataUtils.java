@@ -51,7 +51,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in activity
      */
     public static String getMetaDataInActivity(@NonNull final Activity activity,
-                                               @NonNull final String key) {
+            @NonNull final String key) {
         return getMetaDataInActivity(activity.getClass(), key);
     }
 
@@ -63,7 +63,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in activity
      */
     public static String getMetaDataInActivity(@NonNull final Class<? extends Activity> clz,
-                                               @NonNull final String key) {
+            @NonNull final String key) {
         String value = "";
         PackageManager pm = Utils.getApp().getPackageManager();
         ComponentName componentName = new ComponentName(Utils.getApp(), clz);
@@ -84,7 +84,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in service
      */
     public static String getMetaDataInService(@NonNull final Service service,
-                                              @NonNull final String key) {
+            @NonNull final String key) {
         return getMetaDataInService(service.getClass(), key);
     }
 
@@ -96,7 +96,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in service
      */
     public static String getMetaDataInService(@NonNull final Class<? extends Service> clz,
-                                              @NonNull final String key) {
+            @NonNull final String key) {
         String value = "";
         PackageManager pm = Utils.getApp().getPackageManager();
         ComponentName componentName = new ComponentName(Utils.getApp(), clz);
@@ -117,7 +117,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in receiver
      */
     public static String getMetaDataInReceiver(@NonNull final BroadcastReceiver receiver,
-                                               @NonNull final String key) {
+            @NonNull final String key) {
         return getMetaDataInReceiver(receiver, key);
     }
 
@@ -129,7 +129,7 @@ public final class MetaDataUtils {
      * @return the value of meta-data in receiver
      */
     public static String getMetaDataInReceiver(@NonNull final Class<? extends BroadcastReceiver> clz,
-                                               @NonNull final String key) {
+            @NonNull final String key) {
         String value = "";
         PackageManager pm = Utils.getApp().getPackageManager();
         ComponentName componentName = new ComponentName(Utils.getApp(), clz);

@@ -24,7 +24,7 @@ import com.blankj.utildebug.R;
  * </pre>
  */
 public abstract class BaseFloatView extends RelativeLayout
-        implements Utils.OnAppStatusChangedListener {
+    implements Utils.OnAppStatusChangedListener {
 
     private boolean isCreated;
 

@@ -29,8 +29,8 @@ public class BusTest {
     private static final String TAG_NO_PARAM_STICKY  = "TagNoParamSticky";
     private static final String TAG_ONE_PARAM_STICKY = "TagOneParamSticky";
 
-    private String[] arr = new String[]{"0", "1"};
-    private String[] arr2 = new String[]{"0", "1"};
+    private String[] arr = new String[] {"0", "1"};
+    private String[] arr2 = new String[] {"0", "1"};
 
     @BusUtils.Bus(tag = TAG_NO_PARAM)
     public void noParamFun() {

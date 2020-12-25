@@ -37,15 +37,15 @@ public class UiMessageUtilsTest extends BaseTest {
             @Override
             public void handleMessage(@NonNull UiMessageUtils.UiMessage localMessage) {
                 switch (localMessage.getId()) {
-                    case 1:
-                        System.out.println("receive -> 1: " + localMessage.getObject());
-                        break;
-                    case 2:
-                        System.out.println("receive -> 2: " + localMessage.getObject());
-                        break;
-                    case 4:
-                        System.out.println("receive -> 4: " + localMessage.getObject());
-                        break;
+                case 1:
+                    System.out.println("receive -> 1: " + localMessage.getObject());
+                    break;
+                case 2:
+                    System.out.println("receive -> 2: " + localMessage.getObject());
+                    break;
+                case 4:
+                    System.out.println("receive -> 4: " + localMessage.getObject());
+                    break;
                 }
             }
         };

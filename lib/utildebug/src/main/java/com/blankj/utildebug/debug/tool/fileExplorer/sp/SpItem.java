@@ -70,9 +70,9 @@ public class SpItem extends BaseItem<SpItem> {
         deleteTv = holder.findViewById(R.id.itemSpDeleteTv);
 
         SpanUtils.with(titleTv)
-                .append(mKey)
-                .append("(" + SpHelper.getSpClassName(mClass) + ")").setForegroundColor(ColorUtils.getColor(R.color.loveGreen))
-                .create();
+        .append(mKey)
+        .append("(" + SpHelper.getSpClassName(mClass) + ")").setForegroundColor(ColorUtils.getColor(R.color.loveGreen))
+        .create();
         contentTv.setText(mValue.toString());
 
         deleteTv.setOnClickListener(new View.OnClickListener() {

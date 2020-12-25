@@ -223,7 +223,7 @@ public final class HttpUtils {
                         errorMsg = is2String(es, "utf-8");
                     }
                     callback.onFailed(new NetworkErrorException("error code: " + responseCode +
-                            (isSpace(errorMsg) ? "" : ("\n" + "error message: " + errorMsg))));
+                                      (isSpace(errorMsg) ? "" : ("\n" + "error message: " + errorMsg))));
                 }
             } catch (IOException e) {
                 callback.onFailed(e);

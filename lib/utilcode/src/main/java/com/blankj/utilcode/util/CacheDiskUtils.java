@@ -125,8 +125,8 @@ public final class CacheDiskUtils implements CacheConstants {
      * @return the single {@link CacheDiskUtils} instance
      */
     public static CacheDiskUtils getInstance(@NonNull final File cacheDir,
-                                             final long maxSize,
-                                             final int maxCount) {
+            final long maxSize,
+            final int maxCount) {
         final String cacheKey = cacheDir.getAbsoluteFile() + "_" + maxSize + "_" + maxCount;
         CacheDiskUtils cache = CACHE_MAP.get(cacheKey);
         if (cache == null) {
@@ -626,13 +626,13 @@ public final class CacheDiskUtils implements CacheConstants {
         DiskCacheManager diskCacheManager = getDiskCacheManager();
         if (diskCacheManager == null) return true;
         return diskCacheManager.removeByKey(TYPE_BYTE + key)
-                && diskCacheManager.removeByKey(TYPE_STRING + key)
-                && diskCacheManager.removeByKey(TYPE_JSON_OBJECT + key)
-                && diskCacheManager.removeByKey(TYPE_JSON_ARRAY + key)
-                && diskCacheManager.removeByKey(TYPE_BITMAP + key)
-                && diskCacheManager.removeByKey(TYPE_DRAWABLE + key)
-                && diskCacheManager.removeByKey(TYPE_PARCELABLE + key)
-                && diskCacheManager.removeByKey(TYPE_SERIALIZABLE + key);
+               && diskCacheManager.removeByKey(TYPE_STRING + key)
+               && diskCacheManager.removeByKey(TYPE_JSON_OBJECT + key)
+               && diskCacheManager.removeByKey(TYPE_JSON_ARRAY + key)
+               && diskCacheManager.removeByKey(TYPE_BITMAP + key)
+               && diskCacheManager.removeByKey(TYPE_DRAWABLE + key)
+               && diskCacheManager.removeByKey(TYPE_PARCELABLE + key)
+               && diskCacheManager.removeByKey(TYPE_SERIALIZABLE + key);
     }
 
     /**
@@ -652,7 +652,7 @@ public final class CacheDiskUtils implements CacheConstants {
         private final long            sizeLimit;
         private final int             countLimit;
         private final Map<File, Long> lastUsageDates
-                = Collections.synchronizedMap(new HashMap<File, Long>());
+            = Collections.synchronizedMap(new HashMap<File, Long>());
         private final File            cacheDir;
         private final Thread          mThread;
 
@@ -825,9 +825,9 @@ public final class CacheDiskUtils implements CacheConstants {
          */
         private static String createDueTime(final int seconds) {
             return String.format(
-                    Locale.getDefault(), "_$%010d$_",
-                    System.currentTimeMillis() / 1000 + seconds
-            );
+                       Locale.getDefault(), "_$%010d$_",
+                       System.currentTimeMillis() / 1000 + seconds
+                   );
         }
 
         private static boolean isDue(final byte[] data) {
@@ -864,11 +864,11 @@ public final class CacheDiskUtils implements CacheConstants {
 
         private static boolean hasTimeInfo(final byte[] data) {
             return data != null
-                    && data.length >= TIME_INFO_LEN
-                    && data[0] == '_'
-                    && data[1] == '$'
-                    && data[12] == '$'
-                    && data[13] == '_';
+                   && data.length >= TIME_INFO_LEN
+                   && data[0] == '_'
+                   && data[1] == '$'
+                   && data[12] == '$'
+                   && data[13] == '_';
         }
     }
 }

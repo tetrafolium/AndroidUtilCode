@@ -184,7 +184,7 @@ public final class ScreenUtils {
      */
     public static boolean isLandscape() {
         return Utils.getApp().getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE;
+               == Configuration.ORIENTATION_LANDSCAPE;
     }
 
     /**
@@ -194,7 +194,7 @@ public final class ScreenUtils {
      */
     public static boolean isPortrait() {
         return Utils.getApp().getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_PORTRAIT;
+               == Configuration.ORIENTATION_PORTRAIT;
     }
 
     /**
@@ -205,16 +205,16 @@ public final class ScreenUtils {
      */
     public static int getScreenRotation(@NonNull final Activity activity) {
         switch (activity.getWindowManager().getDefaultDisplay().getRotation()) {
-            case Surface.ROTATION_0:
-                return 0;
-            case Surface.ROTATION_90:
-                return 90;
-            case Surface.ROTATION_180:
-                return 180;
-            case Surface.ROTATION_270:
-                return 270;
-            default:
-                return 0;
+        case Surface.ROTATION_0:
+            return 0;
+        case Surface.ROTATION_90:
+            return 90;
+        case Surface.ROTATION_180:
+            return 180;
+        case Surface.ROTATION_270:
+            return 270;
+        default:
+            return 0;
         }
     }
 
@@ -244,7 +244,7 @@ public final class ScreenUtils {
         Bitmap bmp = decorView.getDrawingCache();
         if (bmp == null) {
             decorView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                              View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             decorView.layout(0, 0, decorView.getMeasuredWidth(), decorView.getMeasuredHeight());
             decorView.buildDrawingCache();
             bmp = Bitmap.createBitmap(decorView.getDrawingCache());
@@ -258,12 +258,12 @@ public final class ScreenUtils {
             int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
             int statusBarHeight = resources.getDimensionPixelSize(resourceId);
             ret = Bitmap.createBitmap(
-                    bmp,
-                    0,
-                    statusBarHeight,
-                    dm.widthPixels,
-                    dm.heightPixels - statusBarHeight
-            );
+                      bmp,
+                      0,
+                      statusBarHeight,
+                      dm.widthPixels,
+                      dm.heightPixels - statusBarHeight
+                  );
         } else {
             ret = Bitmap.createBitmap(bmp, 0, 0, dm.widthPixels, dm.heightPixels);
         }
@@ -280,7 +280,7 @@ public final class ScreenUtils {
      */
     public static boolean isScreenLock() {
         KeyguardManager km =
-                (KeyguardManager) Utils.getApp().getSystemService(Context.KEYGUARD_SERVICE);
+            (KeyguardManager) Utils.getApp().getSystemService(Context.KEYGUARD_SERVICE);
         if (km == null) return false;
         return km.inKeyguardRestrictedInputMode();
     }
@@ -294,9 +294,9 @@ public final class ScreenUtils {
     @RequiresPermission(WRITE_SETTINGS)
     public static void setSleepDuration(final int duration) {
         Settings.System.putInt(
-                Utils.getApp().getContentResolver(),
-                Settings.System.SCREEN_OFF_TIMEOUT,
-                duration
+            Utils.getApp().getContentResolver(),
+            Settings.System.SCREEN_OFF_TIMEOUT,
+            duration
         );
     }
 
@@ -308,9 +308,9 @@ public final class ScreenUtils {
     public static int getSleepDuration() {
         try {
             return Settings.System.getInt(
-                    Utils.getApp().getContentResolver(),
-                    Settings.System.SCREEN_OFF_TIMEOUT
-            );
+                       Utils.getApp().getContentResolver(),
+                       Settings.System.SCREEN_OFF_TIMEOUT
+                   );
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
             return -123;

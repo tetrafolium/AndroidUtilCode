@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.ClickUtils;
  * </pre>
  */
 public abstract class BaseActivity extends AppCompatActivity
-        implements IBaseView {
+    implements IBaseView {
 
     private View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override

@@ -305,7 +305,7 @@ public final class ToastUtils {
             Drawable background = toastView.getBackground();
             if (background != null) {
                 background.setColorFilter(
-                        new PorterDuffColorFilter(sBgColor, PorterDuff.Mode.SRC_IN)
+                    new PorterDuffColorFilter(sBgColor, PorterDuff.Mode.SRC_IN)
                 );
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -341,7 +341,7 @@ public final class ToastUtils {
 
     private static View getView(@LayoutRes final int layoutId) {
         LayoutInflater inflate =
-                (LayoutInflater) Utils.getApp().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            (LayoutInflater) Utils.getApp().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         return inflate.inflate(layoutId, null);
     }
 
@@ -507,8 +507,8 @@ public final class ToastUtils {
             mParams.windowAnimations = android.R.style.Animation_Toast;
             mParams.setTitle("ToastWithoutNotification");
             mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                    | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+                            | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                            | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
             mParams.packageName = Utils.getApp().getPackageName();
 
             mParams.gravity = mToast.getGravity();

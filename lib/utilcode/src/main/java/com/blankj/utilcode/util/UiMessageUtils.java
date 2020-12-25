@@ -258,9 +258,9 @@ public final class UiMessageUtils implements Handler.Callback {
         @Override
         public String toString() {
             return "{ " +
-                    "id=" + getId() +
-                    ", obj=" + getObject() +
-                    " }";
+                   "id=" + getId() +
+                   ", obj=" + getObject() +
+                   " }";
         }
     }
 

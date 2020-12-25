@@ -65,8 +65,8 @@ public final class NetworkUtils {
      */
     public static void openWirelessSettings() {
         Utils.getApp().startActivity(
-                new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS)
-                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS)
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         );
     }
 
@@ -133,7 +133,7 @@ public final class NetworkUtils {
      */
     @RequiresPermission(INTERNET)
     public static Utils.Task<Boolean> isAvailableByPingAsync(final String ip,
-                                                             @NonNull final Utils.Consumer<Boolean> consumer) {
+            @NonNull final Utils.Consumer<Boolean> consumer) {
         return UtilsBridge.doAsync(new Utils.Task<Boolean>(consumer) {
             @RequiresPermission(INTERNET)
             @Override
@@ -190,7 +190,7 @@ public final class NetworkUtils {
      */
     @RequiresPermission(INTERNET)
     public static Utils.Task isAvailableByDnsAsync(final String domain,
-                                                   @NonNull final Utils.Consumer<Boolean> consumer) {
+            @NonNull final Utils.Consumer<Boolean> consumer) {
         return UtilsBridge.doAsync(new Utils.Task<Boolean>(consumer) {
             @RequiresPermission(INTERNET)
             @Override
@@ -239,14 +239,14 @@ public final class NetworkUtils {
     public static boolean getMobileDataEnabled() {
         try {
             TelephonyManager tm =
-                    (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+                (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm == null) return false;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 return tm.isDataEnabled();
             }
             @SuppressLint("PrivateApi")
             Method getMobileDataEnabledMethod =
-                    tm.getClass().getDeclaredMethod("getDataEnabled");
+                tm.getClass().getDeclaredMethod("getDataEnabled");
             if (null != getMobileDataEnabledMethod) {
                 return (boolean) getMobileDataEnabledMethod.invoke(tm);
             }
@@ -266,8 +266,8 @@ public final class NetworkUtils {
     public static boolean isMobileData() {
         NetworkInfo info = getActiveNetworkInfo();
         return null != info
-                && info.isAvailable()
-                && info.getType() == ConnectivityManager.TYPE_MOBILE;
+               && info.isAvailable()
+               && info.getType() == ConnectivityManager.TYPE_MOBILE;
     }
 
     /**
@@ -280,8 +280,8 @@ public final class NetworkUtils {
     public static boolean is4G() {
         NetworkInfo info = getActiveNetworkInfo();
         return info != null
-                && info.isAvailable()
-                && info.getSubtype() == TelephonyManager.NETWORK_TYPE_LTE;
+               && info.isAvailable()
+               && info.getSubtype() == TelephonyManager.NETWORK_TYPE_LTE;
     }
 
     /**
@@ -294,8 +294,8 @@ public final class NetworkUtils {
     public static boolean is5G() {
         NetworkInfo info = getActiveNetworkInfo();
         return info != null
-                && info.isAvailable()
-                && info.getSubtype() == TelephonyManager.NETWORK_TYPE_NR;
+               && info.isAvailable()
+               && info.getSubtype() == TelephonyManager.NETWORK_TYPE_NR;
     }
 
     /**
@@ -336,7 +336,7 @@ public final class NetworkUtils {
     @RequiresPermission(ACCESS_NETWORK_STATE)
     public static boolean isWifiConnected() {
         ConnectivityManager cm =
-                (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
+            (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm == null) return false;
         NetworkInfo ni = cm.getActiveNetworkInfo();
         return ni != null && ni.getType() == ConnectivityManager.TYPE_WIFI;
@@ -380,7 +380,7 @@ public final class NetworkUtils {
      */
     public static String getNetworkOperatorName() {
         TelephonyManager tm =
-                (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+            (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         if (tm == null) return "";
         return tm.getNetworkOperatorName();
     }
@@ -411,41 +411,41 @@ public final class NetworkUtils {
                 return NetworkType.NETWORK_WIFI;
             } else if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
                 switch (info.getSubtype()) {
-                    case TelephonyManager.NETWORK_TYPE_GSM:
-                    case TelephonyManager.NETWORK_TYPE_GPRS:
-                    case TelephonyManager.NETWORK_TYPE_CDMA:
-                    case TelephonyManager.NETWORK_TYPE_EDGE:
-                    case TelephonyManager.NETWORK_TYPE_1xRTT:
-                    case TelephonyManager.NETWORK_TYPE_IDEN:
-                        return NetworkType.NETWORK_2G;
+                case TelephonyManager.NETWORK_TYPE_GSM:
+                case TelephonyManager.NETWORK_TYPE_GPRS:
+                case TelephonyManager.NETWORK_TYPE_CDMA:
+                case TelephonyManager.NETWORK_TYPE_EDGE:
+                case TelephonyManager.NETWORK_TYPE_1xRTT:
+                case TelephonyManager.NETWORK_TYPE_IDEN:
+                    return NetworkType.NETWORK_2G;
 
-                    case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_A:
-                    case TelephonyManager.NETWORK_TYPE_UMTS:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_0:
-                    case TelephonyManager.NETWORK_TYPE_HSDPA:
-                    case TelephonyManager.NETWORK_TYPE_HSUPA:
-                    case TelephonyManager.NETWORK_TYPE_HSPA:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_B:
-                    case TelephonyManager.NETWORK_TYPE_EHRPD:
-                    case TelephonyManager.NETWORK_TYPE_HSPAP:
+                case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
+                case TelephonyManager.NETWORK_TYPE_EVDO_A:
+                case TelephonyManager.NETWORK_TYPE_UMTS:
+                case TelephonyManager.NETWORK_TYPE_EVDO_0:
+                case TelephonyManager.NETWORK_TYPE_HSDPA:
+                case TelephonyManager.NETWORK_TYPE_HSUPA:
+                case TelephonyManager.NETWORK_TYPE_HSPA:
+                case TelephonyManager.NETWORK_TYPE_EVDO_B:
+                case TelephonyManager.NETWORK_TYPE_EHRPD:
+                case TelephonyManager.NETWORK_TYPE_HSPAP:
+                    return NetworkType.NETWORK_3G;
+
+                case TelephonyManager.NETWORK_TYPE_IWLAN:
+                case TelephonyManager.NETWORK_TYPE_LTE:
+                    return NetworkType.NETWORK_4G;
+
+                case TelephonyManager.NETWORK_TYPE_NR:
+                    return NetworkType.NETWORK_5G;
+                default:
+                    String subtypeName = info.getSubtypeName();
+                    if (subtypeName.equalsIgnoreCase("TD-SCDMA")
+                            || subtypeName.equalsIgnoreCase("WCDMA")
+                            || subtypeName.equalsIgnoreCase("CDMA2000")) {
                         return NetworkType.NETWORK_3G;
-
-                    case TelephonyManager.NETWORK_TYPE_IWLAN:
-                    case TelephonyManager.NETWORK_TYPE_LTE:
-                        return NetworkType.NETWORK_4G;
-
-                    case TelephonyManager.NETWORK_TYPE_NR:
-                        return NetworkType.NETWORK_5G;
-                    default:
-                        String subtypeName = info.getSubtypeName();
-                        if (subtypeName.equalsIgnoreCase("TD-SCDMA")
-                                || subtypeName.equalsIgnoreCase("WCDMA")
-                                || subtypeName.equalsIgnoreCase("CDMA2000")) {
-                            return NetworkType.NETWORK_3G;
-                        } else {
-                            return NetworkType.NETWORK_UNKNOWN;
-                        }
+                    } else {
+                        return NetworkType.NETWORK_UNKNOWN;
+                    }
                 }
             } else {
                 return NetworkType.NETWORK_UNKNOWN;
@@ -464,7 +464,7 @@ public final class NetworkUtils {
     @RequiresPermission(ACCESS_NETWORK_STATE)
     private static boolean isEthernet() {
         final ConnectivityManager cm =
-                (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
+            (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm == null) return false;
         final NetworkInfo info = cm.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
         if (info == null) return false;
@@ -476,7 +476,7 @@ public final class NetworkUtils {
     @RequiresPermission(ACCESS_NETWORK_STATE)
     private static NetworkInfo getActiveNetworkInfo() {
         ConnectivityManager cm =
-                (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
+            (ConnectivityManager) Utils.getApp().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm == null) return null;
         return cm.getActiveNetworkInfo();
     }
@@ -490,7 +490,7 @@ public final class NetworkUtils {
      * @return the task
      */
     public static Utils.Task<String> getIPAddressAsync(final boolean useIPv4,
-                                                       @NonNull final Utils.Consumer<String> consumer) {
+            @NonNull final Utils.Consumer<String> consumer) {
         return UtilsBridge.doAsync(new Utils.Task<String>(consumer) {
             @RequiresPermission(INTERNET)
             @Override
@@ -531,8 +531,8 @@ public final class NetworkUtils {
                         if (!isIPv4) {
                             int index = hostAddress.indexOf('%');
                             return index < 0
-                                    ? hostAddress.toUpperCase()
-                                    : hostAddress.substring(0, index).toUpperCase();
+                                   ? hostAddress.toUpperCase()
+                                   : hostAddress.substring(0, index).toUpperCase();
                         }
                     }
                 }
@@ -580,7 +580,7 @@ public final class NetworkUtils {
      */
     @RequiresPermission(INTERNET)
     public static Utils.Task<String> getDomainAddressAsync(final String domain,
-                                                           @NonNull final Utils.Consumer<String> consumer) {
+            @NonNull final Utils.Consumer<String> consumer) {
         return UtilsBridge.doAsync(new Utils.Task<String>(consumer) {
             @RequiresPermission(INTERNET)
             @Override

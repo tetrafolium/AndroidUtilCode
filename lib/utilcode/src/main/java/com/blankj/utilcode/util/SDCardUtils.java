@@ -201,12 +201,12 @@ public final class SDCardUtils {
         @Override
         public String toString() {
             return "SDCardInfo {" +
-                    "path = " + path +
-                    ", state = " + state +
-                    ", isRemovable = " + isRemovable +
-                    ", totalSize = " + Formatter.formatFileSize(Utils.getApp(), totalSize) +
-                    ", availableSize = " + Formatter.formatFileSize(Utils.getApp(), availableSize) +
-                    '}';
+                   "path = " + path +
+                   ", state = " + state +
+                   ", isRemovable = " + isRemovable +
+                   ", totalSize = " + Formatter.formatFileSize(Utils.getApp(), totalSize) +
+                   ", availableSize = " + Formatter.formatFileSize(Utils.getApp(), availableSize) +
+                   '}';
         }
     }
 }

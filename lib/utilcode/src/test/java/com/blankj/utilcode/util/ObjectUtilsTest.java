@@ -31,7 +31,7 @@ public class ObjectUtilsTest extends BaseTest {
         StringBuilder sb1 = new StringBuilder(" ");
         String string = "";
         String string1 = " ";
-        int[][] arr = new int[][]{};
+        int[][] arr = new int[][] {};
         LinkedList<Integer> list = new LinkedList<>();
         HashMap<String, Integer> map = new HashMap<>();
         SimpleArrayMap<String, Integer> sam = new SimpleArrayMap<>();

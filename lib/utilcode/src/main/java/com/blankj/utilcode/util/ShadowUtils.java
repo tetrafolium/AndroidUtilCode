@@ -123,14 +123,14 @@ public class ShadowUtils {
             }
             StateListDrawable drawable = new StateListDrawable();
             drawable.addState(
-                    new int[]{android.R.attr.state_pressed},
-                    new ShadowDrawable(src, getShadowRadius(), getShadowSizeNormal(),
-                            getShadowMaxSizeNormal(), mShadowColorPressed, isCircle)
+                new int[] {android.R.attr.state_pressed},
+                new ShadowDrawable(src, getShadowRadius(), getShadowSizeNormal(),
+                                   getShadowMaxSizeNormal(), mShadowColorPressed, isCircle)
             );
             drawable.addState(
-                    StateSet.WILD_CARD,
-                    new ShadowDrawable(src, getShadowRadius(), getShadowSizePressed(),
-                            getShadowMaxSizePressed(), mShadowColorNormal, isCircle)
+                StateSet.WILD_CARD,
+                new ShadowDrawable(src, getShadowRadius(), getShadowSizePressed(),
+                                   getShadowMaxSizePressed(), mShadowColorNormal, isCircle)
             );
             return drawable;
         }
@@ -281,9 +281,9 @@ public class ShadowUtils {
         @Override
         public boolean getPadding(Rect padding) {
             int vOffset = (int) Math.ceil(calculateVerticalPadding(mRawMaxShadowSize, mCornerRadius,
-                    mAddPaddingForCorners));
+                                          mAddPaddingForCorners));
             int hOffset = (int) Math.ceil(calculateHorizontalPadding(mRawMaxShadowSize, mCornerRadius,
-                    mAddPaddingForCorners));
+                                          mAddPaddingForCorners));
             padding.set(hOffset, vOffset, hOffset, vOffset);
             return true;
         }
@@ -298,7 +298,7 @@ public class ShadowUtils {
         }
 
         private static float calculateHorizontalPadding(float maxShadowSize, float cornerRadius,
-                                                        boolean addPaddingForCorners) {
+                boolean addPaddingForCorners) {
             if (addPaddingForCorners) {
                 return (float) (maxShadowSize + (1 - COS_45) * cornerRadius);
             } else {
@@ -373,8 +373,8 @@ public class ShadowUtils {
                 // TE
                 canvas.scale(1f / shadowScaleHorizontal, 1f);
                 canvas.drawRect(0, edgeShadowTop,
-                        mContentBounds.width() - 2 * shadowOffset, -mCornerRadius,
-                        mEdgeShadowPaint);
+                                mContentBounds.width() - 2 * shadowOffset, -mCornerRadius,
+                                mEdgeShadowPaint);
             }
             canvas.restoreToCount(saved);
             // RB
@@ -387,8 +387,8 @@ public class ShadowUtils {
                 // BE
                 canvas.scale(1f / shadowScaleHorizontal, 1f);
                 canvas.drawRect(0, edgeShadowTop,
-                        mContentBounds.width() - 2 * shadowOffset, -mCornerRadius,
-                        mEdgeShadowPaint);
+                                mContentBounds.width() - 2 * shadowOffset, -mCornerRadius,
+                                mEdgeShadowPaint);
             }
             canvas.restoreToCount(saved);
             // LB
@@ -401,7 +401,7 @@ public class ShadowUtils {
                 // LE
                 canvas.scale(1f / shadowScaleBottom, 1f);
                 canvas.drawRect(0, edgeShadowTop,
-                        mContentBounds.height() - 2 * shadowOffset, -mCornerRadius, mEdgeShadowPaint);
+                                mContentBounds.height() - 2 * shadowOffset, -mCornerRadius, mEdgeShadowPaint);
             }
             canvas.restoreToCount(saved);
             // RT
@@ -414,7 +414,7 @@ public class ShadowUtils {
                 // RE
                 canvas.scale(1f / shadowScaleTop, 1f);
                 canvas.drawRect(0, edgeShadowTop,
-                        mContentBounds.height() - 2 * shadowOffset, -mCornerRadius, mEdgeShadowPaint);
+                                mContentBounds.height() - 2 * shadowOffset, -mCornerRadius, mEdgeShadowPaint);
             }
             canvas.restoreToCount(saved);
 
@@ -448,8 +448,8 @@ public class ShadowUtils {
                 if (shadowRadius > 0f) {
                     float startRatio = size / shadowRadius;
                     mCornerShadowPaint.setShader(new RadialGradient(0, 0, shadowRadius,
-                            new int[]{0, mShadowStartColor, mShadowEndColor}, new float[]{0.0F, startRatio, 1.0F},
-                            Shader.TileMode.CLAMP));
+                                                 new int[] {0, mShadowStartColor, mShadowEndColor}, new float[] {0.0F, startRatio, 1.0F},
+                                                 Shader.TileMode.CLAMP));
                 }
                 return;
             }
@@ -476,15 +476,15 @@ public class ShadowUtils {
             if (shadowRadius > 0f) {
                 float startRatio = mCornerRadius / shadowRadius;
                 mCornerShadowPaint.setShader(new RadialGradient(0, 0, shadowRadius,
-                        new int[]{0, mShadowStartColor, mShadowEndColor}, new float[]{0F, startRatio, 1F},
-                        Shader.TileMode.CLAMP));
+                                             new int[] {0, mShadowStartColor, mShadowEndColor}, new float[] {0F, startRatio, 1F},
+                                             Shader.TileMode.CLAMP));
             }
 
             // we offset the content shadowSize/2 pixels up to make it more realistic.
             // this is why edge shadow shader has some extra space
             // When drawing bottom edge shadow, we use that extra space.
             mEdgeShadowPaint.setShader(new LinearGradient(0, innerBounds.top, 0, outerBounds.top,
-                    mShadowStartColor, mShadowEndColor, Shader.TileMode.CLAMP));
+                                       mShadowStartColor, mShadowEndColor, Shader.TileMode.CLAMP));
             mEdgeShadowPaint.setAntiAlias(false);
         }
 
@@ -497,10 +497,10 @@ public class ShadowUtils {
             }
             final float verticalOffset = mRawMaxShadowSize * mShadowMultiplier;
             mContentBounds.set(bounds.left + mRawMaxShadowSize, bounds.top + verticalOffset,
-                    bounds.right - mRawMaxShadowSize, bounds.bottom - verticalOffset);
+                               bounds.right - mRawMaxShadowSize, bounds.bottom - verticalOffset);
 
             getWrappedDrawable().setBounds((int) mContentBounds.left, (int) mContentBounds.top,
-                    (int) mContentBounds.right, (int) mContentBounds.bottom);
+                                           (int) mContentBounds.right, (int) mContentBounds.bottom);
             buildShadowCorners();
         }
 
@@ -526,13 +526,13 @@ public class ShadowUtils {
 
         public float getMinWidth() {
             final float content = 2 *
-                    Math.max(mRawMaxShadowSize, mCornerRadius + mRawMaxShadowSize / 2);
+                                  Math.max(mRawMaxShadowSize, mCornerRadius + mRawMaxShadowSize / 2);
             return content + mRawMaxShadowSize * 2;
         }
 
         public float getMinHeight() {
             final float content = 2 * Math.max(mRawMaxShadowSize, mCornerRadius
-                    + mRawMaxShadowSize * mShadowMultiplier / 2);
+                                               + mRawMaxShadowSize * mShadowMultiplier / 2);
             return content + (mRawMaxShadowSize * mShadowMultiplier) * 2;
         }
     }

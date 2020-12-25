@@ -70,8 +70,8 @@ public class DebugItem extends BaseItem<DebugItem> {
         return ColorUtils.getColor(COLORS[RANDOM.nextInt(6)]);
     }
 
-    private static final int[] COLORS = new int[]{
-            R.color.bittersweet, R.color.sunflower, R.color.grass,
-            R.color.blueJeans, R.color.lavander, R.color.pinkRose
+    private static final int[] COLORS = new int[] {
+        R.color.bittersweet, R.color.sunflower, R.color.grass,
+        R.color.blueJeans, R.color.lavander, R.color.pinkRose
     };
 }

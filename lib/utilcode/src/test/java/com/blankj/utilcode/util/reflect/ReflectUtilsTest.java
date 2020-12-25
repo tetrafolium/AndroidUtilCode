@@ -34,52 +34,52 @@ public class ReflectUtilsTest {
     @Test
     public void reflect() {
         Assert.assertEquals(
-                ReflectUtils.reflect(Object.class),
-                ReflectUtils.reflect("java.lang.Object", ClassLoader.getSystemClassLoader())
+            ReflectUtils.reflect(Object.class),
+            ReflectUtils.reflect("java.lang.Object", ClassLoader.getSystemClassLoader())
         );
         assertEquals(
-                ReflectUtils.reflect(Object.class),
-                ReflectUtils.reflect("java.lang.Object")
+            ReflectUtils.reflect(Object.class),
+            ReflectUtils.reflect("java.lang.Object")
         );
         assertEquals(
-                ReflectUtils.reflect(String.class).get(),
-                ReflectUtils.reflect("java.lang.String").get()
+            ReflectUtils.reflect(String.class).get(),
+            ReflectUtils.reflect("java.lang.String").get()
         );
         assertEquals(
-                Object.class,
-                ReflectUtils.reflect(Object.class).get()
+            Object.class,
+            ReflectUtils.reflect(Object.class).get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect((Object) "abc").get()
+            "abc",
+            ReflectUtils.reflect((Object) "abc").get()
         );
         assertEquals(
-                1,
-                ReflectUtils.reflect(1).get()
+            1,
+            ReflectUtils.reflect(1).get()
         );
     }
 
     @Test
     public void newInstance() {
         assertEquals(
-                "",
-                ReflectUtils.reflect(String.class).newInstance().get()
+            "",
+            ReflectUtils.reflect(String.class).newInstance().get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(String.class).newInstance("abc").get()
+            "abc",
+            ReflectUtils.reflect(String.class).newInstance("abc").get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(String.class).newInstance("abc".getBytes()).get()
+            "abc",
+            ReflectUtils.reflect(String.class).newInstance("abc".getBytes()).get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(String.class).newInstance("abc".toCharArray()).get()
+            "abc",
+            ReflectUtils.reflect(String.class).newInstance("abc".toCharArray()).get()
         );
         assertEquals(
-                "b",
-                ReflectUtils.reflect(String.class).newInstance("abc".toCharArray(), 1, 1).get()
+            "b",
+            ReflectUtils.reflect(String.class).newInstance("abc".toCharArray(), 1, 1).get()
         );
     }
 
@@ -88,8 +88,8 @@ public class ReflectUtilsTest {
         assertNull(ReflectUtils.reflect(PrivateConstructors.class).newInstance().field("string").get());
 
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(PrivateConstructors.class).newInstance("abc").field("string").get()
+            "abc",
+            ReflectUtils.reflect(PrivateConstructors.class).newInstance("abc").field("string").get()
         );
     }
 
@@ -143,63 +143,63 @@ public class ReflectUtilsTest {
     public void method() {
         // instance methods
         assertEquals(
-                "",
-                ReflectUtils.reflect((Object) " ").method("trim").get()
+            "",
+            ReflectUtils.reflect((Object) " ").method("trim").get()
         );
         assertEquals(
-                "12",
-                ReflectUtils.reflect((Object) " 12 ").method("trim").get()
+            "12",
+            ReflectUtils.reflect((Object) " 12 ").method("trim").get()
         );
         assertEquals(
-                "34",
-                ReflectUtils.reflect((Object) "1234").method("substring", 2).get()
+            "34",
+            ReflectUtils.reflect((Object) "1234").method("substring", 2).get()
         );
         assertEquals(
-                "12",
-                ReflectUtils.reflect((Object) "1234").method("substring", 0, 2).get()
+            "12",
+            ReflectUtils.reflect((Object) "1234").method("substring", 0, 2).get()
         );
         assertEquals(
-                "1234",
-                ReflectUtils.reflect((Object) "12").method("concat", "34").get()
+            "1234",
+            ReflectUtils.reflect((Object) "12").method("concat", "34").get()
         );
         assertEquals(
-                "123456",
-                ReflectUtils.reflect((Object) "12").method("concat", "34").method("concat", "56").get()
+            "123456",
+            ReflectUtils.reflect((Object) "12").method("concat", "34").method("concat", "56").get()
         );
         assertEquals(
-                2,
-                ReflectUtils.reflect((Object) "1234").method("indexOf", "3").get()
+            2,
+            ReflectUtils.reflect((Object) "1234").method("indexOf", "3").get()
         );
         assertEquals(
-                2.0f,
-                (float) ReflectUtils.reflect((Object) "1234").method("indexOf", "3").method("floatValue").get(),
-                0.0f
+            2.0f,
+            (float) ReflectUtils.reflect((Object) "1234").method("indexOf", "3").method("floatValue").get(),
+            0.0f
         );
         assertEquals(
-                "2",
-                ReflectUtils.reflect((Object) "1234").method("indexOf", "3").method("toString").get()
+            "2",
+            ReflectUtils.reflect((Object) "1234").method("indexOf", "3").method("toString").get()
         );
 
         // static methods
         assertEquals(
-                "true",
-                ReflectUtils.reflect(String.class).method("valueOf", true).get()
+            "true",
+            ReflectUtils.reflect(String.class).method("valueOf", true).get()
         );
         assertEquals(
-                "1",
-                ReflectUtils.reflect(String.class).method("valueOf", 1).get()
+            "1",
+            ReflectUtils.reflect(String.class).method("valueOf", 1).get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(String.class).method("valueOf", "abc".toCharArray()).get()
+            "abc",
+            ReflectUtils.reflect(String.class).method("valueOf", "abc".toCharArray()).get()
         );
         assertEquals(
-                "abc",
-                ReflectUtils.reflect(String.class).method("copyValueOf", "abc".toCharArray()).get()
+            "abc",
+            ReflectUtils.reflect(String.class).method("copyValueOf", "abc".toCharArray()).get()
         );
         assertEquals(
-                "b",
-                ReflectUtils.reflect(String.class).method("copyValueOf", "abc".toCharArray(), 1, 1).get()
+            "b",
+            ReflectUtils.reflect(String.class).method("copyValueOf", "abc".toCharArray(), 1, 1).get()
         );
     }
 
@@ -208,14 +208,14 @@ public class ReflectUtilsTest {
         // instance methods
         Test4 test4 = new Test4();
         assertEquals(
-                test4,
-                ReflectUtils.reflect(test4).method("i_method").get()
+            test4,
+            ReflectUtils.reflect(test4).method("i_method").get()
         );
 
         // static methods
         assertEquals(
-                Test4.class,
-                ReflectUtils.reflect(Test4.class).method("s_method").get()
+            Test4.class,
+            ReflectUtils.reflect(Test4.class).method("s_method").get()
         );
     }
 
@@ -224,14 +224,14 @@ public class ReflectUtilsTest {
         // instance methods
         Test5 test8 = new Test5();
         assertEquals(
-                test8,
-                ReflectUtils.reflect(test8).method("i_method").get()
+            test8,
+            ReflectUtils.reflect(test8).method("i_method").get()
         );
 
         // static methods
         assertEquals(
-                Test5.class,
-                ReflectUtils.reflect(Test5.class).method("s_method").get()
+            Test5.class,
+            ReflectUtils.reflect(Test5.class).method("s_method").get()
         );
     }
 
@@ -251,13 +251,13 @@ public class ReflectUtilsTest {
     public void methodSuper() {
         TestHierarchicalMethodsSubclass subclass = new TestHierarchicalMethodsSubclass();
         assertEquals(
-                TestHierarchicalMethodsBase.PUBLIC_RESULT,
-                ReflectUtils.reflect(subclass).method("pub_base_method", 1).get()
+            TestHierarchicalMethodsBase.PUBLIC_RESULT,
+            ReflectUtils.reflect(subclass).method("pub_base_method", 1).get()
         );
 
         assertEquals(
-                TestHierarchicalMethodsBase.PRIVATE_RESULT,
-                ReflectUtils.reflect(subclass).method("very_priv_method").get()
+            TestHierarchicalMethodsBase.PRIVATE_RESULT,
+            ReflectUtils.reflect(subclass).method("very_priv_method").get()
         );
     }
 
@@ -265,14 +265,14 @@ public class ReflectUtilsTest {
     public void methodDeclaring() {
         TestHierarchicalMethodsSubclass subclass = new TestHierarchicalMethodsSubclass();
         assertEquals(
-                TestHierarchicalMethodsSubclass.PRIVATE_RESULT,
-                ReflectUtils.reflect(subclass).method("priv_method", 1).get()
+            TestHierarchicalMethodsSubclass.PRIVATE_RESULT,
+            ReflectUtils.reflect(subclass).method("priv_method", 1).get()
         );
 
         TestHierarchicalMethodsBase baseClass = new TestHierarchicalMethodsBase();
         assertEquals(
-                TestHierarchicalMethodsBase.PRIVATE_RESULT,
-                ReflectUtils.reflect(baseClass).method("priv_method", 1).get()
+            TestHierarchicalMethodsBase.PRIVATE_RESULT,
+            ReflectUtils.reflect(baseClass).method("priv_method", 1).get()
         );
     }
 
@@ -400,12 +400,12 @@ public class ReflectUtilsTest {
     @Test
     public void fieldAdvanced() {
         ReflectUtils.reflect(Test1.class)
-                .field("S_DATA", ReflectUtils.reflect(Test1.class).newInstance())
-                .field("S_DATA")
-                .field("I_DATA", ReflectUtils.reflect(Test1.class).newInstance())
-                .field("I_DATA")
-                .field("I_INT1", 1)
-                .field("S_INT1", 2);
+        .field("S_DATA", ReflectUtils.reflect(Test1.class).newInstance())
+        .field("S_DATA")
+        .field("I_DATA", ReflectUtils.reflect(Test1.class).newInstance())
+        .field("I_DATA")
+        .field("I_INT1", 1)
+        .field("S_INT1", 2);
         assertEquals(2, Test1.S_INT1);
         assertEquals(null, Test1.S_INT2);
         assertEquals(0, Test1.S_DATA.I_INT1);
@@ -417,14 +417,14 @@ public class ReflectUtilsTest {
     @Test
     public void fieldFinalAdvanced() {
         ReflectUtils.reflect(Test8.class)
-                .field("S_DATA", ReflectUtils.reflect(Test8.class).newInstance())
-                .field("S_DATA")
-                .field("I_DATA", ReflectUtils.reflect(Test8.class).newInstance())
-                .field("I_DATA")
-                .field("F_INT1", 1)
-                .field("F_INT2", 1)
-                .field("SF_INT1", 2)
-                .field("SF_INT2", 2);
+        .field("S_DATA", ReflectUtils.reflect(Test8.class).newInstance())
+        .field("S_DATA")
+        .field("I_DATA", ReflectUtils.reflect(Test8.class).newInstance())
+        .field("I_DATA")
+        .field("F_INT1", 1)
+        .field("F_INT2", 1)
+        .field("SF_INT1", 2)
+        .field("SF_INT2", 2);
         assertEquals(2, Test8.SF_INT1);
         assertEquals(new Integer(2), Test8.SF_INT2);
         assertEquals(0, Test8.S_DATA.F_INT1);

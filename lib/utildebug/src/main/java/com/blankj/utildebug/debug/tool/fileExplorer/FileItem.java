@@ -118,19 +118,19 @@ public class FileItem extends BaseItem<FileItem> {
                 public void onClick(final View v) {
                     if (isSdcard) {
                         PermissionUtils.permission(PermissionConstants.STORAGE)
-                                .callback(new PermissionUtils.SimpleCallback() {
-                                    @Override
-                                    public void onGranted() {
-                                        FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
-                                        FileContentView.show(floatView, FileItem.this);
-                                    }
+                        .callback(new PermissionUtils.SimpleCallback() {
+                            @Override
+                            public void onGranted() {
+                                FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
+                                FileContentView.show(floatView, FileItem.this);
+                            }
 
-                                    @Override
-                                    public void onDenied() {
-                                        FloatToast.showShort("Permission of storage denied!");
-                                    }
-                                })
-                                .request();
+                            @Override
+                            public void onDenied() {
+                                FloatToast.showShort("Permission of storage denied!");
+                            }
+                        })
+                        .request();
                     } else {
                         FileExplorerFloatView floatView = (FileExplorerFloatView) v.getRootView();
                         FileContentView.show(floatView, FileItem.this);

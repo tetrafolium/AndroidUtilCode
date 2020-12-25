@@ -110,7 +110,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     private void addActivityLifecycleCallbacksInner(final Activity activity,
-                                                    final Utils.ActivityLifecycleCallbacks lifecycleCallbacks) {
+            final Utils.ActivityLifecycleCallbacks lifecycleCallbacks) {
         List<Utils.ActivityLifecycleCallbacks> callbacks = mActivityLifecycleCallbacksMap.get(activity);
         if (callbacks == null) {
             callbacks = new ArrayList<>();
@@ -143,7 +143,7 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
     }
 
     private void removeActivityLifecycleCallbacksInner(final Activity activity,
-                                                       final Utils.ActivityLifecycleCallbacks lifecycleCallbacks) {
+            final Utils.ActivityLifecycleCallbacks lifecycleCallbacks) {
         List<Utils.ActivityLifecycleCallbacks> callbacks = mActivityLifecycleCallbacksMap.get(activity);
         if (callbacks != null && !callbacks.isEmpty()) {
             callbacks.remove(lifecycleCallbacks);

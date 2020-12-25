@@ -18,8 +18,8 @@ public class LogUtilsTest extends BaseTest {
 
     private static final String              JSON        = "\r\n{\"tools\": [{ \"name\":\"css format\" , \"site\":\"http://tools.w3cschool.cn/code/css\" },{ \"name\":\"JSON format\" , \"site\":\"http://tools.w3cschool.cn/code/JSON\" },{ \"name\":\"pwd check\" , \"site\":\"http://tools.w3cschool.cn/password/my_password_safe\" }]}";
     private static final String              XML         = "<books><book><author>Jack Herrington</author><title>PHP Hacks</title><publisher>O'Reilly</publisher></book><book><author>Jack Herrington</author><title>Podcasting Hacks</title><publisher>O'Reilly</publisher></book></books>";
-    private static final int[]               ONE_D_ARRAY = new int[]{1, 2, 3};
-    private static final int[][]             TWO_D_ARRAY = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    private static final int[]               ONE_D_ARRAY = new int[] {1, 2, 3};
+    private static final int[][]             TWO_D_ARRAY = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     private static final ArrayList<String>   LIST        = new ArrayList<>();
     private static final Map<String, Object> MAP         = new HashMap<>();
 
@@ -193,8 +193,8 @@ public class LogUtilsTest extends BaseTest {
         @Override
         public String toString() {
             return "{\"name\":" + primitive2String(name) +
-                    ",\"gender\":" + primitive2String(gender) +
-                    ",\"address\":" + primitive2String(address) + "}";
+                   ",\"gender\":" + primitive2String(gender) +
+                   ",\"address\":" + primitive2String(address) + "}";
         }
     }
 

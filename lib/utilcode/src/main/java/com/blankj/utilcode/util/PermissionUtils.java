@@ -99,8 +99,8 @@ public final class PermissionUtils {
 
     private static boolean isGranted(final String permission) {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M
-                || PackageManager.PERMISSION_GRANTED
-                == ContextCompat.checkSelfPermission(Utils.getApp(), permission);
+               || PackageManager.PERMISSION_GRANTED
+               == ContextCompat.checkSelfPermission(Utils.getApp(), permission);
     }
 
     /**
@@ -347,7 +347,7 @@ public final class PermissionUtils {
     private void requestCallback() {
         if (mSingleCallback != null) {
             mSingleCallback.callback(mPermissionsDenied.isEmpty(),
-                    mPermissionsGranted, mPermissionsDeniedForever, mPermissionsDenied);
+                                     mPermissionsGranted, mPermissionsDeniedForever, mPermissionsDenied);
             mSingleCallback = null;
         }
         if (mSimpleCallback != null) {
@@ -401,7 +401,7 @@ public final class PermissionUtils {
         @Override
         public void onCreated(final UtilsTransActivity activity, @Nullable Bundle savedInstanceState) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                    | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
+                                          | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
             int type = activity.getIntent().getIntExtra(TYPE, -1);
             if (type == TYPE_RUNTIME) {
                 if (sInstance == null) {
@@ -413,8 +413,8 @@ public final class PermissionUtils {
                     sInstance.mThemeCallback.onActivityCreate(activity);
                 }
                 if (sInstance.shouldRationale(activity, new Runnable() {
-                    @Override
-                    public void run() {
+                @Override
+                public void run() {
                         requestPermissions(activity);
                     }
                 })) {

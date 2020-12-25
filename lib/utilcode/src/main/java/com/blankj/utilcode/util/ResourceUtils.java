@@ -154,9 +154,9 @@ public final class ResourceUtils {
                 }
             } else {
                 res = UtilsBridge.writeFileFromIS(
-                        destFilePath,
-                        Utils.getApp().getAssets().open(assetsFilePath)
-                );
+                          destFilePath,
+                          Utils.getApp().getAssets().open(assetsFilePath)
+                      );
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -221,7 +221,7 @@ public final class ResourceUtils {
      * @return the content of file in assets
      */
     public static List<String> readAssets2List(final String assetsPath,
-                                               final String charsetName) {
+            final String charsetName) {
         try {
             return UtilsBridge.inputStream2Lines(Utils.getApp().getResources().getAssets().open(assetsPath), charsetName);
         } catch (IOException e) {
@@ -240,9 +240,9 @@ public final class ResourceUtils {
      */
     public static boolean copyFileFromRaw(@RawRes final int resId, final String destFilePath) {
         return UtilsBridge.writeFileFromIS(
-                destFilePath,
-                Utils.getApp().getResources().openRawResource(resId)
-        );
+                   destFilePath,
+                   Utils.getApp().getResources().openRawResource(resId)
+               );
     }
 
     /**

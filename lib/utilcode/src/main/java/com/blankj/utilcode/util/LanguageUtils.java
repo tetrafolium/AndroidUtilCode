@@ -237,6 +237,6 @@ public class LanguageUtils {
 
     private static boolean isSameLocale(Locale l0, Locale l1) {
         return UtilsBridge.equals(l1.getLanguage(), l0.getLanguage())
-                && UtilsBridge.equals(l1.getCountry(), l0.getCountry());
+               && UtilsBridge.equals(l1.getCountry(), l0.getCountry());
     }
 }

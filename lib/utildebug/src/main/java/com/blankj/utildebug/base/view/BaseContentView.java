@@ -19,7 +19,7 @@ import com.blankj.utildebug.base.view.listener.OnRefreshListener;
  * </pre>
  */
 public abstract class BaseContentView<T extends BaseContentFloatView<T>> extends FrameLayout
-        implements OnBackListener {
+    implements OnBackListener {
 
     private T       mFloatView;
     private boolean isAddStack;

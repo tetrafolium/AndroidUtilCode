@@ -117,90 +117,90 @@ public class SwipeRightMenu extends LinearLayout {
         int x = (int) event.getRawX();
         int y = (int) event.getRawY();
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                if (isTouching) {
-                    return false;
-                }
-                isTouching = true;
-                close(this);
-                mDownX = x;
-                mDownY = y;
-                mLastX = x;
-                mLastY = y;
-                mState = STATE_DOWN;
-                slideDirection = SLIDE_INIT;
-                super.dispatchTouchEvent(event);
+        case MotionEvent.ACTION_DOWN:
+            if (isTouching) {
+                return false;
+            }
+            isTouching = true;
+            close(this);
+            mDownX = x;
+            mDownY = y;
+            mLastX = x;
+            mLastY = y;
+            mState = STATE_DOWN;
+            slideDirection = SLIDE_INIT;
+            super.dispatchTouchEvent(event);
+            break;
+        case MotionEvent.ACTION_MOVE:
+            if (mState == STATE_DOWN
+                    && Math.abs(x - mDownX) < MIN_DISTANCE_MOVE
+                    && Math.abs(y - mDownY) < MIN_DISTANCE_MOVE) {
                 break;
-            case MotionEvent.ACTION_MOVE:
-                if (mState == STATE_DOWN
-                        && Math.abs(x - mDownX) < MIN_DISTANCE_MOVE
-                        && Math.abs(y - mDownY) < MIN_DISTANCE_MOVE) {
-                    break;
+            }
+            if (slideDirection == SLIDE_INIT) {
+                if (Math.abs(x - mDownX) > Math.abs(y - mDownY)) {
+                    slideDirection = SLIDE_HORIZONTAL;
+                    cancelChildViewTouch();
+                    requestDisallowInterceptTouchEvent(true);// 让父 view 不要拦截
+                } else {
+                    slideDirection = SLIDE_VERTICAL;
                 }
-                if (slideDirection == SLIDE_INIT) {
-                    if (Math.abs(x - mDownX) > Math.abs(y - mDownY)) {
-                        slideDirection = SLIDE_HORIZONTAL;
-                        cancelChildViewTouch();
-                        requestDisallowInterceptTouchEvent(true);// 让父 view 不要拦截
-                    } else {
-                        slideDirection = SLIDE_VERTICAL;
-                    }
-                }
-                if (slideDirection == SLIDE_VERTICAL) {
-                    return super.dispatchTouchEvent(event);
-                }
+            }
+            if (slideDirection == SLIDE_VERTICAL) {
+                return super.dispatchTouchEvent(event);
+            }
 
-                scrollTo(Math.max(Math.min(getScrollX() - x + mLastX, mMenusWidth), 0), 0);
+            scrollTo(Math.max(Math.min(getScrollX() - x + mLastX, mMenusWidth), 0), 0);
 
-                float percent = getScrollX() / (float) mMenusWidth;
-                updateLeftMarginByPercent(percent);
+            float percent = getScrollX() / (float) mMenusWidth;
+            updateLeftMarginByPercent(percent);
 
-                mLastX = x;
-                mLastY = y;
-                mState = STATE_MOVE;
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                try {
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        if (mState == STATE_DOWN) {
-                            if (isOpen()) {
-                                if (isTouchPointInView(mContentView, x, y)) {
-                                    close(true);
-                                    final long now = SystemClock.uptimeMillis();
-                                    final MotionEvent cancelEvent = MotionEvent.obtain(now, now,
-                                            MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
-                                    super.dispatchTouchEvent(cancelEvent);
-                                    return true;
-                                }
+            mLastX = x;
+            mLastY = y;
+            mState = STATE_MOVE;
+            break;
+        case MotionEvent.ACTION_UP:
+        case MotionEvent.ACTION_CANCEL:
+            try {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (mState == STATE_DOWN) {
+                        if (isOpen()) {
+                            if (isTouchPointInView(mContentView, x, y)) {
+                                close(true);
+                                final long now = SystemClock.uptimeMillis();
+                                final MotionEvent cancelEvent = MotionEvent.obtain(now, now,
+                                                                MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
+                                super.dispatchTouchEvent(cancelEvent);
+                                return true;
                             }
-                            super.dispatchTouchEvent(event);
-                            close(true);
-                            return true;
                         }
-                    } else {
                         super.dispatchTouchEvent(event);
+                        close(true);
+                        return true;
                     }
-                    if (swipeMenuOpened != null && swipeMenuOpened.get() == this) {// 如果之前是展开状态
-                        if (getScrollX() < mMenusWidth - THRESHOLD_DISTANCE) {// 超过阈值则关闭
-                            close(true);
-                        } else {// 否则还是打开
-                            open(true);
-                        }
-                    } else {
-                        if (getScrollX() > THRESHOLD_DISTANCE) {// 如果是关闭
-                            open(true);// 超过阈值则打开
-                        } else {
-                            close(true);// 否则还是关闭
-                        }
-                    }
-                } finally {
-                    isTouching = false;
-                    mState = STATE_STOP;
+                } else {
+                    super.dispatchTouchEvent(event);
                 }
-                break;
-            default:
-                break;
+                if (swipeMenuOpened != null && swipeMenuOpened.get() == this) {// 如果之前是展开状态
+                    if (getScrollX() < mMenusWidth - THRESHOLD_DISTANCE) {// 超过阈值则关闭
+                        close(true);
+                    } else {// 否则还是打开
+                        open(true);
+                    }
+                } else {
+                    if (getScrollX() > THRESHOLD_DISTANCE) {// 如果是关闭
+                        open(true);// 超过阈值则打开
+                    } else {
+                        close(true);// 否则还是关闭
+                    }
+                }
+            } finally {
+                isTouching = false;
+                mState = STATE_STOP;
+            }
+            break;
+        default:
+            break;
         }
         return true;
     }
@@ -294,7 +294,7 @@ public class SwipeRightMenu extends LinearLayout {
     private void cancelChildViewTouch() {
         final long now = SystemClock.uptimeMillis();
         final MotionEvent cancelEvent = MotionEvent.obtain(now, now,
-                MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
+                                        MotionEvent.ACTION_CANCEL, 0.0f, 0.0f, 0);
         final int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             getChildAt(i).dispatchTouchEvent(cancelEvent);

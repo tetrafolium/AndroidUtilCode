@@ -240,13 +240,13 @@ public class CollectionUtilsTest extends BaseTest {
         }).size());
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(2, 3),
-                CollectionUtils.select(list, new CollectionUtils.Predicate<Integer>() {
-                    @Override
-                    public boolean evaluate(Integer item) {
-                        return item > 1;
-                    }
-                })));
+                              CollectionUtils.newArrayList(2, 3),
+        CollectionUtils.select(list, new CollectionUtils.Predicate<Integer>() {
+            @Override
+            public boolean evaluate(Integer item) {
+                return item > 1;
+            }
+        })));
 
         Collection<Integer> list1 = CollectionUtils.select(list, new CollectionUtils.Predicate<Integer>() {
             @Override
@@ -274,13 +274,13 @@ public class CollectionUtilsTest extends BaseTest {
         }).size());
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(0, 1),
-                CollectionUtils.selectRejected(list, new CollectionUtils.Predicate<Integer>() {
-                    @Override
-                    public boolean evaluate(Integer item) {
-                        return item > 1;
-                    }
-                })));
+                              CollectionUtils.newArrayList(0, 1),
+        CollectionUtils.selectRejected(list, new CollectionUtils.Predicate<Integer>() {
+            @Override
+            public boolean evaluate(Integer item) {
+                return item > 1;
+            }
+        })));
 
 
         Collection<Integer> list1 = CollectionUtils.selectRejected(list, new CollectionUtils.Predicate<Integer>() {
@@ -336,13 +336,13 @@ public class CollectionUtilsTest extends BaseTest {
         })));
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList("0", "1", "2", "3"),
-                CollectionUtils.collect(list, new CollectionUtils.Transformer<Integer, String>() {
-                    @Override
-                    public String transform(Integer input) {
-                        return String.valueOf(input);
-                    }
-                })));
+                              CollectionUtils.newArrayList("0", "1", "2", "3"),
+        CollectionUtils.collect(list, new CollectionUtils.Transformer<Integer, String>() {
+            @Override
+            public String transform(Integer input) {
+                return String.valueOf(input);
+            }
+        })));
     }
 
     @Test
@@ -475,14 +475,14 @@ public class CollectionUtilsTest extends BaseTest {
         Assert.assertEquals(0, CollectionUtils.retainAll(null, list).size());
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(0, 1, 2, 3),
-                CollectionUtils.retainAll(list, list)
-        ));
+                              CollectionUtils.newArrayList(0, 1, 2, 3),
+                              CollectionUtils.retainAll(list, list)
+                          ));
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(0, 1),
-                CollectionUtils.retainAll(list, CollectionUtils.newArrayList(0, 1, 6))
-        ));
+                              CollectionUtils.newArrayList(0, 1),
+                              CollectionUtils.retainAll(list, CollectionUtils.newArrayList(0, 1, 6))
+                          ));
     }
 
     @Test
@@ -491,14 +491,14 @@ public class CollectionUtilsTest extends BaseTest {
 
         Assert.assertEquals(0, CollectionUtils.removeAll(null, null).size());
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(0, 1, 2, 3),
-                CollectionUtils.removeAll(list, null)
-        ));
+                              CollectionUtils.newArrayList(0, 1, 2, 3),
+                              CollectionUtils.removeAll(list, null)
+                          ));
         Assert.assertEquals(0, CollectionUtils.removeAll(null, list).size());
 
         Assert.assertTrue(CollectionUtils.isEqualCollection(
-                CollectionUtils.newArrayList(2, 3),
-                CollectionUtils.removeAll(list, CollectionUtils.newArrayList(0, 1, 6))
-        ));
+                              CollectionUtils.newArrayList(2, 3),
+                              CollectionUtils.removeAll(list, CollectionUtils.newArrayList(0, 1, 6))
+                          ));
     }
 }

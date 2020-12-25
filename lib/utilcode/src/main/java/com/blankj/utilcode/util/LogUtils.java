@@ -71,7 +71,7 @@ public final class LogUtils {
     public @interface TYPE {
     }
 
-    private static final char[] T = new char[]{'V', 'D', 'I', 'W', 'E', 'A'};
+    private static final char[] T = new char[] {'V', 'D', 'I', 'W', 'E', 'A'};
 
     private static final int FILE = 0x10;
     private static final int JSON = 0x20;
@@ -84,9 +84,9 @@ public final class LogUtils {
     private static final String LEFT_BORDER    = "│ ";
     private static final String BOTTOM_CORNER  = "└";
     private static final String SIDE_DIVIDER   =
-            "────────────────────────────────────────────────────────";
+        "────────────────────────────────────────────────────────";
     private static final String MIDDLE_DIVIDER =
-            "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄";
+        "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄";
     private static final String TOP_BORDER     = TOP_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
     private static final String MIDDLE_BORDER  = MIDDLE_CORNER + MIDDLE_DIVIDER + MIDDLE_DIVIDER;
     private static final String BOTTOM_BORDER  = BOTTOM_CORNER + SIDE_DIVIDER + SIDE_DIVIDER;
@@ -267,35 +267,35 @@ public final class LogUtils {
             if (CONFIG.isLogHeadSwitch()) {
                 String tName = Thread.currentThread().getName();
                 final String head = new Formatter()
-                        .format("%s, %s.%s(%s:%d)",
-                                tName,
-                                targetElement.getClassName(),
-                                targetElement.getMethodName(),
-                                fileName,
-                                targetElement.getLineNumber())
-                        .toString();
+                .format("%s, %s.%s(%s:%d)",
+                        tName,
+                        targetElement.getClassName(),
+                        targetElement.getMethodName(),
+                        fileName,
+                        targetElement.getLineNumber())
+                .toString();
                 final String fileHead = " [" + head + "]: ";
                 if (CONFIG.getStackDeep() <= 1) {
-                    return new TagHead(tag, new String[]{head}, fileHead);
+                    return new TagHead(tag, new String[] {head}, fileHead);
                 } else {
                     final String[] consoleHead =
-                            new String[Math.min(
-                                    CONFIG.getStackDeep(),
-                                    stackTrace.length - stackIndex
-                            )];
+                        new String[Math.min(
+                                       CONFIG.getStackDeep(),
+                                       stackTrace.length - stackIndex
+                                   )];
                     consoleHead[0] = head;
                     int spaceLen = tName.length() + 2;
                     String space = new Formatter().format("%" + spaceLen + "s", "").toString();
                     for (int i = 1, len = consoleHead.length; i < len; ++i) {
                         targetElement = stackTrace[i + stackIndex];
                         consoleHead[i] = new Formatter()
-                                .format("%s%s.%s(%s:%d)",
-                                        space,
-                                        targetElement.getClassName(),
-                                        targetElement.getMethodName(),
-                                        getFileName(targetElement),
-                                        targetElement.getLineNumber())
-                                .toString();
+                        .format("%s%s.%s(%s:%d)",
+                                space,
+                                targetElement.getClassName(),
+                                targetElement.getMethodName(),
+                                getFileName(targetElement),
+                                targetElement.getLineNumber())
+                        .toString();
                     }
                     return new TagHead(tag, consoleHead, fileHead);
                 }
@@ -331,12 +331,12 @@ public final class LogUtils {
                 for (int i = 0, len = contents.length; i < len; ++i) {
                     Object content = contents[i];
                     sb.append(ARGS)
-                            .append("[")
-                            .append(i)
-                            .append("]")
-                            .append(" = ")
-                            .append(formatObject(content))
-                            .append(LINE_SEP);
+                    .append("[")
+                    .append(i)
+                    .append("]")
+                    .append(" = ")
+                    .append(formatObject(content))
+                    .append(LINE_SEP);
                 }
                 body = sb.toString();
             }
@@ -422,9 +422,9 @@ public final class LogUtils {
     }
 
     private static String processSingleTagMsg(final int type,
-                                              final String tag,
-                                              final String[] head,
-                                              final String msg) {
+            final String tag,
+            final String[] head,
+            final String msg) {
         StringBuilder sb = new StringBuilder();
         if (CONFIG.isLogBorderSwitch()) {
             sb.append(PLACEHOLDER).append(LINE_SEP);
@@ -460,20 +460,20 @@ public final class LogUtils {
                 int index = MAX_LEN;
                 for (int i = 1; i < countOfSub; i++) {
                     Log.println(type, tag, PLACEHOLDER + LINE_SEP + TOP_BORDER + LINE_SEP
-                            + LEFT_BORDER + msg.substring(index, index + MAX_LEN)
-                            + LINE_SEP + BOTTOM_BORDER);
+                                + LEFT_BORDER + msg.substring(index, index + MAX_LEN)
+                                + LINE_SEP + BOTTOM_BORDER);
                     index += MAX_LEN;
                 }
                 if (index != len - BOTTOM_BORDER.length()) {
                     Log.println(type, tag, PLACEHOLDER + LINE_SEP + TOP_BORDER + LINE_SEP
-                            + LEFT_BORDER + msg.substring(index, len));
+                                + LEFT_BORDER + msg.substring(index, len));
                 }
             } else {
                 Log.println(type, tag, msg.substring(0, MAX_LEN));
                 int index = MAX_LEN;
                 for (int i = 1; i < countOfSub; i++) {
                     Log.println(type, tag,
-                            PLACEHOLDER + LINE_SEP + msg.substring(index, index + MAX_LEN));
+                                PLACEHOLDER + LINE_SEP + msg.substring(index, index + MAX_LEN));
                     index += MAX_LEN;
                 }
                 if (index != len) {
@@ -490,19 +490,19 @@ public final class LogUtils {
         String date = format.substring(0, 10);
         String time = format.substring(11);
         final String fullPath =
-                CONFIG.getDir() + CONFIG.getFilePrefix() + "_"
-                        + date + "_" +
-                        CONFIG.getProcessName() + CONFIG.getFileExtension();
+            CONFIG.getDir() + CONFIG.getFilePrefix() + "_"
+            + date + "_" +
+            CONFIG.getProcessName() + CONFIG.getFileExtension();
         if (!createOrExistsFile(fullPath, date)) {
             Log.e("LogUtils", "create " + fullPath + " failed!");
             return;
         }
         final String content = time +
-                T[type - V] +
-                "/" +
-                tag +
-                msg +
-                LINE_SEP;
+                               T[type - V] +
+                               "/" +
+                               tag +
+                               msg +
+                               LINE_SEP;
         input2File(fullPath, content);
     }
 
@@ -580,14 +580,14 @@ public final class LogUtils {
 
     private static void printDeviceInfo(final String filePath, final String date) {
         final String head = "************* Log Head ****************" +
-                "\nDate of Log        : " + date +
-                "\nDevice Manufacturer: " + Build.MANUFACTURER +
-                "\nDevice Model       : " + Build.MODEL +
-                "\nAndroid Version    : " + Build.VERSION.RELEASE +
-                "\nAndroid SDK        : " + Build.VERSION.SDK_INT +
-                "\nApp VersionName    : " + UtilsBridge.getAppVersionName() +
-                "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode() +
-                "\n************* Log Head ****************\n\n";
+                            "\nDate of Log        : " + date +
+                            "\nDevice Manufacturer: " + Build.MANUFACTURER +
+                            "\nDevice Model       : " + Build.MODEL +
+                            "\nAndroid Version    : " + Build.VERSION.RELEASE +
+                            "\nAndroid SDK        : " + Build.VERSION.SDK_INT +
+                            "\nApp VersionName    : " + UtilsBridge.getAppVersionName() +
+                            "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode() +
+                            "\n************* Log Head ****************\n\n";
         input2File(filePath, head);
     }
 
@@ -816,21 +816,21 @@ public final class LogUtils {
         @Override
         public String toString() {
             return "process: " + getProcessName()
-                    + LINE_SEP + "switch: " + isLogSwitch()
-                    + LINE_SEP + "console: " + isLog2ConsoleSwitch()
-                    + LINE_SEP + "tag: " + getGlobalTag()
-                    + LINE_SEP + "head: " + isLogHeadSwitch()
-                    + LINE_SEP + "file: " + isLog2FileSwitch()
-                    + LINE_SEP + "dir: " + getDir()
-                    + LINE_SEP + "filePrefix: " + getFilePrefix()
-                    + LINE_SEP + "border: " + isLogBorderSwitch()
-                    + LINE_SEP + "singleTag: " + isSingleTagSwitch()
-                    + LINE_SEP + "consoleFilter: " + getConsoleFilter()
-                    + LINE_SEP + "fileFilter: " + getFileFilter()
-                    + LINE_SEP + "stackDeep: " + getStackDeep()
-                    + LINE_SEP + "stackOffset: " + getStackOffset()
-                    + LINE_SEP + "saveDays: " + getSaveDays()
-                    + LINE_SEP + "formatter: " + I_FORMATTER_MAP;
+                   + LINE_SEP + "switch: " + isLogSwitch()
+                   + LINE_SEP + "console: " + isLog2ConsoleSwitch()
+                   + LINE_SEP + "tag: " + getGlobalTag()
+                   + LINE_SEP + "head: " + isLogHeadSwitch()
+                   + LINE_SEP + "file: " + isLog2FileSwitch()
+                   + LINE_SEP + "dir: " + getDir()
+                   + LINE_SEP + "filePrefix: " + getFilePrefix()
+                   + LINE_SEP + "border: " + isLogBorderSwitch()
+                   + LINE_SEP + "singleTag: " + isSingleTagSwitch()
+                   + LINE_SEP + "consoleFilter: " + getConsoleFilter()
+                   + LINE_SEP + "fileFilter: " + getFileFilter()
+                   + LINE_SEP + "stackDeep: " + getStackDeep()
+                   + LINE_SEP + "stackOffset: " + getStackOffset()
+                   + LINE_SEP + "saveDays: " + getSaveDays()
+                   + LINE_SEP + "formatter: " + I_FORMATTER_MAP;
         }
     }
 

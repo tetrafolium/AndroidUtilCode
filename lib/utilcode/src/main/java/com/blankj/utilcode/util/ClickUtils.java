@@ -206,17 +206,17 @@ public class ClickUtils {
         disable = createAlphaDrawable(disable, 0.5f);
 
         StateListDrawable drawable = new StateListDrawable();
-        drawable.addState(new int[]{android.R.attr.state_pressed}, pressed);
-        drawable.addState(new int[]{-android.R.attr.state_enabled}, disable);
+        drawable.addState(new int[] {android.R.attr.state_pressed}, pressed);
+        drawable.addState(new int[] {-android.R.attr.state_enabled}, disable);
         drawable.addState(StateSet.WILD_CARD, src);
         return drawable;
     }
 
     private static Drawable createAlphaDrawable(Drawable drawable, float alpha) {
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
-            drawableWrapper.setAlphaFix((int) (alpha * 255));
-            return drawableWrapper;
+        DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
+        drawableWrapper.setAlphaFix((int) (alpha * 255));
+        return drawableWrapper;
 //        }
 //        drawable.setAlpha((int) (alpha * 255));
 //        return drawable;
@@ -224,21 +224,21 @@ public class ClickUtils {
 
     private static Drawable createDarkDrawable(Drawable drawable, float alpha) {
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
-            drawableWrapper.setColorFilterFix(getDarkColorFilter(alpha));
-            return drawableWrapper;
+        DrawableWrapperBefore21 drawableWrapper = new DrawableWrapperBefore21(drawable);
+        drawableWrapper.setColorFilterFix(getDarkColorFilter(alpha));
+        return drawableWrapper;
 //        }
 //        drawable.setColorFilter(getDarkColorFilter(alpha));
 //        return drawable;
     }
 
     private static ColorMatrixColorFilter getDarkColorFilter(float darkAlpha) {
-        return new ColorMatrixColorFilter(new ColorMatrix(new float[]{
-                darkAlpha, 0, 0, 0, 0,
-                0, darkAlpha, 0, 0, 0,
-                0, 0, darkAlpha, 0, 0,
-                0, 0, 0, 2, 0
-        }));
+        return new ColorMatrixColorFilter(new ColorMatrix(new float[] {
+                                              darkAlpha, 0, 0, 0, 0,
+                                              0, darkAlpha, 0, 0, 0,
+                                              0, 0, darkAlpha, 0, 0,
+                                              0, 0, 0, 2, 0
+                                          }));
     }
 
     /**
@@ -248,7 +248,7 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applySingleDebouncing(final View view, final View.OnClickListener listener) {
-        applySingleDebouncing(new View[]{view}, listener);
+        applySingleDebouncing(new View[] {view}, listener);
     }
 
     /**
@@ -259,8 +259,8 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applySingleDebouncing(final View view, @IntRange(from = 0) long duration,
-                                             final View.OnClickListener listener) {
-        applySingleDebouncing(new View[]{view}, duration, listener);
+            final View.OnClickListener listener) {
+        applySingleDebouncing(new View[] {view}, duration, listener);
     }
 
     /**
@@ -281,8 +281,8 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applySingleDebouncing(final View[] views,
-                                             @IntRange(from = 0) long duration,
-                                             final View.OnClickListener listener) {
+            @IntRange(from = 0) long duration,
+            final View.OnClickListener listener) {
         applyDebouncing(views, false, duration, listener);
     }
 
@@ -293,7 +293,7 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applyGlobalDebouncing(final View view, final View.OnClickListener listener) {
-        applyGlobalDebouncing(new View[]{view}, listener);
+        applyGlobalDebouncing(new View[] {view}, listener);
     }
 
     /**
@@ -304,8 +304,8 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applyGlobalDebouncing(final View view, @IntRange(from = 0) long duration,
-                                             final View.OnClickListener listener) {
-        applyGlobalDebouncing(new View[]{view}, duration, listener);
+            final View.OnClickListener listener) {
+        applyGlobalDebouncing(new View[] {view}, duration, listener);
     }
 
 
@@ -327,8 +327,8 @@ public class ClickUtils {
      * @param listener The listener.
      */
     public static void applyGlobalDebouncing(final View[] views,
-                                             @IntRange(from = 0) long duration,
-                                             final View.OnClickListener listener) {
+            @IntRange(from = 0) long duration,
+            final View.OnClickListener listener) {
         applyDebouncing(views, true, duration, listener);
     }
 
@@ -557,7 +557,7 @@ public class ClickUtils {
                 processScale(v, true);
                 processAlpha(v, true);
             } else if (action == MotionEvent.ACTION_UP
-                    || action == MotionEvent.ACTION_CANCEL) {
+                       || action == MotionEvent.ACTION_CANCEL) {
                 processScale(v, false);
                 processAlpha(v, false);
             }
@@ -569,10 +569,10 @@ public class ClickUtils {
             if (!(tag instanceof Float)) return;
             float value = isDown ? 1 + (Float) tag : 1;
             view.animate()
-                    .scaleX(value)
-                    .scaleY(value)
-                    .setDuration(200)
-                    .start();
+            .scaleX(value)
+            .scaleY(value)
+            .setDuration(200)
+            .start();
         }
 
         private void processAlpha(final View view, boolean isDown) {

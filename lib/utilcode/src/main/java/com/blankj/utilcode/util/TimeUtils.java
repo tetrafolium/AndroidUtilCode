@@ -26,7 +26,7 @@ import java.util.Map;
 public final class TimeUtils {
 
     private static final ThreadLocal<Map<String, SimpleDateFormat>> SDF_THREAD_LOCAL
-            = new ThreadLocal<Map<String, SimpleDateFormat>>() {
+    = new ThreadLocal<Map<String, SimpleDateFormat>>() {
         @Override
         protected Map<String, SimpleDateFormat> initialValue() {
             return new HashMap<>();
@@ -544,8 +544,8 @@ public final class TimeUtils {
      * @return the fit time span by now
      */
     public static String getFitTimeSpanByNow(final String time,
-                                             @NonNull final DateFormat format,
-                                             final int precision) {
+            @NonNull final DateFormat format,
+            final int precision) {
         return getFitTimeSpan(time, getNowString(format), format, precision);
     }
 
@@ -624,7 +624,7 @@ public final class TimeUtils {
      * </ul>
      */
     public static String getFriendlyTimeSpanByNow(final String time,
-                                                  @NonNull final DateFormat format) {
+            @NonNull final DateFormat format) {
         return getFriendlyTimeSpanByNow(string2Millis(time, format));
     }
 
@@ -1420,8 +1420,8 @@ public final class TimeUtils {
      * @return the value of the given calendar field
      */
     public static int getValueByCalendarField(final String time,
-                                              @NonNull final DateFormat format,
-                                              final int field) {
+            @NonNull final DateFormat format,
+            final int field) {
         return getValueByCalendarField(string2Date(time, format), field);
     }
 
@@ -1466,7 +1466,7 @@ public final class TimeUtils {
     }
 
     private static final String[] CHINESE_ZODIAC =
-            {"猴", "鸡", "狗", "猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊"};
+    {"猴", "鸡", "狗", "猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊"};
 
     /**
      * Return the Chinese zodiac.
@@ -1524,8 +1524,8 @@ public final class TimeUtils {
 
     private static final int[]    ZODIAC_FLAGS = {20, 19, 21, 21, 21, 22, 23, 23, 23, 24, 23, 22};
     private static final String[] ZODIAC       = {
-            "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座",
-            "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"
+        "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座",
+        "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"
     };
 
     /**
@@ -1583,8 +1583,8 @@ public final class TimeUtils {
      */
     public static String getZodiac(final int month, final int day) {
         return ZODIAC[day >= ZODIAC_FLAGS[month - 1]
-                ? month - 1
-                : (month + 10) % 12];
+                      ? month - 1
+                      : (month + 10) % 12];
     }
 
     private static long timeSpan2Millis(final long timeSpan, @TimeConstants.Unit final int unit) {

@@ -94,21 +94,21 @@ public final class CrashUtils {
     }
 
     private static UncaughtExceptionHandler getUncaughtExceptionHandler(final String dirPath,
-                                                                        final OnCrashListener onCrashListener) {
+            final OnCrashListener onCrashListener) {
         return new UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(@NonNull final Thread t, @NonNull final Throwable e) {
                 final String time = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss").format(new Date());
                 final StringBuilder sb = new StringBuilder();
                 final String head = "************* Log Head ****************" +
-                        "\nTime Of Crash      : " + time +
-                        "\nDevice Manufacturer: " + Build.MANUFACTURER +
-                        "\nDevice Model       : " + Build.MODEL +
-                        "\nAndroid Version    : " + Build.VERSION.RELEASE +
-                        "\nAndroid SDK        : " + Build.VERSION.SDK_INT +
-                        "\nApp VersionName    : " + UtilsBridge.getAppVersionName() +
-                        "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode() +
-                        "\n************* Log Head ****************\n\n";
+                                    "\nTime Of Crash      : " + time +
+                                    "\nDevice Manufacturer: " + Build.MANUFACTURER +
+                                    "\nDevice Model       : " + Build.MODEL +
+                                    "\nAndroid Version    : " + Build.VERSION.RELEASE +
+                                    "\nAndroid SDK        : " + Build.VERSION.SDK_INT +
+                                    "\nApp VersionName    : " + UtilsBridge.getAppVersionName() +
+                                    "\nApp VersionCode    : " + UtilsBridge.getAppVersionCode() +
+                                    "\n************* Log Head ****************\n\n";
                 sb.append(head).append(UtilsBridge.getFullStackTrace(e));
                 final String crashInfo = sb.toString();
                 final String crashFile = dirPath + time + ".txt";

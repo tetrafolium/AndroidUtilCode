@@ -114,8 +114,8 @@ public final class RegexUtils {
      */
     public static boolean isIDCard18Exact(final CharSequence input) {
         if (isIDCard18(input)) {
-            int[] factor = new int[]{7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
-            char[] suffix = new char[]{'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+            int[] factor = new int[] {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+            char[] suffix = new char[] {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
             if (CITY_MAP.isEmpty()) {
                 CITY_MAP.put("11", "北京");
                 CITY_MAP.put("12", "天津");

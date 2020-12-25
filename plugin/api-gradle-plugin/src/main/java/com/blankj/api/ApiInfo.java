@@ -21,7 +21,7 @@ public class ApiInfo {
     @Override
     public String toString() {
         return "{ implApiClass: " + implApiClass +
-                ", isMock: " + isMock +
-                " }";
+               ", isMock: " + isMock +
+               " }";
     }
 }

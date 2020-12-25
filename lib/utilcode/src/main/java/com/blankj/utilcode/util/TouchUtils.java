@@ -102,11 +102,11 @@ public class TouchUtils {
             }
             if (maximumFlingVelocity == 0) {
                 maximumFlingVelocity =
-                        ViewConfiguration.get(v.getContext()).getScaledMaximumFlingVelocity();
+                    ViewConfiguration.get(v.getContext()).getScaledMaximumFlingVelocity();
             }
             if (minimumFlingVelocity == 0) {
                 minimumFlingVelocity =
-                        ViewConfiguration.get(v.getContext()).getScaledMinimumFlingVelocity();
+                    ViewConfiguration.get(v.getContext()).getScaledMinimumFlingVelocity();
             }
             if (velocityTracker == null) {
                 velocityTracker = VelocityTracker.obtain();
@@ -114,15 +114,15 @@ public class TouchUtils {
             velocityTracker.addMovement(event);
 
             switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    return onUtilsDown(v, event);
-                case MotionEvent.ACTION_MOVE:
-                    return onUtilsMove(v, event);
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    return onUtilsStop(v, event);
-                default:
-                    break;
+            case MotionEvent.ACTION_DOWN:
+                return onUtilsDown(v, event);
+            case MotionEvent.ACTION_MOVE:
+                return onUtilsMove(v, event);
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                return onUtilsStop(v, event);
+            default:
+                break;
             }
             return false;
         }
@@ -167,7 +167,7 @@ public class TouchUtils {
             }
 
             boolean consumeMove =
-                    onMove(view, direction, x, y, x - lastX, y - lastY, x - downX, y - downY, event);
+                onMove(view, direction, x, y, x - lastX, y - lastY, x - downX, y - downY, event);
             lastX = x;
             lastY = y;
             return consumeMove;

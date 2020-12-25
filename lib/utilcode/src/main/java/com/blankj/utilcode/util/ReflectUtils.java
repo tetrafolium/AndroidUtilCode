@@ -50,7 +50,7 @@ public final class ReflectUtils {
      * @throws ReflectException if reflect unsuccessfully
      */
     public static ReflectUtils reflect(final String className)
-            throws ReflectException {
+    throws ReflectException {
         return reflect(forName(className));
     }
 
@@ -63,7 +63,7 @@ public final class ReflectUtils {
      * @throws ReflectException if reflect unsuccessfully
      */
     public static ReflectUtils reflect(final String className, final ClassLoader classLoader)
-            throws ReflectException {
+    throws ReflectException {
         return reflect(forName(className, classLoader));
     }
 
@@ -75,7 +75,7 @@ public final class ReflectUtils {
      * @throws ReflectException if reflect unsuccessfully
      */
     public static ReflectUtils reflect(final Class<?> clazz)
-            throws ReflectException {
+    throws ReflectException {
         return new ReflectUtils(clazz);
     }
 
@@ -87,7 +87,7 @@ public final class ReflectUtils {
      * @throws ReflectException if reflect unsuccessfully
      */
     public static ReflectUtils reflect(final Object object)
-            throws ReflectException {
+    throws ReflectException {
         return new ReflectUtils(object == null ? Object.class : object.getClass(), object);
     }
 
@@ -181,9 +181,9 @@ public final class ReflectUtils {
     private ReflectUtils newInstance(final Constructor<?> constructor, final Object... args) {
         try {
             return new ReflectUtils(
-                    constructor.getDeclaringClass(),
-                    accessible(constructor).newInstance(args)
-            );
+                       constructor.getDeclaringClass(),
+                       accessible(constructor).newInstance(args)
+                   );
         } catch (Exception e) {
             throw new ReflectException(e);
         }
@@ -316,7 +316,7 @@ public final class ReflectUtils {
     }
 
     private Method exactMethod(final String name, final Class<?>[] types)
-            throws NoSuchMethodException {
+    throws NoSuchMethodException {
         Class<?> type = type();
         try {
             return type.getMethod(name, types);
@@ -333,7 +333,7 @@ public final class ReflectUtils {
     }
 
     private Method similarMethod(final String name, final Class<?>[] types)
-            throws NoSuchMethodException {
+    throws NoSuchMethodException {
         Class<?> type = type();
         List<Method> methods = new ArrayList<>();
         for (Method method : type.getMethods()) {
@@ -359,7 +359,7 @@ public final class ReflectUtils {
         } while (type != null);
 
         throw new NoSuchMethodException("No similar method " + name + " with params "
-                + Arrays.toString(types) + " could be found on type " + type() + ".");
+                                        + Arrays.toString(types) + " could be found on type " + type() + ".");
     }
 
     private void sortMethods(final List<Method> methods) {
@@ -387,7 +387,7 @@ public final class ReflectUtils {
                                        final String desiredMethodName,
                                        final Class<?>[] desiredParamTypes) {
         return possiblyMatchingMethod.getName().equals(desiredMethodName)
-                && match(possiblyMatchingMethod.getParameterTypes(), desiredParamTypes);
+               && match(possiblyMatchingMethod.getParameterTypes(), desiredParamTypes);
     }
 
     private boolean match(final Class<?>[] declaredTypes, final Class<?>[] actualTypes) {
@@ -458,8 +458,8 @@ public final class ReflectUtils {
             }
         };
         return (P) Proxy.newProxyInstance(proxyType.getClassLoader(),
-                new Class[]{proxyType},
-                handler);
+                                          new Class[] {proxyType},
+                                          handler);
     }
 
     /**

@@ -418,7 +418,7 @@ public class ThreadUtilsTest extends BaseTest {
             public void onSuccess(Boolean result) {
                 System.out.println("onSuccess");
             }
-        }.setTimeout(1000, new ThreadUtils.Task.OnTimeoutListener() {
+        } .setTimeout(1000, new ThreadUtils.Task.OnTimeoutListener() {
             @Override
             public void onTimeout() {
                 System.out.println("onTimeout");

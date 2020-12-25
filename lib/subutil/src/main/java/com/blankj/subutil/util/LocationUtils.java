@@ -127,7 +127,7 @@ public final class LocationUtils {
     public static boolean isLocationEnabled() {
         LocationManager lm = (LocationManager) Utils.getApp().getSystemService(Context.LOCATION_SERVICE);
         return lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-                || lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+               || lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
     /**
@@ -327,7 +327,7 @@ public final class LocationUtils {
     }
 
     private static class MyLocationListener
-            implements LocationListener {
+        implements LocationListener {
         /**
          * 当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
          *
@@ -353,15 +353,15 @@ public final class LocationUtils {
                 mListener.onStatusChanged(provider, status, extras);
             }
             switch (status) {
-                case LocationProvider.AVAILABLE:
-                    Log.d("LocationUtils", "当前GPS状态为可见状态");
-                    break;
-                case LocationProvider.OUT_OF_SERVICE:
-                    Log.d("LocationUtils", "当前GPS状态为服务区外状态");
-                    break;
-                case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                    Log.d("LocationUtils", "当前GPS状态为暂停服务状态");
-                    break;
+            case LocationProvider.AVAILABLE:
+                Log.d("LocationUtils", "当前GPS状态为可见状态");
+                break;
+            case LocationProvider.OUT_OF_SERVICE:
+                Log.d("LocationUtils", "当前GPS状态为服务区外状态");
+                break;
+            case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                Log.d("LocationUtils", "当前GPS状态为暂停服务状态");
+                break;
             }
         }
 

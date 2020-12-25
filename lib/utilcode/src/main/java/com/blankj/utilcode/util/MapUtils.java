@@ -64,7 +64,7 @@ public class MapUtils {
 
     @SafeVarargs
     public static <K, V> TreeMap<K, V> newTreeMap(final Comparator<K> comparator,
-                                                  final Pair<K, V>... pairs) {
+            final Pair<K, V>... pairs) {
         if (comparator == null) {
             throw new IllegalArgumentException("comparator must not be null");
         }

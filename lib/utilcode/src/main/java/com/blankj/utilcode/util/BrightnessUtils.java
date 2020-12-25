@@ -29,9 +29,9 @@ public final class BrightnessUtils {
     public static boolean isAutoBrightnessEnabled() {
         try {
             int mode = Settings.System.getInt(
-                    Utils.getApp().getContentResolver(),
-                    Settings.System.SCREEN_BRIGHTNESS_MODE
-            );
+                           Utils.getApp().getContentResolver(),
+                           Settings.System.SCREEN_BRIGHTNESS_MODE
+                       );
             return mode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
@@ -48,11 +48,11 @@ public final class BrightnessUtils {
      */
     public static boolean setAutoBrightnessEnabled(final boolean enabled) {
         return Settings.System.putInt(
-                Utils.getApp().getContentResolver(),
-                Settings.System.SCREEN_BRIGHTNESS_MODE,
-                enabled ? Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-                        : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
-        );
+                   Utils.getApp().getContentResolver(),
+                   Settings.System.SCREEN_BRIGHTNESS_MODE,
+                   enabled ? Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+                   : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
+               );
     }
 
     /**
@@ -63,9 +63,9 @@ public final class BrightnessUtils {
     public static int getBrightness() {
         try {
             return Settings.System.getInt(
-                    Utils.getApp().getContentResolver(),
-                    Settings.System.SCREEN_BRIGHTNESS
-            );
+                       Utils.getApp().getContentResolver(),
+                       Settings.System.SCREEN_BRIGHTNESS
+                   );
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
             return 0;

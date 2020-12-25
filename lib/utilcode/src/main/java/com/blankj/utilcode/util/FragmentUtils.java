@@ -513,10 +513,10 @@ public final class FragmentUtils {
             putArgs(show, false);
         }
         operateNoAnim(fm,
-                TYPE_SHOW_FRAGMENT,
-                null,
-                fragments.toArray(new Fragment[0])
-        );
+                      TYPE_SHOW_FRAGMENT,
+                      null,
+                      fragments.toArray(new Fragment[0])
+                     );
     }
 
     /**
@@ -540,10 +540,10 @@ public final class FragmentUtils {
             putArgs(hide, true);
         }
         operateNoAnim(fm,
-                TYPE_HIDE_FRAGMENT,
-                null,
-                fragments.toArray(new Fragment[0])
-        );
+                      TYPE_HIDE_FRAGMENT,
+                      null,
+                      fragments.toArray(new Fragment[0])
+                     );
     }
 
     /**
@@ -567,7 +567,7 @@ public final class FragmentUtils {
             putArgs(fragment, fragment != show);
         }
         operateNoAnim(show.getFragmentManager(), TYPE_SHOW_HIDE_FRAGMENT, show,
-                hide.toArray(new Fragment[0]));
+                      hide.toArray(new Fragment[0]));
     }
 
     /**
@@ -1082,7 +1082,7 @@ public final class FragmentUtils {
                 destTag,
                 isAddStack,
                 sharedElements
-        );
+               );
     }
 
     /**
@@ -1319,10 +1319,10 @@ public final class FragmentUtils {
                              final boolean isImmediate) {
         if (isImmediate) {
             fm.popBackStackImmediate(popClz.getName(),
-                    isIncludeSelf ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
+                                     isIncludeSelf ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
         } else {
             fm.popBackStack(popClz.getName(),
-                    isIncludeSelf ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
+                            isIncludeSelf ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
         }
     }
 
@@ -1368,7 +1368,7 @@ public final class FragmentUtils {
      */
     public static void removeTo(@NonNull final Fragment removeTo, final boolean isIncludeSelf) {
         operateNoAnim(removeTo.getFragmentManager(), TYPE_REMOVE_TO_FRAGMENT,
-                isIncludeSelf ? removeTo : null, removeTo);
+                      isIncludeSelf ? removeTo : null, removeTo);
     }
 
     /**
@@ -1379,10 +1379,10 @@ public final class FragmentUtils {
     public static void removeAll(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         operateNoAnim(fm,
-                TYPE_REMOVE_FRAGMENT,
-                null,
-                fragments.toArray(new Fragment[0])
-        );
+                      TYPE_REMOVE_FRAGMENT,
+                      null,
+                      fragments.toArray(new Fragment[0])
+                     );
     }
 
     private static void putArgs(final Fragment fragment, final Args args) {
@@ -1410,8 +1410,8 @@ public final class FragmentUtils {
         Bundle bundle = fragment.getArguments();
         if (bundle == null) bundle = Bundle.EMPTY;
         return new Args(bundle.getInt(ARGS_ID, fragment.getId()),
-                bundle.getBoolean(ARGS_IS_HIDE),
-                bundle.getBoolean(ARGS_IS_ADD_STACK));
+                        bundle.getBoolean(ARGS_IS_HIDE),
+                        bundle.getBoolean(ARGS_IS_ADD_STACK));
     }
 
     private static void operateNoAnim(@Nullable final FragmentManager fm,
@@ -1435,62 +1435,62 @@ public final class FragmentUtils {
         String name;
         Bundle args;
         switch (type) {
-            case TYPE_ADD_FRAGMENT:
-                for (Fragment fragment : dest) {
-                    args = fragment.getArguments();
-                    if (args == null) return;
-                    name = args.getString(ARGS_TAG, fragment.getClass().getName());
-                    Fragment fragmentByTag = fm.findFragmentByTag(name);
-                    if (fragmentByTag != null && fragmentByTag.isAdded()) {
-                        ft.remove(fragmentByTag);
-                    }
-                    ft.add(args.getInt(ARGS_ID), fragment, name);
-                    if (args.getBoolean(ARGS_IS_HIDE)) ft.hide(fragment);
-                    if (args.getBoolean(ARGS_IS_ADD_STACK)) ft.addToBackStack(name);
+        case TYPE_ADD_FRAGMENT:
+            for (Fragment fragment : dest) {
+                args = fragment.getArguments();
+                if (args == null) return;
+                name = args.getString(ARGS_TAG, fragment.getClass().getName());
+                Fragment fragmentByTag = fm.findFragmentByTag(name);
+                if (fragmentByTag != null && fragmentByTag.isAdded()) {
+                    ft.remove(fragmentByTag);
                 }
-                break;
-            case TYPE_HIDE_FRAGMENT:
-                for (Fragment fragment : dest) {
+                ft.add(args.getInt(ARGS_ID), fragment, name);
+                if (args.getBoolean(ARGS_IS_HIDE)) ft.hide(fragment);
+                if (args.getBoolean(ARGS_IS_ADD_STACK)) ft.addToBackStack(name);
+            }
+            break;
+        case TYPE_HIDE_FRAGMENT:
+            for (Fragment fragment : dest) {
+                ft.hide(fragment);
+            }
+            break;
+        case TYPE_SHOW_FRAGMENT:
+            for (Fragment fragment : dest) {
+                ft.show(fragment);
+            }
+            break;
+        case TYPE_SHOW_HIDE_FRAGMENT:
+            ft.show(src);
+            for (Fragment fragment : dest) {
+                if (fragment != src) {
                     ft.hide(fragment);
                 }
-                break;
-            case TYPE_SHOW_FRAGMENT:
-                for (Fragment fragment : dest) {
-                    ft.show(fragment);
-                }
-                break;
-            case TYPE_SHOW_HIDE_FRAGMENT:
-                ft.show(src);
-                for (Fragment fragment : dest) {
-                    if (fragment != src) {
-                        ft.hide(fragment);
-                    }
-                }
-                break;
-            case TYPE_REPLACE_FRAGMENT:
-                args = dest[0].getArguments();
-                if (args == null) return;
-                name = args.getString(ARGS_TAG, dest[0].getClass().getName());
-                ft.replace(args.getInt(ARGS_ID), dest[0], name);
-                if (args.getBoolean(ARGS_IS_ADD_STACK)) ft.addToBackStack(name);
-                break;
-            case TYPE_REMOVE_FRAGMENT:
-                for (Fragment fragment : dest) {
-                    if (fragment != src) {
-                        ft.remove(fragment);
-                    }
-                }
-                break;
-            case TYPE_REMOVE_TO_FRAGMENT:
-                for (int i = dest.length - 1; i >= 0; --i) {
-                    Fragment fragment = dest[i];
-                    if (fragment == dest[0]) {
-                        if (src != null) ft.remove(fragment);
-                        break;
-                    }
+            }
+            break;
+        case TYPE_REPLACE_FRAGMENT:
+            args = dest[0].getArguments();
+            if (args == null) return;
+            name = args.getString(ARGS_TAG, dest[0].getClass().getName());
+            ft.replace(args.getInt(ARGS_ID), dest[0], name);
+            if (args.getBoolean(ARGS_IS_ADD_STACK)) ft.addToBackStack(name);
+            break;
+        case TYPE_REMOVE_FRAGMENT:
+            for (Fragment fragment : dest) {
+                if (fragment != src) {
                     ft.remove(fragment);
                 }
-                break;
+            }
+            break;
+        case TYPE_REMOVE_TO_FRAGMENT:
+            for (int i = dest.length - 1; i >= 0; --i) {
+                Fragment fragment = dest[i];
+                if (fragment == dest[0]) {
+                    if (src != null) ft.remove(fragment);
+                    break;
+                }
+                ft.remove(fragment);
+            }
+            break;
         }
         ft.commitAllowingStateLoss();
     }
@@ -1573,8 +1573,8 @@ public final class FragmentUtils {
     }
 
     private static Fragment getTopShowIsInStack(@NonNull final FragmentManager fm,
-                                                Fragment parentFragment,
-                                                final boolean isInStack) {
+            Fragment parentFragment,
+            final boolean isInStack) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
             Fragment fragment = fragments.get(i);
@@ -1638,14 +1638,14 @@ public final class FragmentUtils {
     }
 
     private static List<FragmentNode> getAllFragments(@NonNull final FragmentManager fm,
-                                                      final List<FragmentNode> result) {
+            final List<FragmentNode> result) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
             Fragment fragment = fragments.get(i);
             if (fragment != null) {
                 result.add(new FragmentNode(fragment,
-                        getAllFragments(fragment.getChildFragmentManager(),
-                                new ArrayList<FragmentNode>())));
+                                            getAllFragments(fragment.getChildFragmentManager(),
+                                                    new ArrayList<FragmentNode>())));
             }
         }
         return result;
@@ -1662,7 +1662,7 @@ public final class FragmentUtils {
     }
 
     private static List<FragmentNode> getAllFragmentsInStack(@NonNull final FragmentManager fm,
-                                                             final List<FragmentNode> result) {
+            final List<FragmentNode> result) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
             Fragment fragment = fragments.get(i);
@@ -1670,8 +1670,8 @@ public final class FragmentUtils {
                 Bundle args = fragment.getArguments();
                 if (args != null && args.getBoolean(ARGS_IS_ADD_STACK)) {
                     result.add(new FragmentNode(fragment,
-                            getAllFragmentsInStack(fragment.getChildFragmentManager(),
-                                    new ArrayList<FragmentNode>())));
+                                                getAllFragmentsInStack(fragment.getChildFragmentManager(),
+                                                        new ArrayList<FragmentNode>())));
                 }
             }
         }
@@ -1710,10 +1710,10 @@ public final class FragmentUtils {
      */
     public static boolean dispatchBackPress(@NonNull final Fragment fragment) {
         return fragment.isResumed()
-                && fragment.isVisible()
-                && fragment.getUserVisibleHint()
-                && fragment instanceof OnBackClickListener
-                && ((OnBackClickListener) fragment).onBackClick();
+               && fragment.isVisible()
+               && fragment.getUserVisibleHint()
+               && fragment instanceof OnBackClickListener
+               && ((OnBackClickListener) fragment).onBackClick();
     }
 
     /**
@@ -1760,7 +1760,7 @@ public final class FragmentUtils {
      * @param resId    The resource id.
      */
     public static void setBackgroundResource(@NonNull final Fragment fragment,
-                                             @DrawableRes final int resId) {
+            @DrawableRes final int resId) {
         View view = fragment.getView();
         if (view != null) {
             view.setBackgroundResource(resId);
@@ -1832,8 +1832,8 @@ public final class FragmentUtils {
         @Override
         public String toString() {
             return fragment.getClass().getSimpleName()
-                    + "->"
-                    + ((next == null || next.isEmpty()) ? "no child" : next.toString());
+                   + "->"
+                   + ((next == null || next.isEmpty()) ? "no child" : next.toString());
         }
     }
 

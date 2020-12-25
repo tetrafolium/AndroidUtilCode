@@ -67,7 +67,7 @@ public final class BarUtils {
      * @param isVisible True to set status bar visible, false otherwise.
      */
     public static void setStatusBarVisibility(@NonNull final Activity activity,
-                                              final boolean isVisible) {
+            final boolean isVisible) {
         setStatusBarVisibility(activity.getWindow(), isVisible);
     }
 
@@ -78,7 +78,7 @@ public final class BarUtils {
      * @param isVisible True to set status bar visible, false otherwise.
      */
     public static void setStatusBarVisibility(@NonNull final Window window,
-                                              final boolean isVisible) {
+            final boolean isVisible) {
         if (isVisible) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             showStatusBarView(window);
@@ -108,7 +108,7 @@ public final class BarUtils {
      * @param isLightMode True to set status bar light mode, false otherwise.
      */
     public static void setStatusBarLightMode(@NonNull final Activity activity,
-                                             final boolean isLightMode) {
+            final boolean isLightMode) {
         setStatusBarLightMode(activity.getWindow(), isLightMode);
     }
 
@@ -119,7 +119,7 @@ public final class BarUtils {
      * @param isLightMode True to set status bar light mode, false otherwise.
      */
     public static void setStatusBarLightMode(@NonNull final Window window,
-                                             final boolean isLightMode) {
+            final boolean isLightMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             View decorView = window.getDecorView();
             int vis = decorView.getSystemUiVisibility();
@@ -169,9 +169,9 @@ public final class BarUtils {
         if (haveSetOffset != null && (Boolean) haveSetOffset) return;
         MarginLayoutParams layoutParams = (MarginLayoutParams) view.getLayoutParams();
         layoutParams.setMargins(layoutParams.leftMargin,
-                layoutParams.topMargin + getStatusBarHeight(),
-                layoutParams.rightMargin,
-                layoutParams.bottomMargin);
+                                layoutParams.topMargin + getStatusBarHeight(),
+                                layoutParams.rightMargin,
+                                layoutParams.bottomMargin);
         view.setTag(KEY_OFFSET, true);
     }
 
@@ -186,9 +186,9 @@ public final class BarUtils {
         if (haveSetOffset == null || !(Boolean) haveSetOffset) return;
         MarginLayoutParams layoutParams = (MarginLayoutParams) view.getLayoutParams();
         layoutParams.setMargins(layoutParams.leftMargin,
-                layoutParams.topMargin - getStatusBarHeight(),
-                layoutParams.rightMargin,
-                layoutParams.bottomMargin);
+                                layoutParams.topMargin - getStatusBarHeight(),
+                                layoutParams.rightMargin,
+                                layoutParams.bottomMargin);
         view.setTag(KEY_OFFSET, false);
     }
 
@@ -294,8 +294,8 @@ public final class BarUtils {
         ViewGroup.LayoutParams layoutParams = fakeStatusBar.getLayoutParams();
         if (layoutParams == null) {
             layoutParams = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    getStatusBarHeight()
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                getStatusBarHeight()
             );
             fakeStatusBar.setLayoutParams(layoutParams);
         } else {
@@ -313,8 +313,8 @@ public final class BarUtils {
      * @param color         The status bar's color.
      */
     public static void setStatusBarColor4Drawer(@NonNull final DrawerLayout drawer,
-                                                @NonNull final View fakeStatusBar,
-                                                @ColorInt final int color) {
+            @NonNull final View fakeStatusBar,
+            @ColorInt final int color) {
         setStatusBarColor4Drawer(drawer, fakeStatusBar, color, false);
     }
 
@@ -328,9 +328,9 @@ public final class BarUtils {
      * @param isTop         True to set DrawerLayout at the top layer, false otherwise.
      */
     public static void setStatusBarColor4Drawer(@NonNull final DrawerLayout drawer,
-                                                @NonNull final View fakeStatusBar,
-                                                @ColorInt final int color,
-                                                final boolean isTop) {
+            @NonNull final View fakeStatusBar,
+            @ColorInt final int color,
+            final boolean isTop) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         Activity activity = UtilsBridge.getActivityByContext(fakeStatusBar.getContext());
         if (activity == null) return;
@@ -357,8 +357,8 @@ public final class BarUtils {
                                             final int color,
                                             boolean isDecor) {
         ViewGroup parent = isDecor ?
-                (ViewGroup) window.getDecorView() :
-                (ViewGroup) window.findViewById(android.R.id.content);
+                           (ViewGroup) window.getDecorView() :
+                           (ViewGroup) window.findViewById(android.R.id.content);
         View fakeStatusBarView = parent.findViewWithTag(TAG_STATUS_BAR);
         if (fakeStatusBarView != null) {
             if (fakeStatusBarView.getVisibility() == View.GONE) {
@@ -394,7 +394,7 @@ public final class BarUtils {
                                             final int color) {
         View statusBarView = new View(context);
         statusBarView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight()));
+                                          ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight()));
         statusBarView.setBackgroundColor(color);
         statusBarView.setTag(TAG_STATUS_BAR);
         return statusBarView;
@@ -431,8 +431,8 @@ public final class BarUtils {
         TypedValue tv = new TypedValue();
         if (Utils.getApp().getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
             return TypedValue.complexToDimensionPixelSize(
-                    tv.data, Resources.getSystem().getDisplayMetrics()
-            );
+                       tv.data, Resources.getSystem().getDisplayMetrics()
+                   );
         }
         return 0;
     }
@@ -522,8 +522,8 @@ public final class BarUtils {
             }
         }
         final int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+                              | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                              | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         if (isVisible) {
             decorView.setSystemUiVisibility(decorView.getSystemUiVisibility() & ~uiOptions);
         } else {

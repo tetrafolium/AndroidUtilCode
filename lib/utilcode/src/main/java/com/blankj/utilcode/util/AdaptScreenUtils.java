@@ -45,7 +45,7 @@ public final class AdaptScreenUtils {
      */
     public static Resources adaptHeight(final Resources resources, final int designHeight, final boolean includeNavBar) {
         float screenHeight = (resources.getDisplayMetrics().heightPixels
-                + (includeNavBar ? getNavBarHeight(resources) : 0)) * 72f;
+                              + (includeNavBar ? getNavBarHeight(resources) : 0)) * 72f;
         float newXdpi = screenHeight / designHeight;
         applyDisplayMetrics(resources, newXdpi);
         return resources;

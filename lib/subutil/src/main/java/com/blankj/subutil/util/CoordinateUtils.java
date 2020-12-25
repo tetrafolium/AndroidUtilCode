@@ -30,7 +30,7 @@ public final class CoordinateUtils {
         double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * X_PI);
         double gg_lng = z * Math.cos(theta);
         double gg_lat = z * Math.sin(theta);
-        return new double[]{gg_lng, gg_lat};
+        return new double[] {gg_lng, gg_lat};
     }
 
     /**
@@ -45,7 +45,7 @@ public final class CoordinateUtils {
         double theta = Math.atan2(lat, lng) + 0.000003 * Math.cos(lng * X_PI);
         double bd_lng = z * Math.cos(theta) + 0.0065;
         double bd_lat = z * Math.sin(theta) + 0.006;
-        return new double[]{bd_lng, bd_lat};
+        return new double[] {bd_lng, bd_lat};
     }
 
     /**
@@ -57,7 +57,7 @@ public final class CoordinateUtils {
      */
     public static double[] gcj02ToWGS84(double lng, double lat) {
         if (outOfChina(lng, lat)) {
-            return new double[]{lng, lat};
+            return new double[] {lng, lat};
         }
         double dlat = transformLat(lng - 105.0, lat - 35.0);
         double dlng = transformLng(lng - 105.0, lat - 35.0);
@@ -69,7 +69,7 @@ public final class CoordinateUtils {
         dlng = (dlng * 180.0) / (A / sqrtmagic * Math.cos(radlat) * PI);
         double mglat = lat + dlat;
         double mglng = lng + dlng;
-        return new double[]{lng * 2 - mglng, lat * 2 - mglat};
+        return new double[] {lng * 2 - mglng, lat * 2 - mglat};
     }
 
     /**
@@ -81,7 +81,7 @@ public final class CoordinateUtils {
      */
     public static double[] wgs84ToGcj02(double lng, double lat) {
         if (outOfChina(lng, lat)) {
-            return new double[]{lng, lat};
+            return new double[] {lng, lat};
         }
         double dlat = transformLat(lng - 105.0, lat - 35.0);
         double dlng = transformLng(lng - 105.0, lat - 35.0);
@@ -93,7 +93,7 @@ public final class CoordinateUtils {
         dlng = (dlng * 180.0) / (A / sqrtmagic * Math.cos(radlat) * PI);
         double mglat = lat + dlat;
         double mglng = lng + dlng;
-        return new double[]{mglng, mglat};
+        return new double[] {mglng, mglat};
     }
 
     /**

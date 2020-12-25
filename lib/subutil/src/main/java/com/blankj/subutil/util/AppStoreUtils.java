@@ -79,7 +79,7 @@ public final class AppStoreUtils {
         intent.setData(uri);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         List<ResolveInfo> resolveInfos = Utils.getApp().getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                                         .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         if (resolveInfos == null || resolveInfos.size() == 0) {
             Log.e(TAG, "No app store!");
             return null;
@@ -149,8 +149,8 @@ public final class AppStoreUtils {
 
     private static int getAvailableIntentSize(final Intent intent) {
         return Utils.getApp().getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-                .size();
+               .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+               .size();
     }
 
     private static boolean isAppSystem(final String packageName) {

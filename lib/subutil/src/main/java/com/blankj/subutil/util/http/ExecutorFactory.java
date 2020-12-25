@@ -19,14 +19,14 @@ public final class ExecutorFactory {
             2 * CPU_COUNT + 1,
             30, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(128),
-            new ThreadFactory() {
-                private final AtomicInteger mCount = new AtomicInteger(1);
+    new ThreadFactory() {
+        private final AtomicInteger mCount = new AtomicInteger(1);
 
-                public Thread newThread(@NonNull Runnable r) {
-                    return new Thread(r, "http-pool-" + mCount.getAndIncrement());
-                }
-            }
-    );
+        public Thread newThread(@NonNull Runnable r) {
+            return new Thread(r, "http-pool-" + mCount.getAndIncrement());
+        }
+    }
+                                                                                );
 
     private static final Executor DEFAULT_MAIN_EXECUTOR = new Executor() {
         private final Handler mHandler = new Handler(Looper.getMainLooper());

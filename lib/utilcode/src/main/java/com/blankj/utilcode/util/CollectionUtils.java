@@ -243,7 +243,7 @@ public final class CollectionUtils {
         elts.addAll(b);
         for (Object obj : elts) {
             for (int i = 0, m = ((Math.max(getFreq(obj, mapA), getFreq(obj, mapB)))
-                    - (Math.min(getFreq(obj, mapA), getFreq(obj, mapB)))); i < m; i++) {
+                                 - (Math.min(getFreq(obj, mapA), getFreq(obj, mapB)))); i < m; i++) {
                 list.add(obj);
             }
         }
@@ -577,7 +577,7 @@ public final class CollectionUtils {
      * @return the transformed result (new list)
      */
     public static <E1, E2> Collection<E2> collect(final Collection<E1> inputCollection,
-                                                  final Transformer<E1, E2> transformer) {
+            final Transformer<E1, E2> transformer) {
         List<E2> answer = new ArrayList<>();
         if (inputCollection == null || transformer == null) return answer;
         for (E1 e1 : inputCollection) {

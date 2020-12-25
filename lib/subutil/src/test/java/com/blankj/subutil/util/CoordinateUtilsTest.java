@@ -16,12 +16,12 @@ import static java.lang.Math.PI;
 public class CoordinateUtilsTest {
 
     // 以下为各个坐标系的 天安门坐标
-    private static final double[] locationWGS84 = new double[]{116.3912022800, 39.9075017400};
-    private static final double[] locationGCJ02 = new double[]{116.3973900000, 39.9088600000};
-    private static final double[] locationBD09  = new double[]{116.4038206839, 39.9152478931};
+    private static final double[] locationWGS84 = new double[] {116.3912022800, 39.9075017400};
+    private static final double[] locationGCJ02 = new double[] {116.3973900000, 39.9088600000};
+    private static final double[] locationBD09  = new double[] {116.4038206839, 39.9152478931};
 
     // 以下为美国纽约坐标
-    private static final double[] newyorkWGS84 = new double[]{-74.0059413000, 40.7127837000};
+    private static final double[] newyorkWGS84 = new double[] {-74.0059413000, 40.7127837000};
 
     @Test
     public void gcj2BD09() throws Exception {

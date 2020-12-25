@@ -258,8 +258,8 @@ public final class AppUtils {
             return;
         }
         intent.addFlags(
-                Intent.FLAG_ACTIVITY_NEW_TASK
-                        | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
+            Intent.FLAG_ACTIVITY_NEW_TASK
+            | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
         );
         Utils.getApp().startActivity(intent);
         if (!isKillProcess) return;
@@ -604,7 +604,7 @@ public final class AppUtils {
         Signature[] signature = getAppSignature(packageName);
         if (signature == null || signature.length <= 0) return "";
         return UtilsBridge.bytes2HexString(UtilsBridge.hashTemplate(signature[0].toByteArray(), algorithm))
-                .replaceAll("(?<=[0-9A-F]{2})[0-9A-F]{2}", ":$0");
+               .replaceAll("(?<=[0-9A-F]{2})[0-9A-F]{2}", ":$0");
     }
 
     /**
@@ -792,14 +792,14 @@ public final class AppUtils {
         @Override
         public String toString() {
             return "{" +
-                    "\n    pkg name: " + getPackageName() +
-                    "\n    app icon: " + getIcon() +
-                    "\n    app name: " + getName() +
-                    "\n    app path: " + getPackagePath() +
-                    "\n    app v name: " + getVersionName() +
-                    "\n    app v code: " + getVersionCode() +
-                    "\n    is system: " + isSystem() +
-                    "\n}";
+                   "\n    pkg name: " + getPackageName() +
+                   "\n    app icon: " + getIcon() +
+                   "\n    app name: " + getName() +
+                   "\n    app path: " + getPackagePath() +
+                   "\n    app v name: " + getVersionName() +
+                   "\n    app v code: " + getVersionCode() +
+                   "\n    is system: " + isSystem() +
+                   "\n}";
         }
     }
 }

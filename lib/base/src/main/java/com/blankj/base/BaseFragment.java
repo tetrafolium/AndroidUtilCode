@@ -26,7 +26,7 @@ import com.blankj.utilcode.util.ClickUtils;
  * </pre>
  */
 public abstract class BaseFragment extends Fragment
-        implements IBaseView {
+    implements IBaseView {
 
     private static Boolean isDebug;
 

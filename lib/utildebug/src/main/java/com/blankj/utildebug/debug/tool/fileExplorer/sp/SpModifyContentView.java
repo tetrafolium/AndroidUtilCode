@@ -58,9 +58,9 @@ public class SpModifyContentView extends BaseContentView<FileExplorerFloatView> 
         spModifyYesTv = findViewById(R.id.spModifyYesTv);
 
         SpanUtils.with(spModifyTitleTv)
-                .append(mKey)
-                .append("(" + SpHelper.getSpClassName(mClass) + ")").setForegroundColor(ColorUtils.getColor(R.color.loveGreen))
-                .create();
+        .append(mKey)
+        .append("(" + SpHelper.getSpClassName(mClass) + ")").setForegroundColor(ColorUtils.getColor(R.color.loveGreen))
+        .create();
         spModifyEt.setText(mValue.toString());
 
         ClickUtils.applyPressedViewScale(spModifyCancelTv, spModifyYesTv);

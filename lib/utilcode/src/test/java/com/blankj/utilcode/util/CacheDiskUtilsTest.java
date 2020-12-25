@@ -127,22 +127,22 @@ public class CacheDiskUtilsTest extends BaseTest {
     @Test
     public void getBitmap() {
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS1.getBitmap("bitmap1"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS1.getBitmap("bitmap1"), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS1.getBitmap("bitmap1", null), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS1.getBitmap("bitmap1", null), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CACHE_DISK_UTILS1.getBitmap("bitmap2", null));
 
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS2.getBitmap("bitmap2"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS2.getBitmap("bitmap2"), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS2.getBitmap("bitmap2", null), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CACHE_DISK_UTILS2.getBitmap("bitmap2", null), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CACHE_DISK_UTILS2.getBitmap("bitmap1", null));
     }
@@ -151,22 +151,22 @@ public class CacheDiskUtilsTest extends BaseTest {
     public void getDrawable() {
         String bitmapString = "Bitmap (100 x 100) compressed as PNG with quality 100";
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CACHE_DISK_UTILS1.getDrawable("drawable1"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CACHE_DISK_UTILS1.getDrawable("drawable1"), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CACHE_DISK_UTILS1.getDrawable("drawable1", null), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CACHE_DISK_UTILS1.getDrawable("drawable1", null), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CACHE_DISK_UTILS1.getDrawable("drawable2", null));
 
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CACHE_DISK_UTILS2.getDrawable("drawable2"), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CACHE_DISK_UTILS2.getDrawable("drawable2"), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CACHE_DISK_UTILS2.getDrawable("drawable2", null), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CACHE_DISK_UTILS2.getDrawable("drawable2", null), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CACHE_DISK_UTILS2.getDrawable("drawable1", null));
     }
@@ -326,8 +326,8 @@ public class CacheDiskUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof ParcelableTest
-                    && ((ParcelableTest) obj).author.equals(author)
-                    && ((ParcelableTest) obj).className.equals(className);
+                   && ((ParcelableTest) obj).author.equals(author)
+                   && ((ParcelableTest) obj).className.equals(className);
         }
     }
 
@@ -362,8 +362,8 @@ public class CacheDiskUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof SerializableTest
-                    && ((SerializableTest) obj).author.equals(author)
-                    && ((SerializableTest) obj).className.equals(className);
+                   && ((SerializableTest) obj).author.equals(author)
+                   && ((SerializableTest) obj).className.equals(className);
         }
     }
 }

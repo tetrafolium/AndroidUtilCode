@@ -640,7 +640,7 @@ public class ArrayUtils {
         } else if (array2 != null) {
             clss = array2.getClass().getComponentType();
         } else {
-            return (T[]) new Object[]{null};
+            return (T[]) new Object[] {null};
         }
         return (T[]) realAddArr(array1, index, array2, clss);
     }
@@ -743,7 +743,7 @@ public class ArrayUtils {
         } else if (element != null) {
             clss = element.getClass();
         } else {
-            return (T[]) new Object[]{null};
+            return (T[]) new Object[] {null};
         }
         return (T[]) realAdd(array, index, element, clss);
     }

@@ -33,31 +33,31 @@ public class ArrayUtilsTest extends BaseTest {
     @Test
     public void isEmpty() {
         Object nullArr = null;
-        Object emptyArr = new int[]{};
+        Object emptyArr = new int[] {};
         Assert.assertTrue(ArrayUtils.isEmpty(nullArr));
         Assert.assertTrue(ArrayUtils.isEmpty(emptyArr));
-        Assert.assertFalse(ArrayUtils.isEmpty(new int[]{1}));
+        Assert.assertFalse(ArrayUtils.isEmpty(new int[] {1}));
     }
 
     @Test
     public void getLength() {
         Object nullArr = null;
-        Object emptyArr = new int[]{};
+        Object emptyArr = new int[] {};
         Assert.assertEquals(0, ArrayUtils.getLength(nullArr));
         Assert.assertEquals(0, ArrayUtils.getLength(emptyArr));
-        Assert.assertEquals(1, ArrayUtils.getLength(new int[]{1}));
+        Assert.assertEquals(1, ArrayUtils.getLength(new int[] {1}));
     }
 
     @Test
     public void isSameLength() {
-        Object emptyArr1 = new int[]{};
+        Object emptyArr1 = new int[] {};
         Assert.assertTrue(ArrayUtils.isSameLength(null, emptyArr1));
         Assert.assertTrue(ArrayUtils.isSameLength(new boolean[0], emptyArr1));
     }
 
     @Test
     public void get() {
-        Object emptyArr1 = new int[]{0, 1, 2};
+        Object emptyArr1 = new int[] {0, 1, 2};
         Assert.assertEquals(0, ArrayUtils.get(emptyArr1, 0));
         Assert.assertEquals(1, ArrayUtils.get(emptyArr1, 1));
         ArrayUtils.get(emptyArr1, 4);
@@ -65,7 +65,7 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void getOrDefault() {
-        Object array = new int[]{0, 1, 2};
+        Object array = new int[] {0, 1, 2};
         Assert.assertEquals(0, ArrayUtils.get(array, 0));
         Assert.assertEquals(1, ArrayUtils.get(array, 1));
         Assert.assertEquals(-1, ArrayUtils.get(array, 4, -1));
@@ -74,9 +74,9 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void set() {
-        int[] array = new int[]{0, -1, 2};
+        int[] array = new int[] {0, -1, 2};
         ArrayUtils.set(array, 1, 1);
-        Assert.assertArrayEquals(new int[]{0, 1, 2}, array);
+        Assert.assertArrayEquals(new int[] {0, 1, 2}, array);
     }
 
     @Test
@@ -86,14 +86,14 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void reverse() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         ArrayUtils.reverse(array);
-        Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
+        Assert.assertArrayEquals(new int[] {3, 2, 1, 0}, array);
     }
 
     @Test
     public void copy() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int[] copy = ArrayUtils.copy(array);
         Assert.assertArrayEquals(array, copy);
         Assert.assertNotSame(array, copy);
@@ -101,43 +101,43 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void subArray() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int[] subArray = ArrayUtils.subArray(array, 1, 3);
-        Assert.assertArrayEquals(new int[]{1, 2}, subArray);
+        Assert.assertArrayEquals(new int[] {1, 2}, subArray);
     }
 
     @Test
     public void add() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int[] addLastOne = ArrayUtils.add(array, 4);
         int[] addFirstOne = ArrayUtils.add(array, 0, -1);
-        int[] addArr = ArrayUtils.add(array, new int[]{4, 5});
-        int[] addFirstArr = ArrayUtils.add(array, 0, new int[]{-2, -1});
-        int[] addMidArr = ArrayUtils.add(array, 2, new int[]{1, 2});
-        Assert.assertArrayEquals(new int[]{0, 1, 2, 3, 4}, addLastOne);
-        Assert.assertArrayEquals(new int[]{-1, 0, 1, 2, 3}, addFirstOne);
-        Assert.assertArrayEquals(new int[]{0, 1, 2, 3, 4, 5}, addArr);
-        Assert.assertArrayEquals(new int[]{-2, -1, 0, 1, 2, 3}, addFirstArr);
-        Assert.assertArrayEquals(new int[]{0, 1, 1, 2, 2, 3}, addMidArr);
+        int[] addArr = ArrayUtils.add(array, new int[] {4, 5});
+        int[] addFirstArr = ArrayUtils.add(array, 0, new int[] {-2, -1});
+        int[] addMidArr = ArrayUtils.add(array, 2, new int[] {1, 2});
+        Assert.assertArrayEquals(new int[] {0, 1, 2, 3, 4}, addLastOne);
+        Assert.assertArrayEquals(new int[] {-1, 0, 1, 2, 3}, addFirstOne);
+        Assert.assertArrayEquals(new int[] {0, 1, 2, 3, 4, 5}, addArr);
+        Assert.assertArrayEquals(new int[] {-2, -1, 0, 1, 2, 3}, addFirstArr);
+        Assert.assertArrayEquals(new int[] {0, 1, 1, 2, 2, 3}, addMidArr);
     }
 
     @Test
     public void remove() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int[] remove = ArrayUtils.remove(array, 0);
-        Assert.assertArrayEquals(new int[]{1, 2, 3}, remove);
+        Assert.assertArrayEquals(new int[] {1, 2, 3}, remove);
     }
 
     @Test
     public void removeElement() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int[] remove = ArrayUtils.removeElement(array, 0);
-        Assert.assertArrayEquals(new int[]{1, 2, 3}, remove);
+        Assert.assertArrayEquals(new int[] {1, 2, 3}, remove);
     }
 
     @Test
     public void indexOf() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         int i = ArrayUtils.indexOf(array, 0);
         int i1 = ArrayUtils.indexOf(array, -1);
         int i2 = ArrayUtils.indexOf(array, 0, 1);
@@ -148,7 +148,7 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void lastIndexOf() {
-        int[] array = new int[]{0, 1, 2, 3, 0};
+        int[] array = new int[] {0, 1, 2, 3, 0};
         int i = ArrayUtils.lastIndexOf(array, 0);
         int i1 = ArrayUtils.lastIndexOf(array, -1);
         int i2 = ArrayUtils.lastIndexOf(array, 0, 1);
@@ -159,25 +159,25 @@ public class ArrayUtilsTest extends BaseTest {
 
     @Test
     public void contains() {
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         Assert.assertTrue(ArrayUtils.contains(array, 0));
         Assert.assertFalse(ArrayUtils.contains(array, 4));
     }
 
     @Test
     public void toPrimitive() {
-        int[] primitiveArray = new int[]{0, 1, 2, 3};
-        Integer[] array = new Integer[]{0, 1, 2, 3};
+        int[] primitiveArray = new int[] {0, 1, 2, 3};
+        Integer[] array = new Integer[] {0, 1, 2, 3};
         Assert.assertArrayEquals(primitiveArray, ArrayUtils.toPrimitive(array));
-        int[] primitiveArray1 = new int[]{0, 1, 2, 3, 0};
-        Integer[] array1 = new Integer[]{0, 1, 2, 3, null};
+        int[] primitiveArray1 = new int[] {0, 1, 2, 3, 0};
+        Integer[] array1 = new Integer[] {0, 1, 2, 3, null};
         Assert.assertArrayEquals(primitiveArray1, ArrayUtils.toPrimitive(array1, 0));
     }
 
     @Test
     public void toObject() {
-        int[] primitiveArray = new int[]{0, 1, 2, 3};
-        Integer[] array = new Integer[]{0, 1, 2, 3};
+        int[] primitiveArray = new int[] {0, 1, 2, 3};
+        Integer[] array = new Integer[] {0, 1, 2, 3};
         Assert.assertArrayEquals(array, ArrayUtils.toObject(primitiveArray));
     }
 
@@ -199,7 +199,7 @@ public class ArrayUtilsTest extends BaseTest {
     @Test
     public void forAllDo() {
         ArrayUtils.forAllDo(null, null);
-        int[] array = new int[]{0, 1, 2, 3};
+        int[] array = new int[] {0, 1, 2, 3};
         ArrayUtils.forAllDo(array, new ArrayUtils.Closure<Integer>() {
             @Override
             public void execute(int index, Integer item) {

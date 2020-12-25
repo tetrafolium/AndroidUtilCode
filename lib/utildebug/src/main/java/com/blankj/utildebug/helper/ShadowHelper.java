@@ -17,9 +17,9 @@ public class ShadowHelper {
 
     public static void applyDebugIcon(View view) {
         ShadowUtils.apply(view, new ShadowUtils.Config()
-                .setCircle()
-                .setShadowColor(0xc0_ffffff, 0x60_ffffff)
-        );
+                          .setCircle()
+                          .setShadowColor(0xc0_ffffff, 0x60_ffffff)
+                         );
     }
 
     public static void applyFloatView(View view) {
@@ -28,7 +28,7 @@ public class ShadowHelper {
 
     public static void applyMenu(View view) {
         ShadowUtils.apply(view, new ShadowUtils.Config()
-                .setShadowRadius(SizeUtils.dp2px(4))
-        );
+                          .setShadowRadius(SizeUtils.dp2px(4))
+                         );
     }
 }

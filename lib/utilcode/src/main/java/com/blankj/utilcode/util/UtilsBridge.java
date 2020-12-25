@@ -66,7 +66,7 @@ class UtilsBridge {
     }
 
     static void addActivityLifecycleCallbacks(final Activity activity,
-                                              final Utils.ActivityLifecycleCallbacks callbacks) {
+            final Utils.ActivityLifecycleCallbacks callbacks) {
         UtilsActivityLifecycleImpl.INSTANCE.addActivityLifecycleCallbacks(activity, callbacks);
     }
 
@@ -75,7 +75,7 @@ class UtilsBridge {
     }
 
     static void removeActivityLifecycleCallbacks(final Activity activity,
-                                                 final Utils.ActivityLifecycleCallbacks callbacks) {
+            final Utils.ActivityLifecycleCallbacks callbacks) {
         UtilsActivityLifecycleImpl.INSTANCE.removeActivityLifecycleCallbacks(activity, callbacks);
     }
 

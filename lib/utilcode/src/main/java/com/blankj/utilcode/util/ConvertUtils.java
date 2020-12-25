@@ -40,9 +40,9 @@ public final class ConvertUtils {
 
     private static final int    BUFFER_SIZE      = 8192;
     private static final char[] HEX_DIGITS_UPPER =
-            {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     private static final char[] HEX_DIGITS_LOWER =
-            {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     private ConvertUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -678,7 +678,7 @@ public final class ConvertUtils {
     }
 
     public static List<String> inputStream2Lines(final InputStream is,
-                                                 final String charsetName) {
+            final String charsetName) {
         BufferedReader reader = null;
         try {
             List<String> list = new ArrayList<>();

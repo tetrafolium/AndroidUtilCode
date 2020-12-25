@@ -417,7 +417,7 @@ public final class RomUtils {
         try {
             Properties prop = new Properties();
             FileInputStream is = new FileInputStream(
-                    new File(Environment.getRootDirectory(), "build.prop")
+                new File(Environment.getRootDirectory(), "build.prop")
             );
             prop.load(is);
             return prop.getProperty(key, "");
@@ -450,7 +450,7 @@ public final class RomUtils {
         @Override
         public String toString() {
             return "RomInfo{name=" + name +
-                    ", version=" + version + "}";
+                   ", version=" + version + "}";
         }
     }
 }

@@ -112,15 +112,15 @@ public class DangerousUtils {
         if (!isFileExists(file)) return false;
         String filePath = '"' + file.getAbsolutePath() + '"';
         String command = "LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm install " +
-                (params == null ? "" : params + " ")
-                + filePath;
+                         (params == null ? "" : params + " ")
+                         + filePath;
         ShellUtils.CommandResult commandResult = ShellUtils.execCmd(command, isRooted);
         if (commandResult.successMsg != null
                 && commandResult.successMsg.toLowerCase().contains("success")) {
             return true;
         } else {
             Log.e("AppUtils", "installAppSilent successMsg: " + commandResult.successMsg +
-                    ", errorMsg: " + commandResult.errorMsg);
+                  ", errorMsg: " + commandResult.errorMsg);
             return false;
         }
     }
@@ -164,19 +164,19 @@ public class DangerousUtils {
      * @return {@code true}: success<br>{@code false}: fail
      */
     public static boolean uninstallAppSilent(final String packageName,
-                                             final boolean isKeepData,
-                                             final boolean isRooted) {
+            final boolean isKeepData,
+            final boolean isRooted) {
         if (isSpace(packageName)) return false;
         String command = "LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm uninstall "
-                + (isKeepData ? "-k " : "")
-                + packageName;
+                         + (isKeepData ? "-k " : "")
+                         + packageName;
         ShellUtils.CommandResult commandResult = ShellUtils.execCmd(command, isRooted);
         if (commandResult.successMsg != null
                 && commandResult.successMsg.toLowerCase().contains("success")) {
             return true;
         } else {
             Log.e("AppUtils", "uninstallAppSilent successMsg: " + commandResult.successMsg +
-                    ", errorMsg: " + commandResult.errorMsg);
+                  ", errorMsg: " + commandResult.errorMsg);
             return false;
         }
     }
@@ -202,8 +202,9 @@ public class DangerousUtils {
     private static boolean isDeviceRooted() {
         String su = "su";
         String[] locations = {"/system/bin/", "/system/xbin/", "/sbin/", "/system/sd/xbin/",
-                "/system/bin/failsafe/", "/data/local/xbin/", "/data/local/bin/", "/data/local/",
-                "/system/sbin/", "/usr/bin/", "/vendor/bin/"};
+                              "/system/bin/failsafe/", "/data/local/xbin/", "/data/local/bin/", "/data/local/",
+                              "/system/sbin/", "/usr/bin/", "/vendor/bin/"
+                             };
         for (String location : locations) {
             if (new File(location + su).exists()) {
                 return true;
@@ -314,14 +315,14 @@ public class DangerousUtils {
     public static boolean setMobileDataEnabled(final boolean enabled) {
         try {
             TelephonyManager tm =
-                    (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+                (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm == null) return false;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 tm.setDataEnabled(enabled);
                 return true;
             }
             Method setDataEnabledMethod =
-                    tm.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
+                tm.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
             setDataEnabledMethod.invoke(tm, enabled);
             return true;
         } catch (Exception e) {

@@ -77,7 +77,7 @@ public final class CleanUtils {
      */
     public static boolean cleanExternalCache() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
-                && UtilsBridge.deleteAllInDir(Utils.getApp().getExternalCacheDir());
+               && UtilsBridge.deleteAllInDir(Utils.getApp().getExternalCacheDir());
     }
 
     /**

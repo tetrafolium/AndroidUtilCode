@@ -21,57 +21,57 @@ public class MapUtilsTest extends BaseTest {
     @Test
     public void newUnmodifiableMap() {
         System.out.println(MapUtils.newUnmodifiableMap(
-                Pair.create(0, "0"),
-                Pair.create(1, "1"),
-                Pair.create(2, "2"),
-                Pair.create(3, "3")
-        ));
+                               Pair.create(0, "0"),
+                               Pair.create(1, "1"),
+                               Pair.create(2, "2"),
+                               Pair.create(3, "3")
+                           ));
     }
 
     @Test
     public void newHashMap() {
         System.out.println(MapUtils.newHashMap(
-                Pair.create(0, "0"),
-                Pair.create(1, "1"),
-                Pair.create(2, "2"),
-                Pair.create(3, "3")
-        ));
+                               Pair.create(0, "0"),
+                               Pair.create(1, "1"),
+                               Pair.create(2, "2"),
+                               Pair.create(3, "3")
+                           ));
     }
 
     @Test
     public void newLinkedHashMap() {
         System.out.println(MapUtils.newLinkedHashMap(
-                Pair.create(0, "0"),
-                Pair.create(1, "1"),
-                Pair.create(2, "2"),
-                Pair.create(3, "3")
-        ));
+                               Pair.create(0, "0"),
+                               Pair.create(1, "1"),
+                               Pair.create(2, "2"),
+                               Pair.create(3, "3")
+                           ));
     }
 
     @Test
     public void newTreeMap() {
         System.out.println(MapUtils.newTreeMap(
-                new Comparator<Integer>() {
-                    @Override
-                    public int compare(Integer o1, Integer o2) {
-                        return o2 - o1;
-                    }
-                },
-                Pair.create(0, "0"),
-                Pair.create(1, "1"),
-                Pair.create(2, "2"),
-                Pair.create(3, "3")
-        ));
+        new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        },
+        Pair.create(0, "0"),
+        Pair.create(1, "1"),
+        Pair.create(2, "2"),
+        Pair.create(3, "3")
+                           ));
     }
 
     @Test
     public void newHashTable() {
         System.out.println(MapUtils.newHashTable(
-                Pair.create(0, "0"),
-                Pair.create(1, "1"),
-                Pair.create(2, "2"),
-                Pair.create(3, "3")
-        ));
+                               Pair.create(0, "0"),
+                               Pair.create(1, "1"),
+                               Pair.create(2, "2"),
+                               Pair.create(3, "3")
+                           ));
     }
 
     @Test
@@ -98,35 +98,35 @@ public class MapUtilsTest extends BaseTest {
     @Test
     public void forAllDo() {
         MapUtils.forAllDo(
-                MapUtils.newHashMap(
-                        Pair.create(0, "0"),
-                        Pair.create(1, "1"),
-                        Pair.create(2, "2"),
-                        Pair.create(3, "3")
-                ), new MapUtils.Closure<Integer, String>() {
-                    @Override
-                    public void execute(Integer key, String value) {
-                        System.out.println(key + "=" + value);
-                    }
-                });
+            MapUtils.newHashMap(
+                Pair.create(0, "0"),
+                Pair.create(1, "1"),
+                Pair.create(2, "2"),
+                Pair.create(3, "3")
+        ), new MapUtils.Closure<Integer, String>() {
+            @Override
+            public void execute(Integer key, String value) {
+                System.out.println(key + "=" + value);
+            }
+        });
     }
 
     @Test
     public void transform() {
         Map<String, String> transform = MapUtils.transform(
-                MapUtils.newHashMap(
-                        Pair.create(0, "0"),
-                        Pair.create(1, "1"),
-                        Pair.create(2, "2"),
-                        Pair.create(3, "3")
-                ),
-                new MapUtils.Transformer<Integer, String, String, String>() {
-                    @Override
-                    public Pair<String, String> transform(Integer integer, String s) {
-                        return Pair.create("StringKey" + integer, s);
-                    }
-                }
-        );
+                                            MapUtils.newHashMap(
+                                                Pair.create(0, "0"),
+                                                Pair.create(1, "1"),
+                                                Pair.create(2, "2"),
+                                                Pair.create(3, "3")
+                                            ),
+        new MapUtils.Transformer<Integer, String, String, String>() {
+            @Override
+            public Pair<String, String> transform(Integer integer, String s) {
+                return Pair.create("StringKey" + integer, s);
+            }
+        }
+                                        );
         System.out.println(transform);
     }
 }

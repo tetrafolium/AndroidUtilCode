@@ -40,9 +40,9 @@ public final class IntentUtils {
      */
     public static boolean isIntentAvailable(final Intent intent) {
         return Utils.getApp()
-                .getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-                .size() > 0;
+               .getPackageManager()
+               .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+               .size() > 0;
     }
 
     /**
@@ -193,7 +193,7 @@ public final class IntentUtils {
      * @return the intent of share images
      */
     public static Intent getShareImageIntent(final String content,
-                                             final LinkedList<String> imagePaths) {
+            final LinkedList<String> imagePaths) {
         if (imagePaths == null || imagePaths.isEmpty()) return null;
         List<File> files = new ArrayList<>();
         for (String imagePath : imagePaths) {

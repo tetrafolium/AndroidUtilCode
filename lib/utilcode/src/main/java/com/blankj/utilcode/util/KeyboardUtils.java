@@ -74,7 +74,7 @@ public final class KeyboardUtils {
      */
     public static void showSoftInput(@NonNull final View view, final int flags) {
         InputMethodManager imm =
-                (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
+            (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) return;
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
@@ -129,7 +129,7 @@ public final class KeyboardUtils {
      */
     public static void hideSoftInput(@NonNull final View view) {
         InputMethodManager imm =
-                (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
+            (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) return;
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
@@ -155,7 +155,7 @@ public final class KeyboardUtils {
      */
     public static void toggleSoftInput() {
         InputMethodManager imm =
-                (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
+            (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) return;
         imm.toggleSoftInput(0, 0);
     }
@@ -177,7 +177,7 @@ public final class KeyboardUtils {
         final Rect outRect = new Rect();
         decorView.getWindowVisibleDisplayFrame(outRect);
         Log.d("KeyboardUtils", "getDecorViewInvisibleHeight: "
-                + (decorView.getBottom() - outRect.bottom));
+              + (decorView.getBottom() - outRect.bottom));
         int delta = Math.abs(decorView.getBottom() - outRect.bottom);
         if (delta <= UtilsBridge.getNavBarHeight() + UtilsBridge.getStatusBarHeight()) {
             sDecorViewDelta = delta;
@@ -193,7 +193,7 @@ public final class KeyboardUtils {
      * @param listener The soft input changed listener.
      */
     public static void registerSoftInputChangedListener(@NonNull final Activity activity,
-                                                        @NonNull final OnSoftInputChangedListener listener) {
+            @NonNull final OnSoftInputChangedListener listener) {
         registerSoftInputChangedListener(activity.getWindow(), listener);
     }
 
@@ -204,7 +204,7 @@ public final class KeyboardUtils {
      * @param listener The soft input changed listener.
      */
     public static void registerSoftInputChangedListener(@NonNull final Window window,
-                                                        @NonNull final OnSoftInputChangedListener listener) {
+            @NonNull final OnSoftInputChangedListener listener) {
         final int flags = window.getAttributes().flags;
         if ((flags & WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS) != 0) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -264,21 +264,21 @@ public final class KeyboardUtils {
         final int paddingBottom = contentViewChild.getPaddingBottom();
         final int[] contentViewInvisibleHeightPre5497 = {getContentViewInvisibleHeight(window)};
         contentView.getViewTreeObserver()
-                .addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        int height = getContentViewInvisibleHeight(window);
-                        if (contentViewInvisibleHeightPre5497[0] != height) {
-                            contentViewChild.setPadding(
-                                    contentViewChild.getPaddingLeft(),
-                                    contentViewChild.getPaddingTop(),
-                                    contentViewChild.getPaddingRight(),
-                                    paddingBottom + getDecorViewInvisibleHeight(window)
-                            );
-                            contentViewInvisibleHeightPre5497[0] = height;
-                        }
-                    }
-                });
+        .addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int height = getContentViewInvisibleHeight(window);
+                if (contentViewInvisibleHeightPre5497[0] != height) {
+                    contentViewChild.setPadding(
+                        contentViewChild.getPaddingLeft(),
+                        contentViewChild.getPaddingTop(),
+                        contentViewChild.getPaddingRight(),
+                        paddingBottom + getDecorViewInvisibleHeight(window)
+                    );
+                    contentViewInvisibleHeightPre5497[0] = height;
+                }
+            }
+        });
     }
 
     private static int getContentViewInvisibleHeight(final Window window) {
@@ -287,7 +287,7 @@ public final class KeyboardUtils {
         final Rect outRect = new Rect();
         contentView.getWindowVisibleDisplayFrame(outRect);
         Log.d("KeyboardUtils", "getContentViewInvisibleHeight: "
-                + (contentView.getBottom() - outRect.bottom));
+              + (contentView.getBottom() - outRect.bottom));
         int delta = Math.abs(contentView.getBottom() - outRect.bottom);
         if (delta <= UtilsBridge.getStatusBarHeight() + UtilsBridge.getNavBarHeight()) {
             return 0;
@@ -311,9 +311,9 @@ public final class KeyboardUtils {
      */
     public static void fixSoftInputLeaks(@NonNull final Window window) {
         InputMethodManager imm =
-                (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
+            (InputMethodManager) Utils.getApp().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) return;
-        String[] leakViews = new String[]{"mLastSrvView", "mCurRootView", "mServedView", "mNextServedView"};
+        String[] leakViews = new String[] {"mLastSrvView", "mCurRootView", "mServedView", "mNextServedView"};
         for (String leakView : leakViews) {
             try {
                 Field leakViewField = InputMethodManager.class.getDeclaredField(leakView);

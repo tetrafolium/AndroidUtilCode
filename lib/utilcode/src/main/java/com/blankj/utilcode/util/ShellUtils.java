@@ -33,9 +33,9 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final String command,
-                                                         final boolean isRooted,
-                                                         final Utils.Consumer<CommandResult> consumer) {
-        return execCmdAsync(new String[]{command}, isRooted, true, consumer);
+            final boolean isRooted,
+            final Utils.Consumer<CommandResult> consumer) {
+        return execCmdAsync(new String[] {command}, isRooted, true, consumer);
     }
 
     /**
@@ -47,9 +47,9 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final List<String> commands,
-                                                         final boolean isRooted,
-                                                         final Utils.Consumer<CommandResult> consumer) {
-        return execCmdAsync(commands == null ? null : commands.toArray(new String[]{}), isRooted, true, consumer);
+            final boolean isRooted,
+            final Utils.Consumer<CommandResult> consumer) {
+        return execCmdAsync(commands == null ? null : commands.toArray(new String[] {}), isRooted, true, consumer);
     }
 
     /**
@@ -61,8 +61,8 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final String[] commands,
-                                                         final boolean isRooted,
-                                                         final Utils.Consumer<CommandResult> consumer) {
+            final boolean isRooted,
+            final Utils.Consumer<CommandResult> consumer) {
         return execCmdAsync(commands, isRooted, true, consumer);
     }
 
@@ -76,10 +76,10 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final String command,
-                                                         final boolean isRooted,
-                                                         final boolean isNeedResultMsg,
-                                                         final Utils.Consumer<CommandResult> consumer) {
-        return execCmdAsync(new String[]{command}, isRooted, isNeedResultMsg, consumer);
+            final boolean isRooted,
+            final boolean isNeedResultMsg,
+            final Utils.Consumer<CommandResult> consumer) {
+        return execCmdAsync(new String[] {command}, isRooted, isNeedResultMsg, consumer);
     }
 
     /**
@@ -92,13 +92,13 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final List<String> commands,
-                                                         final boolean isRooted,
-                                                         final boolean isNeedResultMsg,
-                                                         final Utils.Consumer<CommandResult> consumer) {
-        return execCmdAsync(commands == null ? null : commands.toArray(new String[]{}),
-                isRooted,
-                isNeedResultMsg,
-                consumer);
+            final boolean isRooted,
+            final boolean isNeedResultMsg,
+            final Utils.Consumer<CommandResult> consumer) {
+        return execCmdAsync(commands == null ? null : commands.toArray(new String[] {}),
+                            isRooted,
+                            isNeedResultMsg,
+                            consumer);
     }
 
     /**
@@ -111,9 +111,9 @@ public final class ShellUtils {
      * @return the task
      */
     public static Utils.Task<CommandResult> execCmdAsync(final String[] commands,
-                                                         final boolean isRooted,
-                                                         final boolean isNeedResultMsg,
-                                                         @NonNull final Utils.Consumer<CommandResult> consumer) {
+            final boolean isRooted,
+            final boolean isNeedResultMsg,
+            @NonNull final Utils.Consumer<CommandResult> consumer) {
         return UtilsBridge.doAsync(new Utils.Task<CommandResult>(consumer) {
             @Override
             public CommandResult doInBackground() {
@@ -130,7 +130,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final String command, final boolean isRooted) {
-        return execCmd(new String[]{command}, isRooted, true);
+        return execCmd(new String[] {command}, isRooted, true);
     }
 
     /**
@@ -141,7 +141,7 @@ public final class ShellUtils {
      * @return the single {@link CommandResult} instance
      */
     public static CommandResult execCmd(final List<String> commands, final boolean isRooted) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRooted, true);
+        return execCmd(commands == null ? null : commands.toArray(new String[] {}), isRooted, true);
     }
 
     /**
@@ -166,7 +166,7 @@ public final class ShellUtils {
     public static CommandResult execCmd(final String command,
                                         final boolean isRooted,
                                         final boolean isNeedResultMsg) {
-        return execCmd(new String[]{command}, isRooted, isNeedResultMsg);
+        return execCmd(new String[] {command}, isRooted, isNeedResultMsg);
     }
 
     /**
@@ -180,9 +180,9 @@ public final class ShellUtils {
     public static CommandResult execCmd(final List<String> commands,
                                         final boolean isRooted,
                                         final boolean isNeedResultMsg) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}),
-                isRooted,
-                isNeedResultMsg);
+        return execCmd(commands == null ? null : commands.toArray(new String[] {}),
+                       isRooted,
+                       isNeedResultMsg);
     }
 
     /**
@@ -222,10 +222,10 @@ public final class ShellUtils {
                 successMsg = new StringBuilder();
                 errorMsg = new StringBuilder();
                 successResult = new BufferedReader(
-                        new InputStreamReader(process.getInputStream(), "UTF-8")
+                    new InputStreamReader(process.getInputStream(), "UTF-8")
                 );
                 errorResult = new BufferedReader(
-                        new InputStreamReader(process.getErrorStream(), "UTF-8")
+                    new InputStreamReader(process.getErrorStream(), "UTF-8")
                 );
                 String line;
                 if ((line = successResult.readLine()) != null) {
@@ -270,10 +270,10 @@ public final class ShellUtils {
             }
         }
         return new CommandResult(
-                result,
-                successMsg == null ? "" : successMsg.toString(),
-                errorMsg == null ? "" : errorMsg.toString()
-        );
+                   result,
+                   successMsg == null ? "" : successMsg.toString(),
+                   errorMsg == null ? "" : errorMsg.toString()
+               );
     }
 
     /**
@@ -293,8 +293,8 @@ public final class ShellUtils {
         @Override
         public String toString() {
             return "result: " + result + "\n" +
-                    "successMsg: " + successMsg + "\n" +
-                    "errorMsg: " + errorMsg;
+                   "successMsg: " + successMsg + "\n" +
+                   "errorMsg: " + errorMsg;
         }
     }
 }

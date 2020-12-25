@@ -126,22 +126,22 @@ public class CacheDiskStaticUtilsTest extends BaseTest {
     @Test
     public void getBitmap() {
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap1", CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap1", CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap1", null, CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap1", null, CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CacheDiskStaticUtils.getBitmap("bitmap2", null, CACHE_DISK_UTILS1));
 
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap2", CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap2", CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap2", null, CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.bitmap2Bytes(CacheDiskStaticUtils.getBitmap("bitmap2", null, CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CacheDiskStaticUtils.getBitmap("bitmap1", null, CACHE_DISK_UTILS2));
     }
@@ -149,22 +149,22 @@ public class CacheDiskStaticUtilsTest extends BaseTest {
     @Test
     public void getDrawable() {
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable1", CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable1", CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable1", null, CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable1", null, CACHE_DISK_UTILS1), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CacheDiskStaticUtils.getDrawable("drawable2", null, CACHE_DISK_UTILS1));
 
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable2", CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable2", CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
         );
         assertArrayEquals(
-                ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
-                ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable2", null, CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
+            ImageUtils.bitmap2Bytes(BITMAP, Bitmap.CompressFormat.PNG, 100),
+            ImageUtils.drawable2Bytes(CacheDiskStaticUtils.getDrawable("drawable2", null, CACHE_DISK_UTILS2), Bitmap.CompressFormat.PNG, 100)
         );
         assertNull(CacheDiskStaticUtils.getDrawable("drawable1", null, CACHE_DISK_UTILS2));
     }
@@ -322,8 +322,8 @@ public class CacheDiskStaticUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof ParcelableTest
-                    && ((ParcelableTest) obj).author.equals(author)
-                    && ((ParcelableTest) obj).className.equals(className);
+                   && ((ParcelableTest) obj).author.equals(author)
+                   && ((ParcelableTest) obj).className.equals(className);
         }
     }
 
@@ -358,8 +358,8 @@ public class CacheDiskStaticUtilsTest extends BaseTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof SerializableTest
-                    && ((SerializableTest) obj).author.equals(author)
-                    && ((SerializableTest) obj).className.equals(className);
+                   && ((SerializableTest) obj).author.equals(author)
+                   && ((SerializableTest) obj).className.equals(className);
         }
     }
 }

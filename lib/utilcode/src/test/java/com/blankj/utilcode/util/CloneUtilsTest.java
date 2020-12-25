@@ -36,8 +36,8 @@ public class CloneUtilsTest extends BaseTest {
         @Override
         public String toString() {
             return "{\"code\":" + primitive2String(code) +
-                    ",\"message\":" + primitive2String(message) +
-                    ",\"data\":" + primitive2String(data) + "}";
+                   ",\"message\":" + primitive2String(message) +
+                   ",\"data\":" + primitive2String(data) + "}";
         }
     }
 
@@ -54,8 +54,8 @@ public class CloneUtilsTest extends BaseTest {
         @Override
         public String toString() {
             return "{\"name\":" + primitive2String(name) +
-                    ",\"gender\":" + primitive2String(gender) +
-                    ",\"address\":" + primitive2String(address) + "}";
+                   ",\"gender\":" + primitive2String(gender) +
+                   ",\"address\":" + primitive2String(address) + "}";
         }
     }
 
